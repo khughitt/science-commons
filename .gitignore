@@ -1,0 +1,7 @@
+# Regenerable index (rebuild from filesystem with `science commons index rebuild`)
+registry.sqlite
+registry.sqlite-journal
+.registry-*.sqlite
+
+# Python build artifacts
+__pycache__/
