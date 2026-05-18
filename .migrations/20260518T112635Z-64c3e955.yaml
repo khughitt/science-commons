@@ -1,0 +1,304 @@
+op_id: 64c3e955
+type: topic
+invocation: /mnt/ssd/Dropbox/science/science/.venv/bin/science commons promote topic
+  --from natural-systems --from multiple-myeloma --apply
+status: ok
+started_at: '2026-05-18T11:26:35.322362+00:00'
+finished_at: '2026-05-18T11:26:35.965147+00:00'
+commons_commit: 3828c72
+commons_tags:
+- topic/aging-epigenetic-erosion-clonal-susceptibility/1.0.0
+- topic/aid-germinal-center-mm-origins/1.0.0
+- topic/bayesian/1.0.0
+- topic/cancer-as-singular-evolutionary-disease/1.0.0
+- topic/causal-inference/1.0.0
+- topic/causal-inference-biology-foundations/1.0.0
+- topic/centrosomes-cancer-multiple-myeloma/1.0.0
+- topic/clinical-phenotype/1.0.0
+- topic/cytogenetics/1.0.0
+- topic/disease-stage-progression-methods/1.0.0
+- topic/enrichment/1.0.0
+- topic/epigenetic-chromatin-mm-progression/1.0.0
+- topic/formal-causal-mediation/1.0.0
+- topic/gain-1q/1.0.0
+- topic/gain1q-neg-unique-genes/1.0.0
+- topic/gene-set-novelty-quantification-methods/1.0.0
+- topic/hyperdiploidy/1.0.0
+- topic/hypothesis/1.0.0
+- topic/invariant-causal-prediction-biology/1.0.0
+- topic/meta-analysis/1.0.0
+- topic/metafor-ranks16-30-literature-synthesis/1.0.0
+- topic/metafor-ranks31-45-literature-synthesis/1.0.0
+- topic/metafor-top15-literature-synthesis/1.0.0
+- topic/model-classification-and-inter-model-relationships/1.0.0
+- topic/multiple-myeloma/1.0.0
+- topic/nk-boolean-attractor-formalism/1.0.0
+- topic/ordinal-staging-regression-meta-analysis-methods/1.0.0
+- topic/phf19-regulation-chromatin/1.0.0
+- topic/ribosomopathies-hematologic-malignancies/1.0.0
+- topic/selection-vs-drift-mm-progression/1.0.0
+- topic/target-trial-emulation-oncology/1.0.0
+- topic/treatment/1.0.0
+- topic/validation/1.0.0
+- topic/waddington-landscape-attractor-formalism/1.0.0
+projects_touched:
+  multiple-myeloma:
+    overlay_rewrites:
+    - slug: aging-epigenetic-erosion-clonal-susceptibility
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/aging-epigenetic-erosion-clonal-susceptibility.md
+      pin_version: 1.0.0
+    - slug: aid-germinal-center-mm-origins
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/aid-germinal-center-mm-origins.md
+      pin_version: 1.0.0
+    - slug: bayesian
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/bayesian.md
+      pin_version: 1.0.0
+    - slug: cancer-as-singular-evolutionary-disease
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/cancer-as-singular-evolutionary-disease.md
+      pin_version: 1.0.0
+    - slug: causal-inference
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/causal-inference.md
+      pin_version: 1.0.0
+    - slug: causal-inference-biology-foundations
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/causal-inference-biology-foundations.md
+      pin_version: 1.0.0
+    - slug: centrosomes-cancer-multiple-myeloma
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/centrosomes-cancer-multiple-myeloma.md
+      pin_version: 1.0.0
+    - slug: clinical-phenotype
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/clinical-phenotype.md
+      pin_version: 1.0.0
+    - slug: cytogenetics
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/cytogenetics.md
+      pin_version: 1.0.0
+    - slug: disease-stage-progression-methods
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/disease-stage-progression-methods.md
+      pin_version: 1.0.0
+    - slug: epigenetic-chromatin-mm-progression
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/epigenetic-chromatin-mm-progression.md
+      pin_version: 1.0.0
+    - slug: formal-causal-mediation
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/formal-causal-mediation.md
+      pin_version: 1.0.0
+    - slug: gain-1q
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/gain-1q.md
+      pin_version: 1.0.0
+    - slug: gain1q-neg-unique-genes
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/gain1q-neg-unique-genes.md
+      pin_version: 1.0.0
+    - slug: gene-set-novelty-quantification-methods
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/gene-set-novelty-quantification-methods.md
+      pin_version: 1.0.0
+    - slug: hyperdiploidy
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/hyperdiploidy.md
+      pin_version: 1.0.0
+    - slug: invariant-causal-prediction-biology
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/invariant-causal-prediction-biology.md
+      pin_version: 1.0.0
+    - slug: meta-analysis
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/meta-analysis.md
+      pin_version: 1.0.0
+    - slug: metafor-ranks16-30-literature-synthesis
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/metafor-ranks16-30-literature-synthesis.md
+      pin_version: 1.0.0
+    - slug: metafor-ranks31-45-literature-synthesis
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/metafor-ranks31-45-literature-synthesis.md
+      pin_version: 1.0.0
+    - slug: metafor-top15-literature-synthesis
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/metafor-top15-literature-synthesis.md
+      pin_version: 1.0.0
+    - slug: multiple-myeloma
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/multiple-myeloma.md
+      pin_version: 1.0.0
+    - slug: nk-boolean-attractor-formalism
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/nk-boolean-attractor-formalism.md
+      pin_version: 1.0.0
+    - slug: ordinal-staging-regression-meta-analysis-methods
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/ordinal-staging-regression-meta-analysis-methods.md
+      pin_version: 1.0.0
+    - slug: phf19-regulation-chromatin
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/phf19-regulation-chromatin.md
+      pin_version: 1.0.0
+    - slug: ribosomopathies-hematologic-malignancies
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/ribosomopathies-hematologic-malignancies.md
+      pin_version: 1.0.0
+    - slug: selection-vs-drift-mm-progression
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/selection-vs-drift-mm-progression.md
+      pin_version: 1.0.0
+    - slug: target-trial-emulation-oncology
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/target-trial-emulation-oncology.md
+      pin_version: 1.0.0
+    - slug: treatment
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/treatment.md
+      pin_version: 1.0.0
+    - slug: waddington-landscape-attractor-formalism
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/waddington-landscape-attractor-formalism.md
+      pin_version: 1.0.0
+  natural-systems:
+    overlay_rewrites:
+    - slug: enrichment
+      path: /mnt/ssd/Dropbox/natural-systems/doc/topics/enrichment.md
+      pin_version: 1.0.0
+    - slug: hypothesis
+      path: /mnt/ssd/Dropbox/natural-systems/doc/topics/hypothesis.md
+      pin_version: 1.0.0
+    - slug: model-classification-and-inter-model-relationships
+      path: /mnt/ssd/Dropbox/natural-systems/doc/topics/model-classification-and-inter-model-relationships.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/natural-systems/doc/background/topics/model-classification-and-inter-model-relationships.md
+    - slug: validation
+      path: /mnt/ssd/Dropbox/natural-systems/doc/topics/validation.md
+      pin_version: 1.0.0
+conflict_resolutions: []
+failed_candidates:
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/E2F1.md
+  error_class: PromoteCandidateError
+  error_message: no frontmatter (missing leading ---)
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/EZH2.md
+  error_class: PromoteCandidateError
+  error_message: no frontmatter (missing leading ---)
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/PHF19.md
+  error_class: PromoteCandidateError
+  error_message: slug 'PHF19' does not match ^[a-z0-9][a-z0-9-]{1,63}$
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/PRC2.md
+  error_class: PromoteCandidateError
+  error_message: slug 'PRC2' does not match ^[a-z0-9][a-z0-9-]{1,63}$
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/cancer-testis-antigens-cross-cancer.md
+  error_class: PromoteCandidateError
+  error_message: no frontmatter (missing leading ---)
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/cancer-testis-antigens-in-mm.md
+  error_class: PromoteCandidateError
+  error_message: no frontmatter (missing leading ---)
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/chromatin.md
+  error_class: PromoteCandidateError
+  error_message: no frontmatter (missing leading ---)
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/chromosomal-alterations-3d-genome-disease-continuum.md
+  error_class: PromoteCandidateError
+  error_message: no frontmatter (missing leading ---)
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/convergence-genes.md
+  error_class: PromoteCandidateError
+  error_message: no frontmatter (missing leading ---)
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/e2f1-repressor-chromatin-crosstalk.md
+  error_class: PromoteCandidateError
+  error_message: no frontmatter (missing leading ---)
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/epigenetic-attractors-convergence-canalization.md
+  error_class: PromoteCandidateError
+  error_message: no frontmatter (missing leading ---)
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/mediation.md
+  error_class: PromoteCandidateError
+  error_message: no frontmatter (missing leading ---)
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/methodology.md
+  error_class: PromoteCandidateError
+  error_message: no frontmatter (missing leading ---)
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/mtor-inhibitor-trials-mm.md
+  error_class: PromoteCandidateError
+  error_message: no frontmatter (missing leading ---)
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/proliferation.md
+  error_class: PromoteCandidateError
+  error_message: no frontmatter (missing leading ---)
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/ribosome.md
+  error_class: PromoteCandidateError
+  error_message: no frontmatter (missing leading ---)
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/stratification.md
+  error_class: PromoteCandidateError
+  error_message: no frontmatter (missing leading ---)
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/survival-meta-analysis-methodology.md
+  error_class: PromoteCandidateError
+  error_message: no frontmatter (missing leading ---)
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/topics/survival.md
+  error_class: PromoteCandidateError
+  error_message: no frontmatter (missing leading ---)
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/background/topics/mm-background-synthesis.md
+  error_class: PromoteCandidateError
+  error_message: no frontmatter (missing leading ---)
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/background/topics/mm-biomarkers-signatures.md
+  error_class: PromoteCandidateError
+  error_message: no frontmatter (missing leading ---)
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/background/topics/mm-disease-biology.md
+  error_class: PromoteCandidateError
+  error_message: no frontmatter (missing leading ---)
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/background/topics/mm-drug-resistance.md
+  error_class: PromoteCandidateError
+  error_message: no frontmatter (missing leading ---)
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/background/topics/mm-genomic-landscape.md
+  error_class: PromoteCandidateError
+  error_message: no frontmatter (missing leading ---)
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/background/topics/mm-subtypes-heterogeneity.md
+  error_class: PromoteCandidateError
+  error_message: no frontmatter (missing leading ---)
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/background/topics/mm-treatment-landscape.md
+  error_class: PromoteCandidateError
+  error_message: no frontmatter (missing leading ---)
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 3828c72
+  projects:
+    multiple-myeloma: git -C /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma
+      checkout HEAD -- doc/topics/aging-epigenetic-erosion-clonal-susceptibility.md
+      doc/topics/aid-germinal-center-mm-origins.md doc/topics/bayesian.md doc/topics/cancer-as-singular-evolutionary-disease.md
+      doc/topics/causal-inference-biology-foundations.md doc/topics/causal-inference.md
+      doc/topics/centrosomes-cancer-multiple-myeloma.md doc/topics/clinical-phenotype.md
+      doc/topics/cytogenetics.md doc/topics/disease-stage-progression-methods.md doc/topics/epigenetic-chromatin-mm-progression.md
+      doc/topics/formal-causal-mediation.md doc/topics/gain-1q.md doc/topics/gain1q-neg-unique-genes.md
+      doc/topics/gene-set-novelty-quantification-methods.md doc/topics/hyperdiploidy.md
+      doc/topics/invariant-causal-prediction-biology.md doc/topics/meta-analysis.md
+      doc/topics/metafor-ranks16-30-literature-synthesis.md doc/topics/metafor-ranks31-45-literature-synthesis.md
+      doc/topics/metafor-top15-literature-synthesis.md doc/topics/multiple-myeloma.md
+      doc/topics/nk-boolean-attractor-formalism.md doc/topics/ordinal-staging-regression-meta-analysis-methods.md
+      doc/topics/phf19-regulation-chromatin.md doc/topics/ribosomopathies-hematologic-malignancies.md
+      doc/topics/selection-vs-drift-mm-progression.md doc/topics/target-trial-emulation-oncology.md
+      doc/topics/treatment.md doc/topics/waddington-landscape-attractor-formalism.md
+    natural-systems: git -C /mnt/ssd/Dropbox/natural-systems checkout HEAD -- doc/background/topics/model-classification-and-inter-model-relationships.md
+      doc/topics/enrichment.md doc/topics/hypothesis.md doc/topics/model-classification-and-inter-model-relationships.md
+      doc/topics/validation.md
