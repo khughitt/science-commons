@@ -1,0 +1,178 @@
+op_id: 30595d22
+type: dataset
+invocation: /mnt/ssd/Dropbox/science/.worktrees/commons-bio-extensions/science/.venv/bin/science
+  commons promote dataset --from multiple-myeloma --slug ccle-proteomics-nusinow-2020
+  --mixin bio.table --apply
+status: ok
+started_at: '2026-05-19T18:03:21.743776+00:00'
+finished_at: '2026-05-19T18:03:21.785370+00:00'
+commons_commit: 67a6a85
+commons_tags:
+- dataset/ccle-proteomics-nusinow-2020/1.0.0
+mixin_extensions:
+- bio.table/1.0
+projects_touched:
+  multiple-myeloma:
+    overlay_rewrites:
+    - slug: ccle-proteomics-nusinow-2020
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/datasets/data-ccle-proteomics-nusinow-2020.md
+      pin_version: 1.0.0
+      rename:
+        from: data-ccle-proteomics.md
+        to: data-ccle-proteomics-nusinow-2020.md
+decisions:
+- slug: ccle-proteomics-nusinow-2020
+  canonical_version: 1.0.0
+  canonical_paths:
+  - datasets/ccle-proteomics-nusinow-2020/entity.md
+  - datasets/ccle-proteomics-nusinow-2020/datapackage.yaml
+  - datasets/ccle-proteomics-nusinow-2020/recipe/README.md
+  per_resource_hashes:
+    mm-proteomics-long:
+      hash: sha256:96ee054ceebc63c96f208e123addcbda974b49acd5272eb058605470dbdd09e5
+      bytes: 1310150
+    mm-cell-lines:
+      hash: sha256:bf57127d35e6815b589382152713e6408483fb9557cc9a9bd8f54638df89cc96
+      bytes: 2970
+  recipe_stubbed: true
+  dropped_fields:
+  - datasets
+  - ontologies
+  override_file: /home/keith/.config/science/data.yaml
+  override_backup: /home/keith/.config/science/data.yaml.bak.30595d22.absent
+conflict_resolutions: []
+failed_candidates:
+- slug: blueprint-epigenome
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/datasets/data-blueprint-epigenome.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'blueprint-epigenome' missing required field 'origin'
+- slug: blueprint-epigenome
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/datasets/data-blueprint-epigenome.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'blueprint-epigenome' missing required field 'tier'
+- slug: cptac-pan-cancer
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/datasets/data-cptac-pan-cancer-proteomics.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'cptac-pan-cancer' missing required field 'origin'
+- slug: cptac-pan-cancer
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/datasets/data-cptac-pan-cancer-proteomics.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'cptac-pan-cancer' missing required field 'tier'
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/datasets/data-depmap.md
+  error_class: PromoteCandidateError
+  error_message: slug 'DepMap' does not match ^[a-z0-9][a-z0-9-]{1,63}$
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/datasets/data-encode.md
+  error_class: PromoteCandidateError
+  error_message: slug 'ENCODE' does not match ^[a-z0-9][a-z0-9-]{1,63}$
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/datasets/data-gdsc.md
+  error_class: PromoteCandidateError
+  error_message: slug 'GDSC' does not match ^[a-z0-9][a-z0-9-]{1,63}$
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/datasets/data-gse131651-shah2019-nsd2.md
+  error_class: PromoteCandidateError
+  error_message: slug 'GSE131651' does not match ^[a-z0-9][a-z0-9-]{1,63}$
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/datasets/data-gse7039.md
+  error_class: PromoteCandidateError
+  error_message: slug 'GSE7039' does not match ^[a-z0-9][a-z0-9-]{1,63}$
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/datasets/data-ledergor-2018-mm-scrna.md
+  error_class: PromoteCandidateError
+  error_message: slug 'GSE117156' does not match ^[a-z0-9][a-z0-9-]{1,63}$
+- slug: lincs-l1000
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/datasets/data-lincs-l1000.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'lincs-l1000' missing required field 'origin'
+- slug: lincs-l1000
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/datasets/data-lincs-l1000.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'lincs-l1000' missing required field 'tier'
+- slug: mmrf-commpass-ia22
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/datasets/data-mmrf-commpass-ia22.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'mmrf-commpass-ia22' missing required field 'tier'
+- slug: mmrf
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/datasets/data-mmrf.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'mmrf' missing required field 'origin'
+- slug: mmrf
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/datasets/data-mmrf.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'mmrf' missing required field 'tier'
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/datasets/data-oetjen-2018-bone-marrow-atlas.md
+  error_class: PromoteCandidateError
+  error_message: slug 'GSE120221' does not match ^[a-z0-9][a-z0-9-]{1,63}$
+- slug: opentargets-platform
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/datasets/data-opentargets-platform.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'opentargets-platform' missing required field 'origin'
+- slug: opentargets-platform
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/datasets/data-opentargets-platform.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'opentargets-platform' missing required field 'tier'
+- slug: replogle-perturb-seq-atlas
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/datasets/data-perturb-seq-atlas-replogle.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'replogle-perturb-seq-atlas' missing required field
+    'origin'
+- slug: replogle-perturb-seq-atlas
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/datasets/data-perturb-seq-atlas-replogle.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'replogle-perturb-seq-atlas' missing required field
+    'tier'
+- slug: skerget2024-rna-subtype-predictions
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/datasets/data-skerget-2024-rna-subtype-predictions.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'skerget2024-rna-subtype-predictions' missing required
+    field 'origin'
+- slug: skerget2024-rna-subtype-predictions
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/datasets/data-skerget-2024-rna-subtype-predictions.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'skerget2024-rna-subtype-predictions' missing required
+    field 'tier'
+- slug: null
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/datasets/data-tirier-2021-mm-rrmm-scrna.md
+  error_class: PromoteCandidateError
+  error_message: slug 'GSE161801' does not match ^[a-z0-9][a-z0-9-]{1,63}$
+- slug: walker2024
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/datasets/data-walker2024-mm-scrna.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'walker2024' missing required field 'origin'
+- slug: walker2024
+  project_slug: multiple-myeloma
+  source_path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/datasets/data-walker2024-mm-scrna.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'walker2024' missing required field 'tier'
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 67a6a85
+  projects:
+    multiple-myeloma: git -C /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma
+      checkout HEAD -- doc/datasets/data-ccle-proteomics-nusinow-2020.md
