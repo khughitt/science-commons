@@ -1,0 +1,34 @@
+name: ccle-proteomics-nusinow-2020
+id: mm30-external-ccle-proteomics-2020-01-2020-01
+title: MM30 × CCLE proteomics (Nusinow 2020, release 2020-01) — MM-lineage subset
+version: 2020-01
+created: '2026-04-17T13:12:51.117643+00:00'
+profile: data-package
+licenses:
+- name: CC-BY-4.0
+  path: https://creativecommons.org/licenses/by/4.0/
+  title: Creative Commons Attribution 4.0
+contributors:
+- title: V. Keith Hughitt
+  role: author
+provenance:
+- action: package
+  timestamp: '2026-04-17T13:12:51.117643+00:00'
+  tool: scripts/external/ccle_proteomics/build_mm_join.py
+resources:
+- name: mm-proteomics-long
+  path: mm-proteomics-long.parquet
+  format: parquet
+  mediatype: application/vnd.apache.parquet
+  description: Long-format TMT-normalized protein abundance for MM-lineage cell lines
+    (~25 lines × ~12,700 proteins × replicates).
+  hash: sha256:96ee054ceebc63c96f208e123addcbda974b49acd5272eb058605470dbdd09e5
+  bytes: 1310150
+- name: mm-cell-lines
+  path: mm-cell-lines.parquet
+  format: parquet
+  mediatype: application/vnd.apache.parquet
+  description: Per-cell-line metadata for MM-lineage lines retained from Nusinow 2020
+    Table S1.
+  hash: sha256:bf57127d35e6815b589382152713e6408483fb9557cc9a9bd8f54638df89cc96
+  bytes: 2970
