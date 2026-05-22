@@ -1,0 +1,409 @@
+op_id: a58ac792
+type: paper
+invocation: /mnt/ssd/Dropbox/health/comparisons/pan-disease/.venv/bin/science commons
+  promote paper --from pan-disease --apply
+status: ok
+started_at: '2026-05-22T13:22:18.734607+00:00'
+finished_at: '2026-05-22T13:22:19.228141+00:00'
+commons_commit: 5c9aa65
+commons_tags:
+- paper/Beaney2024/1.0.0
+- paper/Bernard2026/1.0.0
+- paper/Bigge2024/1.0.0
+- paper/BoquetPujadas2025/1.0.0
+- paper/Carey2024/1.0.0
+- paper/Demela2023/1.0.0
+- paper/Deo2014/1.0.0
+- paper/Dong2021/1.0.0
+- paper/Edelman2025/1.0.0
+- paper/Fehlmann2020/1.0.0
+- paper/Getzen2022/1.0.0
+- paper/Grani2021/1.0.0
+- paper/Halu2019/1.0.0
+- paper/Han2024/1.0.0
+- paper/Islam2024/1.0.0
+- paper/Jadhav2018/1.0.0
+- paper/Jensen2025/1.0.0
+- paper/Jiang2025/1.0.0
+- paper/Jurgens2024/1.0.0
+- paper/Karczewski2024/1.0.0
+- paper/Kenrick2026/1.0.0
+- paper/Kliche2024/1.0.0
+- paper/Koskinen2022/1.0.0
+- paper/Kotliarov2020/1.0.0
+- paper/Lakiotaki2019/1.0.0
+- paper/Lau2016/1.0.0
+- paper/Lim2025/1.0.0
+- paper/Nagar2026/1.0.0
+- paper/Nam2023/1.0.0
+- paper/Park2025/1.0.0
+- paper/Pellegrini2025/1.0.0
+- paper/Pietzner2021/1.0.0
+- paper/Placido2024/1.0.0
+- paper/Sakaue2021/1.0.0
+- paper/Schaumberg2020/1.0.0
+- paper/Singh2024/1.0.0
+- paper/Tanigawa2019/1.0.0
+- paper/Toonsi2024/1.0.0
+- paper/Wang2021/1.0.0
+- paper/Wang2025/1.0.0
+- paper/Woerner2024/1.0.0
+- paper/Xian2024Preprint/1.0.0
+- paper/Xian2025/1.0.0
+- paper/Zeng2024/1.0.0
+- paper/Zhang2018/1.0.0
+- paper/Zhou2025/1.0.0
+- paper/Zuber2023/1.0.0
+projects_touched:
+  pan-disease:
+    overlay_rewrites:
+    - slug: Beaney2024
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Beaney2024.md
+      pin_version: 1.0.0
+    - slug: Bernard2026
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Bernard2026.md
+      pin_version: 1.0.0
+    - slug: Bigge2024
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Bigge2024.md
+      pin_version: 1.0.0
+    - slug: BoquetPujadas2025
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/BoquetPujadas2025.md
+      pin_version: 1.0.0
+    - slug: Carey2024
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Carey2024.md
+      pin_version: 1.0.0
+    - slug: Demela2023
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Demela2023.md
+      pin_version: 1.0.0
+    - slug: Deo2014
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Deo2014.md
+      pin_version: 1.0.0
+    - slug: Dong2021
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Dong2021.md
+      pin_version: 1.0.0
+    - slug: Edelman2025
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Edelman2025.md
+      pin_version: 1.0.0
+    - slug: Fehlmann2020
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Fehlmann2020.md
+      pin_version: 1.0.0
+    - slug: Getzen2022
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Getzen2022.md
+      pin_version: 1.0.0
+    - slug: Grani2021
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Grani2021.md
+      pin_version: 1.0.0
+    - slug: Halu2019
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Halu2019.md
+      pin_version: 1.0.0
+    - slug: Han2024
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Han2024.md
+      pin_version: 1.0.0
+    - slug: Islam2024
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Islam2024.md
+      pin_version: 1.0.0
+    - slug: Jadhav2018
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Jadhav2018.md
+      pin_version: 1.0.0
+    - slug: Jensen2025
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Jensen2025.md
+      pin_version: 1.0.0
+    - slug: Jiang2025
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Jiang2025.md
+      pin_version: 1.0.0
+    - slug: Jurgens2024
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Jurgens2024.md
+      pin_version: 1.0.0
+    - slug: Karczewski2024
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Karczewski2024.md
+      pin_version: 1.0.0
+    - slug: Kenrick2026
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Kenrick2026.md
+      pin_version: 1.0.0
+    - slug: Kliche2024
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Kliche2024.md
+      pin_version: 1.0.0
+    - slug: Koskinen2022
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Koskinen2022.md
+      pin_version: 1.0.0
+    - slug: Kotliarov2020
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Kotliarov2020.md
+      pin_version: 1.0.0
+    - slug: Lakiotaki2019
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Lakiotaki2019.md
+      pin_version: 1.0.0
+    - slug: Lau2016
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Lau2016.md
+      pin_version: 1.0.0
+    - slug: Lim2025
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Lim2025.md
+      pin_version: 1.0.0
+    - slug: Nagar2026
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Nagar2026.md
+      pin_version: 1.0.0
+    - slug: Nam2023
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Nam2023.md
+      pin_version: 1.0.0
+    - slug: Park2025
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Park2025.md
+      pin_version: 1.0.0
+    - slug: Pellegrini2025
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Pellegrini2025.md
+      pin_version: 1.0.0
+    - slug: Pietzner2021
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Pietzner2021.md
+      pin_version: 1.0.0
+    - slug: Placido2024
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Placido2024.md
+      pin_version: 1.0.0
+    - slug: Sakaue2021
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Sakaue2021.md
+      pin_version: 1.0.0
+    - slug: Schaumberg2020
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Schaumberg2020.md
+      pin_version: 1.0.0
+    - slug: Singh2024
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Singh2024.md
+      pin_version: 1.0.0
+    - slug: Tanigawa2019
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Tanigawa2019.md
+      pin_version: 1.0.0
+    - slug: Toonsi2024
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Toonsi2024.md
+      pin_version: 1.0.0
+    - slug: Wang2021
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Wang2021.md
+      pin_version: 1.0.0
+    - slug: Wang2025
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Wang2025.md
+      pin_version: 1.0.0
+    - slug: Woerner2024
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Woerner2024.md
+      pin_version: 1.0.0
+    - slug: Xian2024Preprint
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Xian2024Preprint.md
+      pin_version: 1.0.0
+    - slug: Xian2025
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Xian2025.md
+      pin_version: 1.0.0
+    - slug: Zeng2024
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Zeng2024.md
+      pin_version: 1.0.0
+    - slug: Zhang2018
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Zhang2018.md
+      pin_version: 1.0.0
+    - slug: Zhou2025
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Zhou2025.md
+      pin_version: 1.0.0
+    - slug: Zuber2023
+      path: /home/keith/d/health/comparisons/pan-disease/doc/papers/Zuber2023.md
+      pin_version: 1.0.0
+decisions:
+- slug: Beaney2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Beaney2024.md
+- slug: Bernard2026
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Bernard2026.md
+- slug: Bigge2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Bigge2024.md
+- slug: BoquetPujadas2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/BoquetPujadas2025.md
+- slug: Carey2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Carey2024.md
+- slug: Demela2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Demela2023.md
+- slug: Deo2014
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Deo2014.md
+- slug: Dong2021
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Dong2021.md
+- slug: Edelman2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Edelman2025.md
+- slug: Fehlmann2020
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Fehlmann2020.md
+- slug: Getzen2022
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Getzen2022.md
+- slug: Grani2021
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Grani2021.md
+- slug: Halu2019
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Halu2019.md
+- slug: Han2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Han2024.md
+- slug: Islam2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Islam2024.md
+- slug: Jadhav2018
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Jadhav2018.md
+- slug: Jensen2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Jensen2025.md
+- slug: Jiang2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Jiang2025.md
+- slug: Jurgens2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Jurgens2024.md
+- slug: Karczewski2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Karczewski2024.md
+- slug: Kenrick2026
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Kenrick2026.md
+- slug: Kliche2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Kliche2024.md
+- slug: Koskinen2022
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Koskinen2022.md
+- slug: Kotliarov2020
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Kotliarov2020.md
+- slug: Lakiotaki2019
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Lakiotaki2019.md
+- slug: Lau2016
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Lau2016.md
+- slug: Lim2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Lim2025.md
+- slug: Nagar2026
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Nagar2026.md
+- slug: Nam2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Nam2023.md
+- slug: Park2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Park2025.md
+- slug: Pellegrini2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Pellegrini2025.md
+- slug: Pietzner2021
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Pietzner2021.md
+- slug: Placido2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Placido2024.md
+- slug: Sakaue2021
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Sakaue2021.md
+- slug: Schaumberg2020
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Schaumberg2020.md
+- slug: Singh2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Singh2024.md
+- slug: Tanigawa2019
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Tanigawa2019.md
+- slug: Toonsi2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Toonsi2024.md
+- slug: Wang2021
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Wang2021.md
+- slug: Wang2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Wang2025.md
+- slug: Woerner2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Woerner2024.md
+- slug: Xian2024Preprint
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Xian2024Preprint.md
+- slug: Xian2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Xian2025.md
+- slug: Zeng2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Zeng2024.md
+- slug: Zhang2018
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Zhang2018.md
+- slug: Zhou2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Zhou2025.md
+- slug: Zuber2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Zuber2023.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 5c9aa65
+  projects:
+    pan-disease: git -C /home/keith/d/health/comparisons/pan-disease checkout HEAD
+      -- doc/papers/Beaney2024.md doc/papers/Bernard2026.md doc/papers/Bigge2024.md
+      doc/papers/BoquetPujadas2025.md doc/papers/Carey2024.md doc/papers/Demela2023.md
+      doc/papers/Deo2014.md doc/papers/Dong2021.md doc/papers/Edelman2025.md doc/papers/Fehlmann2020.md
+      doc/papers/Getzen2022.md doc/papers/Grani2021.md doc/papers/Halu2019.md doc/papers/Han2024.md
+      doc/papers/Islam2024.md doc/papers/Jadhav2018.md doc/papers/Jensen2025.md doc/papers/Jiang2025.md
+      doc/papers/Jurgens2024.md doc/papers/Karczewski2024.md doc/papers/Kenrick2026.md
+      doc/papers/Kliche2024.md doc/papers/Koskinen2022.md doc/papers/Kotliarov2020.md
+      doc/papers/Lakiotaki2019.md doc/papers/Lau2016.md doc/papers/Lim2025.md doc/papers/Nagar2026.md
+      doc/papers/Nam2023.md doc/papers/Park2025.md doc/papers/Pellegrini2025.md doc/papers/Pietzner2021.md
+      doc/papers/Placido2024.md doc/papers/Sakaue2021.md doc/papers/Schaumberg2020.md
+      doc/papers/Singh2024.md doc/papers/Tanigawa2019.md doc/papers/Toonsi2024.md
+      doc/papers/Wang2021.md doc/papers/Wang2025.md doc/papers/Woerner2024.md doc/papers/Xian2024Preprint.md
+      doc/papers/Xian2025.md doc/papers/Zeng2024.md doc/papers/Zhang2018.md doc/papers/Zhou2025.md
+      doc/papers/Zuber2023.md
