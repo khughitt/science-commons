@@ -1,0 +1,1257 @@
+op_id: 9cbe3b24
+type: paper
+invocation: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/.venv/bin/science commons
+  promote paper --from evolution --apply
+status: ok
+started_at: '2026-05-22T13:27:53.177525+00:00'
+finished_at: '2026-05-22T13:27:54.455007+00:00'
+commons_commit: f23dd86
+commons_tags:
+- paper/AlBakir2023/1.0.0
+- paper/Algazi2020IntermittentMelanoma/1.0.0
+- paper/Angaroni2022/1.0.0
+- paper/Attolini2010/1.0.0
+- paper/Bafna2022/1.0.0
+- paper/Barkley2022/1.0.0
+- paper/Bowling2020/1.0.0
+- paper/Brown2017Aggregation/1.0.0
+- paper/Bukkuri2024/1.0.0
+- paper/Burkhardt2022/1.0.0
+- paper/Burrell2013/1.0.0
+- paper/ChamorroGonzalez2023/1.0.0
+- paper/Cheek2025/1.0.0
+- paper/Chen2022/1.0.0
+- paper/Cho2024/1.0.0
+- paper/Ciriello2021/1.0.0
+- paper/Coorens2021/1.0.0
+- paper/Dabi2025/1.0.0
+- paper/Dang2023/1.0.0
+- paper/Dayimu2024INTERIM/1.0.0
+- paper/Derbal2024/1.0.0
+- paper/Dhabhai2024/1.0.0
+- paper/Dong2024CtDNANSCLC/1.0.0
+- paper/Dubois2022/1.0.0
+- paper/Evans2023/1.0.0
+- paper/FilipekGorzala2024/1.0.0
+- paper/Finger2025/1.0.0
+- paper/Frank2023/1.0.0
+- paper/Funnell2022/1.0.0
+- paper/Galassi2025/1.0.0
+- paper/Gallaher2025PSATestosteroneAdaptive/1.0.0
+- paper/Gao2022/1.0.0
+- paper/Gatenby2020Resistance/1.0.0
+- paper/Gatenby2025/1.0.0
+- paper/Gavish2023/1.0.0
+- paper/Gerlinger2014/1.0.0
+- paper/Ghorbian2025/1.0.0
+- paper/GimenoValiente2025/1.0.0
+- paper/GonzalezCao2021IntermittentMelanoma/1.0.0
+- paper/Gourmet2024/1.0.0
+- paper/Graham2017/1.0.0
+- paper/Gravenmier2025/1.0.0
+- paper/Grechkin2016/1.0.0
+- paper/Guo2014/1.0.0
+- paper/Guo2021/1.0.0
+- paper/Hanahan2026/1.0.0
+- paper/Hendriksen2026/1.0.0
+- paper/Hirsch2025/1.0.0
+- paper/Ho2024/1.0.0
+- paper/Hu2020/1.0.0
+- paper/Huang2025/1.0.0
+- paper/Hung2024/1.0.0
+- paper/Hussain2013IntermittentADT/1.0.0
+- paper/JimenezSanchez2026/1.0.0
+- paper/Karlsson2025/1.0.0
+- paper/Kaufler2026/1.0.0
+- paper/Kent2017/1.0.0
+- paper/Kim2020/1.0.0
+- paper/Kim2024-ecdna-progression/1.0.0
+- paper/Kim2025/1.0.0
+- paper/Kinker2020/1.0.0
+- paper/Kolbeinsdottir2026/1.0.0
+- paper/Kotliar2019/1.0.0
+- paper/Kulman2024/1.0.0
+- paper/Lakatos2025/1.0.0
+- paper/Lee2026/1.0.0
+- paper/Legrand2023/1.0.0
+- paper/Levine2018/1.0.0
+- paper/Li2023/1.0.0
+- paper/Li2024/1.0.0
+- paper/Liau2021/1.0.0
+- paper/Lieberman2021/1.0.0
+- paper/Lionetti2025/1.0.0
+- paper/Loh2024/1.0.0
+- paper/Ludwig2019/1.0.0
+- paper/Luo2023/1.0.0
+- paper/Luquette2025/1.0.0
+- paper/Mao2025/1.0.0
+- paper/MartinezJimenez2023/1.0.0
+- paper/Marzban2024/1.0.0
+- paper/Mayfield2026/1.0.0
+- paper/Mazaya2020/1.0.0
+- paper/McKenna2016/1.0.0
+- paper/Mukherjee2024ACTOv/1.0.0
+- paper/Nakajima2023/1.0.0
+- paper/NattersonHorowitz2023/1.0.0
+- paper/Nikolic2021/1.0.0
+- paper/Nishimura2023/1.0.0
+- paper/Noureen2025/1.0.0
+- paper/Nuno2024/1.0.0
+- paper/Nussinov2026/1.0.0
+- paper/Ogawa2022/1.0.0
+- paper/Patel2024/1.0.0
+- paper/Patil2025/1.0.0
+- paper/Pelissier2023/1.0.0
+- paper/Pellegrina2022/1.0.0
+- paper/Pepe2026/1.0.0
+- paper/Persi2025/1.0.0
+- paper/Peters2024/1.0.0
+- paper/Pienta2025/1.0.0
+- paper/Pressley2021/1.0.0
+- paper/Qi2026/1.0.0
+- paper/Qin2023/1.0.0
+- paper/Quinn2021/1.0.0
+- paper/Reeves2024/1.0.0
+- paper/Roszkowska2024/1.0.0
+- paper/Saputra2018/1.0.0
+- paper/SartoreBianchi2022CHRONOS/1.0.0
+- paper/Savy2025/1.0.0
+- paper/Schill2023/1.0.0
+- paper/Schmidt2024/1.0.0
+- paper/Schmidt2025/1.0.0
+- paper/Shen2020/1.0.0
+- paper/Simeonov2021/1.0.0
+- paper/SkoufouPapoutsaki2026/1.0.0
+- paper/Somarelli2022/1.0.0
+- paper/Sottoriva2015/1.0.0
+- paper/Sprouffske2011/1.0.0
+- paper/Strobl2023/1.0.0
+- paper/Sturgeon2024/1.0.0
+- paper/Talarmain2022/1.0.0
+- paper/Teimouri2022/1.0.0
+- paper/Tirosh2024/1.0.0
+- paper/Tuffaha2025/1.0.0
+- paper/Turner2017/1.0.0
+- paper/Vendramin2021/1.0.0
+- paper/Venkatachalapathy2024/1.0.0
+- paper/Wang2024/1.0.0
+- paper/Wang2024MPN/1.0.0
+- paper/Wang2024Pathway/1.0.0
+- paper/Watson2020/1.0.0
+- paper/Wei2020/1.0.0
+- paper/West2023AdaptiveTherapy/1.0.0
+- paper/Williams2016/1.0.0
+- paper/Wu2019/1.0.0
+- paper/Xiao2024/1.0.0
+- paper/Xiong2025/1.0.0
+- paper/Yang2022/1.0.0
+- paper/Yang2025-precancer/1.0.0
+- paper/Yi2022/1.0.0
+- paper/Yuan2017/1.0.0
+- paper/Zgeib2026/1.0.0
+- paper/Zhang2017AdaptiveAbiraterone/1.0.0
+- paper/Zhang2022AdaptiveADT/1.0.0
+- paper/Zhang2022AdaptiveAbiraterone/1.0.0
+- paper/Zhang2024/1.0.0
+- paper/Zhou2017/1.0.0
+- paper/deCarvalho2018/1.0.0
+- paper/vanZeventer2023/1.0.0
+projects_touched:
+  evolution:
+    overlay_rewrites:
+    - slug: AlBakir2023
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/AlBakir2023.md
+      pin_version: 1.0.0
+    - slug: Algazi2020IntermittentMelanoma
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Algazi2020IntermittentMelanoma.md
+      pin_version: 1.0.0
+    - slug: Angaroni2022
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Angaroni2022.md
+      pin_version: 1.0.0
+    - slug: Attolini2010
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Attolini2010.md
+      pin_version: 1.0.0
+    - slug: Bafna2022
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Bafna2022.md
+      pin_version: 1.0.0
+    - slug: Barkley2022
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Barkley2022.md
+      pin_version: 1.0.0
+    - slug: Bowling2020
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Bowling2020.md
+      pin_version: 1.0.0
+    - slug: Brown2017Aggregation
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Brown2017Aggregation.md
+      pin_version: 1.0.0
+    - slug: Bukkuri2024
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Bukkuri2024.md
+      pin_version: 1.0.0
+    - slug: Burkhardt2022
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Burkhardt2022.md
+      pin_version: 1.0.0
+    - slug: Burrell2013
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Burrell2013.md
+      pin_version: 1.0.0
+    - slug: ChamorroGonzalez2023
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/ChamorroGonzalez2023.md
+      pin_version: 1.0.0
+    - slug: Cheek2025
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Cheek2025.md
+      pin_version: 1.0.0
+    - slug: Chen2022
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Chen2022.md
+      pin_version: 1.0.0
+    - slug: Cho2024
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Cho2024.md
+      pin_version: 1.0.0
+    - slug: Ciriello2021
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Ciriello2021.md
+      pin_version: 1.0.0
+    - slug: Coorens2021
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Coorens2021.md
+      pin_version: 1.0.0
+    - slug: Dabi2025
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Dabi2025.md
+      pin_version: 1.0.0
+    - slug: Dang2023
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Dang2023.md
+      pin_version: 1.0.0
+    - slug: Dayimu2024INTERIM
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Dayimu2024INTERIM.md
+      pin_version: 1.0.0
+    - slug: deCarvalho2018
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/deCarvalho2018.md
+      pin_version: 1.0.0
+    - slug: Derbal2024
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Derbal2024.md
+      pin_version: 1.0.0
+    - slug: Dhabhai2024
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Dhabhai2024.md
+      pin_version: 1.0.0
+    - slug: Dong2024CtDNANSCLC
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Dong2024CtDNANSCLC.md
+      pin_version: 1.0.0
+    - slug: Dubois2022
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Dubois2022.md
+      pin_version: 1.0.0
+    - slug: Evans2023
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Evans2023.md
+      pin_version: 1.0.0
+    - slug: FilipekGorzala2024
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/FilipekGorzala2024.md
+      pin_version: 1.0.0
+    - slug: Finger2025
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Finger2025.md
+      pin_version: 1.0.0
+    - slug: Frank2023
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Frank2023.md
+      pin_version: 1.0.0
+    - slug: Funnell2022
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Funnell2022.md
+      pin_version: 1.0.0
+    - slug: Galassi2025
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Galassi2025.md
+      pin_version: 1.0.0
+    - slug: Gallaher2025PSATestosteroneAdaptive
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Gallaher2025PSATestosteroneAdaptive.md
+      pin_version: 1.0.0
+    - slug: Gao2022
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Gao2022.md
+      pin_version: 1.0.0
+    - slug: Gatenby2020Resistance
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Gatenby2020Resistance.md
+      pin_version: 1.0.0
+    - slug: Gatenby2025
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Gatenby2025.md
+      pin_version: 1.0.0
+    - slug: Gavish2023
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Gavish2023.md
+      pin_version: 1.0.0
+    - slug: Gerlinger2014
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Gerlinger2014.md
+      pin_version: 1.0.0
+    - slug: Ghorbian2025
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Ghorbian2025.md
+      pin_version: 1.0.0
+    - slug: GimenoValiente2025
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/GimenoValiente2025.md
+      pin_version: 1.0.0
+    - slug: GonzalezCao2021IntermittentMelanoma
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/GonzalezCao2021IntermittentMelanoma.md
+      pin_version: 1.0.0
+    - slug: Gourmet2024
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Gourmet2024.md
+      pin_version: 1.0.0
+    - slug: Graham2017
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Graham2017.md
+      pin_version: 1.0.0
+    - slug: Gravenmier2025
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Gravenmier2025.md
+      pin_version: 1.0.0
+    - slug: Grechkin2016
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Grechkin2016.md
+      pin_version: 1.0.0
+    - slug: Guo2014
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Guo2014.md
+      pin_version: 1.0.0
+    - slug: Guo2021
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Guo2021.md
+      pin_version: 1.0.0
+    - slug: Hanahan2026
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Hanahan2026.md
+      pin_version: 1.0.0
+    - slug: Hendriksen2026
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Hendriksen2026.md
+      pin_version: 1.0.0
+    - slug: Hirsch2025
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Hirsch2025.md
+      pin_version: 1.0.0
+    - slug: Ho2024
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Ho2024.md
+      pin_version: 1.0.0
+    - slug: Hu2020
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Hu2020.md
+      pin_version: 1.0.0
+    - slug: Huang2025
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Huang2025.md
+      pin_version: 1.0.0
+    - slug: Hung2024
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Hung2024.md
+      pin_version: 1.0.0
+    - slug: Hussain2013IntermittentADT
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Hussain2013IntermittentADT.md
+      pin_version: 1.0.0
+    - slug: JimenezSanchez2026
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/JimenezSanchez2026.md
+      pin_version: 1.0.0
+    - slug: Karlsson2025
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Karlsson2025.md
+      pin_version: 1.0.0
+    - slug: Kaufler2026
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Kaufler2026.md
+      pin_version: 1.0.0
+    - slug: Kent2017
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Kent2017.md
+      pin_version: 1.0.0
+    - slug: Kim2020
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Kim2020.md
+      pin_version: 1.0.0
+    - slug: Kim2024-ecdna-progression
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Kim2024-ecdna-progression.md
+      pin_version: 1.0.0
+    - slug: Kim2025
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Kim2025.md
+      pin_version: 1.0.0
+    - slug: Kinker2020
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Kinker2020.md
+      pin_version: 1.0.0
+    - slug: Kolbeinsdottir2026
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Kolbeinsdottir2026.md
+      pin_version: 1.0.0
+    - slug: Kotliar2019
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Kotliar2019.md
+      pin_version: 1.0.0
+    - slug: Kulman2024
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Kulman2024.md
+      pin_version: 1.0.0
+    - slug: Lakatos2025
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Lakatos2025.md
+      pin_version: 1.0.0
+    - slug: Lee2026
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Lee2026.md
+      pin_version: 1.0.0
+    - slug: Legrand2023
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Legrand2023.md
+      pin_version: 1.0.0
+    - slug: Levine2018
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Levine2018.md
+      pin_version: 1.0.0
+    - slug: Li2023
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Li2023.md
+      pin_version: 1.0.0
+    - slug: Li2024
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Li2024.md
+      pin_version: 1.0.0
+    - slug: Liau2021
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Liau2021.md
+      pin_version: 1.0.0
+    - slug: Lieberman2021
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Lieberman2021.md
+      pin_version: 1.0.0
+    - slug: Lionetti2025
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Lionetti2025.md
+      pin_version: 1.0.0
+    - slug: Loh2024
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Loh2024.md
+      pin_version: 1.0.0
+    - slug: Ludwig2019
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Ludwig2019.md
+      pin_version: 1.0.0
+    - slug: Luo2023
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Luo2023.md
+      pin_version: 1.0.0
+    - slug: Luquette2025
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Luquette2025.md
+      pin_version: 1.0.0
+    - slug: Mao2025
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Mao2025.md
+      pin_version: 1.0.0
+    - slug: MartinezJimenez2023
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/MartinezJimenez2023.md
+      pin_version: 1.0.0
+    - slug: Marzban2024
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Marzban2024.md
+      pin_version: 1.0.0
+    - slug: Mayfield2026
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Mayfield2026.md
+      pin_version: 1.0.0
+    - slug: Mazaya2020
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Mazaya2020.md
+      pin_version: 1.0.0
+    - slug: McKenna2016
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/McKenna2016.md
+      pin_version: 1.0.0
+    - slug: Mukherjee2024ACTOv
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Mukherjee2024ACTOv.md
+      pin_version: 1.0.0
+    - slug: Nakajima2023
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Nakajima2023.md
+      pin_version: 1.0.0
+    - slug: NattersonHorowitz2023
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/NattersonHorowitz2023.md
+      pin_version: 1.0.0
+    - slug: Nikolic2021
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Nikolic2021.md
+      pin_version: 1.0.0
+    - slug: Nishimura2023
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Nishimura2023.md
+      pin_version: 1.0.0
+    - slug: Noureen2025
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Noureen2025.md
+      pin_version: 1.0.0
+    - slug: Nuno2024
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Nuno2024.md
+      pin_version: 1.0.0
+    - slug: Nussinov2026
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Nussinov2026.md
+      pin_version: 1.0.0
+    - slug: Ogawa2022
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Ogawa2022.md
+      pin_version: 1.0.0
+    - slug: Patel2024
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Patel2024.md
+      pin_version: 1.0.0
+    - slug: Patil2025
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Patil2025.md
+      pin_version: 1.0.0
+    - slug: Pelissier2023
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Pelissier2023.md
+      pin_version: 1.0.0
+    - slug: Pellegrina2022
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Pellegrina2022.md
+      pin_version: 1.0.0
+    - slug: Pepe2026
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Pepe2026.md
+      pin_version: 1.0.0
+    - slug: Persi2025
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Persi2025.md
+      pin_version: 1.0.0
+    - slug: Peters2024
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Peters2024.md
+      pin_version: 1.0.0
+    - slug: Pienta2025
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Pienta2025.md
+      pin_version: 1.0.0
+    - slug: Pressley2021
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Pressley2021.md
+      pin_version: 1.0.0
+    - slug: Qi2026
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Qi2026.md
+      pin_version: 1.0.0
+    - slug: Qin2023
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Qin2023.md
+      pin_version: 1.0.0
+    - slug: Quinn2021
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Quinn2021.md
+      pin_version: 1.0.0
+    - slug: Reeves2024
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Reeves2024.md
+      pin_version: 1.0.0
+    - slug: Roszkowska2024
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Roszkowska2024.md
+      pin_version: 1.0.0
+    - slug: Saputra2018
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Saputra2018.md
+      pin_version: 1.0.0
+    - slug: SartoreBianchi2022CHRONOS
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/SartoreBianchi2022CHRONOS.md
+      pin_version: 1.0.0
+    - slug: Savy2025
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Savy2025.md
+      pin_version: 1.0.0
+    - slug: Schill2023
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Schill2023.md
+      pin_version: 1.0.0
+    - slug: Schmidt2024
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Schmidt2024.md
+      pin_version: 1.0.0
+    - slug: Schmidt2025
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Schmidt2025.md
+      pin_version: 1.0.0
+    - slug: Shen2020
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Shen2020.md
+      pin_version: 1.0.0
+    - slug: Simeonov2021
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Simeonov2021.md
+      pin_version: 1.0.0
+    - slug: SkoufouPapoutsaki2026
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/SkoufouPapoutsaki2026.md
+      pin_version: 1.0.0
+    - slug: Somarelli2022
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Somarelli2022.md
+      pin_version: 1.0.0
+    - slug: Sottoriva2015
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Sottoriva2015.md
+      pin_version: 1.0.0
+    - slug: Sprouffske2011
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Sprouffske2011.md
+      pin_version: 1.0.0
+    - slug: Strobl2023
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Strobl2023.md
+      pin_version: 1.0.0
+    - slug: Sturgeon2024
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Sturgeon2024.md
+      pin_version: 1.0.0
+    - slug: Talarmain2022
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Talarmain2022.md
+      pin_version: 1.0.0
+    - slug: Teimouri2022
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Teimouri2022.md
+      pin_version: 1.0.0
+    - slug: Tirosh2024
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Tirosh2024.md
+      pin_version: 1.0.0
+    - slug: Tuffaha2025
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Tuffaha2025.md
+      pin_version: 1.0.0
+    - slug: Turner2017
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Turner2017.md
+      pin_version: 1.0.0
+    - slug: vanZeventer2023
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/vanZeventer2023.md
+      pin_version: 1.0.0
+    - slug: Vendramin2021
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Vendramin2021.md
+      pin_version: 1.0.0
+    - slug: Venkatachalapathy2024
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Venkatachalapathy2024.md
+      pin_version: 1.0.0
+    - slug: Wang2024
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Wang2024.md
+      pin_version: 1.0.0
+    - slug: Wang2024MPN
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Wang2024MPN.md
+      pin_version: 1.0.0
+    - slug: Wang2024Pathway
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Wang2024Pathway.md
+      pin_version: 1.0.0
+    - slug: Watson2020
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Watson2020.md
+      pin_version: 1.0.0
+    - slug: Wei2020
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Wei2020.md
+      pin_version: 1.0.0
+    - slug: West2023AdaptiveTherapy
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/West2023AdaptiveTherapy.md
+      pin_version: 1.0.0
+    - slug: Williams2016
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Williams2016.md
+      pin_version: 1.0.0
+    - slug: Wu2019
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Wu2019.md
+      pin_version: 1.0.0
+    - slug: Xiao2024
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Xiao2024.md
+      pin_version: 1.0.0
+    - slug: Xiong2025
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Xiong2025.md
+      pin_version: 1.0.0
+    - slug: Yang2022
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Yang2022.md
+      pin_version: 1.0.0
+    - slug: Yang2025-precancer
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Yang2025-precancer.md
+      pin_version: 1.0.0
+    - slug: Yi2022
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Yi2022.md
+      pin_version: 1.0.0
+    - slug: Yuan2017
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Yuan2017.md
+      pin_version: 1.0.0
+    - slug: Zgeib2026
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Zgeib2026.md
+      pin_version: 1.0.0
+    - slug: Zhang2017AdaptiveAbiraterone
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Zhang2017AdaptiveAbiraterone.md
+      pin_version: 1.0.0
+    - slug: Zhang2022AdaptiveAbiraterone
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Zhang2022AdaptiveAbiraterone.md
+      pin_version: 1.0.0
+    - slug: Zhang2022AdaptiveADT
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Zhang2022AdaptiveADT.md
+      pin_version: 1.0.0
+    - slug: Zhang2024
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Zhang2024.md
+      pin_version: 1.0.0
+    - slug: Zhou2017
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/doc/papers/Zhou2017.md
+      pin_version: 1.0.0
+decisions:
+- slug: AlBakir2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/AlBakir2023.md
+- slug: Algazi2020IntermittentMelanoma
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Algazi2020IntermittentMelanoma.md
+- slug: Angaroni2022
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Angaroni2022.md
+- slug: Attolini2010
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Attolini2010.md
+- slug: Bafna2022
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Bafna2022.md
+- slug: Barkley2022
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Barkley2022.md
+- slug: Bowling2020
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Bowling2020.md
+- slug: Brown2017Aggregation
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Brown2017Aggregation.md
+- slug: Bukkuri2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Bukkuri2024.md
+- slug: Burkhardt2022
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Burkhardt2022.md
+- slug: Burrell2013
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Burrell2013.md
+- slug: ChamorroGonzalez2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/ChamorroGonzalez2023.md
+- slug: Cheek2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Cheek2025.md
+- slug: Chen2022
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Chen2022.md
+- slug: Cho2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Cho2024.md
+- slug: Ciriello2021
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Ciriello2021.md
+- slug: Coorens2021
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Coorens2021.md
+- slug: Dabi2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Dabi2025.md
+- slug: Dang2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Dang2023.md
+- slug: Dayimu2024INTERIM
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Dayimu2024INTERIM.md
+- slug: deCarvalho2018
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/deCarvalho2018.md
+- slug: Derbal2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Derbal2024.md
+- slug: Dhabhai2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Dhabhai2024.md
+- slug: Dong2024CtDNANSCLC
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Dong2024CtDNANSCLC.md
+- slug: Dubois2022
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Dubois2022.md
+- slug: Evans2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Evans2023.md
+- slug: FilipekGorzala2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/FilipekGorzala2024.md
+- slug: Finger2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Finger2025.md
+- slug: Frank2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Frank2023.md
+- slug: Funnell2022
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Funnell2022.md
+- slug: Galassi2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Galassi2025.md
+- slug: Gallaher2025PSATestosteroneAdaptive
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Gallaher2025PSATestosteroneAdaptive.md
+- slug: Gao2022
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Gao2022.md
+- slug: Gatenby2020Resistance
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Gatenby2020Resistance.md
+- slug: Gatenby2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Gatenby2025.md
+- slug: Gavish2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Gavish2023.md
+- slug: Gerlinger2014
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Gerlinger2014.md
+- slug: Ghorbian2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Ghorbian2025.md
+- slug: GimenoValiente2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/GimenoValiente2025.md
+- slug: GonzalezCao2021IntermittentMelanoma
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/GonzalezCao2021IntermittentMelanoma.md
+- slug: Gourmet2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Gourmet2024.md
+- slug: Graham2017
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Graham2017.md
+- slug: Gravenmier2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Gravenmier2025.md
+- slug: Grechkin2016
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Grechkin2016.md
+- slug: Guo2014
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Guo2014.md
+- slug: Guo2021
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Guo2021.md
+- slug: Hanahan2026
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Hanahan2026.md
+- slug: Hendriksen2026
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Hendriksen2026.md
+- slug: Hirsch2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Hirsch2025.md
+- slug: Ho2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Ho2024.md
+- slug: Hu2020
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Hu2020.md
+- slug: Huang2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Huang2025.md
+- slug: Hung2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Hung2024.md
+- slug: Hussain2013IntermittentADT
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Hussain2013IntermittentADT.md
+- slug: JimenezSanchez2026
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/JimenezSanchez2026.md
+- slug: Karlsson2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Karlsson2025.md
+- slug: Kaufler2026
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Kaufler2026.md
+- slug: Kent2017
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Kent2017.md
+- slug: Kim2020
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Kim2020.md
+- slug: Kim2024-ecdna-progression
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Kim2024-ecdna-progression.md
+- slug: Kim2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Kim2025.md
+- slug: Kinker2020
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Kinker2020.md
+- slug: Kolbeinsdottir2026
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Kolbeinsdottir2026.md
+- slug: Kotliar2019
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Kotliar2019.md
+- slug: Kulman2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Kulman2024.md
+- slug: Lakatos2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Lakatos2025.md
+- slug: Lee2026
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Lee2026.md
+- slug: Legrand2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Legrand2023.md
+- slug: Levine2018
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Levine2018.md
+- slug: Li2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Li2023.md
+- slug: Li2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Li2024.md
+- slug: Liau2021
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Liau2021.md
+- slug: Lieberman2021
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Lieberman2021.md
+- slug: Lionetti2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Lionetti2025.md
+- slug: Loh2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Loh2024.md
+- slug: Ludwig2019
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Ludwig2019.md
+- slug: Luo2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Luo2023.md
+- slug: Luquette2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Luquette2025.md
+- slug: Mao2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Mao2025.md
+- slug: MartinezJimenez2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/MartinezJimenez2023.md
+- slug: Marzban2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Marzban2024.md
+- slug: Mayfield2026
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Mayfield2026.md
+- slug: Mazaya2020
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Mazaya2020.md
+- slug: McKenna2016
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/McKenna2016.md
+- slug: Mukherjee2024ACTOv
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Mukherjee2024ACTOv.md
+- slug: Nakajima2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Nakajima2023.md
+- slug: NattersonHorowitz2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/NattersonHorowitz2023.md
+- slug: Nikolic2021
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Nikolic2021.md
+- slug: Nishimura2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Nishimura2023.md
+- slug: Noureen2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Noureen2025.md
+- slug: Nuno2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Nuno2024.md
+- slug: Nussinov2026
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Nussinov2026.md
+- slug: Ogawa2022
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Ogawa2022.md
+- slug: Patel2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Patel2024.md
+- slug: Patil2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Patil2025.md
+- slug: Pelissier2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Pelissier2023.md
+- slug: Pellegrina2022
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Pellegrina2022.md
+- slug: Pepe2026
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Pepe2026.md
+- slug: Persi2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Persi2025.md
+- slug: Peters2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Peters2024.md
+- slug: Pienta2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Pienta2025.md
+- slug: Pressley2021
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Pressley2021.md
+- slug: Qi2026
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Qi2026.md
+- slug: Qin2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Qin2023.md
+- slug: Quinn2021
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Quinn2021.md
+- slug: Reeves2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Reeves2024.md
+- slug: Roszkowska2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Roszkowska2024.md
+- slug: Saputra2018
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Saputra2018.md
+- slug: SartoreBianchi2022CHRONOS
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/SartoreBianchi2022CHRONOS.md
+- slug: Savy2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Savy2025.md
+- slug: Schill2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Schill2023.md
+- slug: Schmidt2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Schmidt2024.md
+- slug: Schmidt2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Schmidt2025.md
+- slug: Shen2020
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Shen2020.md
+- slug: Simeonov2021
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Simeonov2021.md
+- slug: SkoufouPapoutsaki2026
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/SkoufouPapoutsaki2026.md
+- slug: Somarelli2022
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Somarelli2022.md
+- slug: Sottoriva2015
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Sottoriva2015.md
+- slug: Sprouffske2011
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Sprouffske2011.md
+- slug: Strobl2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Strobl2023.md
+- slug: Sturgeon2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Sturgeon2024.md
+- slug: Talarmain2022
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Talarmain2022.md
+- slug: Teimouri2022
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Teimouri2022.md
+- slug: Tirosh2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Tirosh2024.md
+- slug: Tuffaha2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Tuffaha2025.md
+- slug: Turner2017
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Turner2017.md
+- slug: vanZeventer2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/vanZeventer2023.md
+- slug: Vendramin2021
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Vendramin2021.md
+- slug: Venkatachalapathy2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Venkatachalapathy2024.md
+- slug: Wang2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Wang2024.md
+- slug: Wang2024MPN
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Wang2024MPN.md
+- slug: Wang2024Pathway
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Wang2024Pathway.md
+- slug: Watson2020
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Watson2020.md
+- slug: Wei2020
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Wei2020.md
+- slug: West2023AdaptiveTherapy
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/West2023AdaptiveTherapy.md
+- slug: Williams2016
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Williams2016.md
+- slug: Wu2019
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Wu2019.md
+- slug: Xiao2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Xiao2024.md
+- slug: Xiong2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Xiong2025.md
+- slug: Yang2022
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Yang2022.md
+- slug: Yang2025-precancer
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Yang2025-precancer.md
+- slug: Yi2022
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Yi2022.md
+- slug: Yuan2017
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Yuan2017.md
+- slug: Zgeib2026
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Zgeib2026.md
+- slug: Zhang2017AdaptiveAbiraterone
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Zhang2017AdaptiveAbiraterone.md
+- slug: Zhang2022AdaptiveAbiraterone
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Zhang2022AdaptiveAbiraterone.md
+- slug: Zhang2022AdaptiveADT
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Zhang2022AdaptiveADT.md
+- slug: Zhang2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Zhang2024.md
+- slug: Zhou2017
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Zhou2017.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert f23dd86
+  projects:
+    evolution: git -C /mnt/ssd/Dropbox/cancer/mechanisms/evolution checkout HEAD --
+      doc/papers/AlBakir2023.md doc/papers/Algazi2020IntermittentMelanoma.md doc/papers/Angaroni2022.md
+      doc/papers/Attolini2010.md doc/papers/Bafna2022.md doc/papers/Barkley2022.md
+      doc/papers/Bowling2020.md doc/papers/Brown2017Aggregation.md doc/papers/Bukkuri2024.md
+      doc/papers/Burkhardt2022.md doc/papers/Burrell2013.md doc/papers/ChamorroGonzalez2023.md
+      doc/papers/Cheek2025.md doc/papers/Chen2022.md doc/papers/Cho2024.md doc/papers/Ciriello2021.md
+      doc/papers/Coorens2021.md doc/papers/Dabi2025.md doc/papers/Dang2023.md doc/papers/Dayimu2024INTERIM.md
+      doc/papers/Derbal2024.md doc/papers/Dhabhai2024.md doc/papers/Dong2024CtDNANSCLC.md
+      doc/papers/Dubois2022.md doc/papers/Evans2023.md doc/papers/FilipekGorzala2024.md
+      doc/papers/Finger2025.md doc/papers/Frank2023.md doc/papers/Funnell2022.md doc/papers/Galassi2025.md
+      doc/papers/Gallaher2025PSATestosteroneAdaptive.md doc/papers/Gao2022.md doc/papers/Gatenby2020Resistance.md
+      doc/papers/Gatenby2025.md doc/papers/Gavish2023.md doc/papers/Gerlinger2014.md
+      doc/papers/Ghorbian2025.md doc/papers/GimenoValiente2025.md doc/papers/GonzalezCao2021IntermittentMelanoma.md
+      doc/papers/Gourmet2024.md doc/papers/Graham2017.md doc/papers/Gravenmier2025.md
+      doc/papers/Grechkin2016.md doc/papers/Guo2014.md doc/papers/Guo2021.md doc/papers/Hanahan2026.md
+      doc/papers/Hendriksen2026.md doc/papers/Hirsch2025.md doc/papers/Ho2024.md doc/papers/Hu2020.md
+      doc/papers/Huang2025.md doc/papers/Hung2024.md doc/papers/Hussain2013IntermittentADT.md
+      doc/papers/JimenezSanchez2026.md doc/papers/Karlsson2025.md doc/papers/Kaufler2026.md
+      doc/papers/Kent2017.md doc/papers/Kim2020.md doc/papers/Kim2024-ecdna-progression.md
+      doc/papers/Kim2025.md doc/papers/Kinker2020.md doc/papers/Kolbeinsdottir2026.md
+      doc/papers/Kotliar2019.md doc/papers/Kulman2024.md doc/papers/Lakatos2025.md
+      doc/papers/Lee2026.md doc/papers/Legrand2023.md doc/papers/Levine2018.md doc/papers/Li2023.md
+      doc/papers/Li2024.md doc/papers/Liau2021.md doc/papers/Lieberman2021.md doc/papers/Lionetti2025.md
+      doc/papers/Loh2024.md doc/papers/Ludwig2019.md doc/papers/Luo2023.md doc/papers/Luquette2025.md
+      doc/papers/Mao2025.md doc/papers/MartinezJimenez2023.md doc/papers/Marzban2024.md
+      doc/papers/Mayfield2026.md doc/papers/Mazaya2020.md doc/papers/McKenna2016.md
+      doc/papers/Mukherjee2024ACTOv.md doc/papers/Nakajima2023.md doc/papers/NattersonHorowitz2023.md
+      doc/papers/Nikolic2021.md doc/papers/Nishimura2023.md doc/papers/Noureen2025.md
+      doc/papers/Nuno2024.md doc/papers/Nussinov2026.md doc/papers/Ogawa2022.md doc/papers/Patel2024.md
+      doc/papers/Patil2025.md doc/papers/Pelissier2023.md doc/papers/Pellegrina2022.md
+      doc/papers/Pepe2026.md doc/papers/Persi2025.md doc/papers/Peters2024.md doc/papers/Pienta2025.md
+      doc/papers/Pressley2021.md doc/papers/Qi2026.md doc/papers/Qin2023.md doc/papers/Quinn2021.md
+      doc/papers/Reeves2024.md doc/papers/Roszkowska2024.md doc/papers/Saputra2018.md
+      doc/papers/SartoreBianchi2022CHRONOS.md doc/papers/Savy2025.md doc/papers/Schill2023.md
+      doc/papers/Schmidt2024.md doc/papers/Schmidt2025.md doc/papers/Shen2020.md doc/papers/Simeonov2021.md
+      doc/papers/SkoufouPapoutsaki2026.md doc/papers/Somarelli2022.md doc/papers/Sottoriva2015.md
+      doc/papers/Sprouffske2011.md doc/papers/Strobl2023.md doc/papers/Sturgeon2024.md
+      doc/papers/Talarmain2022.md doc/papers/Teimouri2022.md doc/papers/Tirosh2024.md
+      doc/papers/Tuffaha2025.md doc/papers/Turner2017.md doc/papers/Vendramin2021.md
+      doc/papers/Venkatachalapathy2024.md doc/papers/Wang2024.md doc/papers/Wang2024MPN.md
+      doc/papers/Wang2024Pathway.md doc/papers/Watson2020.md doc/papers/Wei2020.md
+      doc/papers/West2023AdaptiveTherapy.md doc/papers/Williams2016.md doc/papers/Wu2019.md
+      doc/papers/Xiao2024.md doc/papers/Xiong2025.md doc/papers/Yang2022.md doc/papers/Yang2025-precancer.md
+      doc/papers/Yi2022.md doc/papers/Yuan2017.md doc/papers/Zgeib2026.md doc/papers/Zhang2017AdaptiveAbiraterone.md
+      doc/papers/Zhang2022AdaptiveADT.md doc/papers/Zhang2022AdaptiveAbiraterone.md
+      doc/papers/Zhang2024.md doc/papers/Zhou2017.md doc/papers/deCarvalho2018.md
+      doc/papers/vanZeventer2023.md
