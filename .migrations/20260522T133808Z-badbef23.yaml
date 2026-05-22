@@ -1,0 +1,52 @@
+op_id: badbef23
+type: paper
+invocation: /mnt/ssd/Dropbox/cancer/conditions/pre-cancer/.venv/bin/science commons
+  promote paper --from pre-cancer --apply
+status: ok
+started_at: '2026-05-22T13:38:08.651322+00:00'
+finished_at: '2026-05-22T13:38:08.721578+00:00'
+commons_commit: 5ef76fe
+commons_tags:
+- paper/Hall2019/1.0.0
+- paper/Islam2024b/1.0.0
+- paper/Riew2024/1.0.0
+- paper/Tang2026/1.0.0
+projects_touched:
+  pre-cancer:
+    overlay_rewrites:
+    - slug: Hall2019
+      path: /mnt/ssd/Dropbox/cancer/conditions/pre-cancer/doc/papers/Hall2019.md
+      pin_version: 1.0.0
+    - slug: Islam2024b
+      path: /mnt/ssd/Dropbox/cancer/conditions/pre-cancer/doc/papers/Islam2024b.md
+      pin_version: 1.0.0
+    - slug: Riew2024
+      path: /mnt/ssd/Dropbox/cancer/conditions/pre-cancer/doc/papers/Riew2024.md
+      pin_version: 1.0.0
+    - slug: Tang2026
+      path: /mnt/ssd/Dropbox/cancer/conditions/pre-cancer/doc/papers/Tang2026.md
+      pin_version: 1.0.0
+decisions:
+- slug: Hall2019
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Hall2019.md
+- slug: Islam2024b
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Islam2024b.md
+- slug: Riew2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Riew2024.md
+- slug: Tang2026
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Tang2026.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 5ef76fe
+  projects:
+    pre-cancer: git -C /mnt/ssd/Dropbox/cancer/conditions/pre-cancer checkout HEAD
+      -- doc/papers/Hall2019.md doc/papers/Islam2024b.md doc/papers/Riew2024.md doc/papers/Tang2026.md
