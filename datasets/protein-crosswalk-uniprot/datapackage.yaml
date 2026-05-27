@@ -1,0 +1,19 @@
+name: protein-crosswalk-uniprot
+profile: data-package
+title: "UniProt protein crosswalk — protein_key -> entry_name/ensembl/refseq + gene_key + lifecycle"
+version: "1.0.0"
+licenses:
+  - name: CC-BY-4.0
+    path: https://creativecommons.org/licenses/by/4.0/
+    title: Creative Commons Attribution 4.0 International
+provenance:
+  - action: build
+    tool: recipe/build.py
+resources:
+  - name: crosswalk
+    path: crosswalk.csv
+    format: csv
+    mediatype: text/csv
+    description: "One row per UniProt entry: protein_key (member key), entry_name, ensembl_protein, refseq_protein, gene_key, status, replacement_protein_keys."
+    hash: "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+    bytes: 0

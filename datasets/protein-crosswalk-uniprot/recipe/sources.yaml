@@ -1,0 +1,12 @@
+# Pinned, dated UniProt release files (immutable; the 'current_release' alias is
+# discovery-only, C-D3). Discover the current dated release from
+# https://www.uniprot.org/help/downloads (knowledgebase release N_M) and pin it
+# here before building. v1 scope = reviewed Swiss-Prot, human (taxon 9606).
+#   - idmapping_url: a reviewed-human idmapping export in long format
+#     (one `accession <TAB> id_type <TAB> value` per line); the recipe parser
+#     reads the UniProtKB-ID, Ensembl_PRO, RefSeq, and HGNC types.
+#   - secondary_url: the UniProt secondary-accession file (sec_ac.txt), pairs of
+#     `secondary primary` accessions; only those whose primary is a reviewed
+#     member become merged rows.
+idmapping_url: "https://ftp.uniprot.org/pub/databases/uniprot/previous_releases/release-2025_02/knowledgebase/idmapping/by_organism/HUMAN_9606_idmapping.dat.gz"
+secondary_url: "https://ftp.uniprot.org/pub/databases/uniprot/previous_releases/release-2025_02/knowledgebase/complete/docs/sec_ac.txt"
