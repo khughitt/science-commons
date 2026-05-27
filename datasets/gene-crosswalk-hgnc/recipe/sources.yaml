@@ -1,0 +1,7 @@
+# Pinned, dated HGNC release files (immutable; the 'latest'/'current' alias is
+# discovery-only, C-D3). Discover the current dated quarterly handle from
+# https://www.genenames.org/download/archive/ and pin it here before building.
+# build.py verifies nothing about the URL beyond a successful fetch; the
+# datapackage sha256 (Step 6) is the integrity gate on the built artifact.
+complete_set_url: "https://storage.googleapis.com/public-download-files/hgnc/archive/archive/quarterly/tsv/hgnc_complete_set_2025-04-01.txt"
+withdrawn_url: "https://storage.googleapis.com/public-download-files/hgnc/archive/archive/quarterly/tsv/withdrawn_2025-04-01.txt"
