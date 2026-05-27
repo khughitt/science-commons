@@ -1,0 +1,19 @@
+name: assembly-registry
+profile: data-package
+title: "Assembly registry — seqcol digests for canonical genome assemblies"
+version: "1.0.0"
+licenses:
+  - name: CC0-1.0
+    path: https://creativecommons.org/publicdomain/zero/1.0/
+    title: Creative Commons Zero v1.0 Universal
+provenance:
+  - action: build
+    tool: recipe/build.py
+resources:
+  - name: assemblies
+    path: assemblies.csv
+    format: csv
+    mediatype: text/csv
+    description: "One row per assembly: seqcol_digest (member key), label, accession, n_sequences, source_url."
+    hash: "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+    bytes: 0
