@@ -1,0 +1,29 @@
+op_id: 00980ee4
+type: topic
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  topic topic:sex-hormones-and-immune-regulation --from cycles --apply
+status: ok
+started_at: '2026-05-28T10:05:50.652673+00:00'
+finished_at: '2026-05-28T10:05:50.693070+00:00'
+commons_commit: 2fc1f57
+commons_tags:
+- topic/sex-hormones-and-immune-regulation/1.0.0
+projects_touched:
+  cycles:
+    overlay_rewrites:
+    - slug: sex-hormones-and-immune-regulation
+      path: /home/keith/d/health/processes/cycles/doc/topics/sex-hormones-and-immune-regulation.md
+      pin_version: 1.0.0
+      unlinked_source: /home/keith/d/health/processes/cycles/doc/background/topics/sex-hormones-and-immune-regulation.md
+decisions:
+- slug: sex-hormones-and-immune-regulation
+  canonical_version: 1.0.0
+  canonical_paths:
+  - topics/sex-hormones-and-immune-regulation.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 2fc1f57
+  projects:
+    cycles: git -C /home/keith/d/health/processes/cycles checkout HEAD -- doc/background/topics/sex-hormones-and-immune-regulation.md
+      doc/topics/sex-hormones-and-immune-regulation.md
