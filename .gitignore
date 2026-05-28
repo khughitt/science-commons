@@ -5,3 +5,11 @@ registry.sqlite-journal
 
 # Python build artifacts
 __pycache__/
+
+# Local C4a sequence-store build outputs; manifest.csv is the committed artifact.
+datasets/sequence-store-grch38-grch37/SQ.*
+datasets/sequence-store-grch38-grch37/.seqstore-*
+datasets/sequence-store-grch38-grch37/recipe/*.fa
+datasets/sequence-store-grch38-grch37/recipe/*.fasta
+datasets/sequence-store-grch38-grch37/recipe/*.fa.gz
+datasets/sequence-store-grch38-grch37/recipe/*.fasta.gz

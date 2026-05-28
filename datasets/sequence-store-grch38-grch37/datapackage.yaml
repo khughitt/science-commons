@@ -1,0 +1,19 @@
+name: sequence-store-grch38-grch37
+profile: data-package
+title: "Reference sequence store (GRCh38 + GRCh37) - per-contig refget bytes"
+version: "1.0.0"
+licenses:
+  - name: NCBI-PD
+    path: https://www.ncbi.nlm.nih.gov/home/about/policies/
+    title: NCBI Public Domain
+provenance:
+  - action: build
+    tool: recipe/build.py
+resources:
+  - name: manifest
+    path: manifest.csv
+    format: csv
+    mediatype: text/csv
+    description: "One row per contig: assembly_seqcol_digest, name, refget_digest, length, sha256. Sequence bytes are materialized locally as one file per refget_digest and are not committed; the manifest is the pinned, verifiable authority."
+    hash: "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+    bytes: 0

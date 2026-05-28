@@ -5,6 +5,8 @@ assemblies:
   - label: GRCh38
     accession: GCA_000001405.15
     seqcol_digest: "REPLACE_WITH_GRCh38_SEQCOL_DIGEST"
+    assembly_report_url: "REPLACE_WITH_PINNED_GRCh38_ASSEMBLY_REPORT_URL"
   - label: GRCh37
     accession: GCA_000001405.14
     seqcol_digest: "REPLACE_WITH_GRCh37_SEQCOL_DIGEST"
+    assembly_report_url: "REPLACE_WITH_PINNED_GRCh37_ASSEMBLY_REPORT_URL"
