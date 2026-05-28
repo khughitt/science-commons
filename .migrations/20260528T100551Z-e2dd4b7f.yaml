@@ -1,0 +1,29 @@
+op_id: e2dd4b7f
+type: topic
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  topic topic:hormone-driven-cancer-and-cycle-timing --from cycles --apply
+status: ok
+started_at: '2026-05-28T10:05:51.874975+00:00'
+finished_at: '2026-05-28T10:05:51.912735+00:00'
+commons_commit: c2992cd
+commons_tags:
+- topic/hormone-driven-cancer-and-cycle-timing/1.0.0
+projects_touched:
+  cycles:
+    overlay_rewrites:
+    - slug: hormone-driven-cancer-and-cycle-timing
+      path: /home/keith/d/health/processes/cycles/doc/topics/hormone-driven-cancer-and-cycle-timing.md
+      pin_version: 1.0.0
+      unlinked_source: /home/keith/d/health/processes/cycles/doc/background/topics/hormone-driven-cancer-and-cycle-timing.md
+decisions:
+- slug: hormone-driven-cancer-and-cycle-timing
+  canonical_version: 1.0.0
+  canonical_paths:
+  - topics/hormone-driven-cancer-and-cycle-timing.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert c2992cd
+  projects:
+    cycles: git -C /home/keith/d/health/processes/cycles checkout HEAD -- doc/background/topics/hormone-driven-cancer-and-cycle-timing.md
+      doc/topics/hormone-driven-cancer-and-cycle-timing.md
