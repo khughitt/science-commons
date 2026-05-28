@@ -1,0 +1,14 @@
+# Pinned, dated genome FASTA releases. Build datasets/assembly-registry/contigs.csv
+# first; this recipe cross-checks every sliced contig against that registry.
+#
+# Each FASTA must exactly match the seqcol contig set and naming for its
+# assembly. Do not use analysis-set FASTAs with extra alts/decoys/HLA unless
+# those contigs are present in the pinned seqcol. The first token of every FASTA
+# header must equal the corresponding assembly-registry contigs.csv `name`.
+assemblies:
+  - label: GRCh38
+    seqcol_digest: "REPLACE_WITH_GRCh38_SEQCOL_DIGEST"
+    fasta_url: "REPLACE_WITH_PINNED_GRCh38_FASTA_URL"
+  - label: GRCh37
+    seqcol_digest: "REPLACE_WITH_GRCh37_SEQCOL_DIGEST"
+    fasta_url: "REPLACE_WITH_PINNED_GRCh37_FASTA_URL"

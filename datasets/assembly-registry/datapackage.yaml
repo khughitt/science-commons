@@ -17,3 +17,17 @@ resources:
     description: "One row per assembly: seqcol_digest (member key), label, accession, n_sequences, source_url."
     hash: "sha256:0000000000000000000000000000000000000000000000000000000000000000"
     bytes: 0
+  - name: contigs
+    path: contigs.csv
+    format: csv
+    mediatype: text/csv
+    description: "One row per seqcol contig: seqcol_digest, sequence_index, name, refget_digest, length."
+    hash: "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+    bytes: 0
+  - name: contig_aliases
+    path: contig_aliases.csv
+    format: csv
+    mediatype: text/csv
+    description: "Assembly-report aliases for seqcol contigs: seqcol_digest, refget_digest, alias, alias_kind, sequence_accession."
+    hash: "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+    bytes: 0
