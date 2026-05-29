@@ -1,0 +1,40 @@
+name: ctrpv2
+id: mm30-external-ctrpv2-2015-2015
+title: CTRPv2.0 small-molecule sensitivity (CTD², release 2015) — pan-cancer
+version: '2015'
+created: '2026-05-29T22:11:21.987004+00:00'
+profile: data-package
+licenses:
+- name: CC-BY-4.0
+  path: https://creativecommons.org/licenses/by/4.0/
+  title: Creative Commons Attribution 4.0
+contributors:
+- title: V. Keith Hughitt
+  role: author
+provenance:
+- action: package
+  timestamp: '2026-05-29T22:11:21.987004+00:00'
+  tool: scripts/external/ctrp_v2/build_sensitivity_table.py
+resources:
+- name: ctrpv2-sensitivity-long
+  path: ctrpv2-sensitivity-long.parquet
+  format: parquet
+  mediatype: application/vnd.apache.parquet
+  description: 'Long-format post-QC sensitivity: one row per (cell line × compound)
+    with area-under-curve, apparent EC50 (µmol), and predicted high-conc viability.'
+  hash: sha256:ba3f796dd353c6acd99e9744ad169f3495b432f5d64f5ea2fcc1eb28b90fc4ce
+  bytes: 4004803
+- name: ctrpv2-cell-lines
+  path: ctrpv2-cell-lines.parquet
+  format: parquet
+  mediatype: application/vnd.apache.parquet
+  description: Per-cell-line dimension table (CCLE primary site, histology, subtype).
+  hash: sha256:8c41d72769e74176a205e343db3cc6e30a0b4a3a6a4aef81a4d7521e04b1a7c1
+  bytes: 11810
+- name: ctrpv2-compounds
+  path: ctrpv2-compounds.parquet
+  format: parquet
+  mediatype: application/vnd.apache.parquet
+  description: Per-compound dimension table (target gene, activity class, SMILES).
+  hash: sha256:ef16825fe1726e65f56788a0964d41d1c8c2979648ba5a6bab28162f620e011f
+  bytes: 32033
