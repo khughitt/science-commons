@@ -1,0 +1,27 @@
+op_id: 8ca4df57
+type: paper
+invocation: /mnt/ssd/Dropbox/cancer/meta/.venv/bin/science-tool commons promote paper
+  paper:Kumar2022secDrug --from therapeutics --apply
+status: ok
+started_at: '2026-05-29T17:25:19.482404+00:00'
+finished_at: '2026-05-29T17:25:19.519383+00:00'
+commons_commit: b9d48d8
+commons_tags:
+- paper/Kumar2022secDrug/1.0.0
+projects_touched:
+  therapeutics:
+    overlay_rewrites:
+    - slug: Kumar2022secDrug
+      path: /mnt/ssd/Dropbox/cancer/therapeutics/doc/papers/Kumar2022secDrug.md
+      pin_version: 1.0.0
+decisions:
+- slug: Kumar2022secDrug
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Kumar2022secDrug.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert b9d48d8
+  projects:
+    therapeutics: git -C /mnt/ssd/Dropbox/cancer/therapeutics checkout HEAD -- doc/papers/Kumar2022secDrug.md
