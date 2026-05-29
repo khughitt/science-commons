@@ -1,0 +1,28 @@
+op_id: c7a942de
+type: paper
+invocation: /mnt/ssd/Dropbox/cancer/meta/.venv/bin/science-tool commons promote paper
+  paper:Hughitt2025MIPE --from multiple-myeloma --apply
+status: ok
+started_at: '2026-05-29T17:25:21.023376+00:00'
+finished_at: '2026-05-29T17:25:21.076928+00:00'
+commons_commit: 2f3e4be
+commons_tags:
+- paper/Hughitt2025MIPE/1.0.0
+projects_touched:
+  multiple-myeloma:
+    overlay_rewrites:
+    - slug: Hughitt2025MIPE
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/doc/papers/Hughitt2025MIPE.md
+      pin_version: 1.0.0
+decisions:
+- slug: Hughitt2025MIPE
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Hughitt2025MIPE.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 2f3e4be
+  projects:
+    multiple-myeloma: git -C /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma
+      checkout HEAD -- doc/papers/Hughitt2025MIPE.md
