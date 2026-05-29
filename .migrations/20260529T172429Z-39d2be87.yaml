@@ -1,0 +1,23 @@
+op_id: 39d2be87
+type: paper
+invocation: /mnt/ssd/Dropbox/cancer/meta/.venv/bin/science-tool commons promote paper
+  paper:Kumar2022secDrug --from therapeutics --apply
+status: failed
+started_at: '2026-05-29T17:24:29.081353+00:00'
+finished_at: '2026-05-29T17:24:29.102801+00:00'
+commons_commit: null
+commons_tags: []
+projects_touched: {}
+decisions:
+- slug: Kumar2022secDrug
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Kumar2022secDrug.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: null
+  projects: {}
+failure_stage: preflight
+failure_detail: 'project /mnt/ssd/Dropbox/cancer/therapeutics has dirty target files:
+  doc/papers/Kumar2022secDrug.md'
