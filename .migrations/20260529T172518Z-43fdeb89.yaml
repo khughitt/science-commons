@@ -1,0 +1,27 @@
+op_id: 43fdeb89
+type: paper
+invocation: /mnt/ssd/Dropbox/cancer/meta/.venv/bin/science-tool commons promote paper
+  paper:Sudalagunta2020Synergy --from therapeutics --apply
+status: ok
+started_at: '2026-05-29T17:25:18.329664+00:00'
+finished_at: '2026-05-29T17:25:18.370933+00:00'
+commons_commit: b9658a3
+commons_tags:
+- paper/Sudalagunta2020Synergy/1.0.0
+projects_touched:
+  therapeutics:
+    overlay_rewrites:
+    - slug: Sudalagunta2020Synergy
+      path: /mnt/ssd/Dropbox/cancer/therapeutics/doc/papers/Sudalagunta2020Synergy.md
+      pin_version: 1.0.0
+decisions:
+- slug: Sudalagunta2020Synergy
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Sudalagunta2020Synergy.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert b9658a3
+  projects:
+    therapeutics: git -C /mnt/ssd/Dropbox/cancer/therapeutics checkout HEAD -- doc/papers/Sudalagunta2020Synergy.md
