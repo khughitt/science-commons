@@ -1,0 +1,23 @@
+op_id: fdf7c2d3
+type: paper
+invocation: /mnt/ssd/Dropbox/cancer/meta/.venv/bin/science-tool commons promote paper
+  paper:Sudalagunta2020Synergy --from therapeutics --apply
+status: failed
+started_at: '2026-05-29T17:24:28.089596+00:00'
+finished_at: '2026-05-29T17:24:28.107641+00:00'
+commons_commit: null
+commons_tags: []
+projects_touched: {}
+decisions:
+- slug: Sudalagunta2020Synergy
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Sudalagunta2020Synergy.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: null
+  projects: {}
+failure_stage: preflight
+failure_detail: 'project /mnt/ssd/Dropbox/cancer/therapeutics has dirty target files:
+  doc/papers/Sudalagunta2020Synergy.md'
