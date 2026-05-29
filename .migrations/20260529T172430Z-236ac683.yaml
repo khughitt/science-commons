@@ -1,0 +1,23 @@
+op_id: 236ac683
+type: paper
+invocation: /mnt/ssd/Dropbox/cancer/meta/.venv/bin/science-tool commons promote paper
+  paper:Hughitt2025MIPE --from multiple-myeloma --apply
+status: failed
+started_at: '2026-05-29T17:24:30.336999+00:00'
+finished_at: '2026-05-29T17:24:30.359509+00:00'
+commons_commit: null
+commons_tags: []
+projects_touched: {}
+decisions:
+- slug: Hughitt2025MIPE
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Hughitt2025MIPE.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: null
+  projects: {}
+failure_stage: preflight
+failure_detail: 'project /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma has
+  dirty target files: doc/papers/Hughitt2025MIPE.md'
