@@ -1,0 +1,36 @@
+op_id: 2b6deb20
+type: topic
+invocation: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/.venv/bin/science
+  commons promote topic --from multiple-myeloma --apply
+status: failed
+started_at: '2026-05-29T17:04:58.963540+00:00'
+finished_at: '2026-05-29T17:04:59.031573+00:00'
+commons_commit: null
+commons_tags: []
+projects_touched: {}
+decisions:
+- slug: mm-cell-line-models
+  canonical_version: 1.0.0
+  canonical_paths:
+  - topics/mm-cell-line-models.md
+- slug: mm-combination-therapy
+  canonical_version: 1.0.0
+  canonical_paths:
+  - topics/mm-combination-therapy.md
+- slug: mm-drug-resistance
+  canonical_version: 1.0.0
+  canonical_paths:
+  - topics/mm-drug-resistance.md
+- slug: mm-drug-targets
+  canonical_version: 1.0.0
+  canonical_paths:
+  - topics/mm-drug-targets.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: null
+  projects: {}
+failure_stage: preflight
+failure_detail: 'project /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma has
+  dirty target files: doc/topics/mm-cell-line-models.md, doc/topics/mm-combination-therapy.md,
+  doc/topics/mm-drug-resistance.md, doc/topics/mm-drug-targets.md'
