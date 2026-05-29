@@ -1,0 +1,43 @@
+name: opentargets-platform
+id: mm30-external-opentargets-25.03-25.03
+title: MM30 × Open Targets Platform 25.03 — MM-filtered join
+version: '25.03'
+created: '2026-04-17T13:07:00.346712+00:00'
+profile: data-package
+licenses:
+- name: CC-BY-4.0
+  path: https://creativecommons.org/licenses/by/4.0/
+  title: Creative Commons Attribution 4.0
+contributors:
+- title: V. Keith Hughitt
+  role: author
+provenance:
+- action: package
+  timestamp: '2026-04-17T13:07:00.346712+00:00'
+  tool: scripts/external/opentargets/build_mm_join.py
+resources:
+- name: mm-associations
+  path: mm-associations.parquet
+  format: parquet
+  mediatype: application/vnd.apache.parquet
+  description: Per-gene × MM-family disease aggregated and per-datatype association
+    scores from Open Targets ``association_by_overall_indirect`` + ``association_by_datatype_indirect``,
+    joined with target and disease metadata.
+  hash: sha256:1c3adc1ebf6c5a66f852e8053de59bc32e637ee568a96d812e85a0fe0f426899
+  bytes: 241660
+- name: mm-drugs
+  path: mm-drugs.parquet
+  format: parquet
+  mediatype: application/vnd.apache.parquet
+  description: Known drugs with MM-family indications from Open Targets ``known_drug``,
+    joined with molecule metadata (approval status, max phase, first approval year).
+  hash: sha256:b99dfc898b36c092541d3a86ce12d348112bba9629c2e03f1d3c92a3059d0bbb
+  bytes: 31984
+- name: mm-tractability
+  path: mm-tractability.parquet
+  format: parquet
+  mediatype: application/vnd.apache.parquet
+  description: Per-target tractability (``target_prioritisation``) and DepMap-derived
+    essentiality (``target_essentiality``) restricted to MM-indicated targets.
+  hash: sha256:0638e7d0794ffa903570939d17a9a03ff2463c2bca234699f6dcadf4f30fb09b
+  bytes: 153754
