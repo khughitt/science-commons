@@ -1,0 +1,47 @@
+op_id: 3972471b
+type: dataset
+invocation: /mnt/ssd/Dropbox/cancer/data-sources/cbioportal/.venv/bin/science commons
+  promote dataset --from cbioportal --slug brca-metabric --mixin bio.matrix/1.0 --apply
+status: ok
+started_at: '2026-05-30T23:44:18.188171+00:00'
+finished_at: '2026-05-30T23:44:18.235120+00:00'
+commons_commit: 6b6a87c
+commons_tags:
+- dataset/brca-metabric/1.0.0
+mixin_extensions:
+- bio.matrix/1.0
+projects_touched:
+  cbioportal:
+    overlay_rewrites:
+    - slug: brca-metabric
+      path: /mnt/ssd/Dropbox/cancer/data-sources/cbioportal/doc/datasets/data-brca-metabric.md
+      pin_version: 1.0.0
+decisions:
+- slug: brca-metabric
+  canonical_version: 1.0.0
+  canonical_paths:
+  - datasets/brca-metabric/entity.md
+  - datasets/brca-metabric/datapackage.yaml
+  - datasets/brca-metabric/recipe/README.md
+  per_resource_hashes:
+    expression:
+      hash: sha256:b4675ded8ef6d877cdba578194572708722ae6cf241f763bc89dd87b8a54b6a5
+      bytes: 238314000
+    clinical:
+      hash: sha256:6fe5d02db7b74195cd6c4c044bbc455b7536d3ff5b342b5194c8129c550acbfe
+      bytes: 118526
+    qa:
+      hash: sha256:275dedc8559040296f130b6f3864648e07672a4887afb07cc35a19b434d9b194
+      bytes: 618
+  recipe_stubbed: true
+  dropped_fields:
+  - local_path
+  override_file: /home/keith/.config/science/data.yaml
+  override_backup: /home/keith/.config/science/data.yaml.bak.3972471b
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 6b6a87c
+  projects:
+    cbioportal: git -C /mnt/ssd/Dropbox/cancer/data-sources/cbioportal checkout HEAD
+      -- doc/datasets/data-brca-metabric.md
