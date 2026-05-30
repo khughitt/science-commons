@@ -1,0 +1,691 @@
+op_id: c43907da
+type: dataset
+invocation: /mnt/ssd/Dropbox/health/meta/.venv/bin/science commons promote dataset
+  --from health-meta --slug reactome --mixin bio.geneset --verify-digests --apply
+status: failed
+started_at: '2026-05-30T20:13:52.918883+00:00'
+finished_at: '2026-05-30T20:13:52.933278+00:00'
+commons_commit: null
+commons_tags: []
+mixin_extensions:
+- bio.geneset/1.0
+projects_touched: {}
+decisions:
+- slug: reactome
+  canonical_version: 1.0.0
+  canonical_paths:
+  - datasets/reactome/entity.md
+  - datasets/reactome/datapackage.yaml
+  - datasets/reactome/recipe/README.md
+  per_resource_hashes:
+    sets:
+      hash: sha256:df8c8124b8d9ba05ab54dd6dcd816b4832fbf5e44d115ddb4da456cedc1c0745
+      bytes: 894397
+    ncbi_gene_pathway:
+      hash: sha256:c803ae14be8f2b161bcefb4f18f5cf864e7bb1f76a56c66df49c71817fc38361
+      bytes: 18907881
+    pathways:
+      hash: sha256:b2c1372b8b48680581a18600c28f753a14041bb6cc0ecfcfe431a9d3c4b3e37b
+      bytes: 210342
+    pathway_relations:
+      hash: sha256:921de6ec9f361a61934c5d51c4b0343e50c9b5d37baa10b126aba94761cfc7ad
+      bytes: 81079
+    gene_set_panel:
+      hash: sha256:260d5a0a69cfb7e0b0f2523e0cec7ee3d281bceb7971a56932161f1ecdec1bd4
+      bytes: 11674795
+    resolution_report:
+      hash: sha256:4f4b4a8fb060bd2853d6eb11d3f3ddf22c66f386754932a23a2c041941913661
+      bytes: 79886
+  recipe_stubbed: true
+  dropped_fields: []
+conflict_resolutions: []
+failed_candidates:
+- slug: agrawal2026-benchmark
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-agrawal2026-benchmark.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'agrawal2026-benchmark' missing required field
+    'origin'
+- slug: agrawal2026-benchmark
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-agrawal2026-benchmark.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'agrawal2026-benchmark' missing required field
+    'tier'
+- slug: bamse
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-bamse.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'bamse' missing required field 'origin'
+- slug: bamse
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-bamse.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'bamse' missing required field 'tier'
+- slug: causalbench-k562
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-causalbench-k562.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'causalbench-k562' missing required field 'origin'
+- slug: causalbench-k562
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-causalbench-k562.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'causalbench-k562' missing required field 'tier'
+- slug: causalbench-rpe1
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-causalbench-rpe1.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'causalbench-rpe1' missing required field 'origin'
+- slug: causalbench-rpe1
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-causalbench-rpe1.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'causalbench-rpe1' missing required field 'tier'
+- slug: cellxgene-census
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-cellxgene-census.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'cellxgene-census' missing required field 'origin'
+- slug: cellxgene-census
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-cellxgene-census.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'cellxgene-census' missing required field 'tier'
+- slug: chai
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-chai.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'chai' missing required field 'origin'
+- slug: chai
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-chai.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'chai' missing required field 'tier'
+- slug: china-kadoorie-biobank
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-china-kadoorie-biobank.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'china-kadoorie-biobank' missing required field
+    'origin'
+- slug: china-kadoorie-biobank
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-china-kadoorie-biobank.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'china-kadoorie-biobank' missing required field
+    'tier'
+- slug: chinese-transport-network
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-chinese-transport-network.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'chinese-transport-network' missing required field
+    'origin'
+- slug: chinese-transport-network
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-chinese-transport-network.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'chinese-transport-network' missing required field
+    'tier'
+- slug: cosmic
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-cosmic.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'cosmic' missing required field 'origin'
+- slug: cosmic
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-cosmic.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'cosmic' missing required field 'tier'
+- slug: depmap
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-depmap.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'depmap' missing required field 'origin'
+- slug: depmap
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-depmap.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'depmap' missing required field 'tier'
+- slug: eh-epi
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-eh-epi.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'eh-epi' missing required field 'origin'
+- slug: eh-epi
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-eh-epi.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'eh-epi' missing required field 'tier'
+- slug: finngen
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-finngen.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'finngen' missing required field 'origin'
+- slug: finngen
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-finngen.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'finngen' missing required field 'tier'
+- slug: finnish-twin-cohort
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-finnish-twin-cohort.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'finnish-twin-cohort' missing required field 'origin'
+- slug: finnish-twin-cohort
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-finnish-twin-cohort.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'finnish-twin-cohort' missing required field 'tier'
+- slug: florida-food-web-dry
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-florida-food-web-dry.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'florida-food-web-dry' missing required field 'origin'
+- slug: florida-food-web-dry
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-florida-food-web-dry.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'florida-food-web-dry' missing required field 'tier'
+- slug: florida-food-web-wet
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-florida-food-web-wet.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'florida-food-web-wet' missing required field 'origin'
+- slug: florida-food-web-wet
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-florida-food-web-wet.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'florida-food-web-wet' missing required field 'tier'
+- slug: geo
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-geo.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'geo' missing required field 'origin'
+- slug: geo
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-geo.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'geo' missing required field 'tier'
+- slug: gnomad
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-gnomad.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'gnomad' missing required field 'origin'
+- slug: gnomad
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-gnomad.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'gnomad' missing required field 'tier'
+- slug: gse130019
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-gse130019.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'gse130019' missing required field 'origin'
+- slug: gse130019
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-gse130019.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'gse130019' missing required field 'tier'
+- slug: gse72056
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-gse72056.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'gse72056' missing required field 'origin'
+- slug: gse72056
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-gse72056.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'gse72056' missing required field 'tier'
+- slug: gse75748
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-gse75748.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'gse75748' missing required field 'origin'
+- slug: gse75748
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-gse75748.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'gse75748' missing required field 'tier'
+- slug: gse81861
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-gse81861.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'gse81861' missing required field 'origin'
+- slug: gse81861
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-gse81861.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'gse81861' missing required field 'tier'
+- slug: gtex
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-gtex.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'gtex' missing required field 'origin'
+- slug: gtex
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-gtex.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'gtex' missing required field 'tier'
+- slug: human-disease-blood-atlas
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-human-disease-blood-atlas.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'human-disease-blood-atlas' missing required field
+    'origin'
+- slug: human-disease-blood-atlas
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-human-disease-blood-atlas.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'human-disease-blood-atlas' missing required field
+    'tier'
+- slug: human-lung-cell-atlas
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-human-lung-cell-atlas.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'human-lung-cell-atlas' missing required field
+    'origin'
+- slug: human-lung-cell-atlas
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-human-lung-cell-atlas.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'human-lung-cell-atlas' missing required field
+    'tier'
+- slug: lincs
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-lincs.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'lincs' missing required field 'origin'
+- slug: lincs
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-lincs.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'lincs' missing required field 'tier'
+- slug: mgb-biobank
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-mgb-biobank.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'mgb-biobank' missing required field 'origin'
+- slug: mgb-biobank
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-mgb-biobank.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'mgb-biobank' missing required field 'tier'
+- slug: mimic
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-mimic.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'mimic' missing required field 'origin'
+- slug: mimic
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-mimic.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'mimic' missing required field 'tier'
+- slug: msigdb
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-msigdb.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'msigdb' missing required field 'origin'
+- slug: msigdb
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-msigdb.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'msigdb' missing required field 'tier'
+- slug: nfbc1966
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-nfbc1966.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'nfbc1966' missing required field 'origin'
+- slug: nfbc1966
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-nfbc1966.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'nfbc1966' missing required field 'tier'
+- slug: nshd
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-nshd.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'nshd' missing required field 'origin'
+- slug: nshd
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-nshd.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'nshd' missing required field 'tier'
+- slug: nurses-health-study
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-nurses-health-study.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'nurses-health-study' missing required field 'origin'
+- slug: nurses-health-study
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-nurses-health-study.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'nurses-health-study' missing required field 'tier'
+- slug: oec-trade-network
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-oec-trade-network.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'oec-trade-network' missing required field 'origin'
+- slug: oec-trade-network
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-oec-trade-network.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'oec-trade-network' missing required field 'tier'
+- slug: paul2015-hematopoiesis
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-paul2015-hematopoiesis.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'paul2015-hematopoiesis' missing required field
+    'origin'
+- slug: paul2015-hematopoiesis
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-paul2015-hematopoiesis.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'paul2015-hematopoiesis' missing required field
+    'tier'
+- slug: perturb-cite-seq-frangieh2021
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-perturb-cite-seq-frangieh2021.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'perturb-cite-seq-frangieh2021' missing required
+    field 'origin'
+- slug: perturb-cite-seq-frangieh2021
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-perturb-cite-seq-frangieh2021.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'perturb-cite-seq-frangieh2021' missing required
+    field 'tier'
+- slug: perturb-seq-adamson
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-perturb-seq-adamson.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'perturb-seq-adamson' missing required field 'origin'
+- slug: perturb-seq-adamson
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-perturb-seq-adamson.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'perturb-seq-adamson' missing required field 'tier'
+- slug: perturb-seq-norman
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-perturb-seq-norman.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'perturb-seq-norman' missing required field 'origin'
+- slug: perturb-seq-norman
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-perturb-seq-norman.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'perturb-seq-norman' missing required field 'tier'
+- slug: perturb-seq-replogle-k562
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-perturb-seq-replogle-k562.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'perturb-seq-replogle-k562' missing required field
+    'origin'
+- slug: perturb-seq-replogle-k562
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-perturb-seq-replogle-k562.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'perturb-seq-replogle-k562' missing required field
+    'tier'
+- slug: perturb-seq-replogle-rpe1
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-perturb-seq-replogle-rpe1.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'perturb-seq-replogle-rpe1' missing required field
+    'origin'
+- slug: perturb-seq-replogle-rpe1
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-perturb-seq-replogle-rpe1.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'perturb-seq-replogle-rpe1' missing required field
+    'tier'
+- slug: pgc
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-pgc.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'pgc' missing required field 'origin'
+- slug: pgc
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-pgc.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'pgc' missing required field 'tier'
+- slug: pharmacodb
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-pharmacodb.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'pharmacodb' missing required field 'origin'
+- slug: pharmacodb
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-pharmacodb.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'pharmacodb' missing required field 'tier'
+- slug: ppmi
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-ppmi.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'ppmi' missing required field 'origin'
+- slug: ppmi
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-ppmi.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'ppmi' missing required field 'tier'
+- slug: proteomicsdb
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-proteomicsdb.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'proteomicsdb' missing required field 'origin'
+- slug: proteomicsdb
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-proteomicsdb.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'proteomicsdb' missing required field 'tier'
+- slug: pubmed
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-pubmed.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'pubmed' missing required field 'origin'
+- slug: pubmed
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-pubmed.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'pubmed' missing required field 'tier'
+- slug: sachs2005-flow-cytometry
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-sachs2005-flow-cytometry.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'sachs2005-flow-cytometry' missing required field
+    'origin'
+- slug: sachs2005-flow-cytometry
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-sachs2005-flow-cytometry.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'sachs2005-flow-cytometry' missing required field
+    'tier'
+- slug: sc-perturb
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-sc-perturb.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'sc-perturb' missing required field 'origin'
+- slug: sc-perturb
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-sc-perturb.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'sc-perturb' missing required field 'tier'
+- slug: shi2025-pancancer-scrna-atlas
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-shi2025-pancancer-scrna-atlas.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'shi2025-pancancer-scrna-atlas' missing required
+    field 'origin'
+- slug: shi2025-pancancer-scrna-atlas
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-shi2025-pancancer-scrna-atlas.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'shi2025-pancancer-scrna-atlas' missing required
+    field 'tier'
+- slug: shi2025-pantissue-scrna-atlas
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-shi2025-pantissue-scrna-atlas.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'shi2025-pantissue-scrna-atlas' missing required
+    field 'origin'
+- slug: shi2025-pantissue-scrna-atlas
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-shi2025-pantissue-scrna-atlas.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'shi2025-pantissue-scrna-atlas' missing required
+    field 'tier'
+- slug: single-cell-atlas
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-single-cell-atlas.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'single-cell-atlas' missing required field 'origin'
+- slug: single-cell-atlas
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-single-cell-atlas.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'single-cell-atlas' missing required field 'tier'
+- slug: snap-email-network
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-snap-email-network.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'snap-email-network' missing required field 'origin'
+- slug: snap-email-network
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-snap-email-network.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'snap-email-network' missing required field 'tier'
+- slug: stanford-adrc
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-stanford-adrc.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'stanford-adrc' missing required field 'origin'
+- slug: stanford-adrc
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-stanford-adrc.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'stanford-adrc' missing required field 'tier'
+- slug: stanford-sams
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-stanford-sams.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'stanford-sams' missing required field 'origin'
+- slug: stanford-sams
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-stanford-sams.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'stanford-sams' missing required field 'tier'
+- slug: string-db
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-string-db.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'string-db' missing required field 'origin'
+- slug: string-db
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-string-db.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'string-db' missing required field 'tier'
+- slug: tabula-sapiens
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-tabula-sapiens.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'tabula-sapiens' missing required field 'origin'
+- slug: tabula-sapiens
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-tabula-sapiens.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'tabula-sapiens' missing required field 'tier'
+- slug: tcga
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-tcga.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'tcga' missing required field 'origin'
+- slug: tcga
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-tcga.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'tcga' missing required field 'tier'
+- slug: track-sci
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-track-sci.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'track-sci' missing required field 'origin'
+- slug: track-sci
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-track-sci.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'track-sci' missing required field 'tier'
+- slug: trial-review-bench
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-trial-review-bench.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'trial-review-bench' missing required field 'origin'
+- slug: trial-review-bench
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-trial-review-bench.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'trial-review-bench' missing required field 'tier'
+- slug: twingene
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-twingene.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'twingene' missing required field 'origin'
+- slug: twingene
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-twingene.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'twingene' missing required field 'tier'
+- slug: uk-airwave
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-uk-airwave.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'uk-airwave' missing required field 'origin'
+- slug: uk-airwave
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-uk-airwave.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'uk-airwave' missing required field 'tier'
+- slug: uk-biobank
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-uk-biobank.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'uk-biobank' missing required field 'origin'
+- slug: uk-biobank
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-uk-biobank.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'uk-biobank' missing required field 'tier'
+- slug: ukb-ppp
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-ukb-ppp.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'ukb-ppp' missing required field 'origin'
+- slug: ukb-ppp
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-ukb-ppp.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'ukb-ppp' missing required field 'tier'
+- slug: us-congress-voting
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-us-congress-voting.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'us-congress-voting' missing required field 'origin'
+- slug: us-congress-voting
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-us-congress-voting.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'us-congress-voting' missing required field 'tier'
+- slug: wells-pbmc
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-wells-pbmc.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'wells-pbmc' missing required field 'origin'
+- slug: wells-pbmc
+  project_slug: health-meta
+  source_path: /home/keith/d/health/meta/doc/datasets/data-wells-pbmc.md
+  error_class: PromoteCandidateError
+  error_message: dataset candidate 'wells-pbmc' missing required field 'tier'
+rollback:
+  commons: null
+  projects: {}
+failure_stage: preflight
+failure_detail: 'project /home/keith/d/health/meta has dirty target files: doc/datasets/data-reactome.md'
