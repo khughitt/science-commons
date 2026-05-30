@@ -1,0 +1,22 @@
+name: h07-clean-base-gebco-path-samples
+profile: data-package
+title: H07 GEBCO path-sample clean rows
+created: '2026-05-30T19:25:20.172123+00:00'
+source_stage: stage_gebco_subset
+cleaning_step: extract_gebco_path_samples
+workflow:
+  name: h07-fidelity
+  task_ids:
+  - task:t376
+  related_ids:
+  - hypothesis:h07-empirical-fidelity-alignment
+resources:
+- name: gebco-path-samples
+  path: gebco-path-samples.csv
+  row_count: 256
+  hash: sha256:f8ceb007e5032c50d6f088d6d444d3e55c534dd726cd9522fd3e5bc35bbb3379
+  bytes: 92134
+- name: gebco-path-samples-qa
+  path: qa/gebco-path-samples-qa.json
+  hash: sha256:5be18b1b8608dff52593f902750c0e1c4ad9e22f306d07b5afe7e75d3e0ce92f
+  bytes: 132
