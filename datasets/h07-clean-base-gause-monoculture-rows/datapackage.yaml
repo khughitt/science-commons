@@ -1,0 +1,22 @@
+name: h07-clean-base-gause-monoculture-rows
+profile: data-package
+title: H07 Gause monoculture clean rows
+created: '2026-05-30T19:25:19.751163+00:00'
+source_stage: stage_t440_gause_paramecium
+cleaning_step: extract_gause_monoculture_rows
+workflow:
+  name: h07-fidelity
+  task_ids:
+  - task:t376
+  related_ids:
+  - hypothesis:h07-empirical-fidelity-alignment
+resources:
+- name: gause-monoculture-rows
+  path: gause-monoculture-rows.csv
+  row_count: 48
+  hash: sha256:f8716aea92e3d6aa65ed9e1bc9e22c114f59679154919f1a5972b4544872f457
+  bytes: 20364
+- name: gause-monoculture-rows-qa
+  path: qa/gause-monoculture-rows-qa.json
+  hash: sha256:a48dcfd99184f9aa8081697b77b8b731033956c7b3ab0a93237edf9d8be67150
+  bytes: 130
