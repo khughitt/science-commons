@@ -9,5 +9,5 @@ by `science commons index rebuild` and is gitignored. `.migrations/` is the
 audit log written by `science promote` (Phase E and later); each successful
 promotion commits one log file there.
 
-See `~/d/science/docs/plans/2026-05-13-multiproject-schema-and-shared-store-design.md`
+See [science/docs/plans/2026-05-13-multiproject-schema-and-shared-store-design.md](https://github.com/khughitt/science/blob/main/docs/plans/2026-05-13-multiproject-schema-and-shared-store-design.md) 
 for the design.
