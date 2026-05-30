@@ -1,0 +1,15 @@
+reactome_release: '96'
+base_url: https://download.reactome.org/96/
+files:
+  NCBI2Reactome_All_Levels.txt:
+    url: https://download.reactome.org/96/NCBI2Reactome_All_Levels.txt
+    sha256: sha256:d45f35887aa89969d333c03cf1542ccecd3f252e1600e83b52337989ea165536
+    bytes: 96956783
+  ReactomePathways.txt:
+    url: https://download.reactome.org/96/ReactomePathways.txt
+    sha256: sha256:eac3ac074b3849a6d928260f4f71920f346584b0114afa7b60fcc8e40eefd9ec
+    bytes: 1583655
+  ReactomePathwaysRelation.txt:
+    url: https://download.reactome.org/96/ReactomePathwaysRelation.txt
+    sha256: sha256:72e2da17ef5806d287a0d932cd6d161fea62ef7a567b6e95601b67463c07170e
+    bytes: 631240
