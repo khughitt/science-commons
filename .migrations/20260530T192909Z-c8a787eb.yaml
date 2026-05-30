@@ -1,0 +1,29 @@
+op_id: c8a787eb
+type: paper
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  paper paper:Moriyama2020 --from cycles --apply
+status: ok
+started_at: '2026-05-30T19:29:09.164809+00:00'
+finished_at: '2026-05-30T19:29:09.200004+00:00'
+commons_commit: 5aa5ea1
+commons_tags:
+- paper/Moriyama2020/1.0.0
+projects_touched:
+  cycles:
+    overlay_rewrites:
+    - slug: Moriyama2020
+      path: /home/keith/d/health/processes/cycles/doc/papers/Moriyama2020.md
+      pin_version: 1.0.0
+      unlinked_source: /home/keith/d/health/processes/cycles/doc/background/papers/Moriyama2020.md
+decisions:
+- slug: Moriyama2020
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Moriyama2020.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 5aa5ea1
+  projects:
+    cycles: git -C /home/keith/d/health/processes/cycles checkout HEAD -- doc/background/papers/Moriyama2020.md
+      doc/papers/Moriyama2020.md
