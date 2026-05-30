@@ -1,0 +1,29 @@
+op_id: 311be289
+type: paper
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  paper paper:Liu2023 --from cycles --apply
+status: ok
+started_at: '2026-05-30T16:09:40.417056+00:00'
+finished_at: '2026-05-30T16:09:40.458964+00:00'
+commons_commit: c2ef62a
+commons_tags:
+- paper/Liu2023/1.0.0
+projects_touched:
+  cycles:
+    overlay_rewrites:
+    - slug: Liu2023
+      path: /home/keith/d/health/processes/cycles/doc/papers/Liu2023.md
+      pin_version: 1.0.0
+      unlinked_source: /home/keith/d/health/processes/cycles/doc/background/papers/Liu2023.md
+decisions:
+- slug: Liu2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Liu2023.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert c2ef62a
+  projects:
+    cycles: git -C /home/keith/d/health/processes/cycles checkout HEAD -- doc/background/papers/Liu2023.md
+      doc/papers/Liu2023.md
