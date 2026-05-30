@@ -10,6 +10,10 @@ from typing import Any
 import yaml
 from science_tool.commons.config import resolve_commons_data_root
 
+# science:code
+# status: active
+# science:end
+
 SOURCE_FILES = (
     "NCBI2Reactome_All_Levels.txt",
     "ReactomePathways.txt",

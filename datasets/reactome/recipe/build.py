@@ -13,6 +13,10 @@ import yaml
 from science_tool.commons.config import resolve_commons_data_root
 from science_tool.commons.gene_crosswalk import CrosswalkRow, load_gene_crosswalk
 
+# science:code
+# status: active
+# science:end
+
 ResolutionStatus = Literal["approved", "unresolved", "ambiguous", "deprecated"]
 
 NCBI_FIELDNAMES = ["entrez_id", "pathway_id", "pathway_url", "pathway_name", "evidence_code", "species"]

@@ -8,6 +8,10 @@ from typing import Any
 from science_tool.commons.config import resolve_commons_data_root
 from science_tool.commons.datapackage import OUTPUT_ROOT_TOKEN, stream_sha256_and_bytes
 
+# science:code
+# status: active
+# science:end
+
 RESOURCE_FILES = {
     "sets": "sets.csv",
     "ncbi_gene_pathway": "ncbi_gene_pathway.csv",
