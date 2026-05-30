@@ -1,0 +1,40 @@
+op_id: 60c83615
+type: dataset
+invocation: /mnt/ssd/Dropbox/natural-systems/.venv/bin/science commons promote dataset
+  --from natural-systems-guide --slug hh1952-digitized-conductance --apply
+status: failed
+started_at: '2026-05-30T14:08:28.706246+00:00'
+finished_at: '2026-05-30T14:08:28.722306+00:00'
+commons_commit: null
+commons_tags: []
+projects_touched: {}
+decisions:
+- slug: hh1952-digitized-conductance
+  canonical_version: 1.0.0
+  canonical_paths:
+  - datasets/hh1952-digitized-conductance/entity.md
+  - datasets/hh1952-digitized-conductance/datapackage.yaml
+  - datasets/hh1952-digitized-conductance/recipe/README.md
+  per_resource_hashes:
+    HodgkinHuxley.py:
+      hash: sha256:03475aeb35a09fa26879e84b33f7a91a2bbf309af004288e3cde043b28aebe88
+      bytes: 7011
+    chaste-hodgkinhuxley-accessor.staged.json:
+      hash: sha256:95b1a11d853e8747131a082799f7cfb2a42c33f13a4516972851f1e0f5f21738
+      bytes: 396
+    hh1952-digitized-conductance.json:
+      hash: sha256:2cf29673349dd07520a7609ddf485f054a0d31bc932982765f845f612557c8a7
+      bytes: 16245
+  recipe_stubbed: true
+  dropped_fields:
+  - license
+  - local_path
+  - profiles
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: null
+  projects: {}
+failure_stage: preflight
+failure_detail: 'project /mnt/ssd/Dropbox/natural-systems has dirty target files:
+  doc/datasets/data-hh1952-digitized-conductance.md'
