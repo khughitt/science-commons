@@ -1,0 +1,29 @@
+op_id: 84ab82dd
+type: paper
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  paper paper:Alvord2024 --from cycles --apply
+status: ok
+started_at: '2026-05-30T16:10:12.079013+00:00'
+finished_at: '2026-05-30T16:10:12.113024+00:00'
+commons_commit: 29a28de
+commons_tags:
+- paper/Alvord2024/1.0.0
+projects_touched:
+  cycles:
+    overlay_rewrites:
+    - slug: Alvord2024
+      path: /home/keith/d/health/processes/cycles/doc/papers/Alvord2024.md
+      pin_version: 1.0.0
+      unlinked_source: /home/keith/d/health/processes/cycles/doc/background/papers/Alvord2024.md
+decisions:
+- slug: Alvord2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Alvord2024.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 29a28de
+  projects:
+    cycles: git -C /home/keith/d/health/processes/cycles checkout HEAD -- doc/background/papers/Alvord2024.md
+      doc/papers/Alvord2024.md
