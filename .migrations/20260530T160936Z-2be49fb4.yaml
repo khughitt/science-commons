@@ -1,0 +1,29 @@
+op_id: 2be49fb4
+type: paper
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  paper paper:Qu2023 --from cycles --apply
+status: ok
+started_at: '2026-05-30T16:09:36.915032+00:00'
+finished_at: '2026-05-30T16:09:36.962351+00:00'
+commons_commit: eda1fec
+commons_tags:
+- paper/Qu2023/1.0.0
+projects_touched:
+  cycles:
+    overlay_rewrites:
+    - slug: Qu2023
+      path: /home/keith/d/health/processes/cycles/doc/papers/Qu2023.md
+      pin_version: 1.0.0
+      unlinked_source: /home/keith/d/health/processes/cycles/doc/background/papers/Qu2023.md
+decisions:
+- slug: Qu2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Qu2023.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert eda1fec
+  projects:
+    cycles: git -C /home/keith/d/health/processes/cycles checkout HEAD -- doc/background/papers/Qu2023.md
+      doc/papers/Qu2023.md
