@@ -1,0 +1,22 @@
+name: h07-clean-base-coblentz-table-rows
+profile: data-package
+title: H07 Coblentz 1916 table clean rows
+created: '2026-05-30T19:25:19.667665+00:00'
+source_stage: stage_coblentz_1916
+cleaning_step: extract_coblentz_table_rows
+workflow:
+  name: h07-fidelity
+  task_ids:
+  - task:t376
+  related_ids:
+  - hypothesis:h07-empirical-fidelity-alignment
+resources:
+- name: coblentz-table-rows
+  path: coblentz-table-rows.csv
+  row_count: 59
+  hash: sha256:01c18ce99352dbf666df2f09dbc6776d70bdcd2792e74e67a35ec3dc390f4ac8
+  bytes: 31173
+- name: coblentz-table-rows-qa
+  path: qa/coblentz-table-rows-qa.json
+  hash: sha256:35ce0b9e84f391113ed91119aac82975d02d20886bcb1ac33d15ff35383b68fc
+  bytes: 130
