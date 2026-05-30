@@ -1,0 +1,29 @@
+op_id: d888bb27
+type: paper
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  paper paper:ElTanani2024 --from cycles --apply
+status: ok
+started_at: '2026-05-30T16:09:35.074439+00:00'
+finished_at: '2026-05-30T16:09:35.120221+00:00'
+commons_commit: '2558402'
+commons_tags:
+- paper/ElTanani2024/1.0.0
+projects_touched:
+  cycles:
+    overlay_rewrites:
+    - slug: ElTanani2024
+      path: /home/keith/d/health/processes/cycles/doc/papers/ElTanani2024.md
+      pin_version: 1.0.0
+      unlinked_source: /home/keith/d/health/processes/cycles/doc/background/papers/ElTanani2024.md
+decisions:
+- slug: ElTanani2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/ElTanani2024.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 2558402
+  projects:
+    cycles: git -C /home/keith/d/health/processes/cycles checkout HEAD -- doc/background/papers/ElTanani2024.md
+      doc/papers/ElTanani2024.md
