@@ -1,0 +1,47 @@
+op_id: acd8a5de
+type: dataset
+invocation: /mnt/ssd/Dropbox/natural-systems/.venv/bin/science commons promote dataset
+  --from natural-systems-guide --slug hh1952-digitized-conductance --apply
+status: ok
+started_at: '2026-05-30T14:41:46.927362+00:00'
+finished_at: '2026-05-30T14:41:46.969716+00:00'
+commons_commit: ed66338
+commons_tags:
+- dataset/hh1952-digitized-conductance/1.0.0
+projects_touched:
+  natural-systems-guide:
+    overlay_rewrites:
+    - slug: hh1952-digitized-conductance
+      path: /mnt/ssd/Dropbox/natural-systems/doc/datasets/data-hh1952-digitized-conductance.md
+      pin_version: 1.0.0
+decisions:
+- slug: hh1952-digitized-conductance
+  canonical_version: 1.0.0
+  canonical_paths:
+  - datasets/hh1952-digitized-conductance/entity.md
+  - datasets/hh1952-digitized-conductance/datapackage.yaml
+  - datasets/hh1952-digitized-conductance/recipe/README.md
+  per_resource_hashes:
+    HodgkinHuxley.py:
+      hash: sha256:03475aeb35a09fa26879e84b33f7a91a2bbf309af004288e3cde043b28aebe88
+      bytes: 7011
+    chaste-hodgkinhuxley-accessor.staged.json:
+      hash: sha256:95b1a11d853e8747131a082799f7cfb2a42c33f13a4516972851f1e0f5f21738
+      bytes: 396
+    hh1952-digitized-conductance.json:
+      hash: sha256:2cf29673349dd07520a7609ddf485f054a0d31bc932982765f845f612557c8a7
+      bytes: 16245
+  recipe_stubbed: true
+  dropped_fields:
+  - license
+  - local_path
+  - profiles
+  override_file: /home/keith/.config/science/data.yaml
+  override_backup: /home/keith/.config/science/data.yaml.bak.acd8a5de
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert ed66338
+  projects:
+    natural-systems-guide: git -C /mnt/ssd/Dropbox/natural-systems checkout HEAD --
+      doc/datasets/data-hh1952-digitized-conductance.md
