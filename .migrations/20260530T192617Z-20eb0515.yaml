@@ -1,0 +1,41 @@
+op_id: 20eb0515
+type: dataset
+invocation: /mnt/ssd/Dropbox/natural-systems/.venv/bin/science commons promote dataset
+  --from natural-systems-guide --slug h07-clean-base-exomol-transition-subset --apply
+status: ok
+started_at: '2026-05-30T19:26:17.851625+00:00'
+finished_at: '2026-05-30T19:26:17.902382+00:00'
+commons_commit: 026be30
+commons_tags:
+- dataset/h07-clean-base-exomol-transition-subset/1.0.0
+projects_touched:
+  natural-systems-guide:
+    overlay_rewrites:
+    - slug: h07-clean-base-exomol-transition-subset
+      path: /mnt/ssd/Dropbox/natural-systems/doc/datasets/data-h07-clean-base-exomol-transition-subset.md
+      pin_version: 1.0.0
+decisions:
+- slug: h07-clean-base-exomol-transition-subset
+  canonical_version: 1.0.0
+  canonical_paths:
+  - datasets/h07-clean-base-exomol-transition-subset/entity.md
+  - datasets/h07-clean-base-exomol-transition-subset/datapackage.yaml
+  - datasets/h07-clean-base-exomol-transition-subset/recipe/README.md
+  per_resource_hashes:
+    exomol-transition-subset:
+      hash: sha256:5af9564fe9b103302c8881464d48ce09c6cbb8dde7f486d19a86218518de9946
+      bytes: 55189
+    exomol-transition-subset-qa:
+      hash: sha256:551aaf3aefaf90429d24b2922a4ea0cb9ea7e1c6d117a4f060c0f967f70957a3
+      bytes: 132
+  recipe_stubbed: true
+  dropped_fields: []
+  override_file: /home/keith/.config/science/data.yaml
+  override_backup: /home/keith/.config/science/data.yaml.bak.20eb0515
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 026be30
+  projects:
+    natural-systems-guide: git -C /mnt/ssd/Dropbox/natural-systems checkout HEAD --
+      doc/datasets/data-h07-clean-base-exomol-transition-subset.md
