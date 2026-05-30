@@ -14,7 +14,7 @@ from science_tool.commons.config import resolve_commons_data_root
 from science_tool.commons.gene_crosswalk import CrosswalkRow, load_gene_crosswalk
 
 # science:code
-# status: active
+# status: exploratory
 # science:end
 
 ResolutionStatus = Literal["approved", "unresolved", "ambiguous", "deprecated"]

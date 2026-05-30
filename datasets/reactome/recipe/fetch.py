@@ -11,7 +11,7 @@ import yaml
 from science_tool.commons.config import resolve_commons_data_root
 
 # science:code
-# status: active
+# status: exploratory
 # science:end
 
 SOURCE_FILES = (

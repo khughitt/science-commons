@@ -9,7 +9,7 @@ from science_tool.commons.config import resolve_commons_data_root
 from science_tool.commons.datapackage import OUTPUT_ROOT_TOKEN, stream_sha256_and_bytes
 
 # science:code
-# status: active
+# status: exploratory
 # science:end
 
 RESOURCE_FILES = {
