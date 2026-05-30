@@ -1,0 +1,29 @@
+op_id: c5bf704d
+type: paper
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  paper paper:Allada2021 --from cycles --apply
+status: ok
+started_at: '2026-05-30T16:10:02.139367+00:00'
+finished_at: '2026-05-30T16:10:02.181008+00:00'
+commons_commit: dcd2cae
+commons_tags:
+- paper/Allada2021/1.0.0
+projects_touched:
+  cycles:
+    overlay_rewrites:
+    - slug: Allada2021
+      path: /home/keith/d/health/processes/cycles/doc/papers/Allada2021.md
+      pin_version: 1.0.0
+      unlinked_source: /home/keith/d/health/processes/cycles/doc/background/papers/Allada2021.md
+decisions:
+- slug: Allada2021
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Allada2021.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert dcd2cae
+  projects:
+    cycles: git -C /home/keith/d/health/processes/cycles checkout HEAD -- doc/background/papers/Allada2021.md
+      doc/papers/Allada2021.md
