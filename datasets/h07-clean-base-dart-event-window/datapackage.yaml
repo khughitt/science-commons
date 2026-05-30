@@ -1,0 +1,22 @@
+name: h07-clean-base-dart-event-window
+profile: data-package
+title: H07 DART 21418 event-window clean rows
+created: '2026-05-30T19:25:20.649056+00:00'
+source_stage: stage_dart_data
+cleaning_step: extract_dart_event_window
+workflow:
+  name: h07-fidelity
+  task_ids:
+  - task:t376
+  related_ids:
+  - hypothesis:h07-empirical-fidelity-alignment
+resources:
+- name: dart-event-window
+  path: dart-event-window.csv
+  row_count: 834
+  hash: sha256:f916733ce5de916dcfc43dd890694ea5112e383e3456f5b4699cde3d32cd9ed0
+  bytes: 318811
+- name: dart-event-window-qa
+  path: qa/dart-event-window-qa.json
+  hash: sha256:023547dbccc874bf5f79c5f9c7964b030d19cbba2aa328a73a766339b127d1a0
+  bytes: 132
