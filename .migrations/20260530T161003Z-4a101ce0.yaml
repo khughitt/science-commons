@@ -1,0 +1,29 @@
+op_id: 4a101ce0
+type: paper
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  paper paper:Cederroth2019 --from cycles --apply
+status: ok
+started_at: '2026-05-30T16:10:03.577170+00:00'
+finished_at: '2026-05-30T16:10:03.624958+00:00'
+commons_commit: ba73758
+commons_tags:
+- paper/Cederroth2019/1.0.0
+projects_touched:
+  cycles:
+    overlay_rewrites:
+    - slug: Cederroth2019
+      path: /home/keith/d/health/processes/cycles/doc/papers/Cederroth2019.md
+      pin_version: 1.0.0
+      unlinked_source: /home/keith/d/health/processes/cycles/doc/background/papers/Cederroth2019.md
+decisions:
+- slug: Cederroth2019
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Cederroth2019.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert ba73758
+  projects:
+    cycles: git -C /home/keith/d/health/processes/cycles checkout HEAD -- doc/background/papers/Cederroth2019.md
+      doc/papers/Cederroth2019.md
