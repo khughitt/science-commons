@@ -1,0 +1,51 @@
+name: arxiv-source-equations
+profile: data-package
+title: arXiv source equations for natural-systems analyses
+sources:
+- title: arXiv e-print source endpoint
+  path: https://arxiv.org/e-print/
+  retrieved_on: '2026-05-01'
+workflow:
+  name: arxiv-sources
+  steps:
+  - fetch_sources
+  - audit_failed_sources
+  - extract_equation_records
+  - qa_equation_records
+  - write_datapackage
+summary:
+  source_file_count: 6822
+  failed_source_count: 0
+  failed_source_audit_count: 0
+resources:
+- name: selected-arxiv-ids
+  path: source/arxiv-ids.example.txt
+  format: txt
+  source:
+    type: local
+    ref: /mnt/ssd/Dropbox/natural-systems/workflows/arxiv-sources/arxiv-ids.example.txt
+  hash: sha256:0355cd51d96602414fce576399a2502d711828d0501f164cd42f5f20acb47c7d
+  bytes: 87
+- name: equation-records
+  path: equations.jsonl
+  format: jsonl
+  row_count: 781
+  hash: sha256:23689787d4ca97f584254476a43e1d760bfbb5f55819dfa1c771b1f200a13184
+  bytes: 667859
+- name: equation-records-qa
+  path: qa/equation-records-qa.json
+  format: json
+  hash: sha256:13807cad388842062bb3f3aa6bf9fc50c26ba69296f22032e1a544b52367d4ce
+  bytes: 224
+- name: failed-arxiv-source-ids
+  path: failed-ids.txt
+  format: txt
+  row_count: 0
+  hash: sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  bytes: 0
+- name: failed-arxiv-source-audit
+  path: failed-source-audit.csv
+  format: csv
+  row_count: 0
+  hash: sha256:7a2111df55e795c9c7aab233541c030655acc6e4b8ff579ae01a69160219ef75
+  bytes: 69
