@@ -1,0 +1,22 @@
+name: h07-clean-base-allen-hh-glif-rows
+profile: data-package
+title: H07 Allen HH/GLIF electrophysiology clean rows
+created: '2026-05-30T19:25:20.956122+00:00'
+source_stage: stage_t440_allen_celltypes
+cleaning_step: extract_allen_hh_glif_rows
+workflow:
+  name: h07-fidelity
+  task_ids:
+  - task:t376
+  related_ids:
+  - hypothesis:h07-empirical-fidelity-alignment
+resources:
+- name: allen-hh-glif-rows
+  path: allen-hh-glif-rows.csv
+  row_count: 2333
+  hash: sha256:1bb55bae70a259ba5bdd802e8da83e2fafe0adecec260f0141f73ac60aa1db3f
+  bytes: 1485053
+- name: allen-hh-glif-rows-qa
+  path: qa/allen-hh-glif-rows-qa.json
+  hash: sha256:73394defa1dbf1685efd8cc823e8fc954e17589a20f6aebfca72873f75e9c5a7
+  bytes: 134
