@@ -1,0 +1,41 @@
+op_id: f329727f
+type: dataset
+invocation: /mnt/ssd/Dropbox/natural-systems/.venv/bin/science commons promote dataset
+  --from natural-systems-guide --slug h07-clean-base-pangaea-darcy-rows --apply
+status: ok
+started_at: '2026-05-30T19:26:09.912117+00:00'
+finished_at: '2026-05-30T19:26:09.956551+00:00'
+commons_commit: 285aecd
+commons_tags:
+- dataset/h07-clean-base-pangaea-darcy-rows/1.0.0
+projects_touched:
+  natural-systems-guide:
+    overlay_rewrites:
+    - slug: h07-clean-base-pangaea-darcy-rows
+      path: /mnt/ssd/Dropbox/natural-systems/doc/datasets/data-h07-clean-base-pangaea-darcy-rows.md
+      pin_version: 1.0.0
+decisions:
+- slug: h07-clean-base-pangaea-darcy-rows
+  canonical_version: 1.0.0
+  canonical_paths:
+  - datasets/h07-clean-base-pangaea-darcy-rows/entity.md
+  - datasets/h07-clean-base-pangaea-darcy-rows/datapackage.yaml
+  - datasets/h07-clean-base-pangaea-darcy-rows/recipe/README.md
+  per_resource_hashes:
+    pangaea-darcy-rows:
+      hash: sha256:1c5b0ae8ec154fa020f1086be5bf7fda314b7e47509f9e4df420c30c2a048cd9
+      bytes: 15096
+    pangaea-darcy-rows-qa:
+      hash: sha256:7488fe75052013925a7b5ff12e82e0c217370bf6e13a0fbb0bd442720b6888c2
+      bytes: 130
+  recipe_stubbed: true
+  dropped_fields: []
+  override_file: /home/keith/.config/science/data.yaml
+  override_backup: /home/keith/.config/science/data.yaml.bak.f329727f
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 285aecd
+  projects:
+    natural-systems-guide: git -C /mnt/ssd/Dropbox/natural-systems checkout HEAD --
+      doc/datasets/data-h07-clean-base-pangaea-darcy-rows.md
