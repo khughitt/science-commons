@@ -1,0 +1,29 @@
+op_id: f9a48b98
+type: paper
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  paper paper:Aiello2026 --from cycles --apply
+status: ok
+started_at: '2026-05-30T19:29:16.221089+00:00'
+finished_at: '2026-05-30T19:29:16.266986+00:00'
+commons_commit: 28e3e45
+commons_tags:
+- paper/Aiello2026/1.0.0
+projects_touched:
+  cycles:
+    overlay_rewrites:
+    - slug: Aiello2026
+      path: /home/keith/d/health/processes/cycles/doc/papers/Aiello2026.md
+      pin_version: 1.0.0
+      unlinked_source: /home/keith/d/health/processes/cycles/doc/background/papers/Aiello2026.md
+decisions:
+- slug: Aiello2026
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Aiello2026.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 28e3e45
+  projects:
+    cycles: git -C /home/keith/d/health/processes/cycles checkout HEAD -- doc/background/papers/Aiello2026.md
+      doc/papers/Aiello2026.md
