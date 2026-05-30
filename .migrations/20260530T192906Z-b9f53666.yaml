@@ -1,0 +1,29 @@
+op_id: b9f53666
+type: paper
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  paper paper:Dowell2001 --from cycles --apply
+status: ok
+started_at: '2026-05-30T19:29:06.223387+00:00'
+finished_at: '2026-05-30T19:29:06.272394+00:00'
+commons_commit: ef3f8d6
+commons_tags:
+- paper/Dowell2001/1.0.0
+projects_touched:
+  cycles:
+    overlay_rewrites:
+    - slug: Dowell2001
+      path: /home/keith/d/health/processes/cycles/doc/papers/Dowell2001.md
+      pin_version: 1.0.0
+      unlinked_source: /home/keith/d/health/processes/cycles/doc/background/papers/Dowell2001.md
+decisions:
+- slug: Dowell2001
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Dowell2001.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert ef3f8d6
+  projects:
+    cycles: git -C /home/keith/d/health/processes/cycles checkout HEAD -- doc/background/papers/Dowell2001.md
+      doc/papers/Dowell2001.md
