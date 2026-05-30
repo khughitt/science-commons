@@ -1,0 +1,23 @@
+op_id: 8ddaa11a
+type: paper
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  paper paper:Li2024a --from cycles --apply
+status: failed
+started_at: '2026-05-30T20:00:33.320195+00:00'
+finished_at: '2026-05-30T20:00:33.340765+00:00'
+commons_commit: null
+commons_tags: []
+projects_touched: {}
+decisions:
+- slug: Li2024a
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Li2024a.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: null
+  projects: {}
+failure_stage: preflight
+failure_detail: 'project /home/keith/d/health/processes/cycles has dirty target files:
+  doc/background/papers/Li2024a.md'
