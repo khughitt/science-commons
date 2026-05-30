@@ -1,0 +1,29 @@
+op_id: 61d69f24
+type: paper
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  paper paper:Huang2023 --from cycles --apply
+status: ok
+started_at: '2026-05-30T16:09:57.815507+00:00'
+finished_at: '2026-05-30T16:09:57.850215+00:00'
+commons_commit: '8045881'
+commons_tags:
+- paper/Huang2023/1.0.0
+projects_touched:
+  cycles:
+    overlay_rewrites:
+    - slug: Huang2023
+      path: /home/keith/d/health/processes/cycles/doc/papers/Huang2023.md
+      pin_version: 1.0.0
+      unlinked_source: /home/keith/d/health/processes/cycles/doc/background/papers/Huang2023.md
+decisions:
+- slug: Huang2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Huang2023.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 8045881
+  projects:
+    cycles: git -C /home/keith/d/health/processes/cycles checkout HEAD -- doc/background/papers/Huang2023.md
+      doc/papers/Huang2023.md
