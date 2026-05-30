@@ -1,0 +1,29 @@
+op_id: 5be5cb81
+type: paper
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  paper paper:Ye2018 --from cycles --apply
+status: ok
+started_at: '2026-05-30T16:09:29.973525+00:00'
+finished_at: '2026-05-30T16:09:30.024062+00:00'
+commons_commit: e5efd5a
+commons_tags:
+- paper/Ye2018/1.0.0
+projects_touched:
+  cycles:
+    overlay_rewrites:
+    - slug: Ye2018
+      path: /home/keith/d/health/processes/cycles/doc/papers/Ye2018.md
+      pin_version: 1.0.0
+      unlinked_source: /home/keith/d/health/processes/cycles/doc/background/papers/Ye2018.md
+decisions:
+- slug: Ye2018
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Ye2018.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert e5efd5a
+  projects:
+    cycles: git -C /home/keith/d/health/processes/cycles checkout HEAD -- doc/background/papers/Ye2018.md
+      doc/papers/Ye2018.md
