@@ -1,0 +1,56 @@
+name: reactome
+resources:
+- name: sets
+  path: sets.csv
+  format: csv
+  mediatype: text/csv
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/reactome/sets.csv
+  hash: sha256:df8c8124b8d9ba05ab54dd6dcd816b4832fbf5e44d115ddb4da456cedc1c0745
+  bytes: 894397
+- name: ncbi_gene_pathway
+  path: ncbi_gene_pathway.csv
+  format: csv
+  mediatype: text/csv
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/reactome/ncbi_gene_pathway.csv
+  hash: sha256:c803ae14be8f2b161bcefb4f18f5cf864e7bb1f76a56c66df49c71817fc38361
+  bytes: 18907881
+- name: pathways
+  path: pathways.csv
+  format: csv
+  mediatype: text/csv
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/reactome/pathways.csv
+  hash: sha256:b2c1372b8b48680581a18600c28f753a14041bb6cc0ecfcfe431a9d3c4b3e37b
+  bytes: 210342
+- name: pathway_relations
+  path: pathway_relations.csv
+  format: csv
+  mediatype: text/csv
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/reactome/pathway_relations.csv
+  hash: sha256:921de6ec9f361a61934c5d51c4b0343e50c9b5d37baa10b126aba94761cfc7ad
+  bytes: 81079
+- name: gene_set_panel
+  path: gene_set_panel.csv
+  format: csv
+  mediatype: text/csv
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/reactome/gene_set_panel.csv
+  hash: sha256:260d5a0a69cfb7e0b0f2523e0cec7ee3d281bceb7971a56932161f1ecdec1bd4
+  bytes: 11674795
+- name: resolution_report
+  path: resolution_report.csv
+  format: csv
+  mediatype: text/csv
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/reactome/resolution_report.csv
+  hash: sha256:4f4b4a8fb060bd2853d6eb11d3f3ddf22c66f386754932a23a2c041941913661
+  bytes: 79886
