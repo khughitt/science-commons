@@ -1,0 +1,22 @@
+name: h07-clean-base-pangaea-darcy-rows
+profile: data-package
+title: H07 PANGAEA Darcy clean rows
+created: '2026-05-30T19:25:20.559700+00:00'
+source_stage: stage_pangaea_darcy
+cleaning_step: extract_pangaea_darcy_rows
+workflow:
+  name: h07-fidelity
+  task_ids:
+  - task:t376
+  related_ids:
+  - hypothesis:h07-empirical-fidelity-alignment
+resources:
+- name: pangaea-darcy-rows
+  path: pangaea-darcy-rows.csv
+  row_count: 39
+  hash: sha256:1c5b0ae8ec154fa020f1086be5bf7fda314b7e47509f9e4df420c30c2a048cd9
+  bytes: 15096
+- name: pangaea-darcy-rows-qa
+  path: qa/pangaea-darcy-rows-qa.json
+  hash: sha256:7488fe75052013925a7b5ff12e82e0c217370bf6e13a0fbb0bd442720b6888c2
+  bytes: 130
