@@ -1,0 +1,29 @@
+op_id: a37295e6
+type: paper
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  paper paper:Shostak2017 --from cycles --apply
+status: ok
+started_at: '2026-05-30T16:09:31.573545+00:00'
+finished_at: '2026-05-30T16:09:31.619020+00:00'
+commons_commit: 53093d4
+commons_tags:
+- paper/Shostak2017/1.0.0
+projects_touched:
+  cycles:
+    overlay_rewrites:
+    - slug: Shostak2017
+      path: /home/keith/d/health/processes/cycles/doc/papers/Shostak2017.md
+      pin_version: 1.0.0
+      unlinked_source: /home/keith/d/health/processes/cycles/doc/background/papers/Shostak2017.md
+decisions:
+- slug: Shostak2017
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Shostak2017.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 53093d4
+  projects:
+    cycles: git -C /home/keith/d/health/processes/cycles checkout HEAD -- doc/background/papers/Shostak2017.md
+      doc/papers/Shostak2017.md
