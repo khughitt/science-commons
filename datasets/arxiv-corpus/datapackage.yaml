@@ -1,0 +1,57 @@
+name: arxiv-corpus
+profile: data-package
+title: arXiv metadata corpus for natural-systems analyses
+description: Prepared arXiv metadata used as the local paper-discovery corpus for
+  formulation-breadth analyses.
+sources:
+- title: Kaggle arXiv Dataset
+  path: https://www.kaggle.com/datasets/Cornell-University/arxiv
+  retrieved_on: '2026-05-01'
+workflow:
+  name: arxiv-corpus
+  steps:
+  - download_arxiv_json
+  - prepare_raw_corpus
+  - qa_raw_corpus
+  - write_datapackage
+resources:
+- name: raw-arxiv-json
+  path: source/arxiv-metadata-oai-snapshot.json
+  format: jsonl
+  mediatype: application/json
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/raw/arxiv/arxiv-metadata-oai-snapshot.json
+  hash: sha256:3e4ec0f2b8b3a7ea80fbcc04b8a7471a620a7ac39252213589dca437c347b98d
+  bytes: 5236472706
+- name: raw-corpus
+  path: corpus/raw.feather
+  format: feather
+  mediatype: application/vnd.apache.arrow.file
+  schema:
+    fields:
+    - name: id
+      type: string
+    - name: doi
+      type: string
+    - name: title
+      type: string
+    - name: abstract
+      type: string
+    - name: date
+      type: datetime
+    - name: update_date
+      type: date
+    - name: categories
+      type: array
+    - name: primary_category
+      type: string
+  row_count: 3021737
+  hash: sha256:ed90e1c5ae9c90488daad752c8e636d8d004270ee94500ba30daa3372330a4cc
+  bytes: 4140694821
+- name: raw-corpus-qa
+  path: corpus/qa/raw-corpus-qa.json
+  format: json
+  mediatype: application/json
+  hash: sha256:d1bc704cded354e1e2cc75d403974eb575f7154c423bcd742cb396e6eb33f56a
+  bytes: 115
