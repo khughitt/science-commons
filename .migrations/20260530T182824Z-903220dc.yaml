@@ -1,0 +1,50 @@
+op_id: 903220dc
+type: dataset
+invocation: /mnt/ssd/Dropbox/natural-systems/.venv/bin/science commons promote dataset
+  --from natural-systems-guide --slug openalex-citations --apply
+status: ok
+started_at: '2026-05-30T18:28:24.986402+00:00'
+finished_at: '2026-05-30T18:28:25.026934+00:00'
+commons_commit: 4d431df
+commons_tags:
+- dataset/openalex-citations/1.0.0
+projects_touched:
+  natural-systems-guide:
+    overlay_rewrites:
+    - slug: openalex-citations
+      path: /mnt/ssd/Dropbox/natural-systems/doc/datasets/data-openalex-citations.md
+      pin_version: 1.0.0
+decisions:
+- slug: openalex-citations
+  canonical_version: 1.0.0
+  canonical_paths:
+  - datasets/openalex-citations/entity.md
+  - datasets/openalex-citations/datapackage.yaml
+  - datasets/openalex-citations/recipe/README.md
+  per_resource_hashes:
+    raw-openalex-responses:
+      hash: sha256:beac590640d211865c7d9789736b7e4424e36ae162ebfdbd9fba8dc1d7ef1221
+      bytes: 1410676
+    raw-responses-qa:
+      hash: sha256:fd7f0687a29ecf2d79a2bbaf8c12078a95841d0e90e5adf13b51579a9f28f6f0
+      bytes: 168
+    citations-csv:
+      hash: sha256:65a1fa354f14470099ce6d8cc807912cd231b688d43eb3077207b3ff5b46ce86
+      bytes: 57889
+    citations-json:
+      hash: sha256:6b0ce8f63fab9c0a8464ee002a9e3ab46365e6faad18fb90ce151b5ece96f605
+      bytes: 115198
+    citations-qa:
+      hash: sha256:ae24d6b15611317ff448359761336b3e173375a1fd89dc548f1d86f635de0dac
+      bytes: 103
+  recipe_stubbed: true
+  dropped_fields: []
+  override_file: /home/keith/.config/science/data.yaml
+  override_backup: /home/keith/.config/science/data.yaml.bak.903220dc
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 4d431df
+  projects:
+    natural-systems-guide: git -C /mnt/ssd/Dropbox/natural-systems checkout HEAD --
+      doc/datasets/data-openalex-citations.md
