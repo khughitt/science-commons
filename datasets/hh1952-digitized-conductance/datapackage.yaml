@@ -1,0 +1,50 @@
+name: hh1952-digitized-conductance
+profile: data-package
+title: Hodgkin-Huxley 1952 digitized voltage-clamp conductance traces
+description: Reproducible task:t251 data-foundation artifacts for Hodgkin-Huxley voltage-clamp
+  fitting.
+created: '2026-05-30T13:57:15.847874+00:00'
+workflow:
+  name: hh-voltage-clamp
+  task_ids:
+  - task:t251
+  - task:t377
+  related_ids:
+  - hypothesis:h07-empirical-fidelity-alignment
+  steps:
+  - stage_chaste_accessor
+  - extract_digitized_conductance
+  - write_datapackage
+  config_snapshot:
+    workflow_name: hh-voltage-clamp
+    out_dir: data/processed/hh-voltage-clamp
+    raw_dir: data/raw/hh-voltage-clamp
+    chaste_accessor:
+      url: https://raw.githubusercontent.com/Chaste/project_HodgkinHuxleyABC/master/src/HodgkinHuxley.py
+      raw_path: data/raw/hh-voltage-clamp/chaste-project_HodgkinHuxleyABC/HodgkinHuxley.py
+    sources:
+      chaste_tutorial: https://chaste.github.io/docs/paper-tutorials/hodgkinhuxleyabc/
+      physiome_model: https://www.imagwiki.nibib.nih.gov/physiome/jsim/models/webmodel/NSR/hodgkinhuxley1952
+    task: task:t251
+    related:
+    - task:t377
+    - hypothesis:h07-empirical-fidelity-alignment
+resources:
+- name: HodgkinHuxley.py
+  path: source/HodgkinHuxley.py
+  role: input
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/raw/hh-voltage-clamp/chaste-project_HodgkinHuxleyABC/HodgkinHuxley.py
+  hash: sha256:03475aeb35a09fa26879e84b33f7a91a2bbf309af004288e3cde043b28aebe88
+  bytes: 7011
+- name: chaste-hodgkinhuxley-accessor.staged.json
+  path: metadata/raw/chaste-hodgkinhuxley-accessor.staged.json
+  role: output
+  hash: sha256:95b1a11d853e8747131a082799f7cfb2a42c33f13a4516972851f1e0f5f21738
+  bytes: 396
+- name: hh1952-digitized-conductance.json
+  path: hh1952-digitized-conductance.json
+  role: output
+  hash: sha256:2cf29673349dd07520a7609ddf485f054a0d31bc932982765f845f612557c8a7
+  bytes: 16245
