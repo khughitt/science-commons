@@ -1,0 +1,29 @@
+op_id: af1ae4de
+type: paper
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  paper paper:Prinsen2025 --from cycles --apply
+status: ok
+started_at: '2026-05-30T16:10:14.939800+00:00'
+finished_at: '2026-05-30T16:10:14.974570+00:00'
+commons_commit: eeb4550
+commons_tags:
+- paper/Prinsen2025/1.0.0
+projects_touched:
+  cycles:
+    overlay_rewrites:
+    - slug: Prinsen2025
+      path: /home/keith/d/health/processes/cycles/doc/papers/Prinsen2025.md
+      pin_version: 1.0.0
+      unlinked_source: /home/keith/d/health/processes/cycles/doc/background/papers/Prinsen2025.md
+decisions:
+- slug: Prinsen2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Prinsen2025.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert eeb4550
+  projects:
+    cycles: git -C /home/keith/d/health/processes/cycles checkout HEAD -- doc/background/papers/Prinsen2025.md
+      doc/papers/Prinsen2025.md
