@@ -1,0 +1,29 @@
+op_id: 45991e4b
+type: paper
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  paper paper:Ince2023 --from cycles --apply
+status: ok
+started_at: '2026-05-30T19:29:03.803232+00:00'
+finished_at: '2026-05-30T19:29:03.849230+00:00'
+commons_commit: 38826bd
+commons_tags:
+- paper/Ince2023/1.0.0
+projects_touched:
+  cycles:
+    overlay_rewrites:
+    - slug: Ince2023
+      path: /home/keith/d/health/processes/cycles/doc/papers/Ince2023.md
+      pin_version: 1.0.0
+      unlinked_source: /home/keith/d/health/processes/cycles/doc/background/papers/Ince2023.md
+decisions:
+- slug: Ince2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Ince2023.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 38826bd
+  projects:
+    cycles: git -C /home/keith/d/health/processes/cycles checkout HEAD -- doc/background/papers/Ince2023.md
+      doc/papers/Ince2023.md
