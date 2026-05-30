@@ -1,0 +1,41 @@
+op_id: ac8d04e2
+type: dataset
+invocation: /mnt/ssd/Dropbox/natural-systems/.venv/bin/science commons promote dataset
+  --from natural-systems-guide --slug h07-clean-base-dart-event-window --apply
+status: ok
+started_at: '2026-05-30T19:25:53.089923+00:00'
+finished_at: '2026-05-30T19:25:53.144542+00:00'
+commons_commit: fc6027a
+commons_tags:
+- dataset/h07-clean-base-dart-event-window/1.0.0
+projects_touched:
+  natural-systems-guide:
+    overlay_rewrites:
+    - slug: h07-clean-base-dart-event-window
+      path: /mnt/ssd/Dropbox/natural-systems/doc/datasets/data-h07-clean-base-dart-event-window.md
+      pin_version: 1.0.0
+decisions:
+- slug: h07-clean-base-dart-event-window
+  canonical_version: 1.0.0
+  canonical_paths:
+  - datasets/h07-clean-base-dart-event-window/entity.md
+  - datasets/h07-clean-base-dart-event-window/datapackage.yaml
+  - datasets/h07-clean-base-dart-event-window/recipe/README.md
+  per_resource_hashes:
+    dart-event-window:
+      hash: sha256:f916733ce5de916dcfc43dd890694ea5112e383e3456f5b4699cde3d32cd9ed0
+      bytes: 318811
+    dart-event-window-qa:
+      hash: sha256:023547dbccc874bf5f79c5f9c7964b030d19cbba2aa328a73a766339b127d1a0
+      bytes: 132
+  recipe_stubbed: true
+  dropped_fields: []
+  override_file: /home/keith/.config/science/data.yaml
+  override_backup: /home/keith/.config/science/data.yaml.bak.ac8d04e2
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert fc6027a
+  projects:
+    natural-systems-guide: git -C /mnt/ssd/Dropbox/natural-systems checkout HEAD --
+      doc/datasets/data-h07-clean-base-dart-event-window.md
