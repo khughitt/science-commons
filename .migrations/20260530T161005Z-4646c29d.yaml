@@ -1,0 +1,29 @@
+op_id: 4646c29d
+type: paper
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  paper paper:Roenneberg2022 --from cycles --apply
+status: ok
+started_at: '2026-05-30T16:10:05.086100+00:00'
+finished_at: '2026-05-30T16:10:05.126362+00:00'
+commons_commit: 9fd6068
+commons_tags:
+- paper/Roenneberg2022/1.0.0
+projects_touched:
+  cycles:
+    overlay_rewrites:
+    - slug: Roenneberg2022
+      path: /home/keith/d/health/processes/cycles/doc/papers/Roenneberg2022.md
+      pin_version: 1.0.0
+      unlinked_source: /home/keith/d/health/processes/cycles/doc/background/papers/Roenneberg2022.md
+decisions:
+- slug: Roenneberg2022
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Roenneberg2022.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 9fd6068
+  projects:
+    cycles: git -C /home/keith/d/health/processes/cycles checkout HEAD -- doc/background/papers/Roenneberg2022.md
+      doc/papers/Roenneberg2022.md
