@@ -1,0 +1,29 @@
+op_id: 0032e309
+type: paper
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  paper paper:Finger2020 --from cycles --apply
+status: ok
+started_at: '2026-05-30T16:10:07.947906+00:00'
+finished_at: '2026-05-30T16:10:07.996977+00:00'
+commons_commit: b25211a
+commons_tags:
+- paper/Finger2020/1.0.0
+projects_touched:
+  cycles:
+    overlay_rewrites:
+    - slug: Finger2020
+      path: /home/keith/d/health/processes/cycles/doc/papers/Finger2020.md
+      pin_version: 1.0.0
+      unlinked_source: /home/keith/d/health/processes/cycles/doc/background/papers/Finger2020.md
+decisions:
+- slug: Finger2020
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Finger2020.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert b25211a
+  projects:
+    cycles: git -C /home/keith/d/health/processes/cycles checkout HEAD -- doc/background/papers/Finger2020.md
+      doc/papers/Finger2020.md
