@@ -1,0 +1,29 @@
+op_id: f0531ad6
+type: paper
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  paper paper:Scheiermann2018 --from cycles --apply
+status: ok
+started_at: '2026-05-30T16:09:54.528788+00:00'
+finished_at: '2026-05-30T16:09:54.571594+00:00'
+commons_commit: 3669f96
+commons_tags:
+- paper/Scheiermann2018/1.0.0
+projects_touched:
+  cycles:
+    overlay_rewrites:
+    - slug: Scheiermann2018
+      path: /home/keith/d/health/processes/cycles/doc/papers/Scheiermann2018.md
+      pin_version: 1.0.0
+      unlinked_source: /home/keith/d/health/processes/cycles/doc/background/papers/Scheiermann2018.md
+decisions:
+- slug: Scheiermann2018
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Scheiermann2018.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 3669f96
+  projects:
+    cycles: git -C /home/keith/d/health/processes/cycles checkout HEAD -- doc/background/papers/Scheiermann2018.md
+      doc/papers/Scheiermann2018.md
