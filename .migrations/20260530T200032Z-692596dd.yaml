@@ -1,0 +1,23 @@
+op_id: 692596dd
+type: paper
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  paper paper:Zeng2024a --from cycles --apply
+status: failed
+started_at: '2026-05-30T20:00:32.180108+00:00'
+finished_at: '2026-05-30T20:00:32.200403+00:00'
+commons_commit: null
+commons_tags: []
+projects_touched: {}
+decisions:
+- slug: Zeng2024a
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Zeng2024a.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: null
+  projects: {}
+failure_stage: preflight
+failure_detail: 'project /home/keith/d/health/processes/cycles has dirty target files:
+  doc/background/papers/Zeng2024a.md'
