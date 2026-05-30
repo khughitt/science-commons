@@ -1,0 +1,29 @@
+op_id: ded9ce6f
+type: paper
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  paper paper:Martinez2018 --from cycles --apply
+status: ok
+started_at: '2026-05-30T19:29:07.723411+00:00'
+finished_at: '2026-05-30T19:29:07.764439+00:00'
+commons_commit: 9a977af
+commons_tags:
+- paper/Martinez2018/1.0.0
+projects_touched:
+  cycles:
+    overlay_rewrites:
+    - slug: Martinez2018
+      path: /home/keith/d/health/processes/cycles/doc/papers/Martinez2018.md
+      pin_version: 1.0.0
+      unlinked_source: /home/keith/d/health/processes/cycles/doc/background/papers/Martinez2018.md
+decisions:
+- slug: Martinez2018
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Martinez2018.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 9a977af
+  projects:
+    cycles: git -C /home/keith/d/health/processes/cycles checkout HEAD -- doc/background/papers/Martinez2018.md
+      doc/papers/Martinez2018.md
