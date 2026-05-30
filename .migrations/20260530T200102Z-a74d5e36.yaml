@@ -1,0 +1,29 @@
+op_id: a74d5e36
+type: paper
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  paper paper:Li2024a --from cycles --apply
+status: ok
+started_at: '2026-05-30T20:01:02.298559+00:00'
+finished_at: '2026-05-30T20:01:02.341862+00:00'
+commons_commit: db72c7f
+commons_tags:
+- paper/Li2024a/1.0.0
+projects_touched:
+  cycles:
+    overlay_rewrites:
+    - slug: Li2024a
+      path: /home/keith/d/health/processes/cycles/doc/papers/Li2024a.md
+      pin_version: 1.0.0
+      unlinked_source: /home/keith/d/health/processes/cycles/doc/background/papers/Li2024a.md
+decisions:
+- slug: Li2024a
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Li2024a.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert db72c7f
+  projects:
+    cycles: git -C /home/keith/d/health/processes/cycles checkout HEAD -- doc/background/papers/Li2024a.md
+      doc/papers/Li2024a.md
