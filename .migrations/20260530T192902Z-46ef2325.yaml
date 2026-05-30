@@ -1,0 +1,29 @@
+op_id: 46ef2325
+type: paper
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  paper paper:Wyse2021 --from cycles --apply
+status: ok
+started_at: '2026-05-30T19:29:02.268062+00:00'
+finished_at: '2026-05-30T19:29:02.317307+00:00'
+commons_commit: 2abbab0
+commons_tags:
+- paper/Wyse2021/1.0.0
+projects_touched:
+  cycles:
+    overlay_rewrites:
+    - slug: Wyse2021
+      path: /home/keith/d/health/processes/cycles/doc/papers/Wyse2021.md
+      pin_version: 1.0.0
+      unlinked_source: /home/keith/d/health/processes/cycles/doc/background/papers/Wyse2021.md
+decisions:
+- slug: Wyse2021
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Wyse2021.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 2abbab0
+  projects:
+    cycles: git -C /home/keith/d/health/processes/cycles checkout HEAD -- doc/background/papers/Wyse2021.md
+      doc/papers/Wyse2021.md
