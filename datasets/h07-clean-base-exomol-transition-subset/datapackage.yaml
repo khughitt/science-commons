@@ -1,0 +1,22 @@
+name: h07-clean-base-exomol-transition-subset
+profile: data-package
+title: H07 ExoMol CO transition-subset clean rows
+created: '2026-05-30T19:25:20.747811+00:00'
+source_stage: stage_exomol_co
+cleaning_step: extract_exomol_transition_subset
+workflow:
+  name: h07-fidelity
+  task_ids:
+  - task:t376
+  related_ids:
+  - hypothesis:h07-empirical-fidelity-alignment
+resources:
+- name: exomol-transition-subset
+  path: exomol-transition-subset.csv
+  row_count: 120
+  hash: sha256:5af9564fe9b103302c8881464d48ce09c6cbb8dde7f486d19a86218518de9946
+  bytes: 55189
+- name: exomol-transition-subset-qa
+  path: qa/exomol-transition-subset-qa.json
+  hash: sha256:551aaf3aefaf90429d24b2922a4ea0cb9ea7e1c6d117a4f060c0f967f70957a3
+  bytes: 132
