@@ -1,0 +1,29 @@
+op_id: 345a1625
+type: paper
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  paper paper:Azzi2023 --from cycles --apply
+status: ok
+started_at: '2026-05-30T16:09:42.213127+00:00'
+finished_at: '2026-05-30T16:09:42.254350+00:00'
+commons_commit: 47e3e00
+commons_tags:
+- paper/Azzi2023/1.0.0
+projects_touched:
+  cycles:
+    overlay_rewrites:
+    - slug: Azzi2023
+      path: /home/keith/d/health/processes/cycles/doc/papers/Azzi2023.md
+      pin_version: 1.0.0
+      unlinked_source: /home/keith/d/health/processes/cycles/doc/background/papers/Azzi2023.md
+decisions:
+- slug: Azzi2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Azzi2023.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 47e3e00
+  projects:
+    cycles: git -C /home/keith/d/health/processes/cycles checkout HEAD -- doc/background/papers/Azzi2023.md
+      doc/papers/Azzi2023.md
