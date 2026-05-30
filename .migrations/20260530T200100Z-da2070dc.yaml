@@ -1,0 +1,29 @@
+op_id: da2070dc
+type: paper
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  paper paper:Zeng2024a --from cycles --apply
+status: ok
+started_at: '2026-05-30T20:01:00.820080+00:00'
+finished_at: '2026-05-30T20:01:00.865919+00:00'
+commons_commit: 4b67525
+commons_tags:
+- paper/Zeng2024a/1.0.0
+projects_touched:
+  cycles:
+    overlay_rewrites:
+    - slug: Zeng2024a
+      path: /home/keith/d/health/processes/cycles/doc/papers/Zeng2024a.md
+      pin_version: 1.0.0
+      unlinked_source: /home/keith/d/health/processes/cycles/doc/background/papers/Zeng2024a.md
+decisions:
+- slug: Zeng2024a
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Zeng2024a.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 4b67525
+  projects:
+    cycles: git -C /home/keith/d/health/processes/cycles checkout HEAD -- doc/background/papers/Zeng2024a.md
+      doc/papers/Zeng2024a.md
