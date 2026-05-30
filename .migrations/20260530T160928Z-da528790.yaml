@@ -1,0 +1,29 @@
+op_id: da528790
+type: paper
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  paper paper:Fortin2024 --from cycles --apply
+status: ok
+started_at: '2026-05-30T16:09:28.305993+00:00'
+finished_at: '2026-05-30T16:09:28.356536+00:00'
+commons_commit: f51dc28
+commons_tags:
+- paper/Fortin2024/1.0.0
+projects_touched:
+  cycles:
+    overlay_rewrites:
+    - slug: Fortin2024
+      path: /home/keith/d/health/processes/cycles/doc/papers/Fortin2024.md
+      pin_version: 1.0.0
+      unlinked_source: /home/keith/d/health/processes/cycles/doc/background/papers/Fortin2024.md
+decisions:
+- slug: Fortin2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Fortin2024.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert f51dc28
+  projects:
+    cycles: git -C /home/keith/d/health/processes/cycles checkout HEAD -- doc/background/papers/Fortin2024.md
+      doc/papers/Fortin2024.md
