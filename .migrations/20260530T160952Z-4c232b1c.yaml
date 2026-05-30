@@ -1,0 +1,29 @@
+op_id: 4c232b1c
+type: paper
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  paper paper:Cermakian2022 --from cycles --apply
+status: ok
+started_at: '2026-05-30T16:09:52.734591+00:00'
+finished_at: '2026-05-30T16:09:52.775074+00:00'
+commons_commit: 9ede29d
+commons_tags:
+- paper/Cermakian2022/1.0.0
+projects_touched:
+  cycles:
+    overlay_rewrites:
+    - slug: Cermakian2022
+      path: /home/keith/d/health/processes/cycles/doc/papers/Cermakian2022.md
+      pin_version: 1.0.0
+      unlinked_source: /home/keith/d/health/processes/cycles/doc/background/papers/Cermakian2022.md
+decisions:
+- slug: Cermakian2022
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Cermakian2022.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 9ede29d
+  projects:
+    cycles: git -C /home/keith/d/health/processes/cycles checkout HEAD -- doc/background/papers/Cermakian2022.md
+      doc/papers/Cermakian2022.md
