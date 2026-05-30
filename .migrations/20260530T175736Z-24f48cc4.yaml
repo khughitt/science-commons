@@ -1,0 +1,44 @@
+op_id: 24f48cc4
+type: dataset
+invocation: /mnt/ssd/Dropbox/natural-systems/.venv/bin/science commons promote dataset
+  --from natural-systems-guide --slug arxiv-corpus --apply
+status: ok
+started_at: '2026-05-30T17:57:36.052923+00:00'
+finished_at: '2026-05-30T17:57:36.102074+00:00'
+commons_commit: 45ce99d
+commons_tags:
+- dataset/arxiv-corpus/1.0.0
+projects_touched:
+  natural-systems-guide:
+    overlay_rewrites:
+    - slug: arxiv-corpus
+      path: /mnt/ssd/Dropbox/natural-systems/doc/datasets/data-arxiv-corpus.md
+      pin_version: 1.0.0
+decisions:
+- slug: arxiv-corpus
+  canonical_version: 1.0.0
+  canonical_paths:
+  - datasets/arxiv-corpus/entity.md
+  - datasets/arxiv-corpus/datapackage.yaml
+  - datasets/arxiv-corpus/recipe/README.md
+  per_resource_hashes:
+    raw-arxiv-json:
+      hash: sha256:3e4ec0f2b8b3a7ea80fbcc04b8a7471a620a7ac39252213589dca437c347b98d
+      bytes: 5236472706
+    raw-corpus:
+      hash: sha256:ed90e1c5ae9c90488daad752c8e636d8d004270ee94500ba30daa3372330a4cc
+      bytes: 4140694821
+    raw-corpus-qa:
+      hash: sha256:d1bc704cded354e1e2cc75d403974eb575f7154c423bcd742cb396e6eb33f56a
+      bytes: 115
+  recipe_stubbed: true
+  dropped_fields: []
+  override_file: /home/keith/.config/science/data.yaml
+  override_backup: /home/keith/.config/science/data.yaml.bak.24f48cc4
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 45ce99d
+  projects:
+    natural-systems-guide: git -C /mnt/ssd/Dropbox/natural-systems checkout HEAD --
+      doc/datasets/data-arxiv-corpus.md
