@@ -1,0 +1,41 @@
+op_id: e84d1444
+type: dataset
+invocation: /mnt/ssd/Dropbox/natural-systems/.venv/bin/science commons promote dataset
+  --from natural-systems-guide --slug h07-clean-base-coblentz-table-rows --apply
+status: ok
+started_at: '2026-05-30T19:26:26.026117+00:00'
+finished_at: '2026-05-30T19:26:26.071122+00:00'
+commons_commit: f10d7eb
+commons_tags:
+- dataset/h07-clean-base-coblentz-table-rows/1.0.0
+projects_touched:
+  natural-systems-guide:
+    overlay_rewrites:
+    - slug: h07-clean-base-coblentz-table-rows
+      path: /mnt/ssd/Dropbox/natural-systems/doc/datasets/data-h07-clean-base-coblentz-table-rows.md
+      pin_version: 1.0.0
+decisions:
+- slug: h07-clean-base-coblentz-table-rows
+  canonical_version: 1.0.0
+  canonical_paths:
+  - datasets/h07-clean-base-coblentz-table-rows/entity.md
+  - datasets/h07-clean-base-coblentz-table-rows/datapackage.yaml
+  - datasets/h07-clean-base-coblentz-table-rows/recipe/README.md
+  per_resource_hashes:
+    coblentz-table-rows:
+      hash: sha256:01c18ce99352dbf666df2f09dbc6776d70bdcd2792e74e67a35ec3dc390f4ac8
+      bytes: 31173
+    coblentz-table-rows-qa:
+      hash: sha256:35ce0b9e84f391113ed91119aac82975d02d20886bcb1ac33d15ff35383b68fc
+      bytes: 130
+  recipe_stubbed: true
+  dropped_fields: []
+  override_file: /home/keith/.config/science/data.yaml
+  override_backup: /home/keith/.config/science/data.yaml.bak.e84d1444
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert f10d7eb
+  projects:
+    natural-systems-guide: git -C /mnt/ssd/Dropbox/natural-systems checkout HEAD --
+      doc/datasets/data-h07-clean-base-coblentz-table-rows.md
