@@ -1,0 +1,50 @@
+op_id: f62b3712
+type: dataset
+invocation: /mnt/ssd/Dropbox/natural-systems/.venv/bin/science commons promote dataset
+  --from natural-systems-guide --slug arxiv-source-equations --apply
+status: ok
+started_at: '2026-05-30T17:57:33.899068+00:00'
+finished_at: '2026-05-30T17:57:33.954461+00:00'
+commons_commit: 91a9b4a
+commons_tags:
+- dataset/arxiv-source-equations/1.0.0
+projects_touched:
+  natural-systems-guide:
+    overlay_rewrites:
+    - slug: arxiv-source-equations
+      path: /mnt/ssd/Dropbox/natural-systems/doc/datasets/data-arxiv-source-equations.md
+      pin_version: 1.0.0
+decisions:
+- slug: arxiv-source-equations
+  canonical_version: 1.0.0
+  canonical_paths:
+  - datasets/arxiv-source-equations/entity.md
+  - datasets/arxiv-source-equations/datapackage.yaml
+  - datasets/arxiv-source-equations/recipe/README.md
+  per_resource_hashes:
+    selected-arxiv-ids:
+      hash: sha256:0355cd51d96602414fce576399a2502d711828d0501f164cd42f5f20acb47c7d
+      bytes: 87
+    equation-records:
+      hash: sha256:23689787d4ca97f584254476a43e1d760bfbb5f55819dfa1c771b1f200a13184
+      bytes: 667859
+    equation-records-qa:
+      hash: sha256:13807cad388842062bb3f3aa6bf9fc50c26ba69296f22032e1a544b52367d4ce
+      bytes: 224
+    failed-arxiv-source-ids:
+      hash: sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      bytes: 0
+    failed-arxiv-source-audit:
+      hash: sha256:7a2111df55e795c9c7aab233541c030655acc6e4b8ff579ae01a69160219ef75
+      bytes: 69
+  recipe_stubbed: true
+  dropped_fields: []
+  override_file: /home/keith/.config/science/data.yaml
+  override_backup: /home/keith/.config/science/data.yaml.bak.f62b3712
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 91a9b4a
+  projects:
+    natural-systems-guide: git -C /mnt/ssd/Dropbox/natural-systems checkout HEAD --
+      doc/datasets/data-arxiv-source-equations.md
