@@ -1,0 +1,41 @@
+op_id: e0547a38
+type: dataset
+invocation: /mnt/ssd/Dropbox/natural-systems/.venv/bin/science commons promote dataset
+  --from natural-systems-guide --slug h07-clean-base-gause-monoculture-rows --apply
+status: ok
+started_at: '2026-05-30T19:26:44.056669+00:00'
+finished_at: '2026-05-30T19:26:44.136945+00:00'
+commons_commit: 3d3506b
+commons_tags:
+- dataset/h07-clean-base-gause-monoculture-rows/1.0.0
+projects_touched:
+  natural-systems-guide:
+    overlay_rewrites:
+    - slug: h07-clean-base-gause-monoculture-rows
+      path: /mnt/ssd/Dropbox/natural-systems/doc/datasets/data-h07-clean-base-gause-monoculture-rows.md
+      pin_version: 1.0.0
+decisions:
+- slug: h07-clean-base-gause-monoculture-rows
+  canonical_version: 1.0.0
+  canonical_paths:
+  - datasets/h07-clean-base-gause-monoculture-rows/entity.md
+  - datasets/h07-clean-base-gause-monoculture-rows/datapackage.yaml
+  - datasets/h07-clean-base-gause-monoculture-rows/recipe/README.md
+  per_resource_hashes:
+    gause-monoculture-rows:
+      hash: sha256:f8716aea92e3d6aa65ed9e1bc9e22c114f59679154919f1a5972b4544872f457
+      bytes: 20364
+    gause-monoculture-rows-qa:
+      hash: sha256:a48dcfd99184f9aa8081697b77b8b731033956c7b3ab0a93237edf9d8be67150
+      bytes: 130
+  recipe_stubbed: true
+  dropped_fields: []
+  override_file: /home/keith/.config/science/data.yaml
+  override_backup: /home/keith/.config/science/data.yaml.bak.e0547a38
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 3d3506b
+  projects:
+    natural-systems-guide: git -C /mnt/ssd/Dropbox/natural-systems checkout HEAD --
+      doc/datasets/data-h07-clean-base-gause-monoculture-rows.md
