@@ -1,0 +1,41 @@
+op_id: 73f18829
+type: dataset
+invocation: /mnt/ssd/Dropbox/natural-systems/.venv/bin/science commons promote dataset
+  --from natural-systems-guide --slug h07-clean-base-gebco-path-samples --apply
+status: ok
+started_at: '2026-05-30T19:26:01.102932+00:00'
+finished_at: '2026-05-30T19:26:01.145906+00:00'
+commons_commit: '3597945'
+commons_tags:
+- dataset/h07-clean-base-gebco-path-samples/1.0.0
+projects_touched:
+  natural-systems-guide:
+    overlay_rewrites:
+    - slug: h07-clean-base-gebco-path-samples
+      path: /mnt/ssd/Dropbox/natural-systems/doc/datasets/data-h07-clean-base-gebco-path-samples.md
+      pin_version: 1.0.0
+decisions:
+- slug: h07-clean-base-gebco-path-samples
+  canonical_version: 1.0.0
+  canonical_paths:
+  - datasets/h07-clean-base-gebco-path-samples/entity.md
+  - datasets/h07-clean-base-gebco-path-samples/datapackage.yaml
+  - datasets/h07-clean-base-gebco-path-samples/recipe/README.md
+  per_resource_hashes:
+    gebco-path-samples:
+      hash: sha256:f8ceb007e5032c50d6f088d6d444d3e55c534dd726cd9522fd3e5bc35bbb3379
+      bytes: 92134
+    gebco-path-samples-qa:
+      hash: sha256:5be18b1b8608dff52593f902750c0e1c4ad9e22f306d07b5afe7e75d3e0ce92f
+      bytes: 132
+  recipe_stubbed: true
+  dropped_fields: []
+  override_file: /home/keith/.config/science/data.yaml
+  override_backup: /home/keith/.config/science/data.yaml.bak.73f18829
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 3597945
+  projects:
+    natural-systems-guide: git -C /mnt/ssd/Dropbox/natural-systems checkout HEAD --
+      doc/datasets/data-h07-clean-base-gebco-path-samples.md
