@@ -1,0 +1,29 @@
+op_id: 9d173c52
+type: paper
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  paper paper:Collins2021 --from cycles --apply
+status: ok
+started_at: '2026-05-30T16:09:59.274388+00:00'
+finished_at: '2026-05-30T16:09:59.316151+00:00'
+commons_commit: d8e4e50
+commons_tags:
+- paper/Collins2021/1.0.0
+projects_touched:
+  cycles:
+    overlay_rewrites:
+    - slug: Collins2021
+      path: /home/keith/d/health/processes/cycles/doc/papers/Collins2021.md
+      pin_version: 1.0.0
+      unlinked_source: /home/keith/d/health/processes/cycles/doc/background/papers/Collins2021.md
+decisions:
+- slug: Collins2021
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Collins2021.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert d8e4e50
+  projects:
+    cycles: git -C /home/keith/d/health/processes/cycles checkout HEAD -- doc/background/papers/Collins2021.md
+      doc/papers/Collins2021.md
