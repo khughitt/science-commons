@@ -1,0 +1,29 @@
+op_id: a5ad0ff6
+type: paper
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  paper paper:Bass2016 --from cycles --apply
+status: ok
+started_at: '2026-05-30T16:10:00.744774+00:00'
+finished_at: '2026-05-30T16:10:00.786966+00:00'
+commons_commit: 231a770
+commons_tags:
+- paper/Bass2016/1.0.0
+projects_touched:
+  cycles:
+    overlay_rewrites:
+    - slug: Bass2016
+      path: /home/keith/d/health/processes/cycles/doc/papers/Bass2016.md
+      pin_version: 1.0.0
+      unlinked_source: /home/keith/d/health/processes/cycles/doc/background/papers/Bass2016.md
+decisions:
+- slug: Bass2016
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Bass2016.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 231a770
+  projects:
+    cycles: git -C /home/keith/d/health/processes/cycles checkout HEAD -- doc/background/papers/Bass2016.md
+      doc/papers/Bass2016.md
