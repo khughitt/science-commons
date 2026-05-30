@@ -1,0 +1,49 @@
+op_id: 764e830e
+type: dataset
+invocation: /mnt/ssd/Dropbox/cancer/data-sources/cbioportal/.venv/bin/science commons
+  promote dataset --from cbioportal --slug brca-tcga-pancanatlas --mixin bio.matrix/1.0
+  --mixin bio.rnaseq --apply
+status: ok
+started_at: '2026-05-30T23:44:08.309375+00:00'
+finished_at: '2026-05-30T23:44:08.351408+00:00'
+commons_commit: bf704a8
+commons_tags:
+- dataset/brca-tcga-pancanatlas/1.0.0
+mixin_extensions:
+- bio.matrix/1.0
+- bio.rnaseq/1.0
+projects_touched:
+  cbioportal:
+    overlay_rewrites:
+    - slug: brca-tcga-pancanatlas
+      path: /mnt/ssd/Dropbox/cancer/data-sources/cbioportal/doc/datasets/data-brca-tcga-pancanatlas.md
+      pin_version: 1.0.0
+decisions:
+- slug: brca-tcga-pancanatlas
+  canonical_version: 1.0.0
+  canonical_paths:
+  - datasets/brca-tcga-pancanatlas/entity.md
+  - datasets/brca-tcga-pancanatlas/datapackage.yaml
+  - datasets/brca-tcga-pancanatlas/recipe/README.md
+  per_resource_hashes:
+    expression:
+      hash: sha256:a774628d2370be64b3dd34fd66bb69e73af7c43f522d6e04f9f93c585e2f747f
+      bytes: 67898378
+    clinical:
+      hash: sha256:f381008ff552d324eaf2f7a8d5ad7821d1d0aea4f4f354023523f794b72b264b
+      bytes: 167920
+    qa:
+      hash: sha256:983cf18a5c4cae0f7a8eb59a5a0eb323a8733be5e1afa969b2891f76b7505b11
+      bytes: 612
+  recipe_stubbed: true
+  dropped_fields:
+  - local_path
+  override_file: /home/keith/.config/science/data.yaml
+  override_backup: /home/keith/.config/science/data.yaml.bak.764e830e
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert bf704a8
+  projects:
+    cbioportal: git -C /mnt/ssd/Dropbox/cancer/data-sources/cbioportal checkout HEAD
+      -- doc/datasets/data-brca-tcga-pancanatlas.md
