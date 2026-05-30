@@ -1,0 +1,41 @@
+op_id: 42cca538
+type: dataset
+invocation: /mnt/ssd/Dropbox/natural-systems/.venv/bin/science commons promote dataset
+  --from natural-systems-guide --slug h07-clean-base-allen-hh-glif-rows --apply
+status: ok
+started_at: '2026-05-30T19:26:35.683063+00:00'
+finished_at: '2026-05-30T19:26:35.727476+00:00'
+commons_commit: dc4c47f
+commons_tags:
+- dataset/h07-clean-base-allen-hh-glif-rows/1.0.0
+projects_touched:
+  natural-systems-guide:
+    overlay_rewrites:
+    - slug: h07-clean-base-allen-hh-glif-rows
+      path: /mnt/ssd/Dropbox/natural-systems/doc/datasets/data-h07-clean-base-allen-hh-glif-rows.md
+      pin_version: 1.0.0
+decisions:
+- slug: h07-clean-base-allen-hh-glif-rows
+  canonical_version: 1.0.0
+  canonical_paths:
+  - datasets/h07-clean-base-allen-hh-glif-rows/entity.md
+  - datasets/h07-clean-base-allen-hh-glif-rows/datapackage.yaml
+  - datasets/h07-clean-base-allen-hh-glif-rows/recipe/README.md
+  per_resource_hashes:
+    allen-hh-glif-rows:
+      hash: sha256:1bb55bae70a259ba5bdd802e8da83e2fafe0adecec260f0141f73ac60aa1db3f
+      bytes: 1485053
+    allen-hh-glif-rows-qa:
+      hash: sha256:73394defa1dbf1685efd8cc823e8fc954e17589a20f6aebfca72873f75e9c5a7
+      bytes: 134
+  recipe_stubbed: true
+  dropped_fields: []
+  override_file: /home/keith/.config/science/data.yaml
+  override_backup: /home/keith/.config/science/data.yaml.bak.42cca538
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert dc4c47f
+  projects:
+    natural-systems-guide: git -C /mnt/ssd/Dropbox/natural-systems checkout HEAD --
+      doc/datasets/data-h07-clean-base-allen-hh-glif-rows.md
