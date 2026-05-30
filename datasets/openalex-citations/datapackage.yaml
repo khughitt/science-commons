@@ -1,0 +1,81 @@
+name: openalex-citations
+profile: data-package
+title: OpenAlex citation substrate for natural-systems analyses
+description: Processed OpenAlex attention and citation summaries keyed to natural-systems
+  guide model IDs.
+sources:
+- title: OpenAlex API
+  path: https://api.openalex.org
+workflow:
+  name: openalex-analysis
+  steps:
+  - build_search_terms
+  - fetch_citations
+  - stage_citation_substrate
+  - qa_raw_responses
+  - process_citations
+  - qa_citations
+  - write_datapackage
+resources:
+- name: raw-openalex-responses
+  path: raw/openalex-responses.json
+  format: json
+  mediatype: application/json
+  hash: sha256:beac590640d211865c7d9789736b7e4424e36ae162ebfdbd9fba8dc1d7ef1221
+  bytes: 1410676
+- name: raw-responses-qa
+  path: qa/raw-responses-qa.json
+  format: json
+  mediatype: application/json
+  hash: sha256:fd7f0687a29ecf2d79a2bbaf8c12078a95841d0e90e5adf13b51579a9f28f6f0
+  bytes: 168
+- name: citations-csv
+  path: citations.csv
+  format: csv
+  mediatype: text/csv
+  row_count: 249
+  schema:
+    fields:
+    - name: model_id
+      type: string
+    - name: model_label
+      type: string
+    - name: chapter_id
+      type: string
+    - name: structure_class
+      type: string
+    - name: paper_count
+      type: integer
+    - name: top_cited_count
+      type: integer
+    - name: median_cited_count
+      type: integer
+    - name: earliest_year
+      type: integer
+    - name: latest_year
+      type: integer
+    - name: domain_count
+      type: integer
+    - name: domains
+      type: string
+    - name: primary_domain
+      type: string
+    - name: primary_topic
+      type: string
+    - name: match_quality
+      type: string
+  hash: sha256:65a1fa354f14470099ce6d8cc807912cd231b688d43eb3077207b3ff5b46ce86
+  bytes: 57889
+- name: citations-json
+  path: citations.json
+  format: json
+  mediatype: application/json
+  row_count: 249
+  hash: sha256:6b0ce8f63fab9c0a8464ee002a9e3ab46365e6faad18fb90ce151b5ece96f605
+  bytes: 115198
+- name: citations-qa
+  path: qa/citations-qa.json
+  format: json
+  mediatype: application/json
+  hash: sha256:ae24d6b15611317ff448359761336b3e173375a1fd89dc548f1d86f635de0dac
+  bytes: 103
