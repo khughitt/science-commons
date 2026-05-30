@@ -19,7 +19,7 @@ status: active
 tier: use-now
 update_cadence: quarterly
 member_key_column: gene_key
-gene_count: 0
+gene_count: 49359
 ---
 
 # HGNC gene crosswalk
