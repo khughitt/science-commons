@@ -20,6 +20,9 @@ DEFAULT_ARCHIVE_URLS = (
     "https://ftp.ncbi.nih.gov/snp/archive/b157/VCF/GCF_000001405.40.gz",
     "https://ftp.ncbi.nih.gov/snp/archive/b157/VCF/GCF_000001405.25.gz",
 )
+PINNED_ARCHIVE_URLS = frozenset(DEFAULT_ARCHIVE_URLS)
+PINNED_RESOURCE_NAMES = tuple(Path(urllib.parse.urlparse(url).path).name for url in DEFAULT_ARCHIVE_URLS)
+REQUIRED_LOCK_KEYS = ("url", "path", "md5_url", "md5_path", "md5", "sha256", "bytes")
 
 
 def fetch_sources(
@@ -29,6 +32,7 @@ def fetch_sources(
     lockfile_path: Path = LOCKFILE_PATH,
     refresh_lockfile: bool = False,
 ) -> dict[str, Any]:
+    normalized_urls = validate_archive_urls(urls)
     if lockfile_path.exists() and not refresh_lockfile:
         lock = load_lockfile(lockfile_path)
         _materialize_locked_files(lock, output_dir)
@@ -38,11 +42,8 @@ def fetch_sources(
 
     output_dir.mkdir(parents=True, exist_ok=True)
     lock = {"resources": {}}
-    for url in urls:
-        normalized_url = validate_archive_url(url)
+    for normalized_url in normalized_urls:
         filename = Path(urllib.parse.urlparse(normalized_url).path).name
-        if not filename.endswith(".gz"):
-            raise ValueError(f"dbSNP source URL must end with .gz: {url}")
         gz_path = output_dir / filename
         sha256, byte_count = _download(normalized_url, gz_path)
 
@@ -79,20 +80,44 @@ def validate_archive_url(url: str) -> str:
         raise ValueError(f"URL must be an absolute http(s) URL, got {url!r}")
     if "/latest_release/" in normalized.lower():
         raise ValueError(f"dbSNP latest_release URLs are mutable: {url}")
+    if normalized not in PINNED_ARCHIVE_URLS:
+        allowed = ", ".join(DEFAULT_ARCHIVE_URLS)
+        raise ValueError(f"dbSNP URL must be one of the pinned b157 NCBI archives: {allowed}")
     return normalized
+
+
+def validate_archive_urls(urls: tuple[str, ...]) -> tuple[str, ...]:
+    normalized = tuple(validate_archive_url(url) for url in urls)
+    if set(normalized) != PINNED_ARCHIVE_URLS or len(normalized) != len(PINNED_ARCHIVE_URLS):
+        allowed = ", ".join(DEFAULT_ARCHIVE_URLS)
+        raise ValueError(f"dbSNP fetch requires exactly the pinned GRCh38 and GRCh37 URLs: {allowed}")
+    return tuple(url for url in DEFAULT_ARCHIVE_URLS if url in set(normalized))
 
 
 def load_lockfile(path: Path) -> dict[str, Any]:
     raw = yaml.safe_load(path.read_text(encoding="utf-8"))
     if not isinstance(raw, dict) or not isinstance(raw.get("resources"), dict):
         raise ValueError(f"{path}: expected lockfile with resources mapping")
-    for name, entry in raw["resources"].items():
+    resources = raw["resources"]
+    if set(resources) != set(PINNED_RESOURCE_NAMES):
+        expected = ", ".join(PINNED_RESOURCE_NAMES)
+        raise ValueError(f"{path}: lockfile must contain exactly these resources: {expected}")
+    for name in PINNED_RESOURCE_NAMES:
+        entry = resources[name]
         if not isinstance(entry, dict):
             raise ValueError(f"{path}: resource {name!r} must be a mapping")
-        for key in ("url", "path", "sha256", "bytes"):
+        for key in REQUIRED_LOCK_KEYS:
             if key not in entry:
                 raise ValueError(f"{path}: resource {name!r} missing {key}")
-        validate_archive_url(str(entry["url"]))
+        normalized_url = validate_archive_url(str(entry["url"]))
+        if str(entry["path"]) != name:
+            raise ValueError(f"{path}: resource {name!r} path must be {name!r}")
+        if str(entry["md5_url"]) != f"{normalized_url}.md5":
+            raise ValueError(f"{path}: resource {name!r} md5_url does not match pinned URL")
+        if str(entry["md5_path"]) != f"{name}.md5":
+            raise ValueError(f"{path}: resource {name!r} md5_path must be {name}.md5")
+        if not str(entry["md5"]).strip():
+            raise ValueError(f"{path}: resource {name!r} md5 must be non-empty")
     return raw
 
 

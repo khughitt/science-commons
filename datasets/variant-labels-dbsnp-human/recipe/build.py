@@ -9,6 +9,7 @@ import re
 import sqlite3
 import time
 from collections import Counter
+from contextlib import closing
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -23,15 +24,18 @@ DATASET_NAME = "variant-labels-dbsnp-human"
 OUTPUT_ROOT_TOKEN = "${OUTPUT_ROOT}"
 LOCKFILE_PATH = Path(__file__).with_name("lockfile.yaml")
 DATAPACKAGE_PATH = Path(__file__).parents[1] / "datapackage.yaml"
-COMMONS_ROOT = Path(__file__).parents[3]
-ASSEMBLY_REGISTRY_PATH = COMMONS_ROOT / "datasets" / "assembly-registry" / "assemblies.csv"
 SQLITE_RESOURCE = Path("rsid_mappings.sqlite")
 SUMMARY_RESOURCE = Path("build-summary.yaml")
 RSID_PATTERN = re.compile(r"^rs[1-9][0-9]*$")
 LITERAL_ALLELE_PATTERN = re.compile(r"^[ACGTN]+$")
+BATCH_SIZE = 50_000
 SOURCE_ASSEMBLIES = {
     "GCF_000001405.40.gz": {"label": "GRCh38", "accession": "GCF_000001405.40"},
     "GCF_000001405.25.gz": {"label": "GRCh37", "accession": "GCF_000001405.25"},
+}
+PINNED_SOURCE_URLS = {
+    "GCF_000001405.40.gz": "https://ftp.ncbi.nih.gov/snp/archive/b157/VCF/GCF_000001405.40.gz",
+    "GCF_000001405.25.gz": "https://ftp.ncbi.nih.gov/snp/archive/b157/VCF/GCF_000001405.25.gz",
 }
 
 
@@ -40,65 +44,83 @@ def build_dataset(
     input_root: Path,
     output_root: Path,
     lockfile_path: Path = LOCKFILE_PATH,
-    assembly_registry_path: Path = ASSEMBLY_REGISTRY_PATH,
+    assembly_registry_path: Path | None = None,
     datapackage_path: Path = DATAPACKAGE_PATH,
     update_datapackage: bool = False,
 ) -> dict[str, Any]:
     started = time.monotonic()
     lock = load_lockfile(lockfile_path)
+    assembly_registry_path = assembly_registry_path or default_assembly_registry_path(resolve_commons_data_root())
     assembly_digests = load_assembly_digests(assembly_registry_path)
     output_dir = output_root / DATASET_NAME
     output_dir.mkdir(parents=True, exist_ok=True)
     sqlite_path = output_dir / SQLITE_RESOURCE
+    tmp_sqlite_path = output_dir / f".{SQLITE_RESOURCE.name}.{os.getpid()}.tmp"
     summary_path = output_dir / SUMMARY_RESOURCE
-    sqlite_path.unlink(missing_ok=True)
+
+    source_inputs = []
+    for filename in SOURCE_ASSEMBLIES:
+        entry = lock_resource(lock, filename)
+        source_path = input_root / str(entry["path"])
+        validate_source_file(source_path, entry)
+        source_inputs.append((filename, entry, source_path))
 
     totals: Counter[str] = Counter()
     skipped: Counter[str] = Counter()
     per_assembly: dict[str, dict[str, int]] = {
-        spec["label"]: {"input_rows": 0, "retained_alleles": 0}
+        spec["label"]: {"input_rows": 0, "retained_alleles": 0, "duplicate_alleles": 0}
         for spec in SOURCE_ASSEMBLIES.values()
     }
     source_urls: dict[str, str] = {}
     source_sha256: dict[str, str] = {}
 
-    with sqlite3.connect(sqlite_path) as conn:
-        create_schema(conn)
-        metadata = {
-            "dataset": DATASET_NAME,
-            "dbsnp_build": "157",
-            "built_at_utc": datetime.now(UTC).isoformat(),
-            "assembly_registry": str(assembly_registry_path),
-        }
-        conn.executemany("INSERT INTO metadata (key, value) VALUES (?, ?)", sorted(metadata.items()))
+    try:
+        tmp_sqlite_path.unlink(missing_ok=True)
+        with closing(sqlite3.connect(tmp_sqlite_path)) as conn:
+            configure_bulk_sqlite(conn)
+            create_schema(conn)
+            metadata = {
+                "dataset": DATASET_NAME,
+                "dbsnp_build": "157",
+                "built_at_utc": datetime.now(UTC).isoformat(),
+                "assembly_registry": str(assembly_registry_path),
+            }
+            conn.executemany("INSERT INTO metadata (key, value) VALUES (?, ?)", sorted(metadata.items()))
 
-        for filename in SOURCE_ASSEMBLIES:
-            entry = lock_resource(lock, filename)
-            source_path = input_root / str(entry["path"])
-            validate_source_file(source_path, entry)
-            spec = SOURCE_ASSEMBLIES[filename]
-            label = spec["label"]
-            seqcol_digest = assembly_digests[label]
-            source_urls[filename] = str(entry["url"])
-            source_sha256[filename] = str(entry["sha256"])
-            file_counts = ingest_vcf(
-                conn=conn,
-                path=source_path,
-                source_vcf=filename,
-                seqcol_digest=seqcol_digest,
-                skipped=skipped,
-            )
-            totals.update(file_counts)
-            per_assembly[label]["input_rows"] += file_counts["input_rows"]
-            per_assembly[label]["retained_alleles"] += file_counts["retained_alleles"]
+            for filename, entry, source_path in source_inputs:
+                spec = SOURCE_ASSEMBLIES[filename]
+                label = spec["label"]
+                seqcol_digest = assembly_digests[label]
+                source_urls[filename] = str(entry["url"])
+                source_sha256[filename] = str(entry["sha256"])
+                file_counts = ingest_vcf(
+                    conn=conn,
+                    path=source_path,
+                    source_vcf=filename,
+                    seqcol_digest=seqcol_digest,
+                    skipped=skipped,
+                )
+                totals.update(file_counts)
+                per_assembly[label]["input_rows"] += file_counts["input_rows"]
+                per_assembly[label]["retained_alleles"] += file_counts["retained_alleles"]
+                per_assembly[label]["duplicate_alleles"] += file_counts["duplicate_alleles"]
+            create_lookup_index(conn)
+            conn.execute("PRAGMA optimize")
+            conn.commit()
 
-    sqlite_bytes = sqlite_path.stat().st_size
-    distinct_rsids = count_distinct_rsids(sqlite_path)
+        sqlite_bytes = tmp_sqlite_path.stat().st_size
+        distinct_rsids = count_distinct_rsids(tmp_sqlite_path)
+        tmp_sqlite_path.replace(sqlite_path)
+    except Exception:
+        tmp_sqlite_path.unlink(missing_ok=True)
+        raise
+
     summary = {
         "dataset": DATASET_NAME,
         "dbsnp_build": 157,
         "input_rows": totals["input_rows"],
         "retained_alleles": totals["retained_alleles"],
+        "duplicate_alleles": totals["duplicate_alleles"],
         "skipped": dict(sorted(skipped.items())),
         "distinct_rsids": distinct_rsids,
         "per_assembly": per_assembly,
@@ -129,9 +151,24 @@ def create_schema(conn: sqlite3.Connection) -> None:
           allele_index INTEGER NOT NULL,
           PRIMARY KEY (rsid, seqcol_digest, contig, pos0, ref, alt, source_vcf, allele_index)
         );
-        CREATE INDEX rsid_alleles_lookup ON rsid_alleles (rsid, seqcol_digest);
         """
     )
+
+
+def configure_bulk_sqlite(conn: sqlite3.Connection) -> None:
+    conn.executescript(
+        """
+        PRAGMA journal_mode = OFF;
+        PRAGMA synchronous = OFF;
+        PRAGMA temp_store = MEMORY;
+        PRAGMA cache_size = -200000;
+        PRAGMA locking_mode = EXCLUSIVE;
+        """
+    )
+
+
+def create_lookup_index(conn: sqlite3.Connection) -> None:
+    conn.execute("CREATE INDEX rsid_alleles_lookup ON rsid_alleles (rsid, seqcol_digest)")
 
 
 def ingest_vcf(
@@ -143,6 +180,7 @@ def ingest_vcf(
     skipped: Counter[str],
 ) -> Counter[str]:
     counts: Counter[str] = Counter()
+    batch: list[tuple[str, str, str, int, str, str, str, int]] = []
     with gzip.open(path, "rt", encoding="utf-8") as fh:
         for line in fh:
             if not line or line.startswith("#"):
@@ -185,16 +223,33 @@ def ingest_vcf(
                     skipped["non_literal_alt"] += 1
                     continue
                 for rsid in rsids:
-                    cursor = conn.execute(
-                        """
-                        INSERT OR IGNORE INTO rsid_alleles
-                        (rsid, seqcol_digest, contig, pos0, ref, alt, source_vcf, allele_index)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-                        """,
-                        (rsid, seqcol_digest, chrom, pos0, ref, alt, source_vcf, allele_index),
-                    )
-                    counts["retained_alleles"] += cursor.rowcount
+                    batch.append((rsid, seqcol_digest, chrom, pos0, ref, alt, source_vcf, allele_index))
+                    if len(batch) >= BATCH_SIZE:
+                        flush_insert_batch(conn, batch, counts)
+    flush_insert_batch(conn, batch, counts)
     return counts
+
+
+def flush_insert_batch(
+    conn: sqlite3.Connection,
+    batch: list[tuple[str, str, str, int, str, str, str, int]],
+    counts: Counter[str],
+) -> None:
+    if not batch:
+        return
+    before = conn.total_changes
+    conn.executemany(
+        """
+        INSERT OR IGNORE INTO rsid_alleles
+        (rsid, seqcol_digest, contig, pos0, ref, alt, source_vcf, allele_index)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        """,
+        batch,
+    )
+    inserted = conn.total_changes - before
+    counts["retained_alleles"] += inserted
+    counts["duplicate_alleles"] += len(batch) - inserted
+    batch.clear()
 
 
 def is_literal_allele(value: str) -> bool:
@@ -225,6 +280,8 @@ def lock_resource(lock: dict[str, Any], filename: str) -> dict[str, Any]:
             raise ValueError(f"lockfile resource {filename!r} missing {key}")
     if "/latest_release/" in str(entry["url"]).lower():
         raise ValueError(f"dbSNP latest_release URLs are mutable: {entry['url']}")
+    if str(entry["url"]) != PINNED_SOURCE_URLS[filename]:
+        raise ValueError(f"lockfile resource {filename!r} must use pinned URL {PINNED_SOURCE_URLS[filename]}")
     return entry
 
 
@@ -265,7 +322,7 @@ def load_assembly_digests(path: Path) -> dict[str, str]:
 
 
 def count_distinct_rsids(sqlite_path: Path) -> int:
-    with sqlite3.connect(sqlite_path) as conn:
+    with closing(sqlite3.connect(sqlite_path)) as conn:
         row = conn.execute("SELECT COUNT(DISTINCT rsid) FROM rsid_alleles").fetchone()
     return int(row[0])
 
@@ -317,9 +374,19 @@ def stream_hash_and_bytes(path: Path) -> tuple[str, int]:
 
 
 def resolve_commons_data_root() -> Path:
+    try:
+        from science_tool.commons.config import resolve_commons_data_root as resolve_science_commons_data_root
+    except ImportError:
+        resolve_science_commons_data_root = None
+    if resolve_science_commons_data_root is not None:
+        return resolve_science_commons_data_root()
     if env := os.environ.get("SCIENCE_COMMONS_DATA_ROOT"):
         return Path(env)
     return Path("/data/science-commons")
+
+
+def default_assembly_registry_path(commons_data_root: Path) -> Path:
+    return commons_data_root / "assembly-registry" / "assemblies.csv"
 
 
 def main() -> None:
@@ -330,7 +397,6 @@ def main() -> None:
     parser.add_argument(
         "--assembly-registry",
         type=Path,
-        default=ASSEMBLY_REGISTRY_PATH,
         help="Path to assembly-registry assemblies.csv.",
     )
     parser.add_argument("--datapackage", type=Path, default=DATAPACKAGE_PATH, help="Path to datapackage.yaml.")
@@ -344,7 +410,7 @@ def main() -> None:
         input_root=input_root,
         output_root=output_root,
         lockfile_path=args.lockfile,
-        assembly_registry_path=args.assembly_registry,
+        assembly_registry_path=args.assembly_registry or default_assembly_registry_path(commons_root),
         datapackage_path=args.datapackage,
         update_datapackage=args.update_datapackage,
     )
