@@ -35,11 +35,18 @@ def validate_explicit_url(url: str) -> str:
     return normalized
 
 
-def fetch_chain(*, url: str, output_dir: Path, lockfile_path: Path = LOCKFILE_PATH) -> dict[str, Any]:
+def fetch_chain(
+    *,
+    url: str,
+    output_dir: Path,
+    lockfile_path: Path = LOCKFILE_PATH,
+    refresh_lockfile: bool = False,
+) -> dict[str, Any]:
     normalized_url = validate_explicit_url(url)
     output_path = output_dir / CHAIN_RESOURCE_PATH
+    existing_lock = load_lockfile(lockfile_path) if lockfile_path.exists() else None
     sha256, byte_count = _download(normalized_url, output_path)
-    lock = {
+    observed_lock = {
         "resources": {
             "hg19ToHg38_chain": {
                 "url": normalized_url,
@@ -49,8 +56,42 @@ def fetch_chain(*, url: str, output_dir: Path, lockfile_path: Path = LOCKFILE_PA
             }
         }
     }
-    lockfile_path.write_text(yaml.safe_dump(lock, sort_keys=False), encoding="utf-8")
-    return lock
+    if existing_lock is not None and not refresh_lockfile:
+        validate_lock_matches_observed(existing_lock, observed_lock, lockfile_path)
+        return existing_lock
+    lockfile_path.parent.mkdir(parents=True, exist_ok=True)
+    lockfile_path.write_text(yaml.safe_dump(observed_lock, sort_keys=False), encoding="utf-8")
+    return observed_lock
+
+
+def load_lockfile(path: Path) -> dict[str, Any]:
+    raw = yaml.safe_load(path.read_text(encoding="utf-8"))
+    if not isinstance(raw, dict) or not isinstance(raw.get("resources"), dict):
+        raise ValueError(f"{path}: expected lockfile with resources mapping")
+    entry = raw["resources"].get("hg19ToHg38_chain")
+    if not isinstance(entry, dict):
+        raise ValueError(f"{path}: missing hg19ToHg38_chain resource")
+    for key in ("url", "sha256", "bytes"):
+        if key not in entry:
+            raise ValueError(f"{path}: hg19ToHg38_chain missing {key}")
+    validate_explicit_url(str(entry["url"]))
+    return raw
+
+
+def validate_lock_matches_observed(existing_lock: dict[str, Any], observed_lock: dict[str, Any], lockfile_path: Path) -> None:
+    existing = existing_lock["resources"]["hg19ToHg38_chain"]
+    observed = observed_lock["resources"]["hg19ToHg38_chain"]
+    mismatches = [
+        key
+        for key in ("url", "sha256", "bytes")
+        if str(existing[key]) != str(observed[key])
+    ]
+    if mismatches:
+        mismatch_text = ", ".join(mismatches)
+        raise ValueError(
+            f"{lockfile_path}: observed download does not match existing pin "
+            f"({mismatch_text}); pass --refresh-lockfile to intentionally repin"
+        )
 
 
 def main() -> None:
@@ -58,10 +99,20 @@ def main() -> None:
     parser.add_argument("--url", default=DEFAULT_CHAIN_URL, help="Explicit chain URL to download.")
     parser.add_argument("--output-dir", type=Path, help="Dataset data directory. Defaults under SCIENCE_COMMONS_DATA_ROOT.")
     parser.add_argument("--lockfile", type=Path, default=LOCKFILE_PATH, help="Path to write recipe lockfile.")
+    parser.add_argument(
+        "--refresh-lockfile",
+        action="store_true",
+        help="Rewrite the lockfile with the observed URL, SHA-256 digest, and byte count.",
+    )
     args = parser.parse_args()
 
     output_dir = args.output_dir or resolve_commons_data_root() / DATASET_NAME
-    lock = fetch_chain(url=args.url, output_dir=output_dir, lockfile_path=args.lockfile)
+    lock = fetch_chain(
+        url=args.url,
+        output_dir=output_dir,
+        lockfile_path=args.lockfile,
+        refresh_lockfile=args.refresh_lockfile,
+    )
     entry = lock["resources"]["hg19ToHg38_chain"]
     print(f"wrote {entry['path']} ({entry['bytes']} bytes) to {output_dir}")
 

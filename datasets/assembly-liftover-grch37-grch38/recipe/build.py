@@ -4,6 +4,7 @@ import argparse
 import csv
 import hashlib
 import os
+import re
 import urllib.parse
 from pathlib import Path
 from typing import Any
@@ -15,6 +16,7 @@ import yaml
 # science:end
 
 DATASET_NAME = "assembly-liftover-grch37-grch38"
+OUTPUT_ROOT_TOKEN = "${OUTPUT_ROOT}"
 CHAIN_RESOURCE_NAME = "hg19ToHg38_chain"
 CHAIN_RESOURCE_PATH = Path("chains/hg19ToHg38.over.chain.gz")
 COMPATIBILITY_RESOURCE_PATH = Path("compatibility_relations.csv")
@@ -33,6 +35,7 @@ FIELDNAMES = [
     "source_url",
     "chain_sha256",
 ]
+SEQCOL_DIGEST_PATTERN = re.compile(r"^[A-Za-z0-9_-]+$")
 
 
 def build_dataset(
@@ -43,6 +46,8 @@ def build_dataset(
     lockfile_path: Path = LOCKFILE_PATH,
     datapackage_path: Path = DATAPACKAGE_PATH,
 ) -> None:
+    source_seqcol = validate_seqcol_digest(source_seqcol, "--source-seqcol")
+    target_seqcol = validate_seqcol_digest(target_seqcol, "--target-seqcol")
     if source_seqcol == target_seqcol:
         raise ValueError("--source-seqcol and --target-seqcol must differ")
 
@@ -116,6 +121,17 @@ def validate_explicit_url(url: str) -> str:
     return normalized
 
 
+def validate_seqcol_digest(value: str, label: str) -> str:
+    stripped = value.strip()
+    if not stripped:
+        raise ValueError(f"{label} must be non-empty")
+    if value != stripped:
+        raise ValueError(f"{label} must not contain leading or trailing whitespace")
+    if not SEQCOL_DIGEST_PATTERN.fullmatch(value):
+        raise ValueError(f"{label} must match [A-Za-z0-9_-]+")
+    return value
+
+
 def write_compatibility_relations(path: Path, row: dict[str, str]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="") as fh:
@@ -141,6 +157,10 @@ def write_datapackage(
                 "path": COMPATIBILITY_RESOURCE_PATH.as_posix(),
                 "format": "csv",
                 "mediatype": "text/csv",
+                "source": {
+                    "type": "local",
+                    "ref": f"{OUTPUT_ROOT_TOKEN}/{DATASET_NAME}/{COMPATIBILITY_RESOURCE_PATH.as_posix()}",
+                },
                 "hash": compatibility_hash,
                 "bytes": compatibility_bytes,
             },
@@ -149,6 +169,10 @@ def write_datapackage(
                 "path": CHAIN_RESOURCE_PATH.as_posix(),
                 "format": "chain.gz",
                 "mediatype": "application/gzip",
+                "source": {
+                    "type": "local",
+                    "ref": f"{OUTPUT_ROOT_TOKEN}/{DATASET_NAME}/{CHAIN_RESOURCE_PATH.as_posix()}",
+                },
                 "hash": chain_hash,
                 "bytes": chain_bytes,
             },
