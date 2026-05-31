@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import os
+import re
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -21,8 +22,18 @@ DEFAULT_ARCHIVE_URLS = (
     "https://ftp.ncbi.nih.gov/snp/archive/b157/VCF/GCF_000001405.25.gz",
 )
 PINNED_ARCHIVE_URLS = frozenset(DEFAULT_ARCHIVE_URLS)
-PINNED_RESOURCE_NAMES = tuple(Path(urllib.parse.urlparse(url).path).name for url in DEFAULT_ARCHIVE_URLS)
+EXPECTED_RESOURCES = {
+    Path(urllib.parse.urlparse(url).path).name: {
+        "url": url,
+        "path": Path(urllib.parse.urlparse(url).path).name,
+        "md5_url": f"{url}.md5",
+        "md5_path": f"{Path(urllib.parse.urlparse(url).path).name}.md5",
+    }
+    for url in DEFAULT_ARCHIVE_URLS
+}
+PINNED_RESOURCE_NAMES = tuple(EXPECTED_RESOURCES)
 REQUIRED_LOCK_KEYS = ("url", "path", "md5_url", "md5_path", "md5", "sha256", "bytes")
+MD5_PATTERN = re.compile(r"^[0-9a-fA-F]{32}$")
 
 
 def fetch_sources(
@@ -104,20 +115,18 @@ def load_lockfile(path: Path) -> dict[str, Any]:
         raise ValueError(f"{path}: lockfile must contain exactly these resources: {expected}")
     for name in PINNED_RESOURCE_NAMES:
         entry = resources[name]
+        expected = EXPECTED_RESOURCES[name]
         if not isinstance(entry, dict):
             raise ValueError(f"{path}: resource {name!r} must be a mapping")
         for key in REQUIRED_LOCK_KEYS:
             if key not in entry:
                 raise ValueError(f"{path}: resource {name!r} missing {key}")
-        normalized_url = validate_archive_url(str(entry["url"]))
-        if str(entry["path"]) != name:
-            raise ValueError(f"{path}: resource {name!r} path must be {name!r}")
-        if str(entry["md5_url"]) != f"{normalized_url}.md5":
-            raise ValueError(f"{path}: resource {name!r} md5_url does not match pinned URL")
-        if str(entry["md5_path"]) != f"{name}.md5":
-            raise ValueError(f"{path}: resource {name!r} md5_path must be {name}.md5")
-        if not str(entry["md5"]).strip():
-            raise ValueError(f"{path}: resource {name!r} md5 must be non-empty")
+        validate_archive_url(str(entry["url"]))
+        for key in ("url", "path", "md5_url", "md5_path"):
+            if str(entry[key]) != expected[key]:
+                raise ValueError(f"{path}: resource {name!r} {key} must be {expected[key]!r}")
+        if not MD5_PATTERN.fullmatch(str(entry["md5"])):
+            raise ValueError(f"{path}: resource {name!r} md5 must be a 32-character hex digest")
     return raw
 
 

@@ -37,6 +37,17 @@ PINNED_SOURCE_URLS = {
     "GCF_000001405.40.gz": "https://ftp.ncbi.nih.gov/snp/archive/b157/VCF/GCF_000001405.40.gz",
     "GCF_000001405.25.gz": "https://ftp.ncbi.nih.gov/snp/archive/b157/VCF/GCF_000001405.25.gz",
 }
+EXPECTED_LOCK_RESOURCES = {
+    filename: {
+        "url": url,
+        "path": filename,
+        "md5_url": f"{url}.md5",
+        "md5_path": f"{filename}.md5",
+    }
+    for filename, url in PINNED_SOURCE_URLS.items()
+}
+REQUIRED_LOCK_KEYS = ("url", "path", "md5_url", "md5_path", "md5", "sha256", "bytes")
+MD5_PATTERN = re.compile(r"^[0-9a-fA-F]{32}$")
 
 
 def build_dataset(
@@ -57,6 +68,7 @@ def build_dataset(
     sqlite_path = output_dir / SQLITE_RESOURCE
     tmp_sqlite_path = output_dir / f".{SQLITE_RESOURCE.name}.{os.getpid()}.tmp"
     summary_path = output_dir / SUMMARY_RESOURCE
+    tmp_summary_path = output_dir / f".{SUMMARY_RESOURCE.name}.{os.getpid()}.tmp"
 
     source_inputs = []
     for filename in SOURCE_ASSEMBLIES:
@@ -129,7 +141,7 @@ def build_dataset(
         "sqlite_bytes": sqlite_bytes,
         "build_seconds": round(time.monotonic() - started, 3),
     }
-    summary_path.write_text(yaml.safe_dump(summary, sort_keys=False), encoding="utf-8")
+    write_yaml_atomic(summary_path, tmp_summary_path, summary)
 
     if update_datapackage:
         write_datapackage(datapackage_path, output_dir=output_dir)
@@ -266,22 +278,30 @@ def load_lockfile(path: Path) -> dict[str, Any]:
     raw = yaml.safe_load(path.read_text(encoding="utf-8"))
     if not isinstance(raw, dict) or not isinstance(raw.get("resources"), dict):
         raise ValueError(f"{path}: expected lockfile with resources mapping")
+    if set(raw["resources"]) != set(EXPECTED_LOCK_RESOURCES):
+        expected = ", ".join(EXPECTED_LOCK_RESOURCES)
+        raise ValueError(f"{path}: lockfile must contain exactly these resources: {expected}")
     for filename in SOURCE_ASSEMBLIES:
-        lock_resource(raw, filename)
+        lock_resource(raw, filename, lockfile_path=path)
     return raw
 
 
-def lock_resource(lock: dict[str, Any], filename: str) -> dict[str, Any]:
+def lock_resource(lock: dict[str, Any], filename: str, *, lockfile_path: Path | None = None) -> dict[str, Any]:
     entry = lock["resources"].get(filename)
+    label = str(lockfile_path) if lockfile_path is not None else "lockfile"
     if not isinstance(entry, dict):
-        raise ValueError(f"lockfile missing resource {filename!r}")
-    for key in ("url", "path", "sha256", "bytes"):
+        raise ValueError(f"{label}: missing resource {filename!r}")
+    for key in REQUIRED_LOCK_KEYS:
         if key not in entry:
-            raise ValueError(f"lockfile resource {filename!r} missing {key}")
+            raise ValueError(f"{label}: resource {filename!r} missing {key}")
     if "/latest_release/" in str(entry["url"]).lower():
         raise ValueError(f"dbSNP latest_release URLs are mutable: {entry['url']}")
-    if str(entry["url"]) != PINNED_SOURCE_URLS[filename]:
-        raise ValueError(f"lockfile resource {filename!r} must use pinned URL {PINNED_SOURCE_URLS[filename]}")
+    expected = EXPECTED_LOCK_RESOURCES[filename]
+    for key in ("url", "path", "md5_url", "md5_path"):
+        if str(entry[key]) != expected[key]:
+            raise ValueError(f"{label}: resource {filename!r} {key} must be {expected[key]!r}")
+    if not MD5_PATTERN.fullmatch(str(entry["md5"])):
+        raise ValueError(f"{label}: resource {filename!r} md5 must be a 32-character hex digest")
     return entry
 
 
@@ -361,6 +381,15 @@ def write_datapackage(path: Path, *, output_dir: Path) -> None:
         ],
     }
     path.write_text(yaml.safe_dump(doc, sort_keys=False), encoding="utf-8")
+
+
+def write_yaml_atomic(path: Path, tmp_path: Path, value: dict[str, Any]) -> None:
+    try:
+        tmp_path.write_text(yaml.safe_dump(value, sort_keys=False), encoding="utf-8")
+        tmp_path.replace(path)
+    except Exception:
+        tmp_path.unlink(missing_ok=True)
+        raise
 
 
 def stream_hash_and_bytes(path: Path) -> tuple[str, int]:
