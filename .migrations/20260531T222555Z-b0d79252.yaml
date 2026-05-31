@@ -1,0 +1,45 @@
+op_id: b0d79252
+type: dataset
+invocation: /mnt/ssd/Dropbox/natural-systems/.venv/bin/science commons promote dataset
+  --from natural-systems-guide --slug power-grid-frequency-germany-2020-01 --apply
+status: ok
+started_at: '2026-05-31T22:25:55.542213+00:00'
+finished_at: '2026-05-31T22:25:55.597426+00:00'
+commons_commit: 42ae40f
+commons_tags:
+- dataset/power-grid-frequency-germany-2020-01/1.0.0
+projects_touched:
+  natural-systems-guide:
+    overlay_rewrites:
+    - slug: power-grid-frequency-germany-2020-01
+      path: /mnt/ssd/Dropbox/natural-systems/doc/datasets/data-power-grid-frequency-germany-2020-01.md
+      pin_version: 1.0.0
+decisions:
+- slug: power-grid-frequency-germany-2020-01
+  canonical_version: 1.0.0
+  canonical_paths:
+  - datasets/power-grid-frequency-germany-2020-01/entity.md
+  - datasets/power-grid-frequency-germany-2020-01/datapackage.yaml
+  - datasets/power-grid-frequency-germany-2020-01/recipe/README.md
+  per_resource_hashes:
+    data:
+      hash: sha256:88a292c7fb6cc7faeb7b3c01e7ab9d7fc3810f33dfc79fe19b3cc95b1a4b92b1
+      bytes: 597629897
+    raw-manifest:
+      hash: sha256:e7174d3cd2eaba224f138db0f87ffdfa62a1194413abae4ef1b34fa90fde06a6
+      bytes: 368
+    power-grid-frequency-germany-2020-01-qa:
+      hash: sha256:432ab080445cc61c1aa448ca3b54f882de161b022b7c62baa658495478166811
+      bytes: 192
+  recipe_stubbed: true
+  dropped_fields:
+  - profiles
+  override_file: /home/keith/.config/science/data.yaml
+  override_backup: /home/keith/.config/science/data.yaml.bak.b0d79252
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 42ae40f
+  projects:
+    natural-systems-guide: git -C /mnt/ssd/Dropbox/natural-systems checkout HEAD --
+      doc/datasets/data-power-grid-frequency-germany-2020-01.md
