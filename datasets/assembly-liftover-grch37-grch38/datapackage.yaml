@@ -1,0 +1,15 @@
+name: assembly-liftover-grch37-grch38
+profile: data-package
+resources:
+  - name: compatibility_relations
+    path: compatibility_relations.csv
+    format: csv
+    mediatype: text/csv
+    hash: "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+    bytes: 0
+  - name: hg19ToHg38_chain
+    path: chains/hg19ToHg38.over.chain.gz
+    format: chain.gz
+    mediatype: application/gzip
+    hash: "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+    bytes: 0
