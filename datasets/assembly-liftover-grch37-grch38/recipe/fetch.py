@@ -45,7 +45,11 @@ def fetch_chain(
     normalized_url = validate_explicit_url(url)
     output_path = output_dir / CHAIN_RESOURCE_PATH
     existing_lock = load_lockfile(lockfile_path) if lockfile_path.exists() else None
-    sha256, byte_count = _download(normalized_url, output_path)
+    if existing_lock is None and not refresh_lockfile:
+        raise FileNotFoundError(f"missing lockfile: {lockfile_path}; pass --refresh-lockfile to create the pin")
+
+    candidate_path = output_path.with_name(output_path.name + ".candidate")
+    sha256, byte_count = _download(normalized_url, candidate_path)
     observed_lock = {
         "resources": {
             "hg19ToHg38_chain": {
@@ -56,12 +60,18 @@ def fetch_chain(
             }
         }
     }
-    if existing_lock is not None and not refresh_lockfile:
-        validate_lock_matches_observed(existing_lock, observed_lock, lockfile_path)
-        return existing_lock
-    lockfile_path.parent.mkdir(parents=True, exist_ok=True)
-    lockfile_path.write_text(yaml.safe_dump(observed_lock, sort_keys=False), encoding="utf-8")
-    return observed_lock
+    try:
+        if existing_lock is not None and not refresh_lockfile:
+            validate_lock_matches_observed(existing_lock, observed_lock, lockfile_path)
+            candidate_path.replace(output_path)
+            return existing_lock
+        lockfile_path.parent.mkdir(parents=True, exist_ok=True)
+        lockfile_path.write_text(yaml.safe_dump(observed_lock, sort_keys=False), encoding="utf-8")
+        candidate_path.replace(output_path)
+        return observed_lock
+    except Exception:
+        candidate_path.unlink(missing_ok=True)
+        raise
 
 
 def load_lockfile(path: Path) -> dict[str, Any]:

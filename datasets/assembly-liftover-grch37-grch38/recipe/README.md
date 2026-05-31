@@ -17,8 +17,20 @@ https://hgdownload.soe.ucsc.edu/goldenPath/hg19/liftOver/hg19ToHg38.over.chain.g
 ```
 
 The fetch step writes the chain under
-`$SCIENCE_COMMONS_DATA_ROOT/assembly-liftover-grch37-grch38/chains/` and writes
-`recipe/lockfile.yaml` with the explicit URL, SHA-256 digest, and byte count.
+`$SCIENCE_COMMONS_DATA_ROOT/assembly-liftover-grch37-grch38/chains/` after
+verifying the downloaded candidate bytes against `recipe/lockfile.yaml`.
+Operators must have a committed or otherwise available lockfile for normal
+fetches. If the downloaded URL, SHA-256 digest, or byte count differs from the
+lockfile, the fetch fails and the existing installed chain file is left
+unchanged.
+
+Use `--refresh-lockfile` only when intentionally creating the first pin or
+repinning the chain:
+
+```bash
+rtk python datasets/assembly-liftover-grch37-grch38/recipe/fetch.py --refresh-lockfile
+```
+
 URLs containing `latest`, `current`, or `download/test` are rejected.
 
 Build the compatibility relation and update `datapackage.yaml`:
@@ -29,6 +41,7 @@ rtk python datasets/assembly-liftover-grch37-grch38/recipe/build.py \
   --target-seqcol <GRCh38 seqcol digest>
 ```
 
-`build.py` fails if the lockfile is missing, the locked URL is not explicit, the
-source and target seqcol digests are equal, or the pinned chain file is absent
-from the dataset data directory.
+`build.py` requires the lockfile and fails if it is missing, the locked URL is
+not explicit, either seqcol digest is blank or malformed, the source and target
+seqcol digests are equal, or the pinned chain file is absent from the dataset
+data directory.

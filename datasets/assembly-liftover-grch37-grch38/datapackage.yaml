@@ -5,11 +5,17 @@ resources:
     path: compatibility_relations.csv
     format: csv
     mediatype: text/csv
+    source:
+      type: local
+      ref: ${OUTPUT_ROOT}/assembly-liftover-grch37-grch38/compatibility_relations.csv
     hash: "sha256:0000000000000000000000000000000000000000000000000000000000000000"
     bytes: 0
   - name: hg19ToHg38_chain
     path: chains/hg19ToHg38.over.chain.gz
     format: chain.gz
     mediatype: application/gzip
+    source:
+      type: local
+      ref: ${OUTPUT_ROOT}/assembly-liftover-grch37-grch38/chains/hg19ToHg38.over.chain.gz
     hash: "sha256:0000000000000000000000000000000000000000000000000000000000000000"
     bytes: 0
