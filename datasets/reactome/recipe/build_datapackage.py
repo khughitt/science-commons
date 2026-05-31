@@ -1,9 +1,10 @@
 from __future__ import annotations
 
 import argparse
-import json
 from pathlib import Path
 from typing import Any
+
+import yaml
 
 from science_tool.commons.config import resolve_commons_data_root
 from science_tool.commons.datapackage import OUTPUT_ROOT_TOKEN, stream_sha256_and_bytes
@@ -44,7 +45,7 @@ def build_datapackage_doc(data_dir: Path) -> dict[str, Any]:
 
 
 def render_datapackage_text(doc: dict[str, Any]) -> str:
-    return json.dumps(doc, indent=2, sort_keys=False) + "\n"
+    return yaml.safe_dump(doc, sort_keys=False)
 
 
 def main() -> None:

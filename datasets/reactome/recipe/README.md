@@ -7,7 +7,7 @@ must not be used as `--base-url`.
 ```bash
 cd ~/d/health/meta
 rtk uv run --frozen python code/scripts/external/reactome/fetch.py --release <release> --base-url <archived-release-url>
-rtk uv run --frozen python code/scripts/external/reactome/build.py
+rtk uv run --frozen python code/scripts/external/reactome/build.py --verify-entity ~/d/science-commons/datasets/reactome/entity.md
 rtk uv run --frozen python code/scripts/external/reactome/build_datapackage.py
 ```
 
@@ -18,4 +18,6 @@ The fetch step writes source files and `lockfile.yaml` under
 The build step writes CSV resources and `build-summary.yaml` under
 `$SCIENCE_COMMONS_DATA_ROOT/reactome/`. The D1 `sets.csv` member surface keeps
 retained Entrez ids, while `gene_set_panel.csv` carries canonical C2 `gene_key`
-and `symbol` columns for analysis.
+and `symbol` columns for analysis. The optional `--verify-entity` check fails if
+the built `n_sets` or `set_size_summary` differs from the committed commons
+entity frontmatter.

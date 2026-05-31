@@ -40,6 +40,8 @@ resolution to opaque `gene_key` values and display symbols is recorded in the
 auxiliary `gene_set_panel.csv` resource.
 
 The canonical `sets.csv` resource excludes pathways with zero approved C2 member
-resolutions and records those exclusions in `resolution_report.csv`. It does not
-apply enrichment-style size filters; consumers should apply analysis-specific
-windows downstream.
+resolutions among pathways that have at least one NCBI membership row, and records
+those exclusions in `resolution_report.csv`. Human catalog pathways with no
+published NCBI gene membership are omitted from both `sets.csv` and the resolution
+report because they cannot form a gene set. No enrichment-style size filter is
+applied; consumers should apply analysis-specific windows downstream.

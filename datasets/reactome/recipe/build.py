@@ -231,10 +231,34 @@ def write_csv(path: Path, rows: list[dict[str, str]], fieldnames: list[str]) -> 
         writer.writerows(rows)
 
 
+def verify_entity_summary(entity_path: Path, summary: dict[str, object]) -> None:
+    text = entity_path.read_text(encoding="utf-8")
+    if not text.startswith("---\n"):
+        raise ValueError(f"{entity_path}: missing YAML frontmatter")
+    try:
+        _prefix, raw_frontmatter, _body = text.split("---\n", 2)
+    except ValueError as exc:
+        raise ValueError(f"{entity_path}: malformed YAML frontmatter fence") from exc
+    frontmatter = yaml.safe_load(raw_frontmatter)
+    if not isinstance(frontmatter, dict):
+        raise ValueError(f"{entity_path}: expected frontmatter mapping")
+    expected = {
+        "n_sets": summary.get("n_sets"),
+        "set_size_summary": summary.get("set_size_summary"),
+    }
+    actual = {
+        "n_sets": frontmatter.get("n_sets"),
+        "set_size_summary": frontmatter.get("set_size_summary"),
+    }
+    if actual != expected:
+        raise ValueError(f"{entity_path}: summary mismatch: expected {expected}, got {actual}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Build normalized Reactome commons CSV resources.")
     parser.add_argument("--source-dir", type=Path)
     parser.add_argument("--output-dir", type=Path)
+    parser.add_argument("--verify-entity", type=Path, help="Assert entity n_sets and set_size_summary match the build.")
     args = parser.parse_args()
 
     output_dir = args.output_dir or resolve_commons_data_root() / "reactome"
@@ -253,6 +277,8 @@ def main() -> None:
     write_csv(output_dir / "gene_set_panel.csv", tables.gene_set_panel, PANEL_FIELDNAMES)
     write_csv(output_dir / "resolution_report.csv", tables.resolution_report, REPORT_FIELDNAMES)
     (output_dir / "build-summary.yaml").write_text(yaml.safe_dump(tables.summary, sort_keys=False), encoding="utf-8")
+    if args.verify_entity is not None:
+        verify_entity_summary(args.verify_entity, tables.summary)
     print(f"wrote Reactome resources to {output_dir}")
 
 
