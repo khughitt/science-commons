@@ -1,0 +1,43 @@
+name: owid-reported-measles
+created: '2026-05-31T22:13:33.009355+00:00'
+dataset_contract:
+  access_method: direct-url
+  auto_downloadable: true
+  evidence_tier: empirical-grounding
+  independence_group: infectious-disease-measles
+  origin: external
+  promotable: true
+  related_existing_h07_rows:
+  - reduce_seir_ebola_r0.py
+  - reduce_sis_gonorrhea_r0.py
+  - reduce_galton_watson_mean_offspring.py
+  slug: owid-reported-measles
+  source_refs:
+  - task:t646
+  workflow_refs:
+  - task:t644
+  - task:t646
+profile: data-package
+title: OWID Reported Measles Cases
+workflow:
+  name: h08-empirical-grounding
+  refs:
+  - task:t644
+  - task:t646
+resources:
+- name: data
+  path: owid-reported-measles.csv
+  role: data
+  row_count: 9316
+  hash: sha256:5cffe8450e11ec6af2c00f6f72c4e93fcda17c60a3d922f0eafd4170448f03f5
+  bytes: 1667819
+- name: raw-manifest
+  path: raw-manifest.json
+  role: data
+  hash: sha256:68603049cdb58e605d936435859441d07276738cc642b83192616d6356a21c05
+  bytes: 406
+- name: owid-reported-measles-qa
+  path: qa/owid-reported-measles-qa.json
+  role: qa
+  hash: sha256:505eb9f2d28dc76e78979e5e96519efef71ff8e1e6a0b682321710eda50017a9
+  bytes: 171
