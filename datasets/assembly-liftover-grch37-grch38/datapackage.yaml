@@ -1,21 +1,21 @@
 name: assembly-liftover-grch37-grch38
 profile: data-package
 resources:
-  - name: compatibility_relations
-    path: compatibility_relations.csv
-    format: csv
-    mediatype: text/csv
-    source:
-      type: local
-      ref: ${OUTPUT_ROOT}/assembly-liftover-grch37-grch38/compatibility_relations.csv
-    hash: "sha256:0000000000000000000000000000000000000000000000000000000000000000"
-    bytes: 0
-  - name: hg19ToHg38_chain
-    path: chains/hg19ToHg38.over.chain.gz
-    format: chain.gz
-    mediatype: application/gzip
-    source:
-      type: local
-      ref: ${OUTPUT_ROOT}/assembly-liftover-grch37-grch38/chains/hg19ToHg38.over.chain.gz
-    hash: "sha256:0000000000000000000000000000000000000000000000000000000000000000"
-    bytes: 0
+- name: compatibility_relations
+  path: compatibility_relations.csv
+  format: csv
+  mediatype: text/csv
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/assembly-liftover-grch37-grch38/compatibility_relations.csv
+  hash: sha256:13f411ee2d547fae57df7a4e8494122e79e7fae864ac589724651532e07cc6da
+  bytes: 438
+- name: hg19ToHg38_chain
+  path: chains/hg19ToHg38.over.chain.gz
+  format: chain.gz
+  mediatype: application/gzip
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/assembly-liftover-grch37-grch38/chains/hg19ToHg38.over.chain.gz
+  hash: sha256:5c0598e500ceb5a78c73086929e8ef993aec309bcafb595139b53d440b125a1d
+  bytes: 227698
