@@ -1,0 +1,40 @@
+name: power-grid-frequency-germany-2020-01
+created: '2026-05-31T22:13:24.138230+00:00'
+dataset_contract:
+  access_method: direct-url
+  auto_downloadable: true
+  evidence_tier: empirical-grounding
+  independence_group: power-grid-frequency
+  origin: external
+  promotable: true
+  related_existing_h07_rows: []
+  slug: power-grid-frequency-germany-2020-01
+  source_refs:
+  - task:t646
+  workflow_refs:
+  - task:t644
+  - task:t646
+profile: data-package
+title: Power-Grid Frequency Germany January 2020
+workflow:
+  name: h08-empirical-grounding
+  refs:
+  - task:t644
+  - task:t646
+resources:
+- name: data
+  path: power-grid-frequency-germany-2020-01.csv
+  role: data
+  row_count: 2418495
+  hash: sha256:88a292c7fb6cc7faeb7b3c01e7ab9d7fc3810f33dfc79fe19b3cc95b1a4b92b1
+  bytes: 597629897
+- name: raw-manifest
+  path: raw-manifest.json
+  role: data
+  hash: sha256:e7174d3cd2eaba224f138db0f87ffdfa62a1194413abae4ef1b34fa90fde06a6
+  bytes: 368
+- name: power-grid-frequency-germany-2020-01-qa
+  path: qa/power-grid-frequency-germany-2020-01-qa.json
+  role: qa
+  hash: sha256:432ab080445cc61c1aa448ca3b54f882de161b022b7c62baa658495478166811
+  bytes: 192
