@@ -18,11 +18,10 @@ https://hgdownload.soe.ucsc.edu/goldenPath/hg19/liftOver/hg19ToHg38.over.chain.g
 
 The fetch step writes the chain under
 `$SCIENCE_COMMONS_DATA_ROOT/assembly-liftover-grch37-grch38/chains/` after
-verifying the downloaded candidate bytes against `recipe/lockfile.yaml`.
-Operators must have a committed or otherwise available lockfile for normal
-fetches. If the downloaded URL, SHA-256 digest, or byte count differs from the
-lockfile, the fetch fails and the existing installed chain file is left
-unchanged.
+verifying the downloaded candidate bytes against the committed
+`recipe/lockfile.yaml`. If the downloaded URL, SHA-256 digest, or byte count
+differs from the lockfile, the fetch fails and the existing installed chain file
+is left unchanged.
 
 Use `--refresh-lockfile` only when intentionally creating the first pin or
 repinning the chain:

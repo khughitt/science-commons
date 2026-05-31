@@ -1,0 +1,6 @@
+resources:
+  hg19ToHg38_chain:
+    url: https://hgdownload.soe.ucsc.edu/goldenPath/hg19/liftOver/hg19ToHg38.over.chain.gz
+    path: chains/hg19ToHg38.over.chain.gz
+    sha256: 5c0598e500ceb5a78c73086929e8ef993aec309bcafb595139b53d440b125a1d
+    bytes: 227698
