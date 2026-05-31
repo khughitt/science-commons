@@ -1,0 +1,45 @@
+op_id: 4d4b63f8
+type: dataset
+invocation: /mnt/ssd/Dropbox/natural-systems/.venv/bin/science commons promote dataset
+  --from natural-systems-guide --slug owid-reported-measles --apply
+status: ok
+started_at: '2026-05-31T22:26:02.999102+00:00'
+finished_at: '2026-05-31T22:26:03.051036+00:00'
+commons_commit: 184597a
+commons_tags:
+- dataset/owid-reported-measles/1.0.0
+projects_touched:
+  natural-systems-guide:
+    overlay_rewrites:
+    - slug: owid-reported-measles
+      path: /mnt/ssd/Dropbox/natural-systems/doc/datasets/data-owid-reported-measles.md
+      pin_version: 1.0.0
+decisions:
+- slug: owid-reported-measles
+  canonical_version: 1.0.0
+  canonical_paths:
+  - datasets/owid-reported-measles/entity.md
+  - datasets/owid-reported-measles/datapackage.yaml
+  - datasets/owid-reported-measles/recipe/README.md
+  per_resource_hashes:
+    data:
+      hash: sha256:5cffe8450e11ec6af2c00f6f72c4e93fcda17c60a3d922f0eafd4170448f03f5
+      bytes: 1667819
+    raw-manifest:
+      hash: sha256:68603049cdb58e605d936435859441d07276738cc642b83192616d6356a21c05
+      bytes: 406
+    owid-reported-measles-qa:
+      hash: sha256:505eb9f2d28dc76e78979e5e96519efef71ff8e1e6a0b682321710eda50017a9
+      bytes: 171
+  recipe_stubbed: true
+  dropped_fields:
+  - profiles
+  override_file: /home/keith/.config/science/data.yaml
+  override_backup: /home/keith/.config/science/data.yaml.bak.4d4b63f8
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 184597a
+  projects:
+    natural-systems-guide: git -C /mnt/ssd/Dropbox/natural-systems checkout HEAD --
+      doc/datasets/data-owid-reported-measles.md
