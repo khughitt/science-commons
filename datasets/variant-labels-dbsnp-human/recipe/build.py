@@ -91,10 +91,11 @@ def build_dataset(
         with closing(sqlite3.connect(tmp_sqlite_path)) as conn:
             configure_bulk_sqlite(conn)
             create_schema(conn)
+            built_at_utc = datetime.now(UTC).isoformat()
             metadata = {
                 "dataset": DATASET_NAME,
                 "dbsnp_build": "157",
-                "built_at_utc": datetime.now(UTC).isoformat(),
+                "built_at_utc": built_at_utc,
                 "assembly_registry": str(assembly_registry_path),
             }
             conn.executemany("INSERT INTO metadata (key, value) VALUES (?, ?)", sorted(metadata.items()))
@@ -130,6 +131,7 @@ def build_dataset(
     summary = {
         "dataset": DATASET_NAME,
         "dbsnp_build": 157,
+        "built_at_utc": built_at_utc,
         "input_rows": totals["input_rows"],
         "retained_alleles": totals["retained_alleles"],
         "duplicate_alleles": totals["duplicate_alleles"],

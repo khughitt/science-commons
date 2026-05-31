@@ -6,19 +6,23 @@ title: Human dbSNP rsID to small-allele variant-label map
 version: "1.0.0"
 created: "2026-05-31"
 updated: "2026-05-31"
-status: active
+status: exploratory
 origin: external
 source_class: reference
-tier: use-now
+tier: track
 access:
   level: public
   availability: available
-  verified: true
-  verification_method: retrieved
+  verified: false
+  verification_method: ''
 datapackage: datapackage.yaml
 ---
 
 Pinned dbSNP build 157 human rsID label map for C4c variant input translation.
+
+This dataset record is a recipe placeholder until an operator fetches the pinned dbSNP archives, builds
+`rsid_mappings.sqlite`, and commits non-zero datapackage hashes. Do not treat it as a usable registry
+until that full artifact pin is complete.
 
 This dataset is not a canonical variant identity system. It resolves external rsID labels to exact
 assembly-anchored alleles so the Science C4a resolver can mint canonical GA4GH VRS identifiers from the
