@@ -1,0 +1,29 @@
+---
+schema_profile: science-entity-base/1.0+dataset/1.0
+id: dataset:variant-labels-dbsnp-human
+type: dataset
+title: Human dbSNP rsID to small-allele variant-label map
+version: "1.0.0"
+created: "2026-05-31"
+updated: "2026-05-31"
+status: active
+origin: external
+source_class: reference
+tier: use-now
+access:
+  level: public
+  availability: available
+  verified: true
+  verification_method: retrieved
+datapackage: datapackage.yaml
+---
+
+Pinned dbSNP build 157 human rsID label map for C4c variant input translation.
+
+This dataset is not a canonical variant identity system. It resolves external rsID labels to exact
+assembly-anchored alleles so the Science C4a resolver can mint canonical GA4GH VRS identifiers from the
+pinned local sequence store.
+
+Only precise literal small alleles are retained. Symbolic alleles, breakends, imprecise structural
+variants, and rows that cannot be represented as `contig:pos0:ref:alt` SPDI inputs are skipped and counted
+in `build-summary.yaml`.

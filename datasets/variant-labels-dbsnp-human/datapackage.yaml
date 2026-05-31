@@ -1,0 +1,21 @@
+name: variant-labels-dbsnp-human
+profile: data-package
+resources:
+- name: rsid_mappings
+  path: rsid_mappings.sqlite
+  format: sqlite
+  mediatype: application/vnd.sqlite3
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/variant-labels-dbsnp-human/rsid_mappings.sqlite
+  hash: sha256:0000000000000000000000000000000000000000000000000000000000000000
+  bytes: 0
+- name: build_summary
+  path: build-summary.yaml
+  format: yaml
+  mediatype: application/x-yaml
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/variant-labels-dbsnp-human/build-summary.yaml
+  hash: sha256:0000000000000000000000000000000000000000000000000000000000000000
+  bytes: 0
