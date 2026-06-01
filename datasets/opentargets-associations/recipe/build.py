@@ -36,6 +36,32 @@ class OpenTargetsTables:
     summary: dict[str, Any]
 
 
+def load_target_index(target_dir: Path) -> dict[str, dict[str, Any]]:
+    out: dict[str, dict[str, Any]] = {}
+    for path in sorted(target_dir.glob("*.parquet")):
+        table = pq.read_table(path, columns=["id", "approvedSymbol", "approvedName", "biotype"])
+        for row in table.to_pylist():
+            out[row["id"]] = {
+                "approvedSymbol": row.get("approvedSymbol"),
+                "approvedName": row.get("approvedName"),
+                "biotype": row.get("biotype"),
+            }
+    return out
+
+
+def load_disease_index(disease_path: Path) -> dict[str, dict[str, Any]]:
+    path = disease_path if disease_path.is_file() else disease_path / "disease.parquet"
+    table = pq.read_table(path, columns=["id", "name"])
+    return {row["id"]: {"name": row.get("name")} for row in table.to_pylist()}
+
+
+def iter_associations(assoc_dir: Path) -> Iterable[dict[str, Any]]:
+    for path in sorted(assoc_dir.glob("*.parquet")):
+        table = pq.read_table(path, columns=["targetId", "diseaseId", "score"])
+        for row in table.to_pylist():
+            yield {"targetId": row["targetId"], "diseaseId": row["diseaseId"], "score": row["score"]}
+
+
 def _normalize_target(raw: str) -> str:
     if not _ENSG_RE.fullmatch(raw):
         raise ValueError(f"target id {raw!r} does not match ^ENSG[0-9]+$")

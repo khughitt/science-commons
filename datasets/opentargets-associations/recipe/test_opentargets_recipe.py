@@ -167,3 +167,46 @@ def test_summary_keys_counts_and_prefixes():
         "participating_disease_count", "disease_prefix_counts", "label_fallback_count",
         "join_miss_target_count", "join_miss_disease_count",
     } <= set(s)
+
+
+from build import iter_associations, load_disease_index, load_target_index
+
+
+def _write_parquet(path, columns):
+    import pyarrow as pa
+    import pyarrow.parquet as pq
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    pq.write_table(pa.table(columns), path)
+
+
+def test_load_target_index_reads_all_parts(tmp_path):
+    d = tmp_path / "target"
+    _write_parquet(
+        d / "part-00000.parquet",
+        {"id": ["ENSG00000157764"], "approvedSymbol": ["BRAF"], "approvedName": ["B-Raf"], "biotype": ["protein_coding"]},
+    )
+    _write_parquet(
+        d / "part-00001.parquet",
+        {"id": ["ENSG00000999999"], "approvedSymbol": [""], "approvedName": ["Only A Name"], "biotype": ["lncRNA"]},
+    )
+    idx = load_target_index(d)
+    assert idx["ENSG00000157764"]["approvedSymbol"] == "BRAF"
+    assert idx["ENSG00000999999"]["biotype"] == "lncRNA"
+
+
+def test_load_disease_index_single_file(tmp_path):
+    d = tmp_path / "disease"
+    _write_parquet(d / "disease.parquet", {"id": ["EFO_0000305"], "name": ["breast carcinoma"]})
+    idx = load_disease_index(d)
+    assert idx["EFO_0000305"]["name"] == "breast carcinoma"
+
+
+def test_iter_associations_yields_dicts(tmp_path):
+    d = tmp_path / "association_overall_direct"
+    _write_parquet(
+        d / "part-00000.parquet",
+        {"targetId": ["ENSG00000157764"], "diseaseId": ["EFO_0000305"], "score": [0.5], "evidenceCount": [3]},
+    )
+    rows = list(iter_associations(d))
+    assert rows == [{"targetId": "ENSG00000157764", "diseaseId": "EFO_0000305", "score": 0.5}]
