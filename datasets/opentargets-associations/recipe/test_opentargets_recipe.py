@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-import math
+import csv
 
 from pathlib import Path
 
@@ -9,8 +9,13 @@ import yaml
 
 from build import (
     KNOWN_DISEASE_PREFIXES,
+    NODE_FIELDS,
     PREDICATE,
     build_opentargets_tables,
+    iter_associations,
+    load_disease_index,
+    load_target_index,
+    write_tables,
 )
 from fetch import LOCKFILE, _reject_mutable_url
 
@@ -169,9 +174,6 @@ def test_summary_keys_counts_and_prefixes():
     } <= set(s)
 
 
-from build import iter_associations, load_disease_index, load_target_index
-
-
 def _write_parquet(path, columns):
     import pyarrow as pa
     import pyarrow.parquet as pq
@@ -210,3 +212,26 @@ def test_iter_associations_yields_dicts(tmp_path):
     )
     rows = list(iter_associations(d))
     assert rows == [{"targetId": "ENSG00000157764", "diseaseId": "EFO_0000305", "score": 0.5}]
+
+
+def test_write_tables_canonical_jsonl_and_no_edges_csv(tmp_path):
+    tables = build_opentargets_tables([_assoc("ENSG00000157764", "EFO_0000305", 0.0318)], _TARGETS, _DISEASES)
+    write_tables(tables, tmp_path)
+    lines = (tmp_path / "graph.jsonl").read_text(encoding="utf-8").splitlines()
+    assert lines == [
+        '{"subject":"ENSEMBL:ENSG00000157764","predicate":"associated_with","object":"EFO:0000305","score":0.0318}'
+    ]
+    # OMIT branch: no edges.csv is ever written
+    assert not (tmp_path / "edges.csv").exists()
+    rows = list(csv.DictReader((tmp_path / "nodes.csv").open(encoding="utf-8")))
+    assert set(rows[0]) == set(NODE_FIELDS)
+    summary = yaml.safe_load((tmp_path / "build-summary.yaml").read_text(encoding="utf-8"))
+    assert summary["edge_count"] == 1
+
+
+def test_write_tables_detects_edge_count_drift(tmp_path, monkeypatch):
+    tables = build_opentargets_tables([_assoc("ENSG00000157764", "EFO_0000305", 0.5)], _TARGETS, _DISEASES)
+    # Corrupt the summary so the post-write line-count guard must fire.
+    object.__setattr__(tables, "summary", {**tables.summary, "edge_count": 999})
+    with pytest.raises(ValueError, match="line count"):
+        write_tables(tables, tmp_path)

@@ -211,3 +211,76 @@ def _self_verify(
     expected = summary["participating_target_count"] + summary["participating_disease_count"]
     if summary["member_count"] != expected or summary["member_count"] != len(nodes):
         raise ValueError("member_count does not equal participating target + disease counts")
+
+
+def _edge_json(subject: str, object_: str, score: float) -> str:
+    return json.dumps(
+        {"subject": subject, "predicate": PREDICATE, "object": object_, "score": score},
+        separators=(",", ":"),
+        ensure_ascii=False,
+    )
+
+
+def _write_csv(path: Path, fieldnames: list[str], rows: list[dict[str, str]]) -> None:
+    with path.open("w", encoding="utf-8", newline="") as fh:
+        writer = csv.DictWriter(fh, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+
+
+def write_tables(tables: OpenTargetsTables, output_dir: Path) -> None:
+    output_dir.mkdir(parents=True, exist_ok=True)
+    graph_path = output_dir / "graph.jsonl"
+    with graph_path.open("w", encoding="utf-8", newline="\n") as fh:
+        for subject, object_, score in tables.edges:
+            fh.write(_edge_json(subject, object_, score))
+            fh.write("\n")
+    _write_csv(output_dir / "nodes.csv", NODE_FIELDS, tables.nodes)
+    (output_dir / "build-summary.yaml").write_text(
+        yaml.safe_dump(tables.summary, sort_keys=False), encoding="utf-8"
+    )
+    # Post-write integrity guard (commons validate cannot count an omitted edge_resource).
+    with graph_path.open(encoding="utf-8") as fh:
+        line_count = sum(1 for _ in fh)
+    if line_count != tables.summary["edge_count"]:
+        raise ValueError(
+            f"graph.jsonl line count {line_count} does not match edge_count {tables.summary['edge_count']}"
+        )
+
+
+def verify_entity(entity_path: Path, summary_path: Path) -> None:
+    text = entity_path.read_text(encoding="utf-8")
+    frontmatter = text.split("---", 2)[1]
+    entity = yaml.safe_load(frontmatter)
+    summary = yaml.safe_load(summary_path.read_text(encoding="utf-8"))
+    for key in ("member_count", "edge_count"):
+        if entity.get(key) != summary.get(key):
+            raise ValueError(
+                f"{entity_path}: {key}={entity.get(key)!r} does not match build summary {summary.get(key)!r}"
+            )
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Build Open Targets reference-graph projections from pinned parquet.")
+    parser.add_argument("--source-dir", type=Path, help="dir containing target/, disease/, association_overall_direct/")
+    parser.add_argument("--output-dir", type=Path)
+    parser.add_argument("--verify-entity", type=Path)
+    args = parser.parse_args()
+
+    output_dir = args.output_dir or resolve_commons_data_root() / "opentargets-associations"
+    source_dir = args.source_dir or output_dir / "_src"
+    targets = load_target_index(source_dir / "target")
+    diseases = load_disease_index(source_dir / "disease")
+    tables = build_opentargets_tables(
+        iter_associations(source_dir / "association_overall_direct"), targets, diseases
+    )
+    write_tables(tables, output_dir)
+    if args.verify_entity is not None:
+        verify_entity(args.verify_entity, output_dir / "build-summary.yaml")
+    print(
+        f"wrote {tables.summary['member_count']} members and {tables.summary['edge_count']} edges to {output_dir}"
+    )
+
+
+if __name__ == "__main__":
+    main()
