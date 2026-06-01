@@ -1,0 +1,38 @@
+name: go
+resources:
+- name: graph
+  path: _src/go.json
+  format: json
+  mediatype: application/json
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/go/_src/go.json
+  hash: sha256:d901e4924cec804e0fbec209b88dd07547ca5503f81712c435200d3c9df7744b
+  bytes: 82502353
+- name: nodes
+  path: nodes.csv
+  format: csv
+  mediatype: text/csv
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/go/nodes.csv
+  hash: sha256:a28b3ea515ef6e51ff4bb48b4161adde7e966d95ce774f73bdc1b2c247992b4b
+  bytes: 4463207
+- name: edges
+  path: edges.csv
+  format: csv
+  mediatype: text/csv
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/go/edges.csv
+  hash: sha256:e90dbc8fb578f0cc0340d76f7f727aba115d1573b8b9ee060c99aa3db04282ad
+  bytes: 3641587
+- name: build_summary
+  path: build-summary.yaml
+  format: yaml
+  mediatype: application/yaml
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/go/build-summary.yaml
+  hash: sha256:0ae1d422a55425f2d70472640924e0a834d80cb3085f79cb0dcabe4168f39674
+  bytes: 294

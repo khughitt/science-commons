@@ -1,0 +1,7 @@
+go_release: '2026-05-19'
+release_archive: https://release.geneontology.org/2026-05-19/
+files:
+  go.json:
+    url: https://release.geneontology.org/2026-05-19/ontology/go.json
+    sha256: sha256:d901e4924cec804e0fbec209b88dd07547ca5503f81712c435200d3c9df7744b
+    bytes: 82502353
