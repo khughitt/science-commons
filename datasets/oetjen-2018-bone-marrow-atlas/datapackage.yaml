@@ -1,0 +1,50 @@
+name: oetjen-2018-bone-marrow-atlas
+id: mm30-external-oetjen-2018-2018-10-2018-10
+title: MM30 × Oetjen 2018 healthy bone-marrow scRNA reference (GSE120221, release
+  2018-10)
+version: 2018-10
+created: '2026-06-01T11:58:24.854036+00:00'
+profile: data-package
+licenses:
+- name: CC-BY-4.0
+  path: https://creativecommons.org/licenses/by/4.0/
+  title: Creative Commons Attribution 4.0
+contributors:
+- title: V. Keith Hughitt
+  role: author
+provenance:
+- action: package
+  timestamp: '2026-06-01T11:58:24.854036+00:00'
+  tool: scripts/causal/scrna/oetjen_loader.py
+resources:
+- name: oetjen-harmonized-anndata
+  path: oetjen2018.harmonized.h5ad
+  format: h5ad
+  mediatype: application/octet-stream
+  description: Per-cell AnnData for 20 healthy bone-marrow donors (CellRanger v2 output)
+    with marker-driven cell-type labels harmonized to the MM30 7-class vocabulary
+    (naive_b, memory_b, plasmablast, plasma_cell, t, myeloid, erythroid).
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/scrna/oetjen2018.harmonized.h5ad
+  hash: sha256:cd5ad762bf074d3f4d8783be4748ab02c6c8c7c335fd30e1169d991df372607f
+  bytes: 1520736030
+- name: oetjen-qc-report
+  path: oetjen2018.qc_report.json
+  format: json
+  mediatype: application/json
+  description: Per-donor cell counts, gene-universe size, and t174 signature coverage
+    diagnostics.
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/scrna/oetjen2018.qc_report.json
+  hash: sha256:9b584b996add668b4bcfaf6c97720346c23c902600bd9cb49b82df1e12be79d3
+  bytes: 9330
+- name: oetjen-celltype-contingency
+  path: celltype_contingency.tsv
+  format: tsv
+  mediatype: text/tab-separated-values
+  description: Per-donor × per-lineage contingency table (raw counts including the
+    unassigned sentinel).
+  hash: sha256:a1c0f2060f7c49731067c48c1e07140296cb02f7f661ae63d6e4e6ea615da405
+  bytes: 700
