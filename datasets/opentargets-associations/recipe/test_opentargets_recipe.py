@@ -235,3 +235,20 @@ def test_write_tables_detects_edge_count_drift(tmp_path, monkeypatch):
     object.__setattr__(tables, "summary", {**tables.summary, "edge_count": 999})
     with pytest.raises(ValueError, match="line count"):
         write_tables(tables, tmp_path)
+
+
+def test_build_datapackage_doc_has_three_resources(tmp_path):
+    from build_datapackage import build_datapackage_doc
+
+    (tmp_path / "graph.jsonl").write_text('{"subject":"ENSEMBL:ENSG1","predicate":"associated_with","object":"EFO:1","score":0.5}\n', encoding="utf-8")
+    (tmp_path / "nodes.csv").write_text("member_key,member_kind,label,status,replaced_by,dataset_usage,symbol,biotype\n", encoding="utf-8")
+    (tmp_path / "build-summary.yaml").write_text("member_count: 2\nedge_count: 1\n", encoding="utf-8")
+
+    doc = build_datapackage_doc(tmp_path)
+    assert doc["name"] == "opentargets-associations"
+    names = {r["name"] for r in doc["resources"]}
+    assert names == {"graph", "nodes", "build_summary"}  # NO 'edges' (omit branch)
+    graph = next(r for r in doc["resources"] if r["name"] == "graph")
+    assert graph["path"] == "graph.jsonl"
+    assert graph["hash"].startswith("sha256:")
+    assert graph["source"]["ref"].endswith("/opentargets-associations/graph.jsonl")
