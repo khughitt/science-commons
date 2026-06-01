@@ -41,6 +41,6 @@ explicitly so the build lands in durable local storage.
 ```bash
 cd ~/d/science
 uv run --frozen --project science python ~/d/science-commons/datasets/opentargets-associations/recipe/fetch.py --output-dir ~/d/science-commons-data/opentargets-associations/_src
-uv run --frozen --project science python ~/d/science-commons/datasets/opentargets-associations/recipe/build.py --source-dir ~/d/science-commons-data/opentargets-associations/_src --output-dir ~/d/science-commons-data/opentargets-associations
+uv run --frozen --project science python ~/d/science-commons/datasets/opentargets-associations/recipe/build.py --source-dir ~/d/science-commons-data/opentargets-associations/_src --output-dir ~/d/science-commons-data/opentargets-associations --verify-entity ~/d/science-commons/datasets/opentargets-associations/entity.md
 uv run --frozen --project science python ~/d/science-commons/datasets/opentargets-associations/recipe/build_datapackage.py --data-dir ~/d/science-commons-data/opentargets-associations
 ```

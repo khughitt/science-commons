@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import hashlib
 
 from pathlib import Path
 
@@ -15,6 +16,7 @@ from build import (
     iter_associations,
     load_disease_index,
     load_target_index,
+    verify_entity,
     write_tables,
 )
 from fetch import LOCKFILE, _reject_mutable_url
@@ -252,3 +254,57 @@ def test_build_datapackage_doc_has_three_resources(tmp_path):
     assert graph["path"] == "graph.jsonl"
     assert graph["hash"].startswith("sha256:")
     assert graph["source"]["ref"].endswith("/opentargets-associations/graph.jsonl")
+
+
+def test_verify_entity_passes_when_counts_match(tmp_path):
+    entity = tmp_path / "entity.md"
+    entity.write_text(
+        "---\nid: dataset:x\nmember_count: 2\nedge_count: 1\n---\n# body\n", encoding="utf-8"
+    )
+    summary = tmp_path / "build-summary.yaml"
+    summary.write_text("member_count: 2\nedge_count: 1\n", encoding="utf-8")
+    verify_entity(entity, summary)  # must not raise
+
+
+def test_verify_entity_raises_on_count_mismatch(tmp_path):
+    entity = tmp_path / "entity.md"
+    entity.write_text(
+        "---\nid: dataset:x\nmember_count: 2\nedge_count: 1\n---\n# body\n", encoding="utf-8"
+    )
+    summary = tmp_path / "build-summary.yaml"
+    summary.write_text("member_count: 2\nedge_count: 999\n", encoding="utf-8")
+    with pytest.raises(ValueError, match="edge_count"):
+        verify_entity(entity, summary)
+
+
+def test_hash_file_matches_known_digest(tmp_path):
+    from fetch import _hash_file
+
+    p = tmp_path / "blob"
+    p.write_bytes(b"hello")
+    digest, n = _hash_file(p)
+    assert n == 5
+    assert digest == "sha256:" + hashlib.sha256(b"hello").hexdigest()
+
+
+def test_fetch_sources_aborts_on_hash_mismatch(tmp_path, monkeypatch):
+    import fetch as fetch_mod
+
+    # Pre-create the file so _download (network) is never called; its hash will not
+    # match the lockfile entry, so fetch_sources must abort with a mismatch error.
+    f = tmp_path / "target" / "x.parquet"
+    f.parent.mkdir(parents=True)
+    f.write_bytes(b"hello")
+    fake_lock = {
+        "release": "25.12",
+        "files": {
+            "target/x.parquet": {
+                "url": "https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/target/x.parquet",
+                "sha256": "sha256:deadbeef",
+                "bytes": 5,
+            }
+        },
+    }
+    monkeypatch.setattr(fetch_mod, "LOCKFILE", fake_lock)
+    with pytest.raises(ValueError, match="mismatch"):
+        fetch_mod.fetch_sources(output_dir=tmp_path)
