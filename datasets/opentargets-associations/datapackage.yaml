@@ -1,0 +1,29 @@
+name: opentargets-associations
+resources:
+- name: graph
+  path: graph.jsonl
+  format: ndjson
+  mediatype: application/x-ndjson
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/opentargets-associations/graph.jsonl
+  hash: sha256:aa943ac8b9d3b71948c5d882535b84dbaf426323b3ca9958eb49be6f95cfe779
+  bytes: 541048482
+- name: nodes
+  path: nodes.csv
+  format: csv
+  mediatype: text/csv
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/opentargets-associations/nodes.csv
+  hash: sha256:bbd398d924cd69b086958f3fa1b85d90870008b57925f1144bbae7c7cf23f1af
+  bytes: 4152432
+- name: build_summary
+  path: build-summary.yaml
+  format: yaml
+  mediatype: application/yaml
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/opentargets-associations/build-summary.yaml
+  hash: sha256:692d51c2652ce8f08b5450312858aecf3afacfa5db28d4e5b3db291c8e5dc5ec
+  bytes: 402
