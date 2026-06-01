@@ -1,0 +1,7 @@
+mondo_release: v2026-05-05
+release_page: https://github.com/monarch-initiative/mondo/releases/tag/v2026-05-05
+files:
+  mondo.json:
+    url: https://github.com/monarch-initiative/mondo/releases/download/v2026-05-05/mondo.json
+    sha256: sha256:4b6ece0b965528fadbd578b98ac95f268e833f18f1827ec58d380b2ac652e95d
+    bytes: 103231823

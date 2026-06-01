@@ -1,0 +1,38 @@
+name: mondo
+resources:
+- name: graph
+  path: _src/mondo.json
+  format: json
+  mediatype: application/json
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/mondo/_src/mondo.json
+  hash: sha256:4b6ece0b965528fadbd578b98ac95f268e833f18f1827ec58d380b2ac652e95d
+  bytes: 103231823
+- name: nodes
+  path: nodes.csv
+  format: csv
+  mediatype: text/csv
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/mondo/nodes.csv
+  hash: sha256:6a118eb097948f5f204793e2c697960256f1c22235eb3553fc3137de6accb1a0
+  bytes: 2221493
+- name: edges
+  path: edges.csv
+  format: csv
+  mediatype: text/csv
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/mondo/edges.csv
+  hash: sha256:b6032229b779e21e865d504952b13a96d8447cae6ea0486b83db183925b3140d
+  bytes: 7814822
+- name: build_summary
+  path: build-summary.yaml
+  format: yaml
+  mediatype: application/yaml
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/mondo/build-summary.yaml
+  hash: sha256:50ae15b44cbec5066010b5d36ad5b46467d3c950a1df33cb7629408b7f7ed653
+  bytes: 162
