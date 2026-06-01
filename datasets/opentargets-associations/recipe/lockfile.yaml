@@ -1,0 +1,127 @@
+release: '25.12'
+release_archive: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/
+files:
+  target/part-00000-064e12f3-6f99-4758-a7df-035b6dbb9084-c000.snappy.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/target/part-00000-064e12f3-6f99-4758-a7df-035b6dbb9084-c000.snappy.parquet
+    sha256: sha256:9bc14639f031f0ba2627cea02ef27cce2a4e9b41c605cf2d6b055ad9047d0b30
+    bytes: 7720012
+  target/part-00001-064e12f3-6f99-4758-a7df-035b6dbb9084-c000.snappy.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/target/part-00001-064e12f3-6f99-4758-a7df-035b6dbb9084-c000.snappy.parquet
+    sha256: sha256:3a338ae9de399919db43e6263bf56e67c58e26c442b7a30c7468428b6c79bbe2
+    bytes: 7741829
+  target/part-00002-064e12f3-6f99-4758-a7df-035b6dbb9084-c000.snappy.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/target/part-00002-064e12f3-6f99-4758-a7df-035b6dbb9084-c000.snappy.parquet
+    sha256: sha256:b678e97a3f77cfa626a3efacd45f277643e9e77344e0c6a298bca105afd9f20f
+    bytes: 7648671
+  target/part-00003-064e12f3-6f99-4758-a7df-035b6dbb9084-c000.snappy.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/target/part-00003-064e12f3-6f99-4758-a7df-035b6dbb9084-c000.snappy.parquet
+    sha256: sha256:788d45eb43e8f010887b5c8bbd38a1d2fdb76b09bb64d8ea1f985393b5363049
+    bytes: 8167236
+  target/part-00004-064e12f3-6f99-4758-a7df-035b6dbb9084-c000.snappy.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/target/part-00004-064e12f3-6f99-4758-a7df-035b6dbb9084-c000.snappy.parquet
+    sha256: sha256:d25db0284d09d4070c28a3a5c970312e461978c98be1fab0e27f005c5279cb52
+    bytes: 7909394
+  target/part-00005-064e12f3-6f99-4758-a7df-035b6dbb9084-c000.snappy.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/target/part-00005-064e12f3-6f99-4758-a7df-035b6dbb9084-c000.snappy.parquet
+    sha256: sha256:7600ddb5ed0c06c32b157e5d0ca3d13a3d24988609919174ab6e742595e27e41
+    bytes: 7676742
+  target/part-00006-064e12f3-6f99-4758-a7df-035b6dbb9084-c000.snappy.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/target/part-00006-064e12f3-6f99-4758-a7df-035b6dbb9084-c000.snappy.parquet
+    sha256: sha256:36bd7623e4b123c593e428c7c6a0ecc778582956ad8bcba6a5bb461b0b6252f0
+    bytes: 7856266
+  target/part-00007-064e12f3-6f99-4758-a7df-035b6dbb9084-c000.snappy.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/target/part-00007-064e12f3-6f99-4758-a7df-035b6dbb9084-c000.snappy.parquet
+    sha256: sha256:58d1a432e03c07d67a79f1b8699b08ccbe67b2562aa7bfc9361bfba1ee947bfb
+    bytes: 7739423
+  target/part-00008-064e12f3-6f99-4758-a7df-035b6dbb9084-c000.snappy.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/target/part-00008-064e12f3-6f99-4758-a7df-035b6dbb9084-c000.snappy.parquet
+    sha256: sha256:dbfda01fa4ecc6aec93d95f9d52e84933f9582d68198b7020dc7a42e44f0caa8
+    bytes: 7840404
+  target/part-00009-064e12f3-6f99-4758-a7df-035b6dbb9084-c000.snappy.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/target/part-00009-064e12f3-6f99-4758-a7df-035b6dbb9084-c000.snappy.parquet
+    sha256: sha256:24a8a5ff17fbbbd07512ed94d278d82c0eb2997db5124f4e129c817d88daefae
+    bytes: 7727626
+  disease/disease.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/disease/disease.parquet
+    sha256: sha256:ede971de7d4d392caf79beeefc9a21f25f06abe1b4fabceb1e11220229a143c8
+    bytes: 6381109
+  association_overall_direct/part-00000-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/association_overall_direct/part-00000-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet
+    sha256: sha256:e70b056a1ebddb798aba31660d2497dc4d6d1473efc93dc74f2549eea2c1bd59
+    bytes: 1820264
+  association_overall_direct/part-00001-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/association_overall_direct/part-00001-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet
+    sha256: sha256:0e30a8a5e7e74bbd24c198255f964968ab5c11aa23d3b5e9da6576f658da5440
+    bytes: 1777487
+  association_overall_direct/part-00002-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/association_overall_direct/part-00002-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet
+    sha256: sha256:a0440dd81d78dc4ac4be7235559a54f2f977d2e8a321af2355a8b48e2a3946d0
+    bytes: 1739173
+  association_overall_direct/part-00003-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/association_overall_direct/part-00003-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet
+    sha256: sha256:ba244cb3cfc3a2c6dc9a50c99e04675a08da2cc7679c533d2d7e537c1c5fb16b
+    bytes: 1643688
+  association_overall_direct/part-00004-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/association_overall_direct/part-00004-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet
+    sha256: sha256:5b61a296a05c45eeaeb29ae9970fed124d3dbdd4001e35ac2cdee5101da45f16
+    bytes: 2653587
+  association_overall_direct/part-00005-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/association_overall_direct/part-00005-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet
+    sha256: sha256:ea18705c93bf330bac14317100686ba93b2203c87e599a8b7d89f4972676f923
+    bytes: 1993769
+  association_overall_direct/part-00006-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/association_overall_direct/part-00006-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet
+    sha256: sha256:bc81a9cab8f65dfd2d4c204b127230661466f0fff19b5f4a1e19995342eb936d
+    bytes: 1922021
+  association_overall_direct/part-00007-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/association_overall_direct/part-00007-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet
+    sha256: sha256:f7603a05beda266b3ee64e718bdd7c9c59140b305e064231277b93fe1dc6312b
+    bytes: 2714511
+  association_overall_direct/part-00008-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/association_overall_direct/part-00008-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet
+    sha256: sha256:1f3f7b230e64cdaefacd878e230285291be1d8810a8f2ac4231a9815ebfb5604
+    bytes: 1908802
+  association_overall_direct/part-00009-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/association_overall_direct/part-00009-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet
+    sha256: sha256:c234de981dc00473177675e350770b31b5f35340d0b0d8f2a7334e59fec2453d
+    bytes: 1525677
+  association_overall_direct/part-00010-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/association_overall_direct/part-00010-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet
+    sha256: sha256:35f138bfc6fb5be367c9bea34e7794e80181222965e0081634555b13de928cf8
+    bytes: 1355865
+  association_overall_direct/part-00011-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/association_overall_direct/part-00011-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet
+    sha256: sha256:5e396752baff87c1a24ab202d9d466ec18c4659c3cb7e23a7f2fecad492de715
+    bytes: 1631365
+  association_overall_direct/part-00012-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/association_overall_direct/part-00012-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet
+    sha256: sha256:fb90d695f136d530b80938bff4fcdcfd6ceaded14dd05b1bb37c58c89d59a87b
+    bytes: 1674583
+  association_overall_direct/part-00013-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/association_overall_direct/part-00013-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet
+    sha256: sha256:af80027da267fb08409d31fcc19ea5936836e34b3e31120e36ac64c7ac249b2a
+    bytes: 1628936
+  association_overall_direct/part-00014-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/association_overall_direct/part-00014-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet
+    sha256: sha256:e31e4695dbf60e5ad807ed887a6fefe4b83a7bfca8e2cac2d56957b31fa88859
+    bytes: 1696187
+  association_overall_direct/part-00015-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/association_overall_direct/part-00015-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet
+    sha256: sha256:87b58ecb217db0d641d29e8eb63014267b632af9807302b271e9aba31d112467
+    bytes: 1206530
+  association_overall_direct/part-00016-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/association_overall_direct/part-00016-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet
+    sha256: sha256:5eabba61cebf3c3d79b95a3a22d0c5bdf379f16653ac0c1994be0f813849d221
+    bytes: 1531669
+  association_overall_direct/part-00017-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/association_overall_direct/part-00017-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet
+    sha256: sha256:274e8560aa2b764ad7800e0521561b301ab55cddd8a1c4af1ba5151fd981eca2
+    bytes: 1491137
+  association_overall_direct/part-00018-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/association_overall_direct/part-00018-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet
+    sha256: sha256:36e704168e38ace86210195d4814a6c57e8718138cb01980317d2639d7cba840
+    bytes: 2208286
+  association_overall_direct/part-00019-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet:
+    url: https://ftp.ebi.ac.uk/pub/databases/opentargets/platform/25.12/output/association_overall_direct/part-00019-aaa1c63d-a07c-4486-af49-f58da5ca71d5-c000.snappy.parquet
+    sha256: sha256:6ff8d41251f9fd9a0c020a9b11168600cedba1575e92ba5a0b3cb2b7afc5e73a
+    bytes: 1841729
