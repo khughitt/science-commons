@@ -17,12 +17,12 @@ ontology_terms:
 related:
 - topic:parameter-ontology
 source_refs:
-- BaezStay2010
-- Bronstein2021
-- Courtney2017
-- Legatiuk2025
-- Schembera2024
-- Spivak2014
+- paper:BaezStay2010
+- paper:Bronstein2021
+- paper:Courtney2017
+- paper:Legatiuk2025
+- paper:Schembera2024
+- paper:Spivak2014
 - paper:Legatiuk2021
 - paper:Papillon2024
 ---
