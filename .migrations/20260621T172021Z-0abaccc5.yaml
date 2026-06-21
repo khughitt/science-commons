@@ -1,0 +1,29 @@
+op_id: 0abaccc5
+type: paper
+invocation: /mnt/ssd/Dropbox/health/processes/cycles/.venv/bin/science commons promote
+  paper paper:Aras2025 --from cycles --apply
+status: ok
+started_at: '2026-06-21T17:20:21.149691+00:00'
+finished_at: '2026-06-21T17:20:21.193124+00:00'
+commons_commit: 31e06b8
+commons_tags:
+- paper/Aras2025/1.0.0
+projects_touched:
+  cycles:
+    overlay_rewrites:
+    - slug: Aras2025
+      path: /mnt/ssd/Dropbox/health/processes/cycles/doc/papers/Aras2025.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/health/processes/cycles/entities/papers/Aras2025.md
+decisions:
+- slug: Aras2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Aras2025.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 31e06b8
+  projects:
+    cycles: git -C /mnt/ssd/Dropbox/health/processes/cycles checkout HEAD -- doc/papers/Aras2025.md
+      entities/papers/Aras2025.md
