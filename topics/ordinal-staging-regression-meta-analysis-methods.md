@@ -17,7 +17,6 @@ related:
 - question:disease-stage-transition-signatures
 - topic:disease-stage-progression-methods
 - topic:meta-analysis
-- topic:survival-meta-analysis-methodology
 source_refs:
 - Archer2015penalized
 - Bergsagel2012

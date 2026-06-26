@@ -18,14 +18,9 @@ related:
 - topic:disease-stage-progression-methods
 - topic:meta-analysis
 source_refs:
-- paper:Elsevier2015
-- paper:Funk2014
-- paper:Huang2018
-- paper:Kluyver2022
 - paper:Liberzon2015
 - paper:Madsen2011
 - paper:Mubeen2019
-- paper:Nguyen2019
 - paper:Ochoa2021
 - paper:Percha2018
 - paper:Pletscher-Frankild2015
@@ -91,7 +86,7 @@ formalizes this at the gene level: novelty is the reciprocal of the normalized P
 article count for a target (across all diseases), while importance measures target-disease
 co-occurrence strength. Although TIN-X operates at the single-gene level, its score
 architecture generalizes: a gene set's aggregate TIN-X novelty would be a summary of
-member novelties. TIN-X v3 (Nguyen et al. 2024, PeerJ) expanded the corpus and
+member novelties. TIN-X v3 (Metzger et al. 2024, PeerJ) expanded the corpus and
 modernized the NER pipeline. Key property of this approach: monotone, interpretable,
 directly actionable, and reusable with existing per-gene caches. Main weakness: mean and
 sum are dominated by a few well-studied hub genes that happen to be set members.
@@ -312,7 +307,7 @@ general acceptance.
 
 ### 5. Concrete Prior Systems
 
-**TIN-X / TIN-X v3 (Cannon et al. 2017; Nguyen et al. 2024)**
+**TIN-X / TIN-X v3 (Cannon et al. 2017; Metzger et al. 2024)**
 Disease-target importance and novelty scatter plot. Novelty = 1 / normalized PubMed
 abstract count for the target across all diseases. Importance = normalized co-occurrence
 of target and disease in PubMed. Freely available at newdrugtargets.org; gene-level scores
@@ -363,7 +358,7 @@ analogous to IDF: pathways appearing in many published Enrichr analyses are well
 - Subramanian2005: Subramanian A et al. (2005) Gene set enrichment analysis: a knowledge-based approach for interpreting genome-wide expression profiles. PNAS 102:15545.
 - Liberzon2015: Liberzon A et al. (2015) The Molecular Signatures Database Hallmark Gene Set Collection. Cell Systems 1:417.
 - Cannon2017: Cannon DC et al. (2017) TIN-X: target importance and novelty explorer. Bioinformatics 33:2601.
-- Nguyen2024: Nguyen DT et al. (2024) TIN-X version 3: update with expanded dataset. PeerJ 12:e17470.
+- Metzger2024: Metzger VT et al. (2024) TIN-X version 3: update with expanded dataset and modernized architecture for enhanced illumination of understudied targets. PeerJ 12:e17470.
 - Pletscher-Frankild2015: Pletscher-Frankild S et al. (2015) DISEASES: text mining and data integration of disease-gene associations. Methods 74:83.
 - Gronning2022: Grønning AGB et al. (2022) Diseases 2.0: a weekly updated database. Database baac019.
 - Madsen2011: Madsen BE et al. (2011) Appearance frequency modulated gene set enrichment testing. BMC Bioinformatics 12:81.
