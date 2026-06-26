@@ -1,0 +1,159 @@
+op_id: 980e1dab
+type: theme
+invocation: /mnt/ssd/Dropbox/cancer/meta/.venv/bin/science commons promote theme --from
+  multiple-myeloma --from cancer-meta --apply
+status: ok
+started_at: '2026-06-26T17:39:10.625002+00:00'
+finished_at: '2026-06-26T17:39:11.681152+00:00'
+commons_commit: d04de31
+commons_tags:
+- theme/0001-cross-scale-state-transitions/1.0.0
+- theme/0002-failure-modes-of-generalization/1.0.0
+- theme/0003-intervention-readiness/1.0.0
+- theme/0004-observation-and-measurement-bias/1.0.0
+- theme/0005-transportability-across-cancer-types/1.0.0
+- theme/0006-bayesian-evidence-synthesis/1.0.0
+- theme/0007-causal-data-integration/1.0.0
+- theme/0008-causal-discovery-and-structure-learning/1.0.0
+- theme/0009-data-integration-and-multi-omics/1.0.0
+- theme/0010-scientific-knowledge-systems-and-agents/1.0.0
+- theme/0011-source-reliability-and-truth-discovery/1.0.0
+- theme/0012-global-transcriptional-output-as-a-cancer-state-axis/1.0.0
+- theme/0013-cross-disease-foundations/1.0.0
+- theme/0014-convergent-escape-nodes/1.0.0
+projects_touched:
+  cancer-meta:
+    overlay_rewrites:
+    - slug: 0001-cross-scale-state-transitions
+      path: /mnt/ssd/Dropbox/cancer/meta/overlays/themes/0001-cross-scale-state-transitions.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/cancer/meta/entities/themes/0001-cross-scale-state-transitions.md
+    - slug: 0002-failure-modes-of-generalization
+      path: /mnt/ssd/Dropbox/cancer/meta/overlays/themes/0002-failure-modes-of-generalization.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/cancer/meta/entities/themes/0002-failure-modes-of-generalization.md
+    - slug: 0003-intervention-readiness
+      path: /mnt/ssd/Dropbox/cancer/meta/overlays/themes/0003-intervention-readiness.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/cancer/meta/entities/themes/0003-intervention-readiness.md
+    - slug: 0004-observation-and-measurement-bias
+      path: /mnt/ssd/Dropbox/cancer/meta/overlays/themes/0004-observation-and-measurement-bias.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/cancer/meta/entities/themes/0004-observation-and-measurement-bias.md
+    - slug: 0005-transportability-across-cancer-types
+      path: /mnt/ssd/Dropbox/cancer/meta/overlays/themes/0005-transportability-across-cancer-types.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/cancer/meta/entities/themes/0005-transportability-across-cancer-types.md
+    - slug: 0006-bayesian-evidence-synthesis
+      path: /mnt/ssd/Dropbox/cancer/meta/overlays/themes/0006-bayesian-evidence-synthesis.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/cancer/meta/entities/themes/0006-bayesian-evidence-synthesis.md
+    - slug: 0007-causal-data-integration
+      path: /mnt/ssd/Dropbox/cancer/meta/overlays/themes/0007-causal-data-integration.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/cancer/meta/entities/themes/0007-causal-data-integration.md
+    - slug: 0008-causal-discovery-and-structure-learning
+      path: /mnt/ssd/Dropbox/cancer/meta/overlays/themes/0008-causal-discovery-and-structure-learning.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/cancer/meta/entities/themes/0008-causal-discovery-and-structure-learning.md
+    - slug: 0009-data-integration-and-multi-omics
+      path: /mnt/ssd/Dropbox/cancer/meta/overlays/themes/0009-data-integration-and-multi-omics.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/cancer/meta/entities/themes/0009-data-integration-and-multi-omics.md
+    - slug: 0010-scientific-knowledge-systems-and-agents
+      path: /mnt/ssd/Dropbox/cancer/meta/overlays/themes/0010-scientific-knowledge-systems-and-agents.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/cancer/meta/entities/themes/0010-scientific-knowledge-systems-and-agents.md
+    - slug: 0011-source-reliability-and-truth-discovery
+      path: /mnt/ssd/Dropbox/cancer/meta/overlays/themes/0011-source-reliability-and-truth-discovery.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/cancer/meta/entities/themes/0011-source-reliability-and-truth-discovery.md
+    - slug: 0012-global-transcriptional-output-as-a-cancer-state-axis
+      path: /mnt/ssd/Dropbox/cancer/meta/overlays/themes/0012-global-transcriptional-output-as-a-cancer-state-axis.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/cancer/meta/entities/themes/0012-global-transcriptional-output-as-a-cancer-state-axis.md
+    - slug: 0013-cross-disease-foundations
+      path: /mnt/ssd/Dropbox/cancer/meta/overlays/themes/0013-cross-disease-foundations.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/cancer/meta/entities/themes/0013-cross-disease-foundations.md
+    - slug: 0014-convergent-escape-nodes
+      path: /mnt/ssd/Dropbox/cancer/meta/overlays/themes/0014-convergent-escape-nodes.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/cancer/meta/entities/themes/0014-convergent-escape-nodes.md
+decisions:
+- slug: 0001-cross-scale-state-transitions
+  canonical_version: 1.0.0
+  canonical_paths:
+  - themes/0001-cross-scale-state-transitions.md
+- slug: 0002-failure-modes-of-generalization
+  canonical_version: 1.0.0
+  canonical_paths:
+  - themes/0002-failure-modes-of-generalization.md
+- slug: 0003-intervention-readiness
+  canonical_version: 1.0.0
+  canonical_paths:
+  - themes/0003-intervention-readiness.md
+- slug: 0004-observation-and-measurement-bias
+  canonical_version: 1.0.0
+  canonical_paths:
+  - themes/0004-observation-and-measurement-bias.md
+- slug: 0005-transportability-across-cancer-types
+  canonical_version: 1.0.0
+  canonical_paths:
+  - themes/0005-transportability-across-cancer-types.md
+- slug: 0006-bayesian-evidence-synthesis
+  canonical_version: 1.0.0
+  canonical_paths:
+  - themes/0006-bayesian-evidence-synthesis.md
+- slug: 0007-causal-data-integration
+  canonical_version: 1.0.0
+  canonical_paths:
+  - themes/0007-causal-data-integration.md
+- slug: 0008-causal-discovery-and-structure-learning
+  canonical_version: 1.0.0
+  canonical_paths:
+  - themes/0008-causal-discovery-and-structure-learning.md
+- slug: 0009-data-integration-and-multi-omics
+  canonical_version: 1.0.0
+  canonical_paths:
+  - themes/0009-data-integration-and-multi-omics.md
+- slug: 0010-scientific-knowledge-systems-and-agents
+  canonical_version: 1.0.0
+  canonical_paths:
+  - themes/0010-scientific-knowledge-systems-and-agents.md
+- slug: 0011-source-reliability-and-truth-discovery
+  canonical_version: 1.0.0
+  canonical_paths:
+  - themes/0011-source-reliability-and-truth-discovery.md
+- slug: 0012-global-transcriptional-output-as-a-cancer-state-axis
+  canonical_version: 1.0.0
+  canonical_paths:
+  - themes/0012-global-transcriptional-output-as-a-cancer-state-axis.md
+- slug: 0013-cross-disease-foundations
+  canonical_version: 1.0.0
+  canonical_paths:
+  - themes/0013-cross-disease-foundations.md
+- slug: 0014-convergent-escape-nodes
+  canonical_version: 1.0.0
+  canonical_paths:
+  - themes/0014-convergent-escape-nodes.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert d04de31
+  projects:
+    cancer-meta: git -C /mnt/ssd/Dropbox/cancer/meta checkout HEAD -- entities/themes/0001-cross-scale-state-transitions.md
+      entities/themes/0002-failure-modes-of-generalization.md entities/themes/0003-intervention-readiness.md
+      entities/themes/0004-observation-and-measurement-bias.md entities/themes/0005-transportability-across-cancer-types.md
+      entities/themes/0006-bayesian-evidence-synthesis.md entities/themes/0007-causal-data-integration.md
+      entities/themes/0008-causal-discovery-and-structure-learning.md entities/themes/0009-data-integration-and-multi-omics.md
+      entities/themes/0010-scientific-knowledge-systems-and-agents.md entities/themes/0011-source-reliability-and-truth-discovery.md
+      entities/themes/0012-global-transcriptional-output-as-a-cancer-state-axis.md
+      entities/themes/0013-cross-disease-foundations.md entities/themes/0014-convergent-escape-nodes.md
+      overlays/themes/0001-cross-scale-state-transitions.md overlays/themes/0002-failure-modes-of-generalization.md
+      overlays/themes/0003-intervention-readiness.md overlays/themes/0004-observation-and-measurement-bias.md
+      overlays/themes/0005-transportability-across-cancer-types.md overlays/themes/0006-bayesian-evidence-synthesis.md
+      overlays/themes/0007-causal-data-integration.md overlays/themes/0008-causal-discovery-and-structure-learning.md
+      overlays/themes/0009-data-integration-and-multi-omics.md overlays/themes/0010-scientific-knowledge-systems-and-agents.md
+      overlays/themes/0011-source-reliability-and-truth-discovery.md overlays/themes/0012-global-transcriptional-output-as-a-cancer-state-axis.md
+      overlays/themes/0013-cross-disease-foundations.md overlays/themes/0014-convergent-escape-nodes.md
