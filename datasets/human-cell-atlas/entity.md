@@ -24,7 +24,7 @@ tags: []
 benchmark:
   domains: ["biology"]
   modalities: ["single-cell-rna-seq", "spatial", "multimodal"]
-  signal_types: ["reference-atlas", "cross-context-generalization"]
+  signal_types: ["reference-atlas"]
   benchmark_kinds: ["cross-context-generalization", "static-association"]
   source_datasets: []
   related_beliefs: []

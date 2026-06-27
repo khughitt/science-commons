@@ -25,7 +25,7 @@ benchmark:
   domains: ["biology"]
   modalities: ["varies"]
   signal_types: ["perturbation"]
-  benchmark_kinds: ["perturbation-response", "mechanism-discrimination"]
+  benchmark_kinds: ["mechanism-discrimination"]
   source_datasets: []
   related_beliefs: []
   notes:

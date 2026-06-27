@@ -24,7 +24,7 @@ tags: []
 benchmark:
   domains: ["biology"]
   modalities: ["bulk-expression", "landmark-transcriptomics"]
-  signal_types: ["perturbation", "cross-context-generalization"]
+  signal_types: ["perturbation"]
   benchmark_kinds: ["perturbation-response", "mechanism-discrimination"]
   source_datasets: []
   related_beliefs: []

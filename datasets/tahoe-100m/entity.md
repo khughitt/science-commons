@@ -25,7 +25,7 @@ benchmark:
   domains: ["biology"]
   modalities: ["single-cell-rna-seq"]
   signal_types: ["perturbation"]
-  benchmark_kinds: ["perturbation-response", "cross-context-generalization"]
+  benchmark_kinds: ["cross-context-generalization"]
   source_datasets: []
   related_beliefs: []
   notes:
