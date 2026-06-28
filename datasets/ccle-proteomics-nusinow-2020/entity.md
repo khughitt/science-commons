@@ -5,7 +5,7 @@ type: dataset
 title: CCLE Proteomics (Nusinow 2020) — quantitative proteome across 375 cancer cell lines
 version: "1.0.0"
 created: "2026-05-19"
-updated: "2026-05-19"
+updated: "2026-06-28"
 tags: []
 access:
   level: public
@@ -53,6 +53,32 @@ origin: external
 status: active
 tier: use-now
 update_cadence: static
+benchmark:
+  domains: ["biology", "cancer"]
+  modalities: ["proteomics", "multimodal"]
+  signal_types: ["cross-sectional", "multi-omic"]
+  benchmark_kinds: ["static-association", "cross-context-generalization"]
+  source_datasets: []
+  related_beliefs: []
+  notes:
+    - "Seed benchmark for protein-level validation in cancer cell-line systems, especially when transcript-level evidence may not transfer directly to protein abundance."
+    - "Useful as a compact proteomics benchmark with matched CCLE/DepMap context available outside this record."
+  limitations:
+    - "Cell-line context is not a primary-tumor substitute."
+    - "Multiple-myeloma subset is small, so per-gene MM-only correlations have limited power."
+  tasks:
+    - id: protein-lineage-association
+      task_type: "association-prediction"
+      prediction_target: "protein abundance pattern across cancer cell lines"
+      held_out_unit: "cell line"
+      metric: "spearman-correlation"
+      baseline: "lineage-average protein abundance"
+      ground_truth:
+        type: "measured-outcome"
+        description: "TMT quantitative protein abundance across CCLE cancer cell lines"
+      interpretation_limits:
+        - "Positive performance supports protein-level transfer checks, not primary-tumor causal claims."
+      contexts: ["cell line", "lineage", "TMT batch"]
 ---
 # CCLE Proteomics (Nusinow 2020) — quantitative proteome across 375 cancer cell lines
 

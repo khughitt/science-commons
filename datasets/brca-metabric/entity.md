@@ -5,7 +5,7 @@ type: dataset
 title: METABRIC — mRNA expression + clinical
 version: "1.0.0"
 created: "2026-05-30"
-updated: "2026-05-30"
+updated: "2026-06-28"
 tags: []
 access:
   level: public
@@ -41,6 +41,32 @@ status: active
 tier: use-now
 update_cadence: static
 value_dtype: float32
+benchmark:
+  domains: ["biology", "cancer"]
+  modalities: ["bulk-expression", "clinical", "multimodal"]
+  signal_types: ["clinical-outcome", "cross-sectional"]
+  benchmark_kinds: ["static-association", "cross-context-generalization"]
+  source_datasets: []
+  related_beliefs: []
+  notes:
+    - "Seed benchmark for platform-distinct breast-cancer prognostic validation using microarray expression plus long clinical follow-up."
+    - "Useful as an independent validation counterpart to TCGA-BRCA."
+  limitations:
+    - "Processed cBioPortal redistribution is public, but primary data have controlled-access terms."
+    - "Observational outcome benchmark; prognostic associations do not imply treatment causality."
+  tasks:
+    - id: platform-transfer-survival
+      task_type: "outcome-prediction"
+      prediction_target: "overall or relapse-free survival risk from expression and clinical features"
+      held_out_unit: "patient"
+      metric: "concordance-index"
+      baseline: "clinical covariates"
+      ground_truth:
+        type: "measured-outcome"
+        description: "METABRIC clinical survival and relapse outcomes"
+      interpretation_limits:
+        - "Useful for platform-transfer validation; causal interpretation requires separate study design."
+      contexts: ["patient", "tumor subtype", "microarray platform", "clinical follow-up"]
 ---
 # METABRIC — mRNA expression + clinical
 

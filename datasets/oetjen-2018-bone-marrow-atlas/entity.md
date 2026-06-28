@@ -5,7 +5,7 @@ type: dataset
 title: Oetjen 2018 — Human bone marrow single-cell reference atlas
 version: "1.0.0"
 created: "2026-06-01"
-updated: "2026-06-01"
+updated: "2026-06-28"
 tags: []
 access:
   level: public
@@ -34,6 +34,32 @@ origin: external
 status: active
 tier: use-now
 update_cadence: static
+benchmark:
+  domains: ["biology", "hematology"]
+  modalities: ["single-cell-rna-seq", "cytometry", "multimodal"]
+  signal_types: ["reference-atlas"]
+  benchmark_kinds: ["static-association", "cross-context-generalization"]
+  source_datasets: []
+  related_beliefs: []
+  notes:
+    - "Seed benchmark for healthy bone-marrow cell-state annotation and cross-modality reference transfer."
+    - "Useful for projects that need a normal hematopoietic reference before interpreting disease-state signals."
+  limitations:
+    - "Healthy donor atlas; disease-state extrapolation needs separate validation."
+    - "Plasma cells are sparse, so plasma-cell-specific tasks may need aggregation across donors."
+  tasks:
+    - id: marrow-cell-state-transfer
+      task_type: "cell-state-classification"
+      prediction_target: "bone-marrow cell type or maturation state"
+      held_out_unit: "donor"
+      metric: "balanced-accuracy"
+      baseline: "majority cell type within donor"
+      ground_truth:
+        type: "curated-label"
+        description: "single-cell annotations supported by cytometry-calibrated reference labels"
+      interpretation_limits:
+        - "Performance supports reference-transfer checks, not tumor-state causality."
+      contexts: ["donor", "cell type", "single-cell chemistry", "cytometry panel"]
 ---
 # Oetjen 2018 — Human bone marrow single-cell reference atlas
 

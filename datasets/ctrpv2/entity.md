@@ -5,7 +5,7 @@ type: dataset
 title: CTRPv2 — Cancer Therapeutics Response Portal (v2)
 version: "1.0.0"
 created: "2026-05-29"
-updated: "2026-05-29"
+updated: "2026-06-28"
 tags: []
 access:
   level: public
@@ -21,6 +21,33 @@ ontology_terms: []
 origin: external
 status: active
 tier: use-now
+benchmark:
+  domains: ["biology", "cancer"]
+  modalities: ["drug-response", "cell-line"]
+  signal_types: ["perturbation", "drug-response"]
+  benchmark_kinds: ["perturbation-response", "cross-context-generalization"]
+  source_datasets: []
+  related_beliefs: []
+  notes:
+    - "Seed benchmark for small-molecule perturbation-response prediction across cancer cell lines."
+    - "Complements expression and proteomics seeds by testing whether molecular context predicts drug sensitivity."
+  limitations:
+    - "Cell-line drug response is an in vitro perturbation signal and should not be treated as direct clinical efficacy."
+    - "Compound coverage and curve-fit quality vary."
+  tasks:
+    - id: drug-sensitivity-prediction
+      task_type: "response-prediction"
+      prediction_target: "compound sensitivity area-under-curve"
+      held_out_unit: "cell-line-compound pair"
+      metric: "spearman-correlation"
+      baseline: "compound median sensitivity"
+      ground_truth:
+        type: "measured-outcome"
+        description: "CTRPv2 fitted small-molecule sensitivity measurements"
+      interpretation_limits:
+        - "Useful for perturbation-response validation; clinical translation needs independent evidence."
+      intervention: "small-molecule compound exposure"
+      contexts: ["cell line", "compound", "histology"]
 ---
 # CTRPv2 — Cancer Therapeutics Response Portal (v2)
 

@@ -5,7 +5,7 @@ type: dataset
 title: TCGA-BRCA (PanCancer Atlas) — mRNA expression + clinical
 version: "1.0.0"
 created: "2026-05-30"
-updated: "2026-05-30"
+updated: "2026-06-28"
 tags: []
 access:
   level: public
@@ -44,6 +44,32 @@ status: active
 tier: use-now
 update_cadence: static
 value_dtype: float32
+benchmark:
+  domains: ["biology", "cancer"]
+  modalities: ["bulk-rna-seq", "clinical", "multimodal"]
+  signal_types: ["clinical-outcome", "cross-sectional"]
+  benchmark_kinds: ["static-association", "cross-context-generalization"]
+  source_datasets: []
+  related_beliefs: []
+  notes:
+    - "Seed benchmark for transcriptomic clinical-outcome prediction in a large primary breast-cancer cohort."
+    - "Useful as an RNA-seq counterpart to METABRIC for platform-transfer and clinical-outcome checks."
+  limitations:
+    - "Observational cohort; prognostic associations do not establish treatment causality."
+    - "Survival labels depend on curated clinical follow-up completeness."
+  tasks:
+    - id: survival-risk-prediction
+      task_type: "outcome-prediction"
+      prediction_target: "overall or disease-specific survival risk from expression and clinical features"
+      held_out_unit: "patient"
+      metric: "concordance-index"
+      baseline: "clinical covariates"
+      ground_truth:
+        type: "measured-outcome"
+        description: "curated TCGA clinical survival outcomes"
+      interpretation_limits:
+        - "Performance supports prognostic validation, not causal treatment inference."
+      contexts: ["patient", "tumor subtype", "clinical stage", "RNA-seq platform"]
 ---
 # TCGA-BRCA (PanCancer Atlas) — mRNA expression + clinical
 
