@@ -1,0 +1,76 @@
+name: l1000-cmap
+title: LINCS L1000 Connectivity Map GEO Level 5 signatures
+version: "GSE92742-GSE70138"
+created: "2026-06-29T00:00:00+00:00"
+profile: data-package
+licenses:
+- name: unknown
+  title: Unknown
+contributors:
+- title: V. Keith Hughitt
+  role: author
+provenance:
+- action: describe-remote-resources
+  timestamp: "2026-06-29T00:00:00+00:00"
+  tool: science benchmark metadata tuning
+resources:
+- name: gse92742-level5-modz
+  path: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE92nnn/GSE92742/suppl/GSE92742_Broad_LINCS_Level5_COMPZ.MODZ_n473647x12328.gctx.gz
+  format: gctx.gz
+  mediatype: application/gzip
+  description: Phase I consensus Level 5 perturbational expression signatures.
+  bytes: 21328033748
+- name: gse92742-signature-info
+  path: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE92nnn/GSE92742/suppl/GSE92742_Broad_LINCS_sig_info.txt.gz
+  format: txt.gz
+  mediatype: application/gzip
+  description: Phase I signature metadata.
+  bytes: 11124404
+- name: gse92742-perturbagen-info
+  path: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE92nnn/GSE92742/suppl/GSE92742_Broad_LINCS_pert_info.txt.gz
+  format: txt.gz
+  mediatype: application/gzip
+  description: Phase I perturbagen metadata.
+  bytes: 1138509
+- name: gse92742-cell-info
+  path: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE92nnn/GSE92742/suppl/GSE92742_Broad_LINCS_cell_info.txt.gz
+  format: txt.gz
+  mediatype: application/gzip
+  description: Phase I cell line metadata.
+  bytes: 2528
+- name: gse92742-gene-info
+  path: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE92nnn/GSE92742/suppl/GSE92742_Broad_LINCS_gene_info.txt.gz
+  format: txt.gz
+  mediatype: application/gzip
+  description: Phase I gene metadata.
+  bytes: 216692
+- name: gse70138-level5-compz
+  path: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE70nnn/GSE70138/suppl/GSE70138_Broad_LINCS_Level5_COMPZ_n118050x12328_2017-03-06.gctx.gz
+  format: gctx.gz
+  mediatype: application/gzip
+  description: Phase II consensus Level 5 perturbational expression signatures.
+  bytes: 5365179698
+- name: gse70138-signature-info
+  path: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE70nnn/GSE70138/suppl/GSE70138_Broad_LINCS_sig_info_2017-03-06.txt.gz
+  format: txt.gz
+  mediatype: application/gzip
+  description: Phase II signature metadata.
+  bytes: 1943865
+- name: gse70138-perturbagen-info
+  path: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE70nnn/GSE70138/suppl/GSE70138_Broad_LINCS_pert_info_2017-03-06.txt.gz
+  format: txt.gz
+  mediatype: application/gzip
+  description: Phase II perturbagen metadata.
+  bytes: 82376
+- name: gse70138-cell-info
+  path: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE70nnn/GSE70138/suppl/GSE70138_Broad_LINCS_cell_info_2017-04-28.txt.gz
+  format: txt.gz
+  mediatype: application/gzip
+  description: Phase II cell line metadata.
+  bytes: 2528
+- name: gse70138-gene-info
+  path: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE70nnn/GSE70138/suppl/GSE70138_Broad_LINCS_gene_info_2017-03-06.txt.gz
+  format: txt.gz
+  mediatype: application/gzip
+  description: Phase II gene metadata.
+  bytes: 216692
