@@ -1,0 +1,87 @@
+from __future__ import annotations
+
+import os
+import sys
+from pathlib import Path
+
+
+DATASET_NAME = "variant-labels-dbsnp-human"
+ARCHIVES = (
+    "GCF_000001405.40.gz",
+    "GCF_000001405.25.gz",
+)
+
+
+def _path_config(name: str, default: Path | str) -> Path:
+    value = config.get(name)
+    if value is None:
+        value = default
+    return Path(str(value)).expanduser()
+
+
+RECIPE_DIR = Path(workflow.basedir)
+DATASET_DIR = RECIPE_DIR.parent
+COMMONS_DATA_ROOT = _path_config(
+    "commons_data_root",
+    os.environ.get("SCIENCE_COMMONS_DATA_ROOT", "/data/science-commons"),
+)
+SOURCE_ROOT = _path_config("source_root", COMMONS_DATA_ROOT / DATASET_NAME / "_src")
+OUTPUT_ROOT = _path_config("output_root", COMMONS_DATA_ROOT)
+ASSEMBLY_REGISTRY = _path_config(
+    "assembly_registry",
+    COMMONS_DATA_ROOT / "assembly-registry" / "assemblies.csv",
+)
+PYTHON = str(config.get("python", sys.executable))
+
+SOURCE_ARCHIVES = tuple(str(SOURCE_ROOT / name) for name in ARCHIVES)
+SOURCE_MD5S = tuple(str(SOURCE_ROOT / f"{name}.md5") for name in ARCHIVES)
+LOCKFILE = str(RECIPE_DIR / "lockfile.yaml")
+DATAPACKAGE = str(DATASET_DIR / "datapackage.yaml")
+SQLITE = str(OUTPUT_ROOT / DATASET_NAME / "rsid_mappings.sqlite")
+SUMMARY = str(OUTPUT_ROOT / DATASET_NAME / "build-summary.yaml")
+
+
+rule all:
+    input:
+        SQLITE,
+        SUMMARY,
+        DATAPACKAGE,
+
+
+rule fetch_sources:
+    output:
+        lockfile=LOCKFILE,
+        archives=SOURCE_ARCHIVES,
+        md5s=SOURCE_MD5S,
+    params:
+        fetch_py=str(RECIPE_DIR / "fetch.py"),
+        source_root=str(SOURCE_ROOT),
+    shell:
+        "{PYTHON:q} {params.fetch_py:q} "
+        "--refresh-lockfile "
+        "--output-dir {params.source_root:q} "
+        "--lockfile {output.lockfile:q}"
+
+
+rule build_dataset:
+    input:
+        lockfile=LOCKFILE,
+        archives=SOURCE_ARCHIVES,
+        md5s=SOURCE_MD5S,
+        assembly_registry=str(ASSEMBLY_REGISTRY),
+    output:
+        sqlite=SQLITE,
+        summary=SUMMARY,
+        datapackage=DATAPACKAGE,
+    params:
+        build_py=str(RECIPE_DIR / "build.py"),
+        source_root=str(SOURCE_ROOT),
+        output_root=str(OUTPUT_ROOT),
+    shell:
+        "{PYTHON:q} {params.build_py:q} "
+        "--input-root {params.source_root:q} "
+        "--output-root {params.output_root:q} "
+        "--lockfile {input.lockfile:q} "
+        "--assembly-registry {input.assembly_registry:q} "
+        "--datapackage {output.datapackage:q} "
+        "--update-datapackage"
