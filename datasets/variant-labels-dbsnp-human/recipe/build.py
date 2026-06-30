@@ -54,6 +54,7 @@ def build_dataset(
     *,
     input_root: Path,
     output_root: Path,
+    dataset_output_dir: Path | None = None,
     lockfile_path: Path = LOCKFILE_PATH,
     assembly_registry_path: Path | None = None,
     datapackage_path: Path = DATAPACKAGE_PATH,
@@ -63,7 +64,7 @@ def build_dataset(
     lock = load_lockfile(lockfile_path)
     assembly_registry_path = assembly_registry_path or default_assembly_registry_path(resolve_commons_data_root())
     assembly_digests = load_assembly_digests(assembly_registry_path)
-    output_dir = output_root / DATASET_NAME
+    output_dir = dataset_output_dir or output_root / DATASET_NAME
     output_dir.mkdir(parents=True, exist_ok=True)
     sqlite_path = output_dir / SQLITE_RESOURCE
     tmp_sqlite_path = output_dir / f".{SQLITE_RESOURCE.name}.{os.getpid()}.tmp"
@@ -424,6 +425,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Build dbSNP rsID to small-allele SQLite mappings.")
     parser.add_argument("--input-root", type=Path, help="Directory containing locked dbSNP .gz archives.")
     parser.add_argument("--output-root", type=Path, help="Commons output root. Dataset directory is created below it.")
+    parser.add_argument("--dataset-output-dir", type=Path, help="Exact dataset output directory passed by science commons dataset build.")
     parser.add_argument("--lockfile", type=Path, default=LOCKFILE_PATH, help="Path to recipe lockfile.")
     parser.add_argument(
         "--assembly-registry",
@@ -437,9 +439,11 @@ def main() -> None:
     commons_root = resolve_commons_data_root()
     input_root = args.input_root or commons_root / DATASET_NAME / "_src"
     output_root = args.output_root or commons_root
+    effective_output_dir = args.dataset_output_dir or output_root / DATASET_NAME
     summary = build_dataset(
         input_root=input_root,
         output_root=output_root,
+        dataset_output_dir=args.dataset_output_dir,
         lockfile_path=args.lockfile,
         assembly_registry_path=args.assembly_registry or default_assembly_registry_path(commons_root),
         datapackage_path=args.datapackage,
@@ -448,7 +452,7 @@ def main() -> None:
     print(
         "wrote "
         f"{summary['retained_alleles']} retained dbSNP alleles "
-        f"for {summary['distinct_rsids']} rsIDs to {output_root / DATASET_NAME}"
+        f"for {summary['distinct_rsids']} rsIDs to {effective_output_dir}"
     )
 
 

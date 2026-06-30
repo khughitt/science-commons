@@ -27,3 +27,23 @@ expects the assembly registry at `$SCIENCE_COMMONS_DATA_ROOT/assembly-registry/a
 with `--config assembly_registry=/path/to/assemblies.csv` only when using an equivalent pinned registry.
 No full-source lockfile is committed yet; the first successful workflow run should be reviewed before
 committing `recipe/lockfile.yaml` and the refreshed `datapackage.yaml`.
+
+## Lifecycle commands
+
+Run the package through the commons-born lifecycle:
+
+```bash
+SCIENCE_COMMONS_ROOT=~/d/science-commons science commons dataset status variant-labels-dbsnp-human
+SCIENCE_COMMONS_ROOT=~/d/science-commons science commons dataset build variant-labels-dbsnp-human --cores 1
+SCIENCE_COMMONS_ROOT=~/d/science-commons science commons dataset validate variant-labels-dbsnp-human
+```
+
+The workflow requires the standard `dataset_output_dir` config passed by
+`science commons dataset build`; recipe code should write outputs there directly
+rather than reconstructing `output_root/variant-labels-dbsnp-human`.
+
+The full build also requires a pinned `assembly-registry/assemblies.csv` resource
+for GRCh38 `GCF_000001405.40` and GRCh37 `GCF_000001405.25`. If that resource is
+not available under `$SCIENCE_COMMONS_DATA_ROOT/assembly-registry/`, pass an
+equivalent pinned file with Snakemake config `assembly_registry=...` for fixture
+or operator smoke runs.

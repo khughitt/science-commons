@@ -19,13 +19,21 @@ def _path_config(name: str, default: Path | str) -> Path:
     return Path(str(value)).expanduser()
 
 
+def _required_path_config(name: str) -> Path:
+    value = config.get(name)
+    if value is None:
+        raise ValueError(f"{name} config is required; run through science commons dataset build")
+    return Path(str(value)).expanduser()
+
+
 RECIPE_DIR = Path(workflow.basedir)
 DATASET_DIR = RECIPE_DIR.parent
 COMMONS_DATA_ROOT = _path_config(
     "commons_data_root",
     os.environ.get("SCIENCE_COMMONS_DATA_ROOT", "/data/science-commons"),
 )
-SOURCE_ROOT = _path_config("source_root", COMMONS_DATA_ROOT / DATASET_NAME / "_src")
+DATASET_OUTPUT_DIR = _required_path_config("dataset_output_dir")
+SOURCE_ROOT = _path_config("source_root", DATASET_OUTPUT_DIR / "_src")
 OUTPUT_ROOT = _path_config("output_root", COMMONS_DATA_ROOT)
 ASSEMBLY_REGISTRY = _path_config(
     "assembly_registry",
@@ -37,8 +45,8 @@ SOURCE_ARCHIVES = tuple(str(SOURCE_ROOT / name) for name in ARCHIVES)
 SOURCE_MD5S = tuple(str(SOURCE_ROOT / f"{name}.md5") for name in ARCHIVES)
 LOCKFILE = str(RECIPE_DIR / "lockfile.yaml")
 DATAPACKAGE = str(DATASET_DIR / "datapackage.yaml")
-SQLITE = str(OUTPUT_ROOT / DATASET_NAME / "rsid_mappings.sqlite")
-SUMMARY = str(OUTPUT_ROOT / DATASET_NAME / "build-summary.yaml")
+SQLITE = str(DATASET_OUTPUT_DIR / "rsid_mappings.sqlite")
+SUMMARY = str(DATASET_OUTPUT_DIR / "build-summary.yaml")
 
 
 rule all:
@@ -77,10 +85,12 @@ rule build_dataset:
         build_py=str(RECIPE_DIR / "build.py"),
         source_root=str(SOURCE_ROOT),
         output_root=str(OUTPUT_ROOT),
+        dataset_output_dir=str(DATASET_OUTPUT_DIR),
     shell:
         "{PYTHON:q} {params.build_py:q} "
         "--input-root {params.source_root:q} "
         "--output-root {params.output_root:q} "
+        "--dataset-output-dir {params.dataset_output_dir:q} "
         "--lockfile {input.lockfile:q} "
         "--assembly-registry {input.assembly_registry:q} "
         "--datapackage {output.datapackage:q} "
