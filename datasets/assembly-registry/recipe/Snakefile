@@ -1,0 +1,52 @@
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+
+DATASET_NAME = "assembly-registry"
+
+
+def _required_path_config(name: str) -> Path:
+    value = config.get(name)
+    if value is None:
+        raise ValueError(f"{name} config is required; run through science commons dataset build")
+    return Path(str(value)).expanduser()
+
+
+RECIPE_DIR = Path(workflow.basedir)
+DATASET_DIR = RECIPE_DIR.parent
+DATASET_OUTPUT_DIR = _required_path_config("dataset_output_dir")
+PYTHON = str(config.get("python", sys.executable))
+
+SOURCES = str(RECIPE_DIR / "sources.yaml")
+DATAPACKAGE = str(DATASET_DIR / "datapackage.yaml")
+ASSEMBLIES = str(DATASET_OUTPUT_DIR / "assemblies.csv")
+CONTIGS = str(DATASET_OUTPUT_DIR / "contigs.csv")
+CONTIG_ALIASES = str(DATASET_OUTPUT_DIR / "contig_aliases.csv")
+
+
+rule all:
+    input:
+        ASSEMBLIES,
+        CONTIGS,
+        CONTIG_ALIASES,
+
+
+rule build_registry:
+    input:
+        sources=SOURCES,
+    output:
+        assemblies=ASSEMBLIES,
+        contigs=CONTIGS,
+        contig_aliases=CONTIG_ALIASES,
+    params:
+        build_py=str(RECIPE_DIR / "build.py"),
+        output_dir=str(DATASET_OUTPUT_DIR),
+        datapackage=DATAPACKAGE,
+    shell:
+        "{PYTHON:q} {params.build_py:q} "
+        "--sources {input.sources:q} "
+        "--output-dir {params.output_dir:q} "
+        "--datapackage {params.datapackage:q} "
+        "--update-datapackage"

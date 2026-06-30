@@ -8,6 +8,7 @@ assembly reports; output is small CSV resources.
 
 from __future__ import annotations
 
+import argparse
 import csv
 import hashlib
 import sys
@@ -27,6 +28,8 @@ from science_tool.commons.assembly_report_build import build_contig_alias_rows, 
 
 _HERE = Path(__file__).resolve().parent
 _OUT = _HERE.parent
+_DATAPACKAGE = _HERE.parent / "datapackage.yaml"
+_ENTITY = _HERE.parent / "entity.md"
 _ASSEMBLY_FIELDS = [
     "seqcol_digest",
     "label",
@@ -39,9 +42,11 @@ _ASSEMBLY_FIELDS = [
 ]
 _CONTIG_FIELDS = ["seqcol_digest", "sequence_index", "name", "refget_digest", "length"]
 _ALIAS_FIELDS = ["seqcol_digest", "refget_digest", "alias", "alias_kind", "sequence_accession"]
+_RESOURCE_PATHS = ("assemblies.csv", "contigs.csv", "contig_aliases.csv")
 
 
 def _write_csv(path: Path, fieldnames: list[str], rows: list[dict[str, Any]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="") as fh:
         writer = csv.DictWriter(fh, fieldnames=fieldnames)
         writer.writeheader()
@@ -104,11 +109,16 @@ def _validate_unique_seqcol_digests(rows: list[dict[str, Any]]) -> None:
 
 
 def _sha256_resource(path: Path) -> tuple[str, int]:
-    payload = path.read_bytes()
-    return "sha256:" + hashlib.sha256(payload).hexdigest(), len(payload)
+    digest = hashlib.sha256()
+    byte_count = 0
+    with path.open("rb") as fh:
+        for chunk in iter(lambda: fh.read(1024 * 1024), b""):
+            digest.update(chunk)
+            byte_count += len(chunk)
+    return "sha256:" + digest.hexdigest(), byte_count
 
 
-def _update_datapackage(path: Path, *, version: str) -> None:
+def _update_datapackage(path: Path, *, output_dir: Path, version: str) -> None:
     doc = yaml.safe_load(path.read_text(encoding="utf-8"))
     if not isinstance(doc, dict):
         raise ValueError(f"{path} must contain a YAML mapping")
@@ -125,7 +135,7 @@ def _update_datapackage(path: Path, *, version: str) -> None:
             raise ValueError(f"{path} contains a non-mapping resource")
         resource_path = resource.get("path")
         if resource_path in wanted:
-            resource_hash, resource_bytes = _sha256_resource(_OUT / resource_path)
+            resource_hash, resource_bytes = _sha256_resource(output_dir / str(resource_path))
             resource["hash"] = resource_hash
             resource["bytes"] = resource_bytes
             seen.add(resource_path)
@@ -155,16 +165,22 @@ def _update_entity(path: Path, *, assembly_count: int, version: str) -> None:
     path.write_text(text, encoding="utf-8")
 
 
-def main() -> None:
-    sources = yaml.safe_load((_HERE / "sources.yaml").read_text(encoding="utf-8"))
+def build_registry(
+    *,
+    output_dir: Path,
+    sources_path: Path,
+    datapackage_path: Path | None = None,
+    entity_path: Path | None = None,
+) -> None:
+    sources = yaml.safe_load(sources_path.read_text(encoding="utf-8"))
     if not isinstance(sources, dict):
-        raise ValueError("sources.yaml must contain a YAML mapping")
+        raise ValueError(f"{sources_path} must contain a YAML mapping")
 
-    artifact_version = _require_text(sources, "artifact_version", label="sources.yaml")
-    seqcol_base_url = _require_text(sources, "seqcol_base_url", label="sources.yaml")
+    artifact_version = _require_text(sources, "artifact_version", label=str(sources_path))
+    seqcol_base_url = _require_text(sources, "seqcol_base_url", label=str(sources_path))
     assemblies = sources.get("assemblies")
     if not isinstance(assemblies, list) or not assemblies:
-        raise ValueError("sources.yaml assemblies must be a non-empty list")
+        raise ValueError(f"{sources_path} assemblies must be a non-empty list")
 
     assembly_rows: list[dict[str, Any]] = []
     contig_rows: list[dict[str, Any]] = []
@@ -217,12 +233,33 @@ def main() -> None:
     contig_rows.sort(key=lambda row: (row["seqcol_digest"], int(row["sequence_index"])))
     alias_rows.sort(key=lambda row: (row["seqcol_digest"], row["refget_digest"], row["alias_kind"], row["alias"]))
 
-    _write_csv(_OUT / "assemblies.csv", _ASSEMBLY_FIELDS, assembly_rows)
-    _write_csv(_OUT / "contigs.csv", _CONTIG_FIELDS, contig_rows)
-    _write_csv(_OUT / "contig_aliases.csv", _ALIAS_FIELDS, alias_rows)
-    _update_datapackage(_OUT / "datapackage.yaml", version=artifact_version)
-    _update_entity(_OUT / "entity.md", assembly_count=len(assembly_rows), version=artifact_version)
-    print(f"wrote {len(assembly_rows)} assemblies, {len(contig_rows)} contigs, {len(alias_rows)} aliases to {_OUT}")
+    _write_csv(output_dir / "assemblies.csv", _ASSEMBLY_FIELDS, assembly_rows)
+    _write_csv(output_dir / "contigs.csv", _CONTIG_FIELDS, contig_rows)
+    _write_csv(output_dir / "contig_aliases.csv", _ALIAS_FIELDS, alias_rows)
+    if datapackage_path is not None:
+        _update_datapackage(datapackage_path, output_dir=output_dir, version=artifact_version)
+    if entity_path is not None:
+        _update_entity(entity_path, assembly_count=len(assembly_rows), version=artifact_version)
+    print(f"wrote {len(assembly_rows)} assemblies, {len(contig_rows)} contigs, {len(alias_rows)} aliases to {output_dir}")
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Build pinned assembly registry CSV resources.")
+    parser.add_argument("--output-dir", type=Path, default=_OUT, help="Directory for assemblies.csv and related outputs.")
+    parser.add_argument("--sources", type=Path, default=_HERE / "sources.yaml", help="Pinned source declarations.")
+    parser.add_argument("--datapackage", type=Path, default=_DATAPACKAGE, help="Path to datapackage.yaml.")
+    parser.add_argument("--entity", type=Path, default=_ENTITY, help="Path to entity.md.")
+    parser.add_argument("--update-datapackage", action="store_true", help="Refresh datapackage resource hashes and bytes.")
+    parser.add_argument("--update-entity", action="store_true", help="Refresh entity metadata.")
+    args = parser.parse_args()
+
+    default_output = args.output_dir == _OUT
+    build_registry(
+        output_dir=args.output_dir,
+        sources_path=args.sources,
+        datapackage_path=args.datapackage if args.update_datapackage or default_output else None,
+        entity_path=args.entity if args.update_entity or default_output else None,
+    )
 
 
 def _self_check() -> None:

@@ -1,27 +1,26 @@
-# Assembly registry build (no-FASTA)
+# Assembly registry build (no FASTA)
 
-1. Fill `sources.yaml` with each assembly's seqcol collection digest and pinned
-   NCBI assembly report URL. Discover digests from
-   `https://seqcolapi.databio.org/list/collection` (or the refget seqcol
-   standard paper). The build verifies each digest by recomputing it from the
-   server's level-2 record (`names` + `sequences`), so a wrong digest fails fast.
-2. Build: `uv run --with refget --with httpx --with pyyaml python recipe/build.py`
-   (writes `../assemblies.csv`, `../contigs.csv`, and `../contig_aliases.csv`).
-3. Pin each resource hash + size into `datapackage.yaml`:
+This recipe builds `dataset:assembly-registry`, the seqcol-keyed registry used
+by variant, liftover, sequence-store, and dbSNP workflows.
 
-   ```bash
-   python - <<'PY'
-   import hashlib
-   import os
+Run through the commons-born lifecycle:
 
-   for p in ("assemblies.csv", "contigs.csv", "contig_aliases.csv"):
-       print(p, "sha256:" + hashlib.sha256(open(p, "rb").read()).hexdigest(), os.path.getsize(p))
-   PY
-   ```
+```bash
+science commons dataset build assembly-registry
+science commons dataset validate assembly-registry
+```
 
-4. Update `entity.md` `assembly_count` to the assembly row count.
+The workflow writes:
 
-No FASTA is downloaded; per-contig `SQ.` digests come from the seqcol server.
-Contig aliases come from the pinned assembly reports and are joined through the
-strict `build_contig_alias_rows` helper, which fails if seqcol names and report
-names do not match exactly.
+- `$SCIENCE_COMMONS_DATA_ROOT/assembly-registry/assemblies.csv`
+- `$SCIENCE_COMMONS_DATA_ROOT/assembly-registry/contigs.csv`
+- `$SCIENCE_COMMONS_DATA_ROOT/assembly-registry/contig_aliases.csv`
+
+`sources.yaml` pins the seqcol collection digests and NCBI assembly report URLs
+for RefSeq GRCh38 (`GCF_000001405.40`) and GRCh37 (`GCF_000001405.25`).
+No FASTA is downloaded. Per-contig `SQ.` digests come from the pinned seqcol
+level-2 records. Contig aliases come from pinned NCBI assembly reports.
+
+The current seqcol records use RefSeq accession names such as `NC_000001.11`.
+The assembly report parser joins those rows through report aliases, then emits
+all available aliases for each matched contig.
