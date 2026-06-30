@@ -179,6 +179,9 @@ def _download(url: str, output_path: Path) -> tuple[str, int]:
     try:
         response_cm = urllib.request.urlopen(request)
     except urllib.error.HTTPError as exc:
+        if exc.code == 416 and _temp_file_matches_remote_length(url, tmp_path):
+            tmp_path.replace(output_path)
+            return _hash_file(output_path, "sha256")
         if exc.code != 416 or not output_path.exists():
             raise
         return _hash_file(output_path, "sha256")
@@ -204,6 +207,21 @@ def _download(url: str, output_path: Path) -> tuple[str, int]:
                 fh.write(chunk)
     tmp_path.replace(output_path)
     return f"sha256:{digest.hexdigest()}", byte_count
+
+
+def _temp_file_matches_remote_length(url: str, tmp_path: Path) -> bool:
+    if not tmp_path.is_file():
+        return False
+    request = urllib.request.Request(url, method="HEAD")
+    with urllib.request.urlopen(request) as response:
+        length = response.headers.get("Content-Length")
+    if length is None:
+        return False
+    try:
+        remote_size = int(length)
+    except ValueError:
+        return False
+    return tmp_path.stat().st_size == remote_size
 
 
 def _hash_file(path: Path, algorithm: str) -> tuple[str, int]:

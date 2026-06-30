@@ -9,10 +9,11 @@ import fetch
 
 
 class _FakeResponse:
-    def __init__(self, body: bytes, *, status: int = 200) -> None:
+    def __init__(self, body: bytes, *, status: int = 200, headers: dict[str, str] | None = None) -> None:
         self._body = body
         self._offset = 0
         self.status = status
+        self.headers = headers or {}
 
     def __enter__(self) -> "_FakeResponse":
         return self
@@ -54,6 +55,29 @@ def test_download_resumes_existing_temp_file(monkeypatch: Any, tmp_path: Path) -
     assert byte_count == len(b"partial-tail")
     assert sha256 == "sha256:" + hashlib.sha256(b"partial-tail").hexdigest()
     assert len(requests) == 1
+
+
+def test_download_promotes_complete_temp_file_after_range_416(monkeypatch: Any, tmp_path: Path) -> None:
+    output_path = tmp_path / "archive.gz"
+    tmp_path_complete = output_path.with_suffix(output_path.suffix + ".tmp")
+    tmp_path_complete.write_bytes(b"complete")
+    requests: list[urllib.request.Request] = []
+
+    def fake_urlopen(request: urllib.request.Request) -> _FakeResponse:
+        requests.append(request)
+        if request.get_method() == "HEAD":
+            return _FakeResponse(b"", headers={"Content-Length": "8"})
+        raise fetch.urllib.error.HTTPError(request.full_url, 416, "Requested Range Not Satisfiable", {}, None)
+
+    monkeypatch.setattr(fetch.urllib.request, "urlopen", fake_urlopen)
+
+    sha256, byte_count = fetch._download("https://example.test/archive.gz", output_path)
+
+    assert output_path.read_bytes() == b"complete"
+    assert not tmp_path_complete.exists()
+    assert byte_count == len(b"complete")
+    assert sha256 == "sha256:" + hashlib.sha256(b"complete").hexdigest()
+    assert [request.get_method() for request in requests] == ["GET", "HEAD"]
 
 
 def test_refresh_lockfile_can_require_existing_sources(monkeypatch: Any, tmp_path: Path) -> None:
