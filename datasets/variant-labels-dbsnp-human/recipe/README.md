@@ -28,6 +28,13 @@ with `--config assembly_registry=/path/to/assemblies.csv` only when using an equ
 No full-source lockfile is committed yet; the first successful workflow run should be reviewed before
 committing `recipe/lockfile.yaml` and the refreshed `datapackage.yaml`.
 
+Each dbSNP archive is a separate Snakemake target. Interrupted downloads keep
+their partial `<archive>.tmp` file under
+`$SCIENCE_COMMONS_DATA_ROOT/variant-labels-dbsnp-human/_src/`; rerunning the
+workflow resumes those partial files with HTTP Range requests when the server
+supports them. The `recipe/lockfile.yaml` target is written only after both
+archives and `.md5` sidecars exist and validate.
+
 ## Lifecycle commands
 
 Run the package through the commons-born lifecycle:

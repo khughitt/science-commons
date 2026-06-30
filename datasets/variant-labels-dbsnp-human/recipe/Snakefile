@@ -10,6 +10,10 @@ ARCHIVES = (
     "GCF_000001405.40.gz",
     "GCF_000001405.25.gz",
 )
+ARCHIVE_URLS = {
+    "GCF_000001405.40.gz": "https://ftp.ncbi.nih.gov/snp/archive/b157/VCF/GCF_000001405.40.gz",
+    "GCF_000001405.25.gz": "https://ftp.ncbi.nih.gov/snp/archive/b157/VCF/GCF_000001405.25.gz",
+}
 
 
 def _path_config(name: str, default: Path | str) -> Path:
@@ -56,19 +60,41 @@ rule all:
         DATAPACKAGE,
 
 
-rule fetch_sources:
+rule fetch_archive:
     output:
-        lockfile=LOCKFILE,
+        archive=str(SOURCE_ROOT / "{archive}"),
+        md5=str(SOURCE_ROOT / "{archive}.md5"),
+    params:
+        fetch_py=str(RECIPE_DIR / "fetch.py"),
+        source_root=str(SOURCE_ROOT),
+        url=lambda wildcards: ARCHIVE_URLS[wildcards.archive],
+    shell:
+        "{PYTHON:q} {params.fetch_py:q} "
+        "--url {params.url:q} "
+        "--download-only "
+        "--output-dir {params.source_root:q} "
+        "--lockfile {LOCKFILE:q}"
+
+
+rule write_lockfile:
+    input:
         archives=SOURCE_ARCHIVES,
         md5s=SOURCE_MD5S,
+    output:
+        lockfile=LOCKFILE,
     params:
         fetch_py=str(RECIPE_DIR / "fetch.py"),
         source_root=str(SOURCE_ROOT),
     shell:
         "{PYTHON:q} {params.fetch_py:q} "
         "--refresh-lockfile "
+        "--require-existing "
         "--output-dir {params.source_root:q} "
         "--lockfile {output.lockfile:q}"
+
+
+wildcard_constraints:
+    archive="GCF_000001405\\.(40|25)\\.gz"
 
 
 rule build_dataset:
