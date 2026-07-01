@@ -91,7 +91,7 @@ def test_endpoint_discovery_accepts_progression_and_rejects_survival_only():
 
 
 def test_write_dry_run_outputs_manifest_query_and_validation(tmp_path):
-    from fetch_manifest import StaticGdcClient, write_dry_run
+    from fetch_manifest import StaticGdcClient, build_file_filter, write_dry_run
 
     client = StaticGdcClient(
         status_payload={
@@ -109,6 +109,16 @@ def test_write_dry_run_outputs_manifest_query_and_validation(tmp_path):
     assert (tmp_path / "manifest" / "files.parquet").is_file()
     assert (tmp_path / "manifest" / "query.json").is_file()
     assert (tmp_path / "reports" / "validation.json").is_file()
+    query = json.loads((tmp_path / "manifest" / "query.json").read_text(encoding="utf-8"))
+    validation = json.loads((tmp_path / "reports" / "validation.json").read_text(encoding="utf-8"))
+    assert query == build_file_filter()
+    assert validation["file_filter"] == build_file_filter()
+    assert validation["file_count"] == 3
+    assert validation["independent_file_total"] == 3
+    assert validation["case_count"] == 3
+    assert validation["endpoint_status"] == "progression-ready"
+    assert validation["gdc_data_release"] == "Data Release 45.0 - December 04, 2025"
+    assert validation["promotable"] is True
     manifest = pd.read_parquet(tmp_path / "manifest" / "files.parquet")
     assert list(manifest["file_id"]) == [
         "01888e3c-45ec-493f-9a8a-57cada28dc6c",
@@ -194,9 +204,46 @@ def test_build_package_writes_tables_and_deterministic_splits(tmp_path):
     assert (tmp_path / "data" / "outcomes.parquet").is_file()
     assert (tmp_path / "splits" / "heldout_patient_v1.parquet").is_file()
 
+    expression = pd.read_parquet(tmp_path / "data" / "expression.parquet")
+    samples = pd.read_parquet(tmp_path / "data" / "samples.parquet")
+    assert set(samples["case_submitter_id"]) == {"MMRF_0001", "MMRF_0002", "MMRF_0003"}
+    assert set(samples["sample_submitter_id"]) == {
+        "MMRF_0001_1_BM_CD138pos",
+        "MMRF_0002_1_BM_CD138pos",
+        "MMRF_0003_1_BM_CD138pos",
+    }
+    assert set(zip(samples["case_submitter_id"], samples["sample_submitter_id"], strict=True)) == {
+        ("MMRF_0001", "MMRF_0001_1_BM_CD138pos"),
+        ("MMRF_0002", "MMRF_0002_1_BM_CD138pos"),
+        ("MMRF_0003", "MMRF_0003_1_BM_CD138pos"),
+    }
+    assert expression.groupby("sample_submitter_id").size().to_dict() == {
+        "MMRF_0001_1_BM_CD138pos": 2,
+        "MMRF_0002_1_BM_CD138pos": 2,
+        "MMRF_0003_1_BM_CD138pos": 2,
+    }
+    assert set(expression["gene_name"]) == {"TP53", "PTEN"}
+    assert set(expression["measure"]) == {"tpm_unstranded"}
+
     splits = pd.read_parquet(tmp_path / "splits" / "heldout_patient_v1.parquet")
-    assert sorted(splits["case_submitter_id"]) == ["MMRF_0001", "MMRF_0002", "MMRF_0003"]
-    assert set(splits["split"]) == {"train", "validation", "test"}
+    split_rows = splits.sort_values("case_submitter_id").to_dict(orient="records")
+    assert split_rows == [
+        {
+            "case_submitter_id": "MMRF_0001",
+            "split": "validation",
+            "split_basis": "f08b1e03337b2185919b4abc9c92f2d8b45dd5dbb45074a215fca9669b3a20b5",
+        },
+        {
+            "case_submitter_id": "MMRF_0002",
+            "split": "test",
+            "split_basis": "f5fb52d88e1575e01d6d3c2a7a9bc80d2d619a3bd4f93a3693bcf29109cf4952",
+        },
+        {
+            "case_submitter_id": "MMRF_0003",
+            "split": "train",
+            "split_basis": "976a9375c856d8b5f682c01e3492815690f34d997bad97d0cbb20ef9c8fd082a",
+        },
+    ]
     outcomes = pd.read_parquet(tmp_path / "data" / "outcomes.parquet")
     censored = outcomes.set_index("case_submitter_id").loc["MMRF_0002"]
     assert bool(censored["event_observed"]) is False
