@@ -1,0 +1,4 @@
+gene_id	gene_name	gene_type	unstranded	stranded_first	stranded_second	tpm_unstranded	fpkm_unstranded	fpkm_uq_unstranded
+N_unmapped		__summary__	10	0	0	0	0	0
+ENSG00000141510.18	TP53	protein_coding	100	50	50	12.5	3.1	4.2
+ENSG00000171862.13	PTEN	protein_coding	80	40	40	9.0	2.4	3.3

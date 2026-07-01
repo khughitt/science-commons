@@ -1,0 +1,41 @@
+{
+  "data": {
+    "hits": [
+      {
+        "case_id": "case-1",
+        "submitter_id": "MMRF_0001",
+        "diagnoses": [
+          {
+            "days_to_last_follow_up": 500
+          }
+        ],
+        "demographic": {
+          "vital_status": "Dead",
+          "days_to_death": 500
+        }
+      },
+      {
+        "case_id": "case-2",
+        "submitter_id": "MMRF_0002",
+        "diagnoses": [
+          {
+            "days_to_last_follow_up": 900
+          }
+        ],
+        "demographic": {
+          "vital_status": "Alive",
+          "days_to_death": null
+        }
+      }
+    ],
+    "pagination": {
+      "count": 2,
+      "total": 2,
+      "size": 2,
+      "from": 0,
+      "page": 1,
+      "pages": 1
+    }
+  },
+  "warnings": {}
+}

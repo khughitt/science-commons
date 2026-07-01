@@ -1,0 +1,47 @@
+{
+  "data": {
+    "hits": [
+      {
+        "case_id": "case-1",
+        "submitter_id": "MMRF_0001",
+        "diagnoses": [
+          {
+            "days_to_recurrence": 450,
+            "progression_or_recurrence": "yes",
+            "days_to_last_follow_up": 700
+          }
+        ]
+      },
+      {
+        "case_id": "case-2",
+        "submitter_id": "MMRF_0002",
+        "diagnoses": [
+          {
+            "progression_or_recurrence": "no",
+            "days_to_last_follow_up": 900
+          }
+        ]
+      },
+      {
+        "case_id": "case-3",
+        "submitter_id": "MMRF_0003",
+        "diagnoses": [
+          {
+            "days_to_recurrence": 275,
+            "progression_or_recurrence": "yes",
+            "days_to_last_follow_up": 500
+          }
+        ]
+      }
+    ],
+    "pagination": {
+      "count": 3,
+      "total": 3,
+      "size": 3,
+      "from": 0,
+      "page": 1,
+      "pages": 1
+    }
+  },
+  "warnings": {}
+}

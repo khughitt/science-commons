@@ -1,0 +1,293 @@
+from __future__ import annotations
+
+import hashlib
+import json
+import sys
+from pathlib import Path
+
+import pandas as pd
+import pytest
+import yaml
+
+RECIPE_DIR = Path(__file__).parent
+sys.path.insert(0, str(RECIPE_DIR))
+
+
+def _fixture(name: str) -> Path:
+    return RECIPE_DIR / "fixtures" / name
+
+
+def _load_json(name: str) -> dict:
+    return json.loads(_fixture(name).read_text(encoding="utf-8"))
+
+
+def test_file_filter_is_open_rnaseq_gene_expression_tsv():
+    from fetch_manifest import build_file_filter
+
+    filt = build_file_filter()
+    assert filt == {
+        "op": "and",
+        "content": [
+            {"op": "in", "content": {"field": "cases.project.project_id", "value": ["MMRF-COMMPASS"]}},
+            {"op": "in", "content": {"field": "access", "value": ["open"]}},
+            {"op": "in", "content": {"field": "data_type", "value": ["Gene Expression Quantification"]}},
+            {"op": "in", "content": {"field": "experimental_strategy", "value": ["RNA-Seq"]}},
+            {"op": "in", "content": {"field": "data_format", "value": ["TSV"]}},
+        ],
+    }
+
+
+def test_normalize_file_hit_extracts_case_sample_and_gdc_url():
+    from fetch_manifest import normalize_file_hit
+
+    hit = _load_json("files_page.json")["data"]["hits"][0]
+    row = normalize_file_hit(hit)
+    assert row["file_id"] == "01888e3c-45ec-493f-9a8a-57cada28dc6c"
+    assert row["case_id"] == "case-1"
+    assert row["case_submitter_id"] == "MMRF_0001"
+    assert row["sample_submitter_id"] == "MMRF_0001_1_BM_CD138pos"
+    assert row["access"] == "open"
+    assert row["gdc_download_url"].endswith("/data/01888e3c-45ec-493f-9a8a-57cada28dc6c")
+
+
+def test_normalize_file_hit_rejects_ambiguous_case_or_sample_links():
+    from fetch_manifest import normalize_file_hit
+
+    hit = dict(_load_json("files_page.json")["data"]["hits"][0])
+    hit["cases"] = [hit["cases"][0], hit["cases"][0]]
+    with pytest.raises(ValueError, match="exactly one linked case"):
+        normalize_file_hit(hit)
+
+    hit = dict(_load_json("files_page.json")["data"]["hits"][0])
+    case = dict(hit["cases"][0])
+    case["samples"] = [case["samples"][0], case["samples"][0]]
+    hit["cases"] = [case]
+    with pytest.raises(ValueError, match="exactly one linked sample"):
+        normalize_file_hit(hit)
+
+
+def test_manifest_count_must_match_independent_count():
+    from fetch_manifest import validate_manifest_count
+
+    with pytest.raises(ValueError, match="manifest count"):
+        validate_manifest_count([{"file_id": "a"}, {"file_id": "b"}], expected_total=3)
+    validate_manifest_count([{"file_id": "a"}, {"file_id": "b"}], expected_total=2)
+
+
+def test_endpoint_discovery_accepts_progression_and_rejects_survival_only():
+    from fetch_manifest import discover_endpoint_fields
+
+    progression = discover_endpoint_fields(_load_json("cases_progression.json")["data"]["hits"])
+    assert progression["status"] == "progression-ready"
+    assert "days_to_recurrence" in progression["progression_fields"]
+    assert "progression_or_recurrence" in progression["progression_fields"]
+    assert progression["usable_progression_outcome_count"] == 3
+
+    survival_only = discover_endpoint_fields(_load_json("cases_survival_only.json")["data"]["hits"])
+    assert survival_only["status"] == "survival-only"
+    assert "vital_status" in survival_only["survival_fields"]
+    assert survival_only["progression_fields"] == []
+    assert survival_only["usable_progression_outcome_count"] == 0
+
+
+def test_write_dry_run_outputs_manifest_query_and_validation(tmp_path):
+    from fetch_manifest import StaticGdcClient, write_dry_run
+
+    client = StaticGdcClient(
+        status_payload={
+            "data_release": "Data Release 45.0 - December 04, 2025",
+            "commit": "fixture",
+            "status": "OK",
+        },
+        file_total=3,
+        file_pages=[_load_json("files_page.json")],
+        case_pages=[_load_json("cases_progression.json")],
+    )
+    report = write_dry_run(output_dir=tmp_path, client=client)
+    assert report["endpoint_status"] == "progression-ready"
+    assert report["file_count"] == 3
+    assert (tmp_path / "manifest" / "files.parquet").is_file()
+    assert (tmp_path / "manifest" / "query.json").is_file()
+    assert (tmp_path / "reports" / "validation.json").is_file()
+    manifest = pd.read_parquet(tmp_path / "manifest" / "files.parquet")
+    assert list(manifest["file_id"]) == [
+        "01888e3c-45ec-493f-9a8a-57cada28dc6c",
+        "cecfa7eb-7774-4acb-a939-7fc2c6e6ef10",
+        "438b6fcb-c193-49bb-8fc8-796ab701f0eb",
+    ]
+
+
+def test_write_dry_run_refuses_survival_only_for_progression_task(tmp_path):
+    from fetch_manifest import StaticGdcClient, write_dry_run
+
+    client = StaticGdcClient(
+        status_payload={
+            "data_release": "Data Release 45.0 - December 04, 2025",
+            "commit": "fixture",
+            "status": "OK",
+        },
+        file_total=3,
+        file_pages=[_load_json("files_page.json")],
+        case_pages=[_load_json("cases_survival_only.json")],
+    )
+    with pytest.raises(ValueError, match="overall-survival"):
+        write_dry_run(output_dir=tmp_path, client=client)
+
+
+def test_parse_expression_tsv_selects_measure_and_skips_summary_rows(tmp_path):
+    from build import parse_expression_tsv
+
+    rows = parse_expression_tsv(
+        _fixture("expression_counts.tsv"),
+        sample_submitter_id="MMRF_0001_1_BM_CD138pos",
+        case_submitter_id="MMRF_0001",
+        measure="tpm_unstranded",
+    )
+    assert rows == [
+        {
+            "case_submitter_id": "MMRF_0001",
+            "sample_submitter_id": "MMRF_0001_1_BM_CD138pos",
+            "gene_id": "ENSG00000141510.18",
+            "gene_name": "TP53",
+            "measure": "tpm_unstranded",
+            "value": 12.5,
+        },
+        {
+            "case_submitter_id": "MMRF_0001",
+            "sample_submitter_id": "MMRF_0001_1_BM_CD138pos",
+            "gene_id": "ENSG00000171862.13",
+            "gene_name": "PTEN",
+            "measure": "tpm_unstranded",
+            "value": 9.0,
+        },
+    ]
+
+
+def test_build_package_writes_tables_and_deterministic_splits(tmp_path):
+    from build import build_package
+
+    source_dir = tmp_path / "_src" / "expression"
+    source_dir.mkdir(parents=True)
+    for file_id in [
+        "01888e3c-45ec-493f-9a8a-57cada28dc6c",
+        "cecfa7eb-7774-4acb-a939-7fc2c6e6ef10",
+        "438b6fcb-c193-49bb-8fc8-796ab701f0eb",
+    ]:
+        (source_dir / f"{file_id}.tsv").write_text(_fixture("expression_counts.tsv").read_text(encoding="utf-8"), encoding="utf-8")
+
+    manifest_dir = tmp_path / "manifest"
+    manifest_dir.mkdir()
+    rows = []
+    for hit in _load_json("files_page.json")["data"]["hits"]:
+        from fetch_manifest import normalize_file_hit
+
+        rows.append(normalize_file_hit(hit))
+    pd.DataFrame(rows).to_parquet(manifest_dir / "files.parquet", index=False)
+    (manifest_dir / "cases.json").write_text(json.dumps(_load_json("cases_progression.json")["data"]["hits"]), encoding="utf-8")
+
+    summary = build_package(output_dir=tmp_path, measure="tpm_unstranded", split_salt="fixture-salt")
+    assert summary["expression_rows"] == 6
+    assert summary["outcome_rows"] == 3
+    assert summary["split_salt"] == "fixture-salt"
+    assert (tmp_path / "data" / "expression.parquet").is_file()
+    assert (tmp_path / "data" / "samples.parquet").is_file()
+    assert (tmp_path / "data" / "outcomes.parquet").is_file()
+    assert (tmp_path / "splits" / "heldout_patient_v1.parquet").is_file()
+
+    splits = pd.read_parquet(tmp_path / "splits" / "heldout_patient_v1.parquet")
+    assert sorted(splits["case_submitter_id"]) == ["MMRF_0001", "MMRF_0002", "MMRF_0003"]
+    assert set(splits["split"]) == {"train", "validation", "test"}
+    outcomes = pd.read_parquet(tmp_path / "data" / "outcomes.parquet")
+    censored = outcomes.set_index("case_submitter_id").loc["MMRF_0002"]
+    assert bool(censored["event_observed"]) is False
+    assert censored["time_to_event_days"] == 900
+
+
+def test_build_package_refuses_patient_leakage_and_empty_splits():
+    from build import validate_no_patient_leakage, validate_nonempty_splits
+
+    validate_no_patient_leakage(
+        pd.DataFrame(
+            [
+                {"case_submitter_id": "MMRF_0001", "split": "train"},
+                {"case_submitter_id": "MMRF_0002", "split": "test"},
+            ]
+        )
+    )
+    with pytest.raises(ValueError, match="leakage"):
+        validate_no_patient_leakage(
+            pd.DataFrame(
+                [
+                    {"case_submitter_id": "MMRF_0001", "split": "train"},
+                    {"case_submitter_id": "MMRF_0001", "split": "test"},
+                ]
+            )
+        )
+    validate_nonempty_splits(
+        pd.DataFrame(
+            [
+                {"case_submitter_id": "MMRF_0001", "split": "train"},
+                {"case_submitter_id": "MMRF_0002", "split": "validation"},
+                {"case_submitter_id": "MMRF_0003", "split": "test"},
+            ]
+        )
+    )
+    with pytest.raises(ValueError, match="nonempty"):
+        validate_nonempty_splits(
+            pd.DataFrame(
+                [
+                    {"case_submitter_id": "MMRF_0001", "split": "train"},
+                    {"case_submitter_id": "MMRF_0002", "split": "train"},
+                    {"case_submitter_id": "MMRF_0003", "split": "test"},
+                ]
+            )
+        )
+
+
+def test_build_datapackage_doc_records_resources_and_split_method(tmp_path):
+    from build_datapackage import build_datapackage_doc
+
+    for rel, payload in {
+        "manifest/files.parquet": b"manifest",
+        "manifest/query.json": b"{}",
+        "manifest/cases.json": b"[]",
+        "data/expression.parquet": b"expr",
+        "data/samples.parquet": b"samples",
+        "data/outcomes.parquet": b"outcomes",
+        "splits/heldout_patient_v1.parquet": b"splits",
+        "reports/validation.json": b'{"split_salt":"fixture-salt"}',
+        "reports/build-summary.json": b'{"split_salt":"fixture-salt"}',
+    }.items():
+        path = tmp_path / rel
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(payload)
+
+    doc = build_datapackage_doc(tmp_path, split_salt="fixture-salt", gdc_data_release="Data Release 45.0 - December 04, 2025")
+    assert doc["name"] == "mmrf-commpass"
+    assert doc["profile"] == "data-package"
+    assert doc["gdc_data_release"] == "Data Release 45.0 - December 04, 2025"
+    assert doc["split"]["method"] == "sha256(case_submitter_id || split_salt)"
+    assert doc["split"]["split_salt"] == "fixture-salt"
+    resource_names = {r["name"] for r in doc["resources"]}
+    assert resource_names == {
+        "files_manifest",
+        "query",
+        "cases",
+        "expression",
+        "samples",
+        "outcomes",
+        "heldout_patient_split",
+        "validation",
+        "build_summary",
+    }
+    expression = next(r for r in doc["resources"] if r["name"] == "expression")
+    assert expression["hash"] == "sha256:" + hashlib.sha256(b"expr").hexdigest()
+    assert expression["source"]["ref"].endswith("/mmrf-commpass/data/expression.parquet")
+    assert doc["provenance"] == [{"tool": "recipe/build.py"}]
+
+
+def test_entity_remains_pointer_until_promoted():
+    entity_text = (RECIPE_DIR.parent / "entity.md").read_text(encoding="utf-8")
+    fm = yaml.safe_load(entity_text.split("---", 2)[1])
+    assert fm["dataset_class"] == "pointer"
+    assert "datapackage" not in fm

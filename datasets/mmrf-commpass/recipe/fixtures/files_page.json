@@ -1,0 +1,87 @@
+{
+  "data": {
+    "hits": [
+      {
+        "id": "01888e3c-45ec-493f-9a8a-57cada28dc6c",
+        "file_id": "01888e3c-45ec-493f-9a8a-57cada28dc6c",
+        "file_name": "1b166f66-85d0-4c18-aaee-fe0abe0338d1.rna_seq.augmented_star_gene_counts.tsv",
+        "data_category": "Transcriptome Profiling",
+        "data_type": "Gene Expression Quantification",
+        "data_format": "TSV",
+        "experimental_strategy": "RNA-Seq",
+        "access": "open",
+        "file_size": 12345,
+        "md5sum": "5eb63bbbe01eeed093cb22bb8f5acdc3",
+        "cases": [
+          {
+            "case_id": "case-1",
+            "submitter_id": "MMRF_0001",
+            "samples": [
+              {
+                "submitter_id": "MMRF_0001_1_BM_CD138pos",
+                "sample_type": "Primary Blood Derived Cancer - Bone Marrow"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "cecfa7eb-7774-4acb-a939-7fc2c6e6ef10",
+        "file_id": "cecfa7eb-7774-4acb-a939-7fc2c6e6ef10",
+        "file_name": "28ee3050-59fa-4b12-ae15-94b8314e6f6b.rna_seq.augmented_star_gene_counts.tsv",
+        "data_category": "Transcriptome Profiling",
+        "data_type": "Gene Expression Quantification",
+        "data_format": "TSV",
+        "experimental_strategy": "RNA-Seq",
+        "access": "open",
+        "file_size": 67890,
+        "md5sum": "5eb63bbbe01eeed093cb22bb8f5acdc3",
+        "cases": [
+          {
+            "case_id": "case-2",
+            "submitter_id": "MMRF_0002",
+            "samples": [
+              {
+                "submitter_id": "MMRF_0002_1_BM_CD138pos",
+                "sample_type": "Primary Blood Derived Cancer - Bone Marrow"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "438b6fcb-c193-49bb-8fc8-796ab701f0eb",
+        "file_id": "438b6fcb-c193-49bb-8fc8-796ab701f0eb",
+        "file_name": "ce2a08cd-8f72-403f-afa9-d378bc0df604.rna_seq.augmented_star_gene_counts.tsv",
+        "data_category": "Transcriptome Profiling",
+        "data_type": "Gene Expression Quantification",
+        "data_format": "TSV",
+        "experimental_strategy": "RNA-Seq",
+        "access": "open",
+        "file_size": 24680,
+        "md5sum": "5eb63bbbe01eeed093cb22bb8f5acdc3",
+        "cases": [
+          {
+            "case_id": "case-3",
+            "submitter_id": "MMRF_0003",
+            "samples": [
+              {
+                "submitter_id": "MMRF_0003_1_BM_CD138pos",
+                "sample_type": "Primary Blood Derived Cancer - Bone Marrow"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "pagination": {
+      "count": 3,
+      "total": 3,
+      "size": 3,
+      "from": 0,
+      "page": 1,
+      "pages": 1
+    }
+  },
+  "warnings": {}
+}
