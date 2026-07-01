@@ -1,0 +1,22 @@
+name: sciplex3
+title: Sci-Plex 3 GEO processed archive
+version: GSE139944
+created: "2026-07-01T00:00:00+00:00"
+profile: data-package
+licenses:
+- name: unknown
+  title: Unknown
+contributors:
+- title: V. Keith Hughitt
+  role: author
+provenance:
+- action: describe-remote-resources
+  timestamp: "2026-07-01T00:00:00+00:00"
+  tool: science benchmark metadata tuning
+resources:
+- name: gse139944-raw-archive
+  path: https://ftp.ncbi.nlm.nih.gov/geo/series/GSE139nnn/GSE139944/suppl/GSE139944_RAW.tar
+  format: tar
+  mediatype: application/x-tar
+  description: GEO supplementary archive for GSE139944 with MATRIX, RDS, and TXT processed resources for the Sci-Plex experiments, including the Sci-Plex 3 A549/MCF7/K562 screen.
+  bytes: 9902397440

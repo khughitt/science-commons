@@ -6,21 +6,22 @@ title: "Sci-Plex 3"
 version: "1.0.0"
 status: "active"
 created: "2026-06-27"
-updated: "2026-06-27"
+updated: "2026-07-01"
 scope: "shared"
 origin: "external"
 source_class: "observational"
-dataset_class: "pointer"
-tier: "track"
+dataset_class: "deposit"
+tier: "evaluate-next"
 license: "unknown"
 access:
   level: "public"
   availability: "available"
   verified: true
-  verification_method: "landing-confirmed"
+  verification_method: "metadata-confirmed"
   source_url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE139944"
 ontology_terms: []
 tags: []
+datapackage: datapackage.yaml
 benchmark:
   domains: ["biology"]
   modalities: ["single-cell-rna-seq"]
@@ -31,7 +32,8 @@ benchmark:
   notes:
     - "Seed benchmark-capable dataset for single-cell perturbation response examples."
   limitations:
-    - "Verify exact downloadable package location before marking as runnable deposit."
+    - "The primary GEO supplementary archive is large (~9.9 GB); stage a task-specific slice before repeated local benchmarking."
+    - "The archive contains multiple Sci-Plex experiments, so benchmark tasks should select the Sci-Plex 3 screen resources explicitly."
   tasks:
     - id: compound-response
       task_type: "response-prediction"
