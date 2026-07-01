@@ -206,24 +206,52 @@ def test_build_package_writes_tables_and_deterministic_splits(tmp_path):
 
     expression = pd.read_parquet(tmp_path / "data" / "expression.parquet")
     samples = pd.read_parquet(tmp_path / "data" / "samples.parquet")
-    assert set(samples["case_submitter_id"]) == {"MMRF_0001", "MMRF_0002", "MMRF_0003"}
-    assert set(samples["sample_submitter_id"]) == {
-        "MMRF_0001_1_BM_CD138pos",
-        "MMRF_0002_1_BM_CD138pos",
-        "MMRF_0003_1_BM_CD138pos",
-    }
-    assert set(zip(samples["case_submitter_id"], samples["sample_submitter_id"], strict=True)) == {
-        ("MMRF_0001", "MMRF_0001_1_BM_CD138pos"),
-        ("MMRF_0002", "MMRF_0002_1_BM_CD138pos"),
-        ("MMRF_0003", "MMRF_0003_1_BM_CD138pos"),
-    }
-    assert expression.groupby("sample_submitter_id").size().to_dict() == {
-        "MMRF_0001_1_BM_CD138pos": 2,
-        "MMRF_0002_1_BM_CD138pos": 2,
-        "MMRF_0003_1_BM_CD138pos": 2,
-    }
-    assert set(expression["gene_name"]) == {"TP53", "PTEN"}
-    assert set(expression["measure"]) == {"tpm_unstranded"}
+    sample_records = samples.sort_values("case_submitter_id").to_dict(orient="records")
+    assert sample_records == [
+        {
+            "case_id": "case-1",
+            "case_submitter_id": "MMRF_0001",
+            "sample_submitter_id": "MMRF_0001_1_BM_CD138pos",
+            "sample_type": "Primary Blood Derived Cancer - Bone Marrow",
+            "file_id": "01888e3c-45ec-493f-9a8a-57cada28dc6c",
+            "file_name": "1b166f66-85d0-4c18-aaee-fe0abe0338d1.rna_seq.augmented_star_gene_counts.tsv",
+        },
+        {
+            "case_id": "case-2",
+            "case_submitter_id": "MMRF_0002",
+            "sample_submitter_id": "MMRF_0002_1_BM_CD138pos",
+            "sample_type": "Primary Blood Derived Cancer - Bone Marrow",
+            "file_id": "cecfa7eb-7774-4acb-a939-7fc2c6e6ef10",
+            "file_name": "28ee3050-59fa-4b12-ae15-94b8314e6f6b.rna_seq.augmented_star_gene_counts.tsv",
+        },
+        {
+            "case_id": "case-3",
+            "case_submitter_id": "MMRF_0003",
+            "sample_submitter_id": "MMRF_0003_1_BM_CD138pos",
+            "sample_type": "Primary Blood Derived Cancer - Bone Marrow",
+            "file_id": "438b6fcb-c193-49bb-8fc8-796ab701f0eb",
+            "file_name": "ce2a08cd-8f72-403f-afa9-d378bc0df604.rna_seq.augmented_star_gene_counts.tsv",
+        },
+    ]
+    expression_records = sorted(
+        (
+            row["case_submitter_id"],
+            row["sample_submitter_id"],
+            row["gene_id"],
+            row["gene_name"],
+            row["measure"],
+            row["value"],
+        )
+        for row in expression.to_dict(orient="records")
+    )
+    assert expression_records == [
+        ("MMRF_0001", "MMRF_0001_1_BM_CD138pos", "ENSG00000141510.18", "TP53", "tpm_unstranded", 12.5),
+        ("MMRF_0001", "MMRF_0001_1_BM_CD138pos", "ENSG00000171862.13", "PTEN", "tpm_unstranded", 9.0),
+        ("MMRF_0002", "MMRF_0002_1_BM_CD138pos", "ENSG00000141510.18", "TP53", "tpm_unstranded", 12.5),
+        ("MMRF_0002", "MMRF_0002_1_BM_CD138pos", "ENSG00000171862.13", "PTEN", "tpm_unstranded", 9.0),
+        ("MMRF_0003", "MMRF_0003_1_BM_CD138pos", "ENSG00000141510.18", "TP53", "tpm_unstranded", 12.5),
+        ("MMRF_0003", "MMRF_0003_1_BM_CD138pos", "ENSG00000171862.13", "PTEN", "tpm_unstranded", 9.0),
+    ]
 
     splits = pd.read_parquet(tmp_path / "splits" / "heldout_patient_v1.parquet")
     split_rows = splits.sort_values("case_submitter_id").to_dict(orient="records")
