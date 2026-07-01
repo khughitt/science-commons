@@ -162,6 +162,20 @@ def test_write_dry_run_outputs_manifest_query_and_validation(tmp_path):
 def test_write_dry_run_refuses_survival_only_for_progression_task(tmp_path):
     from fetch_manifest import StaticGdcClient, write_dry_run
 
+    survival_page = _load_json("cases_survival_only.json")
+    survival_page["data"]["hits"].append(
+        {
+            "case_id": "case-3",
+            "submitter_id": "MMRF_0003",
+            "diagnoses": [{"days_to_last_follow_up": 700}],
+            "demographic": {
+                "vital_status": "Alive",
+                "days_to_death": None,
+            },
+        }
+    )
+    survival_page["data"]["pagination"]["count"] = 3
+    survival_page["data"]["pagination"]["total"] = 3
     client = StaticGdcClient(
         status_payload={
             "data_release": "Data Release 45.0 - December 04, 2025",
@@ -170,10 +184,41 @@ def test_write_dry_run_refuses_survival_only_for_progression_task(tmp_path):
         },
         file_total=3,
         file_pages=[_load_json("files_page.json")],
-        case_pages=[_load_json("cases_survival_only.json")],
+        case_pages=[survival_page],
     )
     with pytest.raises(ValueError, match="overall-survival"):
         write_dry_run(output_dir=tmp_path, client=client)
+
+
+def test_write_dry_run_refuses_missing_manifest_case_metadata(tmp_path):
+    from fetch_manifest import StaticGdcClient, write_dry_run
+
+    progression_subset = _load_json("cases_progression.json")
+    progression_subset["data"]["hits"] = progression_subset["data"]["hits"][:2]
+    progression_subset["data"]["pagination"]["count"] = 2
+    progression_subset["data"]["pagination"]["total"] = 2
+
+    client = StaticGdcClient(
+        status_payload={
+            "data_release": "Data Release 45.0 - December 04, 2025",
+            "commit": "fixture",
+            "status": "OK",
+        },
+        file_total=3,
+        file_pages=[_load_json("files_page.json")],
+        case_pages=[progression_subset],
+    )
+
+    with pytest.raises(ValueError, match="missing manifest cases"):
+        write_dry_run(output_dir=tmp_path, client=client)
+
+    assert (tmp_path / "manifest" / "files.parquet").is_file()
+    assert (tmp_path / "manifest" / "cases.json").is_file()
+    assert (tmp_path / "manifest" / "query.json").is_file()
+    validation = json.loads((tmp_path / "reports" / "validation.json").read_text(encoding="utf-8"))
+    assert validation["endpoint_status"] == "progression-ready"
+    assert validation["missing_manifest_case_ids"] == ["case-3"]
+    assert validation["promotable"] is False
 
 
 def test_write_dry_run_requires_progression_on_manifest_cases(tmp_path):

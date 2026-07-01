@@ -326,7 +326,7 @@ def write_dry_run(output_dir: str | Path, client: LiveGdcClient | StaticGdcClien
     _write_json(manifest_dir / "cases.json", cases)
     _write_json(manifest_dir / "query.json", file_filter)
 
-    promotable = endpoint_report["status"] == "progression-ready"
+    promotable = endpoint_report["status"] == "progression-ready" and not missing_case_ids
     validation = {
         "file_filter": file_filter,
         "file_count": len(file_rows),
@@ -344,6 +344,8 @@ def write_dry_run(output_dir: str | Path, client: LiveGdcClient | StaticGdcClien
     }
     _write_json(reports_dir / "validation.json", validation)
 
+    if missing_case_ids:
+        raise ValueError(f"GDC case query is missing manifest cases: {', '.join(missing_case_ids)}")
     if endpoint_report["status"] == "survival-only":
         raise ValueError("GDC cases expose only overall-survival endpoints; progression endpoint is required")
     if endpoint_report["status"] == "missing-endpoint":
