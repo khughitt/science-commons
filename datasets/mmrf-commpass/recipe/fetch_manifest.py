@@ -43,8 +43,9 @@ CASE_FIELDS = [
     "demographic.days_to_death",
 ]
 
-PROGRESSION_FIELDS = ["days_to_recurrence", "progression_or_recurrence"]
-SURVIVAL_FIELDS = ["vital_status", "days_to_death", "days_to_last_follow_up"]
+PROGRESSION_EVENT_STATUSES = {"yes", "progression", "recurrence", "true", "1"}
+PROGRESSION_CENSORED_STATUSES = {"no", "false", "0"}
+SURVIVAL_FIELDS = ["vital_status", "days_to_death"]
 
 
 def build_file_filter() -> dict[str, Any]:
@@ -76,9 +77,10 @@ def _exactly_one(items: Any, label: str) -> Mapping[str, Any]:
 def normalize_file_hit(hit: Mapping[str, Any]) -> dict[str, Any]:
     case = _exactly_one(hit.get("cases"), "case")
     sample = _exactly_one(case.get("samples"), "sample")
-    file_id = str(hit.get("file_id") or hit.get("id") or "")
+    file_id = hit.get("file_id")
     if not file_id:
         raise ValueError("File hit is missing file_id")
+    file_id = str(file_id)
 
     return {
         "file_id": file_id,
@@ -138,16 +140,35 @@ def _has_value(value: Any) -> bool:
 
 def _is_usable_progression_outcome(row: Mapping[str, Any]) -> bool:
     status = str(row.get("progression_or_recurrence") or "").strip().lower()
-    if status in {"yes", "progression", "recurrence", "true", "1"}:
+    if status in PROGRESSION_EVENT_STATUSES:
         return _has_value(row.get("days_to_recurrence"))
-    if status in {"no", "false", "0"}:
+    if status in PROGRESSION_CENSORED_STATUSES:
         return _has_value(row.get("days_to_last_follow_up"))
     return False
 
 
+def _progression_fields_for_usable_outcomes(flattened_cases: Iterable[Mapping[str, Any]]) -> list[str]:
+    has_event_time = False
+    has_usable_status = False
+    for row in flattened_cases:
+        status = str(row.get("progression_or_recurrence") or "").strip().lower()
+        if status in PROGRESSION_EVENT_STATUSES and _has_value(row.get("days_to_recurrence")):
+            has_event_time = True
+            has_usable_status = True
+        elif status in PROGRESSION_CENSORED_STATUSES and _has_value(row.get("days_to_last_follow_up")):
+            has_usable_status = True
+
+    fields: list[str] = []
+    if has_event_time:
+        fields.append("days_to_recurrence")
+    if has_usable_status:
+        fields.append("progression_or_recurrence")
+    return fields
+
+
 def discover_endpoint_fields(cases: Iterable[Mapping[str, Any]]) -> dict[str, Any]:
     flattened_cases = [_flatten_case_endpoint_fields(case) for case in cases]
-    progression_fields = [field for field in PROGRESSION_FIELDS if any(_has_value(row.get(field)) for row in flattened_cases)]
+    progression_fields = _progression_fields_for_usable_outcomes(flattened_cases)
     survival_fields = [field for field in SURVIVAL_FIELDS if any(_has_value(row.get(field)) for row in flattened_cases)]
     usable_progression_outcome_count = sum(1 for row in flattened_cases if _is_usable_progression_outcome(row))
 
@@ -226,10 +247,14 @@ class LiveGdcClient:
             page = self._post_json(f"{self.api_base}/{endpoint}", payload)
             data = page["data"]
             hits = data.get("hits", [])
-            yield from hits
             pagination = data["pagination"]
-            offset += int(pagination["count"])
-            if offset >= int(pagination["total"]) or not hits:
+            page_count = int(pagination["count"])
+            total = int(pagination["total"])
+            if not hits and offset < total:
+                raise ValueError(f"GDC returned empty {endpoint} page before total was reached")
+            yield from hits
+            offset += page_count
+            if offset >= total:
                 break
 
     def _get_json(self, url: str) -> dict[str, Any]:
@@ -292,7 +317,10 @@ def write_dry_run(output_dir: str | Path, client: LiveGdcClient | StaticGdcClien
     independent_file_total = gdc_client.count_files(file_filter)
     validate_manifest_count(file_rows, expected_total=independent_file_total)
     cases = list(gdc_client.iter_cases())
-    endpoint_report = discover_endpoint_fields(cases)
+    manifest_case_ids = {row["case_id"] for row in file_rows}
+    manifest_cases = [case for case in cases if case.get("case_id") in manifest_case_ids]
+    missing_case_ids = sorted(manifest_case_ids - {case.get("case_id") for case in manifest_cases})
+    endpoint_report = discover_endpoint_fields(manifest_cases)
 
     pd.DataFrame(file_rows).to_parquet(manifest_dir / "files.parquet", index=False)
     _write_json(manifest_dir / "cases.json", cases)
@@ -303,7 +331,9 @@ def write_dry_run(output_dir: str | Path, client: LiveGdcClient | StaticGdcClien
         "file_filter": file_filter,
         "file_count": len(file_rows),
         "independent_file_total": independent_file_total,
-        "case_count": len(cases),
+        "case_count": len(manifest_cases),
+        "project_case_count": len(cases),
+        "missing_manifest_case_ids": missing_case_ids,
         "endpoint_status": endpoint_report["status"],
         "progression_fields": endpoint_report["progression_fields"],
         "survival_fields": endpoint_report["survival_fields"],
@@ -322,7 +352,7 @@ def write_dry_run(output_dir: str | Path, client: LiveGdcClient | StaticGdcClien
     return {
         "endpoint_status": endpoint_report["status"],
         "file_count": len(file_rows),
-        "case_count": len(cases),
+        "case_count": len(manifest_cases),
         "promotable": promotable,
         "validation_path": str(reports_dir / "validation.json"),
     }

@@ -66,6 +66,15 @@ def test_normalize_file_hit_rejects_ambiguous_case_or_sample_links():
         normalize_file_hit(hit)
 
 
+def test_normalize_file_hit_requires_explicit_file_id():
+    from fetch_manifest import normalize_file_hit
+
+    hit = dict(_load_json("files_page.json")["data"]["hits"][0])
+    hit["id"] = hit.pop("file_id")
+    with pytest.raises(ValueError, match="file_id"):
+        normalize_file_hit(hit)
+
+
 def test_manifest_count_must_match_independent_count():
     from fetch_manifest import validate_manifest_count
 
@@ -88,6 +97,29 @@ def test_endpoint_discovery_accepts_progression_and_rejects_survival_only():
     assert "vital_status" in survival_only["survival_fields"]
     assert survival_only["progression_fields"] == []
     assert survival_only["usable_progression_outcome_count"] == 0
+
+
+def test_endpoint_discovery_ignores_unknown_progression_status_without_usable_time():
+    from fetch_manifest import discover_endpoint_fields
+
+    report = discover_endpoint_fields(
+        [
+            {
+                "case_id": "case-1",
+                "submitter_id": "MMRF_0001",
+                "diagnoses": [
+                    {
+                        "progression_or_recurrence": "unknown",
+                        "days_to_last_follow_up": 500,
+                    }
+                ],
+            }
+        ]
+    )
+
+    assert report["status"] == "missing-endpoint"
+    assert report["progression_fields"] == []
+    assert report["usable_progression_outcome_count"] == 0
 
 
 def test_write_dry_run_outputs_manifest_query_and_validation(tmp_path):
@@ -142,6 +174,87 @@ def test_write_dry_run_refuses_survival_only_for_progression_task(tmp_path):
     )
     with pytest.raises(ValueError, match="overall-survival"):
         write_dry_run(output_dir=tmp_path, client=client)
+
+
+def test_write_dry_run_requires_progression_on_manifest_cases(tmp_path):
+    from fetch_manifest import StaticGdcClient, write_dry_run
+
+    off_manifest_progression_case = {
+        "case_id": "case-99",
+        "submitter_id": "MMRF_0099",
+        "diagnoses": [
+            {
+                "days_to_recurrence": 100,
+                "progression_or_recurrence": "yes",
+                "days_to_last_follow_up": 150,
+            }
+        ],
+    }
+    manifest_case_without_progression = {
+        "case_id": "case-1",
+        "submitter_id": "MMRF_0001",
+        "diagnoses": [{"days_to_last_follow_up": 500}],
+    }
+    case_page = {
+        "data": {
+            "hits": [off_manifest_progression_case, manifest_case_without_progression],
+            "pagination": {"count": 2, "total": 2, "size": 2, "from": 0, "page": 1, "pages": 1},
+        }
+    }
+
+    client = StaticGdcClient(
+        status_payload={
+            "data_release": "Data Release 45.0 - December 04, 2025",
+            "commit": "fixture",
+            "status": "OK",
+        },
+        file_total=1,
+        file_pages=[
+            {
+                "data": {
+                    "hits": [_load_json("files_page.json")["data"]["hits"][0]],
+                    "pagination": {"count": 1, "total": 1, "size": 1, "from": 0, "page": 1, "pages": 1},
+                }
+            }
+        ],
+        case_pages=[case_page],
+    )
+
+    with pytest.raises(ValueError, match="progression endpoint"):
+        write_dry_run(output_dir=tmp_path, client=client)
+    validation = json.loads((tmp_path / "reports" / "validation.json").read_text(encoding="utf-8"))
+    assert validation["endpoint_status"] == "missing-endpoint"
+    assert validation["case_count"] == 1
+    assert validation["promotable"] is False
+
+
+def test_live_gdc_client_rejects_empty_page_before_total():
+    from fetch_manifest import LiveGdcClient
+
+    class EmptySecondPageClient(LiveGdcClient):
+        def __init__(self) -> None:
+            super().__init__(api_base="https://example.test", page_size=1)
+            self.calls = 0
+
+        def _post_json(self, url, payload):
+            self.calls += 1
+            if self.calls == 1:
+                return {
+                    "data": {
+                        "hits": [{"case_id": "case-1"}],
+                        "pagination": {"count": 1, "total": 2, "size": 1, "from": 0},
+                    }
+                }
+            return {
+                "data": {
+                    "hits": [],
+                    "pagination": {"count": 0, "total": 2, "size": 1, "from": 1},
+                }
+            }
+
+    client = EmptySecondPageClient()
+    with pytest.raises(ValueError, match="empty cases page"):
+        list(client._iter_endpoint("cases", filters={}, fields=["case_id"], expand=None))
 
 
 def test_parse_expression_tsv_selects_measure_and_skips_summary_rows(tmp_path):
