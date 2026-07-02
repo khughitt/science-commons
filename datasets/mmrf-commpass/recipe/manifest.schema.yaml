@@ -150,6 +150,8 @@ validation_report:
     - file_filter
     - file_count
     - independent_file_total
+    - buildable_manifest
+    - duplicate_manifest_values
     - case_count
     - project_case_count
     - missing_manifest_case_ids
@@ -172,6 +174,12 @@ validation_report:
       type: integer
       minimum: 0
       description: Independent GDC count query total for the same file filter.
+    buildable_manifest:
+      type: boolean
+      description: True only when normalized manifest rows satisfy package-build uniqueness constraints.
+    duplicate_manifest_values:
+      type: object
+      description: Duplicate normalized manifest values keyed by case_submitter_id, sample_submitter_id, and file_id.
     case_count:
       type: integer
       minimum: 0
@@ -208,11 +216,12 @@ validation_report:
       type: object
     promotable:
       type: boolean
-      description: True only when the dry-run endpoint status is progression-ready and no manifest cases are missing.
+      description: True only when the dry-run endpoint status is progression-ready, no manifest cases are missing, progression outcome coverage is complete, and the normalized manifest is buildable.
   refusal_conditions:
     - missing_manifest_case_ids is nonempty
     - endpoint_status is survival-only
     - endpoint_status is missing-endpoint
+    - buildable_manifest is false
 
 package_outputs:
   expression:

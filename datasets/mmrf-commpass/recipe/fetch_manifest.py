@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+from collections import Counter
 import hashlib
 import json
 import os
@@ -46,6 +47,7 @@ CASE_FIELDS = [
 PROGRESSION_EVENT_STATUSES = {"yes", "progression", "recurrence", "true", "1"}
 PROGRESSION_CENSORED_STATUSES = {"no", "false", "0"}
 SURVIVAL_FIELDS = ["vital_status", "days_to_death"]
+UNIQUE_MANIFEST_IDENTITY_FIELDS = ("case_submitter_id", "sample_submitter_id", "file_id")
 
 
 def build_file_filter() -> dict[str, Any]:
@@ -102,12 +104,20 @@ def normalize_file_hit(hit: Mapping[str, Any]) -> dict[str, Any]:
 
 def validate_manifest_count(rows: Iterable[Mapping[str, Any]], expected_total: int) -> None:
     materialized = list(rows)
-    file_ids = [row.get("file_id") for row in materialized]
-    duplicates = sorted({file_id for file_id in file_ids if file_id and file_ids.count(file_id) > 1})
-    if duplicates:
-        raise ValueError(f"Manifest contains duplicate file_id values: {', '.join(map(str, duplicates))}")
     if len(materialized) != expected_total:
         raise ValueError(f"Normalized manifest count {len(materialized)} does not match independent manifest count {expected_total}")
+
+
+def validate_manifest_buildability(rows: Iterable[Mapping[str, Any]]) -> dict[str, Any]:
+    materialized = list(rows)
+    duplicate_values = {
+        field: sorted(str(value) for value, count in Counter(row.get(field) for row in materialized).items() if count > 1)
+        for field in UNIQUE_MANIFEST_IDENTITY_FIELDS
+    }
+    return {
+        "buildable_manifest": not any(duplicate_values.values()),
+        "duplicate_manifest_values": duplicate_values,
+    }
 
 
 def _one_diagnosis(case: Mapping[str, Any]) -> Mapping[str, Any]:
@@ -316,6 +326,7 @@ def write_dry_run(output_dir: str | Path, client: LiveGdcClient | StaticGdcClien
     file_rows = [normalize_file_hit(hit) for hit in gdc_client.iter_files(file_filter)]
     independent_file_total = gdc_client.count_files(file_filter)
     validate_manifest_count(file_rows, expected_total=independent_file_total)
+    buildability_report = validate_manifest_buildability(file_rows)
     cases = list(gdc_client.iter_cases())
     manifest_case_ids = {row["case_id"] for row in file_rows}
     manifest_cases = [case for case in cases if case.get("case_id") in manifest_case_ids]
@@ -336,11 +347,17 @@ def write_dry_run(output_dir: str | Path, client: LiveGdcClient | StaticGdcClien
     _write_json(manifest_dir / "cases.json", cases)
     _write_json(manifest_dir / "query.json", file_filter)
 
-    promotable = endpoint_report["status"] == "progression-ready" and progression_outcome_coverage_complete
+    promotable = (
+        endpoint_report["status"] == "progression-ready"
+        and not missing_case_ids
+        and progression_outcome_coverage_complete
+        and buildability_report["buildable_manifest"]
+    )
     validation = {
         "file_filter": file_filter,
         "file_count": len(file_rows),
         "independent_file_total": independent_file_total,
+        **buildability_report,
         "case_count": len(manifest_cases),
         "manifest_case_count": len(manifest_case_ids),
         "project_case_count": len(cases),
@@ -364,6 +381,13 @@ def write_dry_run(output_dir: str | Path, client: LiveGdcClient | StaticGdcClien
         raise ValueError("GDC cases expose only overall-survival endpoints; progression endpoint is required")
     if endpoint_report["status"] == "missing-endpoint":
         raise ValueError("GDC cases are missing a usable progression endpoint")
+    if not buildability_report["buildable_manifest"]:
+        duplicate_parts = [
+            f"{field}: {', '.join(values)}"
+            for field, values in buildability_report["duplicate_manifest_values"].items()
+            if values
+        ]
+        raise ValueError(f"Manifest is not buildable; duplicate {'; '.join(duplicate_parts)}")
     if not progression_outcome_coverage_complete:
         missing_outcome_ids = ", ".join(manifest_case_ids_without_usable_progression_outcome)
         raise ValueError(

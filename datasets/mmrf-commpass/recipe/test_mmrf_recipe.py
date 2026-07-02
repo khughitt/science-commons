@@ -150,6 +150,12 @@ def test_write_dry_run_outputs_manifest_query_and_validation(tmp_path):
     assert validation["case_count"] == 3
     assert validation["endpoint_status"] == "progression-ready"
     assert validation["gdc_data_release"] == "Data Release 45.0 - December 04, 2025"
+    assert validation["buildable_manifest"] is True
+    assert validation["duplicate_manifest_values"] == {
+        "case_submitter_id": [],
+        "sample_submitter_id": [],
+        "file_id": [],
+    }
     assert validation["promotable"] is True
     manifest = pd.read_parquet(tmp_path / "manifest" / "files.parquet")
     assert list(manifest["file_id"]) == [
@@ -285,6 +291,38 @@ def test_write_dry_run_refuses_partial_progression_outcome_coverage(tmp_path):
     assert validation["case_count"] == 3
     assert validation["usable_progression_outcome_count"] == 2
     assert validation["manifest_case_ids_without_usable_progression_outcome"] == ["case-3"]
+    assert validation["promotable"] is False
+
+
+def test_write_dry_run_refuses_manifest_duplicate_case_submitter_id(tmp_path):
+    from fetch_manifest import StaticGdcClient, write_dry_run
+
+    duplicate_manifest = _load_json("files_page.json")
+    duplicate_manifest["data"]["hits"][1]["cases"][0]["submitter_id"] = "MMRF_0001"
+
+    client = StaticGdcClient(
+        status_payload={
+            "data_release": "Data Release 45.0 - December 04, 2025",
+            "commit": "fixture",
+            "status": "OK",
+        },
+        file_total=3,
+        file_pages=[duplicate_manifest],
+        case_pages=[_load_json("cases_progression.json")],
+    )
+
+    with pytest.raises(ValueError, match="duplicate case_submitter_id"):
+        write_dry_run(output_dir=tmp_path, client=client)
+
+    validation = json.loads((tmp_path / "reports" / "validation.json").read_text(encoding="utf-8"))
+    assert validation["endpoint_status"] == "progression-ready"
+    assert validation["progression_outcome_coverage_complete"] is True
+    assert validation["buildable_manifest"] is False
+    assert validation["duplicate_manifest_values"] == {
+        "case_submitter_id": ["MMRF_0001"],
+        "sample_submitter_id": [],
+        "file_id": [],
+    }
     assert validation["promotable"] is False
 
 
