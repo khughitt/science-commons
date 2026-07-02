@@ -1,0 +1,16 @@
+name: Science Commons
+id: commons
+role: commons
+created: '2026-07-02'
+last_modified: '2026-07-02'
+summary: Shared knowledge store for curated, citable Science entities consumed across projects via the science commons CLI.
+status: active
+profile: research
+layout_version: 3
+tags:
+- science-commons
+- shared-store
+- datasets
+- curation
+knowledge_profiles:
+  local: local
