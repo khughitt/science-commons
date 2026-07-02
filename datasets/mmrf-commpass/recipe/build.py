@@ -18,6 +18,13 @@ PROGRESSION_EVENT_STATUSES = {"yes", "progression", "recurrence", "true", "1"}
 PROGRESSION_CENSORED_STATUSES = {"no", "false", "0"}
 UNKNOWN_PROGRESSION_STATUSES = {"", "unknown", "not reported", "not_reported", "not applicable", "not_allowed_to_collect"}
 SPLIT_NAMES = ("train", "validation", "test")
+REQUIRED_MANIFEST_IDENTITY_FIELDS = (
+    "case_id",
+    "case_submitter_id",
+    "sample_submitter_id",
+    "file_id",
+    "file_name",
+)
 
 
 def parse_expression_tsv(
@@ -147,6 +154,14 @@ def _build_outcomes(cases: list[Mapping[str, Any]]) -> list[dict[str, Any]]:
     return outcomes
 
 
+def _validate_manifest_outcome_coverage(samples: pd.DataFrame, outcomes: pd.DataFrame) -> None:
+    manifest_case_submitter_ids = set(samples["case_submitter_id"].astype(str))
+    outcome_case_submitter_ids = set(outcomes["case_submitter_id"].dropna().astype(str))
+    missing = sorted(manifest_case_submitter_ids - outcome_case_submitter_ids)
+    if missing:
+        raise ValueError(f"Manifest cases lack outcome rows: {', '.join(missing)}")
+
+
 def _build_splits(case_submitter_ids: list[str], split_salt: str) -> pd.DataFrame:
     if len(case_submitter_ids) != len(set(case_submitter_ids)):
         raise ValueError("case_submitter_id values must be unique before split generation")
@@ -187,6 +202,12 @@ def _build_splits(case_submitter_ids: list[str], split_salt: str) -> pd.DataFram
     return splits
 
 
+def _is_blank_manifest_value(value: Any) -> bool:
+    if pd.isna(value):
+        return True
+    return isinstance(value, str) and not value.strip()
+
+
 def _samples_from_manifest(manifest: pd.DataFrame) -> pd.DataFrame:
     columns = [
         "case_id",
@@ -199,6 +220,13 @@ def _samples_from_manifest(manifest: pd.DataFrame) -> pd.DataFrame:
     missing = sorted(set(columns) - set(manifest.columns))
     if missing:
         raise ValueError(f"Manifest is missing required sample columns: {', '.join(missing)}")
+    invalid_fields = [
+        field
+        for field in REQUIRED_MANIFEST_IDENTITY_FIELDS
+        if any(_is_blank_manifest_value(value) for value in manifest[field].to_list())
+    ]
+    if invalid_fields:
+        raise ValueError(f"Manifest contains blank required identity fields: {', '.join(invalid_fields)}")
     samples = manifest[columns].copy()
     if samples["case_submitter_id"].duplicated().any():
         duplicated = sorted(samples.loc[samples["case_submitter_id"].duplicated(), "case_submitter_id"].astype(str))
@@ -227,6 +255,9 @@ def build_package(
     if endpoint_report["status"] != "progression-ready":
         raise ValueError("MMRF-COMMPASS build requires a progression-ready endpoint")
 
+    outcomes = pd.DataFrame(_build_outcomes(cases))
+    _validate_manifest_outcome_coverage(samples, outcomes)
+
     expression_rows: list[dict[str, Any]] = []
     for row in samples.to_dict(orient="records"):
         file_id = str(row["file_id"])
@@ -241,7 +272,6 @@ def build_package(
     if not expression_rows:
         raise ValueError("No expression rows were parsed")
 
-    outcomes = pd.DataFrame(_build_outcomes(cases))
     expression = pd.DataFrame(expression_rows)
     splits = _build_splits(sorted(samples["case_submitter_id"].astype(str)), split_salt)
 

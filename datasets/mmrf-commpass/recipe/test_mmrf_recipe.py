@@ -436,6 +436,61 @@ def test_build_package_writes_tables_and_deterministic_splits(tmp_path):
     assert censored["time_to_event_days"] == 900
 
 
+def test_build_package_refuses_manifest_case_without_outcome(tmp_path):
+    from build import build_package
+    from fetch_manifest import normalize_file_hit
+
+    source_dir = tmp_path / "_src" / "expression"
+    source_dir.mkdir(parents=True)
+    rows = []
+    for hit in _load_json("files_page.json")["data"]["hits"]:
+        row = normalize_file_hit(hit)
+        rows.append(row)
+        (source_dir / f"{row['file_id']}.tsv").write_text(_fixture("expression_counts.tsv").read_text(encoding="utf-8"), encoding="utf-8")
+
+    manifest_dir = tmp_path / "manifest"
+    manifest_dir.mkdir()
+    pd.DataFrame(rows).to_parquet(manifest_dir / "files.parquet", index=False)
+    cases = _load_json("cases_progression.json")["data"]["hits"]
+    cases[1]["diagnoses"][0]["progression_or_recurrence"] = "not reported"
+    (manifest_dir / "cases.json").write_text(json.dumps(cases), encoding="utf-8")
+
+    with pytest.raises(ValueError, match="outcome.*MMRF_0002"):
+        build_package(output_dir=tmp_path, measure="tpm_unstranded", split_salt="fixture-salt")
+
+
+@pytest.mark.parametrize(
+    ("field", "bad_value"),
+    [
+        ("case_id", ""),
+        ("case_submitter_id", " "),
+        ("sample_submitter_id", None),
+        ("file_id", float("nan")),
+        ("file_name", ""),
+    ],
+)
+def test_build_package_refuses_blank_manifest_identity_fields(tmp_path, field, bad_value):
+    from build import build_package
+    from fetch_manifest import normalize_file_hit
+
+    source_dir = tmp_path / "_src" / "expression"
+    source_dir.mkdir(parents=True)
+    rows = []
+    for hit in _load_json("files_page.json")["data"]["hits"]:
+        row = normalize_file_hit(hit)
+        rows.append(row)
+        (source_dir / f"{row['file_id']}.tsv").write_text(_fixture("expression_counts.tsv").read_text(encoding="utf-8"), encoding="utf-8")
+    rows[0][field] = bad_value
+
+    manifest_dir = tmp_path / "manifest"
+    manifest_dir.mkdir()
+    pd.DataFrame(rows).to_parquet(manifest_dir / "files.parquet", index=False)
+    (manifest_dir / "cases.json").write_text(json.dumps(_load_json("cases_progression.json")["data"]["hits"]), encoding="utf-8")
+
+    with pytest.raises(ValueError, match=f"Manifest.*{field}"):
+        build_package(output_dir=tmp_path, measure="tpm_unstranded", split_salt="fixture-salt")
+
+
 def test_build_package_refuses_patient_leakage_and_empty_splits():
     from build import validate_no_patient_leakage, validate_nonempty_splits
 
