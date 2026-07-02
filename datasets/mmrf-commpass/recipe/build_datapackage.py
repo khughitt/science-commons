@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import os
 from collections.abc import Mapping
 from pathlib import Path
@@ -32,6 +33,19 @@ RESOURCE_FILES = (
 )
 
 
+def _read_report(path: Path) -> Mapping[str, Any]:
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(payload, Mapping):
+        raise ValueError(f"{path} must contain a JSON object")
+    return payload
+
+
+def _validate_report_value(path: Path, report: Mapping[str, Any], field: str, expected: str) -> None:
+    actual = report.get(field)
+    if actual != expected:
+        raise ValueError(f"{path} {field} mismatch: expected {expected!r}, found {actual!r}")
+
+
 def build_datapackage_doc(
     data_dir: str | Path,
     *,
@@ -39,6 +53,13 @@ def build_datapackage_doc(
     gdc_data_release: str,
 ) -> dict[str, Any]:
     root = Path(data_dir)
+    validation_path = root / "reports" / "validation.json"
+    build_summary_path = root / "reports" / "build-summary.json"
+    validation_report = _read_report(validation_path)
+    build_summary_report = _read_report(build_summary_path)
+    _validate_report_value(validation_path, validation_report, "gdc_data_release", gdc_data_release)
+    _validate_report_value(build_summary_path, build_summary_report, "split_salt", split_salt)
+
     resources: list[dict[str, Any]] = []
     for resource in RESOURCE_FILES:
         path = root / resource.rel_path

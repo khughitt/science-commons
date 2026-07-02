@@ -555,8 +555,14 @@ def test_build_package_refuses_patient_leakage_and_empty_splits():
         )
 
 
-def test_build_datapackage_doc_records_resources_and_split_method(tmp_path):
-    from build_datapackage import build_datapackage_doc
+def _write_datapackage_fixture(
+    root: Path,
+    *,
+    validation_split_salt: str = "fixture-salt",
+    build_summary_split_salt: str = "fixture-salt",
+    gdc_data_release: str = "Data Release 45.0 - December 04, 2025",
+) -> None:
+    import json
 
     for rel, payload in {
         "manifest/files.parquet": b"manifest",
@@ -566,14 +572,39 @@ def test_build_datapackage_doc_records_resources_and_split_method(tmp_path):
         "data/samples.parquet": b"samples",
         "data/outcomes.parquet": b"outcomes",
         "splits/heldout_patient_v1.parquet": b"splits",
-        "reports/validation.json": b'{"split_salt":"fixture-salt"}',
-        "reports/build-summary.json": b'{"split_salt":"fixture-salt"}',
     }.items():
-        path = tmp_path / rel
+        path = root / rel
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(payload)
 
-    doc = build_datapackage_doc(tmp_path, split_salt="fixture-salt", gdc_data_release="Data Release 45.0 - December 04, 2025")
+    reports_dir = root / "reports"
+    reports_dir.mkdir(parents=True, exist_ok=True)
+    (reports_dir / "validation.json").write_text(
+        json.dumps(
+            {
+                "gdc_data_release": gdc_data_release,
+                "split_salt": validation_split_salt,
+            },
+            sort_keys=True,
+        ),
+        encoding="utf-8",
+    )
+    (reports_dir / "build-summary.json").write_text(
+        json.dumps({"split_salt": build_summary_split_salt}, sort_keys=True),
+        encoding="utf-8",
+    )
+
+
+def test_build_datapackage_doc_records_resources_and_split_method(tmp_path):
+    from build_datapackage import build_datapackage_doc
+
+    _write_datapackage_fixture(tmp_path)
+
+    doc = build_datapackage_doc(
+        tmp_path,
+        split_salt="fixture-salt",
+        gdc_data_release="Data Release 45.0 - December 04, 2025",
+    )
     assert doc["name"] == "mmrf-commpass"
     assert doc["profile"] == "data-package"
     assert doc["gdc_data_release"] == "Data Release 45.0 - December 04, 2025"
@@ -595,6 +626,32 @@ def test_build_datapackage_doc_records_resources_and_split_method(tmp_path):
     assert expression["hash"] == "sha256:" + hashlib.sha256(b"expr").hexdigest()
     assert expression["source"]["ref"].endswith("/mmrf-commpass/data/expression.parquet")
     assert doc["provenance"] == [{"tool": "recipe/build.py"}]
+
+
+def test_build_datapackage_doc_rejects_gdc_data_release_mismatch(tmp_path):
+    from build_datapackage import build_datapackage_doc
+
+    _write_datapackage_fixture(tmp_path, gdc_data_release="Data Release 44.0 - November 03, 2025")
+
+    with pytest.raises(ValueError, match="gdc_data_release"):
+        build_datapackage_doc(
+            tmp_path,
+            split_salt="fixture-salt",
+            gdc_data_release="Data Release 45.0 - December 04, 2025",
+        )
+
+
+def test_build_datapackage_doc_rejects_split_salt_mismatch(tmp_path):
+    from build_datapackage import build_datapackage_doc
+
+    _write_datapackage_fixture(tmp_path, build_summary_split_salt="different-salt")
+
+    with pytest.raises(ValueError, match="split_salt"):
+        build_datapackage_doc(
+            tmp_path,
+            split_salt="fixture-salt",
+            gdc_data_release="Data Release 45.0 - December 04, 2025",
+        )
 
 
 def test_entity_remains_pointer_until_promoted():
