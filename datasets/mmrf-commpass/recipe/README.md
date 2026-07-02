@@ -26,11 +26,18 @@ analysis-ready resources.
 
 The dry run queries GDC, writes metadata, and then refuses non-promotable
 outcomes. It writes the manifest and validation report before raising for these
-known blocker states:
+known blocker states: manifest-linked cases missing from the GDC cases response,
+open metadata missing usable progression fields, incomplete progression outcome
+coverage for manifest cases, and unresolved cohorts with duplicate or missing
+patient/sample/file identity. It also reports `task_support` for
+`progression-risk` and `overall-survival`; `overall-survival` is a distinct
+candidate task, not a fallback for progression-risk promotion.
 
-- manifest-linked cases missing from the GDC cases response;
-- open metadata exposing only overall-survival fields;
-- open metadata missing usable progression fields.
+`cohort_mode` is either `unique-manifest-no-policy-applied` or
+`unresolved-cohort`. The dry run does not apply a patient-level sample-selection
+policy, so `sample_selection_fields` only records the available bases:
+`structured-field`, `id-token-heuristic`, and `not-queried`. These diagnostics
+scope a future selection policy; entity.md remains a pointer.
 
 ```bash
 PYTHONPATH=~/d/science/science/src rtk uv run --frozen --project ~/d/science/science \
@@ -53,6 +60,17 @@ manifest/files.parquet
 manifest/cases.json
 manifest/query.json
 reports/validation.json
+```
+
+`reports/validation.json` includes:
+
+```text
+endpoint_status
+task_support
+cohort_mode
+cohort_aggregation
+sample_selection_fields
+promotable
 ```
 
 `manifest/files.parquet` follows `manifest.schema.yaml`. The required columns

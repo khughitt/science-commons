@@ -135,6 +135,75 @@ def test_task_support_derives_progression_and_survival_states():
     }
 
 
+def test_manifest_schema_documents_task_support_and_cohort_fields():
+    schema = yaml.safe_load((RECIPE_DIR / "manifest.schema.yaml").read_text(encoding="utf-8"))
+    required_fields = schema["validation_report"]["required_fields"]
+    assert "task_support" in required_fields
+    assert "cohort_mode" in required_fields
+    assert "cohort_aggregation" in required_fields
+    assert "sample_selection_fields" in required_fields
+
+    fields = schema["validation_report"]["fields"]
+    assert fields["task_support"]["tasks"] == ["progression-risk", "overall-survival"]
+    assert fields["task_support"]["state_values"] == [
+        "blocked-missing-endpoint",
+        "blocked-incomplete-outcome-coverage",
+        "buildable-candidate",
+    ]
+    # Only the two states this slice can actually emit are advertised. The
+    # design's patient-level-single-sample / sample-level-with-patient-outcomes
+    # modes require a real selection/evaluation policy and are deferred.
+    assert fields["cohort_mode"]["allowed_values"] == [
+        "unique-manifest-no-policy-applied",
+        "unresolved-cohort",
+    ]
+    assert fields["cohort_aggregation"]["blocking_reasons"] == [
+        "ambiguous-patient-expression-files",
+    ]
+    assert "progression_outcome_coverage_complete is false" in schema["validation_report"]["refusal_conditions"]
+
+
+def test_manifest_schema_covers_emitted_validation_fields(tmp_path):
+    from fetch_manifest import StaticGdcClient, write_dry_run
+
+    client = StaticGdcClient(
+        status_payload={
+            "data_release": "Data Release 45.0 - December 04, 2025",
+            "commit": "fixture",
+            "status": "OK",
+        },
+        file_total=3,
+        file_pages=[_load_json("files_page.json")],
+        case_pages=[_load_json("cases_progression.json")],
+    )
+
+    write_dry_run(output_dir=tmp_path, client=client)
+    validation = json.loads((tmp_path / "reports" / "validation.json").read_text(encoding="utf-8"))
+    schema = yaml.safe_load((RECIPE_DIR / "manifest.schema.yaml").read_text(encoding="utf-8"))
+
+    assert sorted(schema["validation_report"]["required_fields"]) == sorted(validation)
+    assert set(schema["validation_report"]["fields"]) == set(validation)
+
+
+def test_manifest_schema_drops_fallback_framing_and_lists_survival_candidate():
+    schema = yaml.safe_load((RECIPE_DIR / "manifest.schema.yaml").read_text(encoding="utf-8"))
+    # overall-survival is a distinct candidate task, not a fallback ground truth.
+    assert schema["dataset"]["task"] == "progression-risk"
+    assert schema["dataset"]["candidate_tasks"] == ["overall-survival"]
+    endpoint_fields = schema["case_manifest"]["endpoint_fields"]
+    assert "survival_fallback_report_only" not in endpoint_fields
+    assert "survival_report_only" in endpoint_fields
+
+
+def test_recipe_readme_documents_task_aware_dry_run_without_entity_promotion():
+    text = (RECIPE_DIR / "README.md").read_text(encoding="utf-8")
+    assert "task_support" in text
+    assert "overall-survival" in text
+    assert "cohort_mode" in text
+    assert "sample_selection_fields" in text
+    assert "entity.md remains a pointer" in text
+
+
 def test_endpoint_discovery_ignores_unknown_progression_status_without_usable_time():
     from fetch_manifest import discover_endpoint_fields
 

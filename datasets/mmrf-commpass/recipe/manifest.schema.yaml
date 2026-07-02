@@ -9,6 +9,11 @@ dataset:
   id: dataset:mmrf-commpass
   project_id: MMRF-COMMPASS
   task: progression-risk
+  candidate_tasks: [overall-survival]
+  candidate_tasks_note: >
+    overall-survival is reported per-task in validation.json as a distinct
+    benchmark candidate, never a fallback for progression-risk. It is not added
+    to entity.md in this slice.
   promotion_state: pointer
   promotion_note: >
     This recipe can produce staging metadata and local package files, but the
@@ -136,11 +141,11 @@ case_manifest:
       - diagnoses.days_to_recurrence
       - diagnoses.progression_or_recurrence
       - diagnoses.days_to_last_follow_up
-    survival_fallback_report_only:
+    survival_report_only:
       - demographic.vital_status
       - demographic.days_to_death
   notes:
-    - Survival-only metadata is reported but is not sufficient for progression-risk promotion.
+    - Survival metadata is reported per-task as a distinct overall-survival candidate; it is not a fallback for progression-risk promotion.
     - Every manifest case_id must resolve to a case record before package build.
 
 validation_report:
@@ -152,13 +157,22 @@ validation_report:
     - independent_file_total
     - buildable_manifest
     - duplicate_manifest_values
+    - missing_manifest_identity_counts
     - case_count
+    - manifest_case_count
     - project_case_count
     - missing_manifest_case_ids
     - endpoint_status
+    - task_support
+    - cohort_mode
+    - cohort_aggregation
+    - sample_selection_fields
     - progression_fields
     - survival_fields
+    - required_progression_outcome_count
     - usable_progression_outcome_count
+    - manifest_case_ids_without_usable_progression_outcome
+    - progression_outcome_coverage_complete
     - gdc_data_release
     - gdc_status
     - promotable
@@ -180,10 +194,17 @@ validation_report:
     duplicate_manifest_values:
       type: object
       description: Duplicate normalized manifest values keyed by case_submitter_id, sample_submitter_id, and file_id.
+    missing_manifest_identity_counts:
+      type: object
+      description: Missing normalized manifest identity counts keyed by case_submitter_id, sample_submitter_id, and file_id.
     case_count:
       type: integer
       minimum: 0
       description: Number of manifest-linked cases available for endpoint validation.
+    manifest_case_count:
+      type: integer
+      minimum: 0
+      description: Number of distinct case IDs referenced by the normalized manifest.
     project_case_count:
       type: integer
       minimum: 0
@@ -198,6 +219,48 @@ validation_report:
         - progression-ready
         - survival-only
         - missing-endpoint
+    task_support:
+      type: object
+      tasks: [progression-risk, overall-survival]
+      state_values:
+        - blocked-missing-endpoint
+        - blocked-incomplete-outcome-coverage
+        - buildable-candidate
+      description: >
+        Per-task diagnostic derived from dataset-level endpoint_status and
+        observed endpoint fields. This is report metadata, not dataset
+        promotion.
+    cohort_mode:
+      type: string
+      allowed_values:
+        - unique-manifest-no-policy-applied
+        - unresolved-cohort
+      deferred_modes:
+        - patient-level-single-sample
+        - sample-level-with-patient-outcomes
+      description: >
+        Current manifest aggregation state. This slice only classifies manifest
+        uniqueness, so it emits unique-manifest-no-policy-applied (no duplicates,
+        but no curated patient-level selection rule applied) or unresolved-cohort
+        (duplicates present). The design's patient-level-single-sample and
+        sample-level-with-patient-outcomes modes require an actual selection or
+        evaluation policy and are deferred; they are not emitted yet.
+    cohort_aggregation:
+      type: object
+      blocking_reasons:
+        - ambiguous-patient-expression-files
+      description: >
+        Duplicate patient/sample/file diagnostics. selected_policy is null until
+        a real patient-level selection policy is implemented.
+    sample_selection_fields:
+      type: object
+      description: >
+        Report of which sample-selection signals the open GDC manifest exposes.
+        Each entry carries a basis: structured-field (a live present/count probe
+        of a queried field), id-token-heuristic (derived from the sample id
+        string, e.g. CD138 positivity), or not-queried (a field the recipe does
+        not currently request from GDC, so it cannot flip to present without a
+        query change). Used to scope a future patient-level selection policy.
     progression_fields:
       type: array
       items: string
@@ -206,9 +269,21 @@ validation_report:
       type: array
       items: string
       description: Open GDC survival fields observed for reporting only.
+    required_progression_outcome_count:
+      type: integer
+      minimum: 0
+      description: Number of manifest cases requiring usable progression or censoring outcomes.
     usable_progression_outcome_count:
       type: integer
       minimum: 0
+      description: Number of case records with usable progression or censoring outcomes.
+    manifest_case_ids_without_usable_progression_outcome:
+      type: array
+      items: string
+      description: Manifest case IDs lacking usable progression or censoring outcomes.
+    progression_outcome_coverage_complete:
+      type: boolean
+      description: True only when every manifest case has usable progression or censoring outcome metadata.
     gdc_data_release:
       type: string
       nullable: true
@@ -221,7 +296,9 @@ validation_report:
     - missing_manifest_case_ids is nonempty
     - endpoint_status is survival-only
     - endpoint_status is missing-endpoint
+    - progression_outcome_coverage_complete is false
     - buildable_manifest is false
+    - cohort_mode is unresolved-cohort
 
 package_outputs:
   expression:
