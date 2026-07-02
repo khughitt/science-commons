@@ -5,6 +5,7 @@ from collections import Counter
 import hashlib
 import json
 import os
+import re
 from collections.abc import Iterable, Mapping
 from pathlib import Path
 from typing import Any
@@ -189,6 +190,71 @@ def validate_manifest_buildability(rows: Iterable[Mapping[str, Any]]) -> dict[st
         "missing_manifest_identity_counts": missing_counts,
         "cohort_mode": "unique-manifest-no-policy-applied" if buildable_manifest else "unresolved-cohort",
         "cohort_aggregation": cohort_aggregation,
+    }
+
+
+def _non_null_count(rows: Iterable[Mapping[str, Any]], field: str) -> int:
+    return sum(1 for row in rows if _has_value(row.get(field)))
+
+
+def _sample_id_token_count(rows: Iterable[Mapping[str, Any]], token: str) -> int:
+    token_lower = token.lower()
+    return sum(
+        1
+        for row in rows
+        if token_lower in re.split(r"[^A-Za-z0-9]+", str(row.get("sample_submitter_id") or "").lower())
+    )
+
+
+def discover_sample_selection_fields(rows: Iterable[Mapping[str, Any]]) -> dict[str, dict[str, Any]]:
+    """Report which sample-selection signals the open GDC manifest exposes.
+
+    `sample_type` and `sample_submitter_id` are structured fields the recipe
+    actually queries, so they are live present/count probes. `cd138_positive`
+    is derivable only as an id-token heuristic (the CD138 signal lives inside
+    the sample id string, not a structured field). `disease_course_timepoint`
+    and `treatment_line` are NOT in the file/case fields the recipe queries, so
+    they are reported as `not-queried` rather than a live probe that could
+    silently flip to present.
+    """
+    materialized = list(rows)
+    cd138_count = _sample_id_token_count(materialized, "CD138pos")
+    return {
+        "sample_type": {
+            "present": any(_has_value(row.get("sample_type")) for row in materialized),
+            "non_null_count": _non_null_count(materialized, "sample_type"),
+            "source": "sample_type",
+            "basis": "structured-field",
+            "policy_use": "restrict bone marrow tumor samples when sufficient for policy review",
+        },
+        "sample_submitter_id": {
+            "present": any(_has_value(row.get("sample_submitter_id")) for row in materialized),
+            "non_null_count": _non_null_count(materialized, "sample_submitter_id"),
+            "source": "sample_submitter_id",
+            "basis": "structured-field",
+            "policy_use": "inspect sample id tokens such as BM and CD138pos; not sufficient without review",
+        },
+        "cd138_positive": {
+            "present": cd138_count > 0,
+            "non_null_count": cd138_count,
+            "source": "sample_submitter_id",
+            "basis": "id-token-heuristic",
+            "policy_use": "CD138-positive signal is only an id-token heuristic; a structured field is required for a first-class selection rule.",
+        },
+        "disease_course_timepoint": {
+            "present": False,
+            "non_null_count": 0,
+            "source": None,
+            "basis": "not-queried",
+            "policy_use": "not exposed by the open GDC file/case fields currently queried; required for a baseline or earliest-timepoint selection rule.",
+        },
+        "treatment_line": {
+            "present": False,
+            "non_null_count": 0,
+            "source": None,
+            "basis": "not-queried",
+            "policy_use": "not exposed by the open GDC file/case fields currently queried; required before treatment-line-specific aggregation can be declared.",
+        },
     }
 
 
@@ -435,6 +501,7 @@ def write_dry_run(output_dir: str | Path, client: LiveGdcClient | StaticGdcClien
     independent_file_total = gdc_client.count_files(file_filter)
     validate_manifest_count(file_rows, expected_total=independent_file_total)
     buildability_report = validate_manifest_buildability(file_rows)
+    sample_selection_fields = discover_sample_selection_fields(file_rows)
     cases = list(gdc_client.iter_cases())
     manifest_case_ids = {row["case_id"] for row in file_rows}
     manifest_cases = [case for case in cases if case.get("case_id") in manifest_case_ids]
@@ -481,6 +548,7 @@ def write_dry_run(output_dir: str | Path, client: LiveGdcClient | StaticGdcClien
         "task_support": task_support,
         "progression_fields": endpoint_report["progression_fields"],
         "survival_fields": endpoint_report["survival_fields"],
+        "sample_selection_fields": sample_selection_fields,
         "required_progression_outcome_count": len(manifest_case_ids),
         "usable_progression_outcome_count": endpoint_report["usable_progression_outcome_count"],
         "manifest_case_ids_without_usable_progression_outcome": manifest_case_ids_without_usable_progression_outcome,

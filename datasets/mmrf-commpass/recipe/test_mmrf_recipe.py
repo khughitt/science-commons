@@ -476,6 +476,81 @@ def test_write_dry_run_reports_unique_manifest_no_policy_applied(tmp_path):
     }
 
 
+def test_discover_sample_selection_fields_reports_structured_heuristic_and_absent():
+    from fetch_manifest import discover_sample_selection_fields, normalize_file_hit
+
+    rows = [normalize_file_hit(hit) for hit in _load_json("files_page.json")["data"]["hits"]]
+    fields = discover_sample_selection_fields(rows)
+
+    # Structured fields the recipe actually queries: real present/count probes.
+    assert fields["sample_type"] == {
+        "present": True,
+        "non_null_count": 3,
+        "source": "sample_type",
+        "basis": "structured-field",
+        "policy_use": "restrict bone marrow tumor samples when sufficient for policy review",
+    }
+    assert fields["sample_submitter_id"]["basis"] == "structured-field"
+    assert fields["sample_submitter_id"]["non_null_count"] == 3
+
+    # CD138 signal IS in the fixture, but only as an id token, never a
+    # structured field. Report it honestly as a heuristic, not absent.
+    assert fields["cd138_positive"] == {
+        "present": True,
+        "non_null_count": 3,
+        "source": "sample_submitter_id",
+        "basis": "id-token-heuristic",
+        "policy_use": "CD138-positive signal is only an id-token heuristic; a structured field is required for a first-class selection rule.",
+    }
+
+    # Timepoint and treatment line are not in the open GDC fields the recipe
+    # queries, so they are marked not-queried -- not a live probe that could
+    # silently flip to present.
+    assert fields["disease_course_timepoint"]["basis"] == "not-queried"
+    assert fields["disease_course_timepoint"]["present"] is False
+    assert fields["treatment_line"]["basis"] == "not-queried"
+    assert fields["treatment_line"]["present"] is False
+
+
+def test_discover_sample_selection_fields_does_not_count_cd138_substrings():
+    from fetch_manifest import discover_sample_selection_fields
+
+    fields = discover_sample_selection_fields(
+        [
+            {"sample_submitter_id": "MMRF_0001_1_BM_CD138pos"},
+            {"sample_submitter_id": "MMRF_0002_1_BM_notCD138pos"},
+            {"sample_submitter_id": "MMRF_0003_1_BM_CD138neg"},
+        ]
+    )
+
+    assert fields["cd138_positive"]["present"] is True
+    assert fields["cd138_positive"]["non_null_count"] == 1
+
+
+def test_write_dry_run_includes_sample_selection_fields(tmp_path):
+    from fetch_manifest import StaticGdcClient, write_dry_run
+
+    client = StaticGdcClient(
+        status_payload={
+            "data_release": "Data Release 45.0 - December 04, 2025",
+            "commit": "fixture",
+            "status": "OK",
+        },
+        file_total=3,
+        file_pages=[_load_json("files_page.json")],
+        case_pages=[_load_json("cases_progression.json")],
+    )
+
+    write_dry_run(output_dir=tmp_path, client=client)
+    validation = json.loads((tmp_path / "reports" / "validation.json").read_text(encoding="utf-8"))
+    fields = validation["sample_selection_fields"]
+    assert fields["sample_type"]["present"] is True
+    assert fields["sample_submitter_id"]["present"] is True
+    assert fields["cd138_positive"]["basis"] == "id-token-heuristic"
+    assert fields["disease_course_timepoint"]["basis"] == "not-queried"
+    assert fields["treatment_line"]["basis"] == "not-queried"
+
+
 def test_write_dry_run_requires_progression_on_manifest_cases(tmp_path):
     from fetch_manifest import StaticGdcClient, write_dry_run
 
