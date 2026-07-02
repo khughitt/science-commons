@@ -7,7 +7,9 @@ promotion review verifies a runnable package and updates `entity.md`.
 The recipe uses GDC metadata as the source of truth for file selection,
 case/sample linkage, endpoint discovery, data release provenance, and download
 URLs. It does not emit AWS S3 URIs because the bucket/key convention has not
-been separately verified.
+been separately verified. GDC `open` access means no GDC authentication token is
+required; it does not establish redistribution permission for generated
+analysis-ready resources.
 
 ## Requirements
 
@@ -16,6 +18,9 @@ been separately verified.
 - Pass `--output-dir` explicitly unless `SCIENCE_COMMONS_DATA_ROOT` is set.
 - Keep generated data outside git, for example under
   `~/d/science-commons-data/mmrf-commpass`.
+- Treat generated manifest, expression, outcome, split, and datapackage
+  resources as local-only until access, consent, and redistribution terms are
+  verified for the staged slice.
 
 ## Dry Run
 
@@ -56,10 +61,15 @@ are `file_id`, `file_name`, `data_category`, `data_type`, `data_format`,
 `case_submitter_id`, `sample_submitter_id`, `sample_type`, and
 `gdc_download_url`.
 
+`fetch_manifest.py --download-expression` downloads selected GDC files under
+`expression/`. That directory is not the current build input path. Do not rely
+on `--download-expression` as a direct package-build step unless those TSVs are
+also staged by file id under `_src/expression/`.
+
 ## Package Build
 
-`build.py` expects a completed dry-run directory plus expression TSVs staged by
-GDC file id under `_src/expression/`:
+`build.py` expects a completed dry-run directory plus expression TSVs manually
+staged by GDC file id under `_src/expression/`:
 
 ```text
 ~/d/science-commons-data/mmrf-commpass/
@@ -95,6 +105,10 @@ data/outcomes.parquet
 splits/heldout_patient_v1.parquet
 reports/build-summary.json
 ```
+
+These generated analysis-ready resources remain local working data. Keep them
+out of git and do not redistribute them until the staged package's access,
+consent, and redistribution terms have been verified.
 
 The split is deterministic by patient. Patients are ranked by
 `sha256(case_submitter_id || split_salt)` and assigned to nonempty

@@ -59,8 +59,9 @@ manifest:
     - sample_type
     - gdc_download_url
   unique_columns:
-    - file_id
+    - case_submitter_id
     - sample_submitter_id
+    - file_id
   columns:
     file_id:
       type: string
