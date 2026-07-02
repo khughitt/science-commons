@@ -1,0 +1,287 @@
+schema_version: 1
+name: mmrf-commpass-recipe-manifest
+description: >
+  Contract for the conservative MMRF CoMMpass progression-risk staging recipe.
+  GDC metadata remains the source of truth. AWS S3 locations are intentionally
+  omitted until the mirror bucket/key convention is separately verified.
+
+dataset:
+  id: dataset:mmrf-commpass
+  project_id: MMRF-COMMPASS
+  task: progression-risk
+  promotion_state: pointer
+  promotion_note: >
+    This recipe can produce staging metadata and local package files, but the
+    commons entity remains a pointer until a future promotion review verifies a
+    runnable datapackage and updates entity.md.
+
+manifest:
+  path: manifest/files.parquet
+  format: parquet
+  source_endpoint: https://api.gdc.cancer.gov/files
+  filter:
+    op: and
+    content:
+      - op: in
+        content:
+          field: cases.project.project_id
+          value: [MMRF-COMMPASS]
+      - op: in
+        content:
+          field: access
+          value: [open]
+      - op: in
+        content:
+          field: data_type
+          value: [Gene Expression Quantification]
+      - op: in
+        content:
+          field: experimental_strategy
+          value: [RNA-Seq]
+      - op: in
+        content:
+          field: data_format
+          value: [TSV]
+  primary_key: [file_id]
+  required_columns:
+    - file_id
+    - file_name
+    - data_category
+    - data_type
+    - data_format
+    - experimental_strategy
+    - access
+    - file_size
+    - md5sum
+    - case_id
+    - case_submitter_id
+    - sample_submitter_id
+    - sample_type
+    - gdc_download_url
+  unique_columns:
+    - file_id
+    - sample_submitter_id
+  columns:
+    file_id:
+      type: string
+      nullable: false
+      description: GDC file UUID.
+    file_name:
+      type: string
+      nullable: false
+      description: GDC file name.
+    data_category:
+      type: string
+      nullable: false
+      allowed_values: [Transcriptome Profiling]
+    data_type:
+      type: string
+      nullable: false
+      allowed_values: [Gene Expression Quantification]
+    data_format:
+      type: string
+      nullable: false
+      allowed_values: [TSV]
+    experimental_strategy:
+      type: string
+      nullable: false
+      allowed_values: [RNA-Seq]
+    access:
+      type: string
+      nullable: false
+      allowed_values: [open]
+    file_size:
+      type: integer
+      nullable: true
+      minimum: 0
+      description: GDC file size in bytes when available.
+    md5sum:
+      type: string
+      nullable: true
+      pattern: "^[0-9a-fA-F]{32}$"
+      description: GDC MD5 checksum when available.
+    case_id:
+      type: string
+      nullable: false
+      description: GDC case UUID linked to exactly one manifest file row.
+    case_submitter_id:
+      type: string
+      nullable: false
+      description: Submitter patient id used as the patient split unit.
+    sample_submitter_id:
+      type: string
+      nullable: false
+      description: Submitter sample id linked to exactly one manifest file row.
+    sample_type:
+      type: string
+      nullable: true
+      description: GDC sample type.
+    gdc_download_url:
+      type: string
+      nullable: false
+      pattern: "^https://api\\.gdc\\.cancer\\.gov/data/[0-9a-fA-F-]+$"
+      description: GDC data endpoint URL for the selected file.
+
+case_manifest:
+  path: manifest/cases.json
+  format: json
+  source_endpoint: https://api.gdc.cancer.gov/cases
+  required_fields:
+    - case_id
+    - submitter_id
+    - diagnoses
+  endpoint_fields:
+    progression:
+      - diagnoses.days_to_recurrence
+      - diagnoses.progression_or_recurrence
+      - diagnoses.days_to_last_follow_up
+    survival_fallback_report_only:
+      - demographic.vital_status
+      - demographic.days_to_death
+  notes:
+    - Survival-only metadata is reported but is not sufficient for progression-risk promotion.
+    - Every manifest case_id must resolve to a case record before package build.
+
+validation_report:
+  path: reports/validation.json
+  format: json
+  required_fields:
+    - file_filter
+    - file_count
+    - independent_file_total
+    - case_count
+    - project_case_count
+    - missing_manifest_case_ids
+    - endpoint_status
+    - progression_fields
+    - survival_fields
+    - usable_progression_outcome_count
+    - gdc_data_release
+    - gdc_status
+    - promotable
+  fields:
+    file_filter:
+      type: object
+      description: Exact GDC files filter used for manifest generation.
+    file_count:
+      type: integer
+      minimum: 0
+      description: Number of normalized manifest rows.
+    independent_file_total:
+      type: integer
+      minimum: 0
+      description: Independent GDC count query total for the same file filter.
+    case_count:
+      type: integer
+      minimum: 0
+      description: Number of manifest-linked cases available for endpoint validation.
+    project_case_count:
+      type: integer
+      minimum: 0
+      description: Number of project cases returned by the GDC cases query.
+    missing_manifest_case_ids:
+      type: array
+      items: string
+      description: Manifest case IDs missing from the GDC cases response.
+    endpoint_status:
+      type: string
+      allowed_values:
+        - progression-ready
+        - survival-only
+        - missing-endpoint
+    progression_fields:
+      type: array
+      items: string
+      description: Open GDC fields supporting usable progression outcomes.
+    survival_fields:
+      type: array
+      items: string
+      description: Open GDC survival fields observed for reporting only.
+    usable_progression_outcome_count:
+      type: integer
+      minimum: 0
+    gdc_data_release:
+      type: string
+      nullable: true
+    gdc_status:
+      type: object
+    promotable:
+      type: boolean
+      description: True only when the dry-run endpoint status is progression-ready and no manifest cases are missing.
+  refusal_conditions:
+    - missing_manifest_case_ids is nonempty
+    - endpoint_status is survival-only
+    - endpoint_status is missing-endpoint
+
+package_outputs:
+  expression:
+    path: data/expression.parquet
+    format: parquet
+    required_columns:
+      - case_submitter_id
+      - sample_submitter_id
+      - gene_id
+      - gene_name
+      - measure
+      - value
+    default_measure: tpm_unstranded
+  samples:
+    path: data/samples.parquet
+    format: parquet
+    required_columns:
+      - case_id
+      - case_submitter_id
+      - sample_submitter_id
+      - sample_type
+      - file_id
+      - file_name
+  outcomes:
+    path: data/outcomes.parquet
+    format: parquet
+    required_columns:
+      - case_id
+      - case_submitter_id
+      - progression_or_recurrence
+      - time_to_event_days
+      - event_observed
+    constraints:
+      - Every manifest case_submitter_id must have a usable progression outcome row.
+      - time_to_event_days is derived from days_to_recurrence for events and days_to_last_follow_up for censored rows.
+  heldout_patient_split:
+    path: splits/heldout_patient_v1.parquet
+    format: parquet
+    method: sha256(case_submitter_id || split_salt)
+    default_split_salt: mmrf-commpass-heldout-patient-v1
+    required_columns:
+      - case_submitter_id
+      - split
+      - split_basis
+    allowed_splits:
+      - train
+      - validation
+      - test
+    constraints:
+      - No case_submitter_id may appear in more than one split.
+      - Train, validation, and test splits must be nonempty when at least three patients are available.
+      - split_basis is the lowercase hex SHA-256 rank key.
+
+build_summary:
+  path: reports/build-summary.json
+  format: json
+  required_fields:
+    - measure
+    - expression_rows
+    - sample_rows
+    - outcome_rows
+    - split_rows
+    - split_salt
+    - split_method
+  split_method: sha256(case_submitter_id || split_salt)
+
+datapackage:
+  path: datapackage.yaml
+  generated_by: recipe/build_datapackage.py
+  requirements:
+    - reports/validation.json gdc_data_release must match the command argument.
+    - reports/build-summary.json split_salt must match the command argument.
+    - Resource hashes and byte counts are computed from local files under SCIENCE_COMMONS_DATA_ROOT.
