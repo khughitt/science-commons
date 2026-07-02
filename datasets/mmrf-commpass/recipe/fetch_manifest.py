@@ -47,6 +47,10 @@ CASE_FIELDS = [
 PROGRESSION_EVENT_STATUSES = {"yes", "progression", "recurrence", "true", "1"}
 PROGRESSION_CENSORED_STATUSES = {"no", "false", "0"}
 SURVIVAL_FIELDS = ["vital_status", "days_to_death"]
+PROGRESSION_TASK_ID = "progression-risk"
+SURVIVAL_TASK_ID = "overall-survival"
+PROGRESSION_REQUIRED_FIELDS = ["days_to_recurrence", "progression_or_recurrence"]
+SURVIVAL_REQUIRED_FIELDS = ["vital_status", "days_to_death"]
 UNIQUE_MANIFEST_IDENTITY_FIELDS = ("case_submitter_id", "sample_submitter_id", "file_id")
 
 
@@ -198,6 +202,42 @@ def discover_endpoint_fields(cases: Iterable[Mapping[str, Any]]) -> dict[str, An
     }
 
 
+def derive_task_support(endpoint_report: Mapping[str, Any]) -> dict[str, dict[str, Any]]:
+    progression_present = [field for field in PROGRESSION_REQUIRED_FIELDS if field in endpoint_report["progression_fields"]]
+    progression_missing = [field for field in PROGRESSION_REQUIRED_FIELDS if field not in progression_present]
+    survival_present = [field for field in SURVIVAL_REQUIRED_FIELDS if field in endpoint_report["survival_fields"]]
+    survival_missing = [field for field in SURVIVAL_REQUIRED_FIELDS if field not in survival_present]
+
+    if progression_missing:
+        progression_state = "blocked-missing-endpoint"
+        progression_reason = "Open GDC metadata lacks usable progression or recurrence endpoints."
+    else:
+        progression_state = "buildable-candidate"
+        progression_reason = "Open GDC metadata has usable progression or recurrence endpoints for manifest cases."
+
+    if survival_missing:
+        survival_state = "blocked-missing-endpoint"
+        survival_reason = "Open GDC metadata lacks overall-survival endpoint fields."
+    else:
+        survival_state = "buildable-candidate"
+        survival_reason = "Open GDC metadata has overall-survival endpoint fields."
+
+    return {
+        PROGRESSION_TASK_ID: {
+            "state": progression_state,
+            "reason": progression_reason,
+            "required_fields_present": progression_present,
+            "required_fields_missing": progression_missing,
+        },
+        SURVIVAL_TASK_ID: {
+            "state": survival_state,
+            "reason": survival_reason,
+            "required_fields_present": survival_present,
+            "required_fields_missing": survival_missing,
+        },
+    }
+
+
 class LiveGdcClient:
     def __init__(self, api_base: str = GDC_API_BASE, timeout: int = DEFAULT_TIMEOUT_SECONDS, page_size: int = PAGE_SIZE) -> None:
         self.api_base = api_base.rstrip("/")
@@ -332,6 +372,7 @@ def write_dry_run(output_dir: str | Path, client: LiveGdcClient | StaticGdcClien
     manifest_cases = [case for case in cases if case.get("case_id") in manifest_case_ids]
     missing_case_ids = sorted(manifest_case_ids - {case.get("case_id") for case in manifest_cases})
     endpoint_report = discover_endpoint_fields(manifest_cases)
+    task_support = derive_task_support(endpoint_report)
     manifest_case_ids_without_usable_progression_outcome = sorted(
         str(row.get("case_id"))
         for row in endpoint_report["flattened_cases"]
@@ -342,6 +383,12 @@ def write_dry_run(output_dir: str | Path, client: LiveGdcClient | StaticGdcClien
         and not manifest_case_ids_without_usable_progression_outcome
         and endpoint_report["usable_progression_outcome_count"] == len(manifest_case_ids)
     )
+    if endpoint_report["status"] == "progression-ready" and not progression_outcome_coverage_complete:
+        task_support[PROGRESSION_TASK_ID] = {
+            **task_support[PROGRESSION_TASK_ID],
+            "state": "blocked-incomplete-outcome-coverage",
+            "reason": "Open GDC metadata has progression endpoints, but not for every manifest case.",
+        }
 
     pd.DataFrame(file_rows).to_parquet(manifest_dir / "files.parquet", index=False)
     _write_json(manifest_dir / "cases.json", cases)
@@ -363,6 +410,7 @@ def write_dry_run(output_dir: str | Path, client: LiveGdcClient | StaticGdcClien
         "project_case_count": len(cases),
         "missing_manifest_case_ids": missing_case_ids,
         "endpoint_status": endpoint_report["status"],
+        "task_support": task_support,
         "progression_fields": endpoint_report["progression_fields"],
         "survival_fields": endpoint_report["survival_fields"],
         "required_progression_outcome_count": len(manifest_case_ids),

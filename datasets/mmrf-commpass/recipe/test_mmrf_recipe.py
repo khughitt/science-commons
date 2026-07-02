@@ -99,6 +99,42 @@ def test_endpoint_discovery_accepts_progression_and_rejects_survival_only():
     assert survival_only["usable_progression_outcome_count"] == 0
 
 
+def test_task_support_derives_progression_and_survival_states():
+    from fetch_manifest import derive_task_support, discover_endpoint_fields
+
+    progression = discover_endpoint_fields(_load_json("cases_progression.json")["data"]["hits"])
+    progression_support = derive_task_support(progression)
+    assert progression_support == {
+        "progression-risk": {
+            "state": "buildable-candidate",
+            "reason": "Open GDC metadata has usable progression or recurrence endpoints for manifest cases.",
+            "required_fields_present": ["days_to_recurrence", "progression_or_recurrence"],
+            "required_fields_missing": [],
+        },
+        "overall-survival": {
+            "state": "blocked-missing-endpoint",
+            "reason": "Open GDC metadata lacks overall-survival endpoint fields.",
+            "required_fields_present": [],
+            "required_fields_missing": ["vital_status", "days_to_death"],
+        },
+    }
+
+    survival_only = discover_endpoint_fields(_load_json("cases_survival_only.json")["data"]["hits"])
+    survival_support = derive_task_support(survival_only)
+    assert survival_support["progression-risk"] == {
+        "state": "blocked-missing-endpoint",
+        "reason": "Open GDC metadata lacks usable progression or recurrence endpoints.",
+        "required_fields_present": [],
+        "required_fields_missing": ["days_to_recurrence", "progression_or_recurrence"],
+    }
+    assert survival_support["overall-survival"] == {
+        "state": "buildable-candidate",
+        "reason": "Open GDC metadata has overall-survival endpoint fields.",
+        "required_fields_present": ["vital_status", "days_to_death"],
+        "required_fields_missing": [],
+    }
+
+
 def test_endpoint_discovery_ignores_unknown_progression_status_without_usable_time():
     from fetch_manifest import discover_endpoint_fields
 
@@ -234,6 +270,20 @@ def test_write_dry_run_refuses_survival_only_for_progression_task(tmp_path):
     with pytest.raises(ValueError, match="overall-survival"):
         write_dry_run(output_dir=tmp_path, client=client)
 
+    validation = json.loads((tmp_path / "reports" / "validation.json").read_text(encoding="utf-8"))
+    assert validation["endpoint_status"] == "survival-only"
+    assert validation["task_support"]["progression-risk"]["state"] == "blocked-missing-endpoint"
+    assert validation["task_support"]["progression-risk"]["required_fields_missing"] == [
+        "days_to_recurrence",
+        "progression_or_recurrence",
+    ]
+    assert validation["task_support"]["overall-survival"]["state"] == "buildable-candidate"
+    assert validation["task_support"]["overall-survival"]["required_fields_present"] == [
+        "vital_status",
+        "days_to_death",
+    ]
+    assert validation["promotable"] is False
+
 
 def test_write_dry_run_refuses_missing_manifest_case_metadata(tmp_path):
     from fetch_manifest import StaticGdcClient, write_dry_run
@@ -291,6 +341,10 @@ def test_write_dry_run_refuses_partial_progression_outcome_coverage(tmp_path):
     assert validation["case_count"] == 3
     assert validation["usable_progression_outcome_count"] == 2
     assert validation["manifest_case_ids_without_usable_progression_outcome"] == ["case-3"]
+    assert validation["task_support"]["progression-risk"]["state"] == "blocked-incomplete-outcome-coverage"
+    assert validation["task_support"]["progression-risk"]["reason"] == (
+        "Open GDC metadata has progression endpoints, but not for every manifest case."
+    )
     assert validation["promotable"] is False
 
 
