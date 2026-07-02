@@ -283,7 +283,7 @@ def _flatten_case_endpoint_fields(case: Mapping[str, Any]) -> dict[str, Any]:
 
 
 def _has_value(value: Any) -> bool:
-    return value is not None and value != ""
+    return value is not None and (not isinstance(value, str) or value.strip() != "")
 
 
 def _is_usable_progression_outcome(row: Mapping[str, Any]) -> bool:

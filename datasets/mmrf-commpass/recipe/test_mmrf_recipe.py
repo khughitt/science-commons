@@ -468,7 +468,7 @@ def test_write_dry_run_reports_unresolved_cohort_for_missing_identity(tmp_path):
     from fetch_manifest import StaticGdcClient, write_dry_run
 
     missing_identity_manifest = _load_json("files_page.json")
-    missing_identity_manifest["data"]["hits"][1]["cases"][0]["submitter_id"] = None
+    missing_identity_manifest["data"]["hits"][1]["cases"][0]["submitter_id"] = " "
 
     client = StaticGdcClient(
         status_payload={

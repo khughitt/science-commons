@@ -190,7 +190,7 @@ validation_report:
       description: Independent GDC count query total for the same file filter.
     buildable_manifest:
       type: boolean
-      description: True only when normalized manifest rows satisfy package-build uniqueness constraints.
+      description: True only when normalized manifest rows satisfy package-build identity completeness and uniqueness constraints.
     duplicate_manifest_values:
       type: object
       description: Duplicate normalized manifest values keyed by case_submitter_id, sample_submitter_id, and file_id.
@@ -240,11 +240,13 @@ validation_report:
         - sample-level-with-patient-outcomes
       description: >
         Current manifest aggregation state. This slice only classifies manifest
-        uniqueness, so it emits unique-manifest-no-policy-applied (no duplicates,
-        but no curated patient-level selection rule applied) or unresolved-cohort
-        (duplicates present). The design's patient-level-single-sample and
-        sample-level-with-patient-outcomes modes require an actual selection or
-        evaluation policy and are deferred; they are not emitted yet.
+        identity completeness and uniqueness, so it emits
+        unique-manifest-no-policy-applied (all required identities are present
+        and unique, but no curated patient-level selection rule applied) or
+        unresolved-cohort (duplicate or missing identities present). The
+        design's patient-level-single-sample and
+        sample-level-with-patient-outcomes modes require an actual selection
+        or evaluation policy and are deferred; they are not emitted yet.
     cohort_aggregation:
       type: object
       blocking_reasons:
