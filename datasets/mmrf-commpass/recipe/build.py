@@ -25,6 +25,7 @@ REQUIRED_MANIFEST_IDENTITY_FIELDS = (
     "file_id",
     "file_name",
 )
+UNIQUE_MANIFEST_IDENTITY_FIELDS = ("case_submitter_id", "sample_submitter_id", "file_id")
 
 
 def parse_expression_tsv(
@@ -208,6 +209,11 @@ def _is_blank_manifest_value(value: Any) -> bool:
     return isinstance(value, str) and not value.strip()
 
 
+def _duplicate_manifest_values(samples: pd.DataFrame, field: str) -> list[str]:
+    duplicated = samples.loc[samples[field].duplicated(), field]
+    return sorted(duplicated.astype(str))
+
+
 def _samples_from_manifest(manifest: pd.DataFrame) -> pd.DataFrame:
     columns = [
         "case_id",
@@ -228,9 +234,10 @@ def _samples_from_manifest(manifest: pd.DataFrame) -> pd.DataFrame:
     if invalid_fields:
         raise ValueError(f"Manifest contains blank required identity fields: {', '.join(invalid_fields)}")
     samples = manifest[columns].copy()
-    if samples["case_submitter_id"].duplicated().any():
-        duplicated = sorted(samples.loc[samples["case_submitter_id"].duplicated(), "case_submitter_id"].astype(str))
-        raise ValueError(f"Manifest has duplicate case_submitter_id values: {', '.join(duplicated)}")
+    for field in UNIQUE_MANIFEST_IDENTITY_FIELDS:
+        duplicated = _duplicate_manifest_values(samples, field)
+        if duplicated:
+            raise ValueError(f"Manifest has duplicate {field} values: {', '.join(duplicated)}")
     return samples
 
 

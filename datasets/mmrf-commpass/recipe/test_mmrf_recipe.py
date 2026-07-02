@@ -491,6 +491,29 @@ def test_build_package_refuses_blank_manifest_identity_fields(tmp_path, field, b
         build_package(output_dir=tmp_path, measure="tpm_unstranded", split_salt="fixture-salt")
 
 
+@pytest.mark.parametrize("field", ["file_id", "sample_submitter_id"])
+def test_build_package_refuses_duplicate_manifest_links(tmp_path, field):
+    from build import build_package
+    from fetch_manifest import normalize_file_hit
+
+    source_dir = tmp_path / "_src" / "expression"
+    source_dir.mkdir(parents=True)
+    rows = []
+    for hit in _load_json("files_page.json")["data"]["hits"]:
+        row = normalize_file_hit(hit)
+        rows.append(row)
+        (source_dir / f"{row['file_id']}.tsv").write_text(_fixture("expression_counts.tsv").read_text(encoding="utf-8"), encoding="utf-8")
+    rows[1][field] = rows[0][field]
+
+    manifest_dir = tmp_path / "manifest"
+    manifest_dir.mkdir()
+    pd.DataFrame(rows).to_parquet(manifest_dir / "files.parquet", index=False)
+    (manifest_dir / "cases.json").write_text(json.dumps(_load_json("cases_progression.json")["data"]["hits"]), encoding="utf-8")
+
+    with pytest.raises(ValueError, match=f"duplicate {field}"):
+        build_package(output_dir=tmp_path, measure="tpm_unstranded", split_salt="fixture-salt")
+
+
 def test_build_package_refuses_patient_leakage_and_empty_splits():
     from build import validate_no_patient_leakage, validate_nonempty_splits
 
