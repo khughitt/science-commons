@@ -159,6 +159,45 @@ def test_write_dry_run_outputs_manifest_query_and_validation(tmp_path):
     ]
 
 
+def test_main_accepts_explicit_dry_run_without_download(tmp_path, monkeypatch):
+    import fetch_manifest
+
+    calls = {}
+
+    def fake_write_dry_run(output_dir):
+        calls["output_dir"] = output_dir
+        return {
+            "endpoint_status": "progression-ready",
+            "file_count": 0,
+            "case_count": 0,
+            "promotable": True,
+        }
+
+    def fail_download_expression_files(manifest_rows, output_dir):
+        raise AssertionError("dry-run should not download expression files")
+
+    monkeypatch.setattr(fetch_manifest, "write_dry_run", fake_write_dry_run)
+    monkeypatch.setattr(fetch_manifest, "download_expression_files", fail_download_expression_files)
+
+    assert fetch_manifest.main(["--dry-run", "--output-dir", str(tmp_path)]) == 0
+    assert calls["output_dir"] == tmp_path
+
+
+def test_main_rejects_dry_run_with_download_expression(tmp_path, monkeypatch, capsys):
+    import fetch_manifest
+
+    def fail_write_dry_run(output_dir):
+        raise AssertionError("conflicting modes should be rejected before dry-run")
+
+    monkeypatch.setattr(fetch_manifest, "write_dry_run", fail_write_dry_run)
+
+    with pytest.raises(SystemExit) as exc_info:
+        fetch_manifest.main(["--dry-run", "--download-expression", "--output-dir", str(tmp_path)])
+
+    assert exc_info.value.code == 2
+    assert "not allowed with argument" in capsys.readouterr().err
+
+
 def test_write_dry_run_refuses_survival_only_for_progression_task(tmp_path):
     from fetch_manifest import StaticGdcClient, write_dry_run
 

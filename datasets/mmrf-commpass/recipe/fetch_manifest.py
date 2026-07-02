@@ -419,7 +419,9 @@ def resolve_output_dir(output_dir: str | Path | None, env: Mapping[str, str] | N
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Dry-run the MMRF-COMMPASS GDC manifest query.")
     parser.add_argument("--output-dir", type=Path)
-    parser.add_argument("--download-expression", action="store_true")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--dry-run", action="store_true")
+    mode.add_argument("--download-expression", action="store_true")
     args = parser.parse_args(argv)
 
     output_dir = resolve_output_dir(args.output_dir)
