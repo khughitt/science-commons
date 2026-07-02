@@ -260,6 +260,34 @@ def test_write_dry_run_refuses_missing_manifest_case_metadata(tmp_path):
     assert validation["promotable"] is False
 
 
+def test_write_dry_run_refuses_partial_progression_outcome_coverage(tmp_path):
+    from fetch_manifest import StaticGdcClient, write_dry_run
+
+    partial_progression = _load_json("cases_progression.json")
+    partial_progression["data"]["hits"][2]["diagnoses"][0]["progression_or_recurrence"] = "not reported"
+
+    client = StaticGdcClient(
+        status_payload={
+            "data_release": "Data Release 45.0 - December 04, 2025",
+            "commit": "fixture",
+            "status": "OK",
+        },
+        file_total=3,
+        file_pages=[_load_json("files_page.json")],
+        case_pages=[partial_progression],
+    )
+
+    with pytest.raises(ValueError, match="progression outcome coverage"):
+        write_dry_run(output_dir=tmp_path, client=client)
+
+    validation = json.loads((tmp_path / "reports" / "validation.json").read_text(encoding="utf-8"))
+    assert validation["endpoint_status"] == "progression-ready"
+    assert validation["case_count"] == 3
+    assert validation["usable_progression_outcome_count"] == 2
+    assert validation["manifest_case_ids_without_usable_progression_outcome"] == ["case-3"]
+    assert validation["promotable"] is False
+
+
 def test_write_dry_run_requires_progression_on_manifest_cases(tmp_path):
     from fetch_manifest import StaticGdcClient, write_dry_run
 

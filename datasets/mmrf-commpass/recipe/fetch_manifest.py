@@ -321,23 +321,37 @@ def write_dry_run(output_dir: str | Path, client: LiveGdcClient | StaticGdcClien
     manifest_cases = [case for case in cases if case.get("case_id") in manifest_case_ids]
     missing_case_ids = sorted(manifest_case_ids - {case.get("case_id") for case in manifest_cases})
     endpoint_report = discover_endpoint_fields(manifest_cases)
+    manifest_case_ids_without_usable_progression_outcome = sorted(
+        str(row.get("case_id"))
+        for row in endpoint_report["flattened_cases"]
+        if row.get("case_id") in manifest_case_ids and not _is_usable_progression_outcome(row)
+    )
+    progression_outcome_coverage_complete = (
+        not missing_case_ids
+        and not manifest_case_ids_without_usable_progression_outcome
+        and endpoint_report["usable_progression_outcome_count"] == len(manifest_case_ids)
+    )
 
     pd.DataFrame(file_rows).to_parquet(manifest_dir / "files.parquet", index=False)
     _write_json(manifest_dir / "cases.json", cases)
     _write_json(manifest_dir / "query.json", file_filter)
 
-    promotable = endpoint_report["status"] == "progression-ready" and not missing_case_ids
+    promotable = endpoint_report["status"] == "progression-ready" and progression_outcome_coverage_complete
     validation = {
         "file_filter": file_filter,
         "file_count": len(file_rows),
         "independent_file_total": independent_file_total,
         "case_count": len(manifest_cases),
+        "manifest_case_count": len(manifest_case_ids),
         "project_case_count": len(cases),
         "missing_manifest_case_ids": missing_case_ids,
         "endpoint_status": endpoint_report["status"],
         "progression_fields": endpoint_report["progression_fields"],
         "survival_fields": endpoint_report["survival_fields"],
+        "required_progression_outcome_count": len(manifest_case_ids),
         "usable_progression_outcome_count": endpoint_report["usable_progression_outcome_count"],
+        "manifest_case_ids_without_usable_progression_outcome": manifest_case_ids_without_usable_progression_outcome,
+        "progression_outcome_coverage_complete": progression_outcome_coverage_complete,
         "gdc_data_release": status_payload.get("data_release"),
         "gdc_status": status_payload,
         "promotable": promotable,
@@ -350,6 +364,13 @@ def write_dry_run(output_dir: str | Path, client: LiveGdcClient | StaticGdcClien
         raise ValueError("GDC cases expose only overall-survival endpoints; progression endpoint is required")
     if endpoint_report["status"] == "missing-endpoint":
         raise ValueError("GDC cases are missing a usable progression endpoint")
+    if not progression_outcome_coverage_complete:
+        missing_outcome_ids = ", ".join(manifest_case_ids_without_usable_progression_outcome)
+        raise ValueError(
+            "GDC progression outcome coverage is incomplete for manifest cases: "
+            f"{endpoint_report['usable_progression_outcome_count']} of {len(manifest_case_ids)} usable"
+            + (f"; missing usable progression/censoring rows for {missing_outcome_ids}" if missing_outcome_ids else "")
+        )
 
     return {
         "endpoint_status": endpoint_report["status"],
