@@ -112,15 +112,83 @@ def validate_manifest_count(rows: Iterable[Mapping[str, Any]], expected_total: i
         raise ValueError(f"Normalized manifest count {len(materialized)} does not match independent manifest count {expected_total}")
 
 
-def validate_manifest_buildability(rows: Iterable[Mapping[str, Any]]) -> dict[str, Any]:
-    materialized = list(rows)
-    duplicate_values = {
-        field: sorted(str(value) for value, count in Counter(row.get(field) for row in materialized).items() if count > 1)
+def _identity_value(row: Mapping[str, Any], field: str) -> str | None:
+    value = row.get(field)
+    if not _has_value(value):
+        return None
+    return str(value)
+
+
+def _duplicate_values(rows: list[Mapping[str, Any]], field: str) -> list[str]:
+    return sorted(
+        value
+        for value, count in Counter(_identity_value(row, field) for row in rows).items()
+        if value is not None and count > 1
+    )
+
+
+def _missing_identity_counts(rows: list[Mapping[str, Any]]) -> dict[str, int]:
+    return {
+        field: sum(1 for row in rows if _identity_value(row, field) is None)
         for field in UNIQUE_MANIFEST_IDENTITY_FIELDS
     }
+
+
+def _cohort_aggregation_report(
+    rows: list[Mapping[str, Any]],
+    duplicate_values: Mapping[str, list[str]],
+    missing_counts: Mapping[str, int],
+) -> dict[str, Any]:
+    duplicate_case_values = list(duplicate_values["case_submitter_id"])
+    duplicate_sample_values = list(duplicate_values["sample_submitter_id"])
+    duplicate_file_values = list(duplicate_values["file_id"])
+    unresolved = bool(duplicate_case_values or duplicate_sample_values or duplicate_file_values or any(missing_counts.values()))
+    affected_cases = {
+        _identity_value(row, "case_submitter_id") or "<missing>"
+        for row in rows
+        if _identity_value(row, "case_submitter_id") in duplicate_case_values
+        or _identity_value(row, "sample_submitter_id") in duplicate_sample_values
+        or _identity_value(row, "file_id") in duplicate_file_values
+        or any(_identity_value(row, field) is None for field in UNIQUE_MANIFEST_IDENTITY_FIELDS)
+    }
+    if unresolved:
+        selected_policy = None
+        blocking_reason = "ambiguous-patient-expression-files"
+    else:
+        # A unique manifest is not a curated patient-level selection. No
+        # selection policy has been applied, so leave selected_policy null; the
+        # `unique-manifest-no-policy-applied` cohort_mode carries the meaning.
+        selected_policy = None
+        blocking_reason = None
+
     return {
-        "buildable_manifest": not any(duplicate_values.values()),
+        "duplicate_case_submitter_id_count": len(duplicate_case_values),
+        "duplicate_case_submitter_id_values": duplicate_case_values,
+        "duplicate_sample_submitter_id_count": len(duplicate_sample_values),
+        "duplicate_sample_submitter_id_values": duplicate_sample_values,
+        "duplicate_file_id_count": len(duplicate_file_values),
+        "duplicate_file_id_values": duplicate_file_values,
+        "missing_case_submitter_id_count": missing_counts["case_submitter_id"],
+        "missing_sample_submitter_id_count": missing_counts["sample_submitter_id"],
+        "missing_file_id_count": missing_counts["file_id"],
+        "affected_case_submitter_id_count": len(affected_cases),
+        "selected_policy": selected_policy,
+        "blocking_reason": blocking_reason,
+    }
+
+
+def validate_manifest_buildability(rows: Iterable[Mapping[str, Any]]) -> dict[str, Any]:
+    materialized = list(rows)
+    duplicate_values = {field: _duplicate_values(materialized, field) for field in UNIQUE_MANIFEST_IDENTITY_FIELDS}
+    missing_counts = _missing_identity_counts(materialized)
+    buildable_manifest = not any(duplicate_values.values()) and not any(missing_counts.values())
+    cohort_aggregation = _cohort_aggregation_report(materialized, duplicate_values, missing_counts)
+    return {
+        "buildable_manifest": buildable_manifest,
         "duplicate_manifest_values": duplicate_values,
+        "missing_manifest_identity_counts": missing_counts,
+        "cohort_mode": "unique-manifest-no-policy-applied" if buildable_manifest else "unresolved-cohort",
+        "cohort_aggregation": cohort_aggregation,
     }
 
 
@@ -431,11 +499,16 @@ def write_dry_run(output_dir: str | Path, client: LiveGdcClient | StaticGdcClien
         raise ValueError("GDC cases are missing a usable progression endpoint")
     if not buildability_report["buildable_manifest"]:
         duplicate_parts = [
-            f"{field}: {', '.join(values)}"
+            f"duplicate {field}: {', '.join(values)}"
             for field, values in buildability_report["duplicate_manifest_values"].items()
             if values
         ]
-        raise ValueError(f"Manifest is not buildable; duplicate {'; '.join(duplicate_parts)}")
+        missing_parts = [
+            f"missing {field}"
+            for field, count in buildability_report["missing_manifest_identity_counts"].items()
+            if count
+        ]
+        raise ValueError(f"Manifest has unresolved cohort; {'; '.join([*duplicate_parts, *missing_parts])}")
     if not progression_outcome_coverage_complete:
         missing_outcome_ids = ", ".join(manifest_case_ids_without_usable_progression_outcome)
         raise ValueError(

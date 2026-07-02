@@ -348,7 +348,7 @@ def test_write_dry_run_refuses_partial_progression_outcome_coverage(tmp_path):
     assert validation["promotable"] is False
 
 
-def test_write_dry_run_refuses_manifest_duplicate_case_submitter_id(tmp_path):
+def test_write_dry_run_reports_unresolved_cohort_for_duplicate_case_submitter_id(tmp_path):
     from fetch_manifest import StaticGdcClient, write_dry_run
 
     duplicate_manifest = _load_json("files_page.json")
@@ -365,19 +365,115 @@ def test_write_dry_run_refuses_manifest_duplicate_case_submitter_id(tmp_path):
         case_pages=[_load_json("cases_progression.json")],
     )
 
-    with pytest.raises(ValueError, match="duplicate case_submitter_id"):
+    with pytest.raises(ValueError, match="unresolved cohort; duplicate case_submitter_id: MMRF_0001"):
         write_dry_run(output_dir=tmp_path, client=client)
 
     validation = json.loads((tmp_path / "reports" / "validation.json").read_text(encoding="utf-8"))
     assert validation["endpoint_status"] == "progression-ready"
     assert validation["progression_outcome_coverage_complete"] is True
     assert validation["buildable_manifest"] is False
+    assert validation["cohort_mode"] == "unresolved-cohort"
+    assert validation["cohort_aggregation"] == {
+        "duplicate_case_submitter_id_count": 1,
+        "duplicate_case_submitter_id_values": ["MMRF_0001"],
+        "duplicate_sample_submitter_id_count": 0,
+        "duplicate_sample_submitter_id_values": [],
+        "duplicate_file_id_count": 0,
+        "duplicate_file_id_values": [],
+        "missing_case_submitter_id_count": 0,
+        "missing_sample_submitter_id_count": 0,
+        "missing_file_id_count": 0,
+        "affected_case_submitter_id_count": 1,
+        "selected_policy": None,
+        "blocking_reason": "ambiguous-patient-expression-files",
+    }
     assert validation["duplicate_manifest_values"] == {
         "case_submitter_id": ["MMRF_0001"],
         "sample_submitter_id": [],
         "file_id": [],
     }
     assert validation["promotable"] is False
+
+
+def test_write_dry_run_reports_unresolved_cohort_for_missing_identity(tmp_path):
+    from fetch_manifest import StaticGdcClient, write_dry_run
+
+    missing_identity_manifest = _load_json("files_page.json")
+    missing_identity_manifest["data"]["hits"][1]["cases"][0]["submitter_id"] = None
+
+    client = StaticGdcClient(
+        status_payload={
+            "data_release": "Data Release 45.0 - December 04, 2025",
+            "commit": "fixture",
+            "status": "OK",
+        },
+        file_total=3,
+        file_pages=[missing_identity_manifest],
+        case_pages=[_load_json("cases_progression.json")],
+    )
+
+    with pytest.raises(ValueError, match="unresolved cohort; missing case_submitter_id"):
+        write_dry_run(output_dir=tmp_path, client=client)
+
+    validation = json.loads((tmp_path / "reports" / "validation.json").read_text(encoding="utf-8"))
+    assert validation["buildable_manifest"] is False
+    assert validation["cohort_mode"] == "unresolved-cohort"
+    assert validation["cohort_aggregation"] == {
+        "duplicate_case_submitter_id_count": 0,
+        "duplicate_case_submitter_id_values": [],
+        "duplicate_sample_submitter_id_count": 0,
+        "duplicate_sample_submitter_id_values": [],
+        "duplicate_file_id_count": 0,
+        "duplicate_file_id_values": [],
+        "missing_case_submitter_id_count": 1,
+        "missing_sample_submitter_id_count": 0,
+        "missing_file_id_count": 0,
+        "affected_case_submitter_id_count": 1,
+        "selected_policy": None,
+        "blocking_reason": "ambiguous-patient-expression-files",
+    }
+    assert validation["missing_manifest_identity_counts"] == {
+        "case_submitter_id": 1,
+        "sample_submitter_id": 0,
+        "file_id": 0,
+    }
+    assert validation["promotable"] is False
+
+
+def test_write_dry_run_reports_unique_manifest_no_policy_applied(tmp_path):
+    from fetch_manifest import StaticGdcClient, write_dry_run
+
+    client = StaticGdcClient(
+        status_payload={
+            "data_release": "Data Release 45.0 - December 04, 2025",
+            "commit": "fixture",
+            "status": "OK",
+        },
+        file_total=3,
+        file_pages=[_load_json("files_page.json")],
+        case_pages=[_load_json("cases_progression.json")],
+    )
+
+    report = write_dry_run(output_dir=tmp_path, client=client)
+    validation = json.loads((tmp_path / "reports" / "validation.json").read_text(encoding="utf-8"))
+    assert report["promotable"] is True
+    # A coincidentally-unique manifest is NOT a curated patient-level selection;
+    # no selection policy has been applied, so selected_policy stays null.
+    assert validation["cohort_mode"] == "unique-manifest-no-policy-applied"
+    assert validation["cohort_aggregation"] == {
+        "duplicate_case_submitter_id_count": 0,
+        "duplicate_case_submitter_id_values": [],
+        "duplicate_sample_submitter_id_count": 0,
+        "duplicate_sample_submitter_id_values": [],
+        "duplicate_file_id_count": 0,
+        "duplicate_file_id_values": [],
+        "missing_case_submitter_id_count": 0,
+        "missing_sample_submitter_id_count": 0,
+        "missing_file_id_count": 0,
+        "affected_case_submitter_id_count": 0,
+        "selected_policy": None,
+        "blocking_reason": None,
+    }
 
 
 def test_write_dry_run_requires_progression_on_manifest_cases(tmp_path):
