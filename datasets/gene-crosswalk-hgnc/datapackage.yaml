@@ -1,7 +1,7 @@
 name: gene-crosswalk-hgnc
 profile: data-package
 title: "HGNC gene crosswalk — gene_key -> symbol/entrez/ensembl + lifecycle"
-version: "1.0.0"
+version: "1.0.1"
 licenses:
   - name: CC0-1.0
     path: https://creativecommons.org/publicdomain/zero/1.0/
@@ -15,5 +15,5 @@ resources:
     format: csv
     mediatype: text/csv
     description: "One row per HGNC entry: gene_key (member key), symbol, entrez_id, ensembl_gene_id, alias_symbol, prev_symbol, status, replacement_gene_keys."
-    hash: "sha256:726703c35417311980d535f5c91d35305d59aaabf59c96f8212b1ab8046a2f2a"
+    hash: "sha256:b21918d08ebc809b4feeb7d8a21c4a35b3f6e365863e59177301b21604aef36b"
     bytes: 3485934

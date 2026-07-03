@@ -3,9 +3,9 @@ schema_profile: science-entity-base/1.0+dataset/1.0+bio.gene_crosswalk/1.0
 id: dataset:gene-crosswalk-hgnc
 type: dataset
 title: "HGNC gene crosswalk — gene_key-keyed reference collection (human)"
-version: "1.0.0"
+version: "1.0.1"
 created: "2026-05-27"
-updated: "2026-05-27"
+updated: "2026-07-03"
 tags: []
 access:
   level: public
