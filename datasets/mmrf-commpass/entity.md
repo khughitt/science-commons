@@ -6,7 +6,7 @@ title: "MMRF CoMMpass"
 version: "1.0.0"
 status: "active"
 created: "2026-06-28"
-updated: "2026-07-02"
+updated: "2026-07-03"
 scope: "shared"
 origin: "external"
 source_class: "observational"
@@ -51,10 +51,12 @@ benchmark:
       support:
         state: blocked
         reason: open-metadata-missing-progression-endpoint
-        checked_at: "2026-07-02"
+        checked_at: "2026-07-03"
         evidence:
-          - recipe/reports/validation.json#task_support.progression-risk
+          - recipe/manifest.schema.yaml#validation_report.task_support
+          - recipe/README.md#dry-run
         notes:
-          - Open GDC metadata currently exposes survival endpoints but not usable progression or relapse endpoints for this task.
+          - Live GDC dry run on 2026-07-03 reported endpoint_status=survival-only, progression_fields=[], survival_fields=[vital_status, days_to_death], and promotable=false.
+          - The same dry run reported cohort_mode=unresolved-cohort, so overall-survival remains a recipe-level candidate rather than an authored benchmark task.
 ---
 # MMRF CoMMpass
