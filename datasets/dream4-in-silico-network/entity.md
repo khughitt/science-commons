@@ -50,5 +50,15 @@ benchmark:
       timepoints: ["challenge-provided simulated time-series measurements"]
       intervention: "simulated perturbation experiments"
       contexts: ["synthetic network", "time series", "perturbation"]
+      support:
+        state: candidate
+        reason: requires-challenge-package-staging
+        checked_at: "2026-07-03"
+        evidence:
+          - entity.md#benchmark.limitations
+          - https://www.synapse.org/Synapse:syn3049712
+        notes:
+          - Relevant synthetic benchmark for network reconstruction behavior checks.
+          - Stage and document the exact DREAM4 challenge package before treating this task as runnable.
 ---
 # DREAM4 in silico network challenge

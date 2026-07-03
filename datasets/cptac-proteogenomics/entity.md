@@ -45,5 +45,15 @@ benchmark:
       interpretation_limits:
         - "Protein prediction should exceed the RNA-only baseline."
       contexts: ["tumor type", "assay batch"]
+      support:
+        state: candidate
+        reason: requires-study-specific-staging
+        checked_at: "2026-07-03"
+        evidence:
+          - entity.md#benchmark.limitations
+          - https://proteomic.datacommons.cancer.gov/pdc/
+        notes:
+          - Benchmark-relevant portal record; a concrete study/package must be selected and staged before use.
+          - Keep visible as a candidate for proteogenomic cross-modal validation, not as a runnable fallback.
 ---
 # CPTAC proteogenomics

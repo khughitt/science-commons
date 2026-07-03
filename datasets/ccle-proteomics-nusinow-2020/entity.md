@@ -79,6 +79,15 @@ benchmark:
       interpretation_limits:
         - "Positive performance supports protein-level transfer checks, not primary-tumor causal claims."
       contexts: ["cell line", "lineage", "TMT batch"]
+      support:
+        state: supported
+        checked_at: "2026-07-03"
+        evidence:
+          - datapackage.yaml
+          - datapackage.yaml#resources
+        notes:
+          - Runnable deposit benchmark for protein-level association checks across CCLE cancer cell lines.
+          - Use as broad cell-line proteomics validation, not as a primary-tumor or causal benchmark.
 ---
 # CCLE Proteomics (Nusinow 2020) — quantitative proteome across 375 cancer cell lines
 
