@@ -6,7 +6,7 @@ title: "MMRF CoMMpass"
 version: "1.0.0"
 status: "active"
 created: "2026-06-28"
-updated: "2026-06-28"
+updated: "2026-07-02"
 scope: "shared"
 origin: "external"
 source_class: "observational"
@@ -48,5 +48,13 @@ benchmark:
         - "Associational clinical benchmark; causal treatment conclusions require stronger design."
       timepoints: ["baseline and follow-up disease-course observations where available"]
       contexts: ["patient", "treatment line", "disease stage"]
+      support:
+        state: blocked
+        reason: open-metadata-missing-progression-endpoint
+        checked_at: "2026-07-02"
+        evidence:
+          - recipe/reports/validation.json#task_support.progression-risk
+        notes:
+          - Open GDC metadata currently exposes survival endpoints but not usable progression or relapse endpoints for this task.
 ---
 # MMRF CoMMpass
