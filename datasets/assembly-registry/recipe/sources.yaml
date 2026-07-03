@@ -1,12 +1,21 @@
 # Pinned seqcol collection digests, fetched + verified no-FASTA at build time.
-# Discover digests via the seqcol server's /list/collection endpoint or the
-# refget seqcol standard paper; each is recompute-verified by build.py.
+# Labels and aliases are row-bound to the exact seqcol digest in the same row.
+artifact_version: "1.0.1"
+seqcol_base_url: https://seqcolapi.databio.org
 assemblies:
   - label: GRCh38
+    aliases:
+      - GRCh38.p14
+    naming: ncbi
     accession: GCA_000001405.15
-    seqcol_digest: "REPLACE_WITH_GRCh38_SEQCOL_DIGEST"
-    assembly_report_url: "REPLACE_WITH_PINNED_GRCh38_ASSEMBLY_REPORT_URL"
+    seqcol_digest: "__OPERATOR_PINNED_GRCh38_SEQCOL_DIGEST__"
+    source_collection_url: "__OPERATOR_PINNED_GRCh38_SOURCE_COLLECTION_URL__"
+    assembly_report_url: https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/001/405/GCA_000001405.15_GRCh38/GCA_000001405.15_GRCh38_assembly_report.txt
   - label: GRCh37
+    aliases:
+      - GRCh37.p13
+    naming: ncbi
     accession: GCA_000001405.14
-    seqcol_digest: "REPLACE_WITH_GRCh37_SEQCOL_DIGEST"
-    assembly_report_url: "REPLACE_WITH_PINNED_GRCh37_ASSEMBLY_REPORT_URL"
+    seqcol_digest: "__OPERATOR_PINNED_GRCh37_SEQCOL_DIGEST__"
+    source_collection_url: "__OPERATOR_PINNED_GRCh37_SOURCE_COLLECTION_URL__"
+    assembly_report_url: https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/001/405/GCA_000001405.14_GRCh37.p13/GCA_000001405.14_GRCh37.p13_assembly_report.txt
