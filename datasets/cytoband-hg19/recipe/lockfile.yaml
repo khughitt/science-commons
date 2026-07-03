@@ -1,0 +1,7 @@
+resources:
+  cytoBand:
+    url: https://hgdownload.cse.ucsc.edu/goldenPath/hg19/database/cytoBand.txt.gz
+    path: sources/cytoBand.txt.gz
+    sha256: f9b82309b2bca1eb9d91a5cb2c6aa0528351158e6e20b51d82cca36d01735cba
+    bytes: 6609
+    decompressed_rows: 862
