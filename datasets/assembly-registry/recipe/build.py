@@ -179,6 +179,11 @@ def main() -> None:
         seqcol_digest = _require_text(src, "seqcol_digest", label=label)
         source_collection_url = _require_text(src, "source_collection_url", label=label)
         assembly_report_url = _require_text(src, "assembly_report_url", label=label)
+        assembly_report_match_column = (
+            _require_text(src, "assembly_report_match_column", label=label)
+            if "assembly_report_match_column" in src
+            else "Sequence-Name"
+        )
         accession = _require_text(src, "accession", label=label)
         naming = _require_text(src, "naming", label=label)
 
@@ -198,7 +203,13 @@ def main() -> None:
         assembly_contigs = build_contig_rows(level2=level2, seqcol_digest=seqcol_digest)
         contig_rows.extend(assembly_contigs)
         report_rows = parse_assembly_report(fetch_text(assembly_report_url))
-        alias_rows.extend(build_contig_alias_rows(contig_rows=assembly_contigs, report_rows=report_rows))
+        alias_rows.extend(
+            build_contig_alias_rows(
+                contig_rows=assembly_contigs,
+                report_rows=report_rows,
+                match_column=assembly_report_match_column,
+            )
+        )
 
     validate_registry_label_bindings(assembly_rows)
     _validate_unique_seqcol_digests(assembly_rows)

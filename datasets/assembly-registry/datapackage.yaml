@@ -1,33 +1,36 @@
 name: assembly-registry
 profile: data-package
-title: "Assembly registry — seqcol digests for canonical genome assemblies"
-version: "1.0.0"
+title: "Assembly registry \u2014 seqcol digests for canonical genome assemblies"
+version: 1.0.1
 licenses:
-  - name: CC0-1.0
-    path: https://creativecommons.org/publicdomain/zero/1.0/
-    title: Creative Commons Zero v1.0 Universal
+- name: CC0-1.0
+  path: https://creativecommons.org/publicdomain/zero/1.0/
+  title: Creative Commons Zero v1.0 Universal
 provenance:
-  - action: build
-    tool: recipe/build.py
+- action: build
+  tool: recipe/build.py
 resources:
-  - name: assemblies
-    path: assemblies.csv
-    format: csv
-    mediatype: text/csv
-    description: "One row per assembly: seqcol_digest (member key), label, accession, n_sequences, source_url."
-    hash: "sha256:0000000000000000000000000000000000000000000000000000000000000000"
-    bytes: 0
-  - name: contigs
-    path: contigs.csv
-    format: csv
-    mediatype: text/csv
-    description: "One row per seqcol contig: seqcol_digest, sequence_index, name, refget_digest, length."
-    hash: "sha256:0000000000000000000000000000000000000000000000000000000000000000"
-    bytes: 0
-  - name: contig_aliases
-    path: contig_aliases.csv
-    format: csv
-    mediatype: text/csv
-    description: "Assembly-report aliases for seqcol contigs: seqcol_digest, refget_digest, alias, alias_kind, sequence_accession."
-    hash: "sha256:0000000000000000000000000000000000000000000000000000000000000000"
-    bytes: 0
+- name: assemblies
+  path: assemblies.csv
+  format: csv
+  mediatype: text/csv
+  description: 'One row per assembly: seqcol_digest (member key), label, accession,
+    n_sequences, source_url.'
+  hash: sha256:bd2e8db7e43e8e865a03ffc0020137609b236bbc23d9f623eb87320277e64d15
+  bytes: 543
+- name: contigs
+  path: contigs.csv
+  format: csv
+  mediatype: text/csv
+  description: 'One row per seqcol contig: seqcol_digest, sequence_index, name, refget_digest,
+    length.'
+  hash: sha256:492790c3da7955b982a87f4cf14b631e2a5535a0166bf61eb5b6d297288d4721
+  bytes: 70496
+- name: contig_aliases
+  path: contig_aliases.csv
+  format: csv
+  mediatype: text/csv
+  description: 'Assembly-report aliases for seqcol contigs: seqcol_digest, refget_digest,
+    alias, alias_kind, sequence_accession.'
+  hash: sha256:7e6c0ed7dc7547035f46683a0d05ab78d00093ec92008c8f25148126e6d4f6a1
+  bytes: 294220

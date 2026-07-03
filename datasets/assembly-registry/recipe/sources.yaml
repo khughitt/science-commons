@@ -8,14 +8,16 @@ assemblies:
       - GRCh38.p14
     naming: ncbi
     accession: GCA_000001405.15
-    seqcol_digest: "__OPERATOR_PINNED_GRCh38_SEQCOL_DIGEST__"
-    source_collection_url: "__OPERATOR_PINNED_GRCh38_SOURCE_COLLECTION_URL__"
+    seqcol_digest: XemD97fxYMS4q-FBm_n5CHQgmzh1_67a
+    source_collection_url: https://seqcolapi.databio.org/collection/XemD97fxYMS4q-FBm_n5CHQgmzh1_67a
     assembly_report_url: https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/001/405/GCA_000001405.15_GRCh38/GCA_000001405.15_GRCh38_assembly_report.txt
+    assembly_report_match_column: RefSeq-Accn
   - label: GRCh37
     aliases:
       - GRCh37.p13
     naming: ncbi
     accession: GCA_000001405.14
-    seqcol_digest: "__OPERATOR_PINNED_GRCh37_SEQCOL_DIGEST__"
-    source_collection_url: "__OPERATOR_PINNED_GRCh37_SOURCE_COLLECTION_URL__"
+    seqcol_digest: XJWKh8nsSqBFfcU0DIHMZohYyCWF-vcA
+    source_collection_url: https://seqcolapi.databio.org/collection/XJWKh8nsSqBFfcU0DIHMZohYyCWF-vcA
     assembly_report_url: https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/001/405/GCA_000001405.14_GRCh37.p13/GCA_000001405.14_GRCh37.p13_assembly_report.txt
+    assembly_report_match_column: RefSeq-Accn

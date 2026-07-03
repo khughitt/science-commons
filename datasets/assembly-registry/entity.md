@@ -3,9 +3,9 @@ schema_profile: science-entity-base/1.0+dataset/1.0+bio.assembly_registry/1.0
 id: dataset:assembly-registry
 type: dataset
 title: "Assembly registry — seqcol-keyed reference collection of genome assemblies"
-version: "1.0.0"
+version: "1.0.1"
 created: "2026-05-26"
-updated: "2026-05-26"
+updated: "2026-07-03"
 tags: []
 access:
   level: public
@@ -19,7 +19,7 @@ status: active
 tier: use-now
 update_cadence: static
 member_key_column: seqcol_digest
-assembly_count: 0
+assembly_count: 2
 ---
 
 # Assembly registry
