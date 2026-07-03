@@ -8,7 +8,7 @@ resources:
   source:
     type: local
     ref: ${OUTPUT_ROOT}/assembly-liftover-grch37-grch38/compatibility_relations.csv
-  hash: sha256:13f411ee2d547fae57df7a4e8494122e79e7fae864ac589724651532e07cc6da
+  hash: sha256:7e986911ab9884c34d40ee10eb8243637f0c3ebd86a8f273ad15540a14b12ba0
   bytes: 438
 - name: hg19ToHg38_chain
   path: chains/hg19ToHg38.over.chain.gz
