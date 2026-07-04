@@ -181,3 +181,70 @@ def test_static_client_rejects_malformed_list_items():
 
     with pytest.raises(ValueError, match="molecular profiles item 1 must be a JSON object"):
         _validated_mapping_list([{"id": "ok"}, "bad"], label="molecular profiles")
+
+
+def test_read_matrix_reports_feature_and_sample_counts():
+    from build import read_matrix
+
+    matrix = read_matrix(_fixture("data_mrna_seq_fpkm.txt"), feature_column="Hugo_Symbol")
+    assert matrix.feature_column == "Hugo_Symbol"
+    assert matrix.sample_ids == ["C3L-00104", "C3L-00365", "C3L-00674"]
+    assert len(matrix.rows) == 2
+    assert matrix.rows[0]["feature_id"] == "EGFR"
+    assert matrix.rows[0]["C3L-00104"] == 2273268.1
+
+
+def test_read_matrix_ignores_known_non_sample_id_columns(tmp_path):
+    from build import read_matrix
+
+    matrix_path = tmp_path / "matrix.txt"
+    matrix_path.write_text(
+        "Hugo_Symbol\tEntrez_Gene_Id\tC3L-00104\tC3L-00365\n"
+        "EGFR\t1956\t1.0\t2.0\n",
+        encoding="utf-8",
+    )
+
+    matrix = read_matrix(matrix_path, feature_column="Hugo_Symbol")
+    assert matrix.sample_ids == ["C3L-00104", "C3L-00365"]
+    assert matrix.skipped_blank_feature_rows == 0
+
+
+def test_validate_aligned_samples_requires_identical_order():
+    from build import MatrixTable, validate_aligned_samples
+
+    left = MatrixTable(feature_column="x", sample_ids=["S1", "S2"], rows=[], skipped_blank_feature_rows=0)
+    right = MatrixTable(feature_column="y", sample_ids=["S1", "S2"], rows=[], skipped_blank_feature_rows=0)
+    validate_aligned_samples(left, right)
+
+    mismatched = MatrixTable(feature_column="y", sample_ids=["S2", "S1"], rows=[], skipped_blank_feature_rows=0)
+    with pytest.raises(ValueError, match="sample order mismatch"):
+        validate_aligned_samples(left, mismatched)
+
+
+def test_build_package_writes_normalized_resources(tmp_path):
+    from build import build_package
+
+    src = tmp_path / "_src" / "datahub"
+    src.mkdir(parents=True)
+    src.joinpath("data_mrna_seq_fpkm.txt").write_text(_fixture("data_mrna_seq_fpkm.txt").read_text(encoding="utf-8"), encoding="utf-8")
+    src.joinpath("data_protein_quantification.txt").write_text(_fixture("data_protein_quantification.txt").read_text(encoding="utf-8"), encoding="utf-8")
+    (tmp_path / "reports").mkdir()
+    (tmp_path / "reports" / "validation.json").write_text(
+        json.dumps({"import_date": "2026-01-07 13:14:46", "promotable": True}) + "\n",
+        encoding="utf-8",
+    )
+    (tmp_path / "reports" / "download-summary.json").write_text(
+        json.dumps({"mrna": {"sha256": "fixture"}, "protein": {"sha256": "fixture"}}) + "\n",
+        encoding="utf-8",
+    )
+
+    summary = build_package(tmp_path)
+    assert summary["sample_rows"] == 3
+    assert summary["mrna_feature_rows"] == 2
+    assert summary["protein_feature_rows"] == 2
+    assert summary["matched_feature_rows"] == 2
+    assert summary["sample_alignment"] == "identical-order"
+    assert (tmp_path / "expression" / "mrna_fpkm_uq.parquet").is_file()
+    assert (tmp_path / "proteomics" / "protein_abundance_log2.parquet").is_file()
+    assert (tmp_path / "metadata" / "samples.parquet").is_file()
+    assert (tmp_path / "reports" / "build-summary.json").is_file()
