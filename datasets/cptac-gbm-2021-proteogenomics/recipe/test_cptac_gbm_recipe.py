@@ -27,6 +27,7 @@ def test_entity_declares_concrete_child_deposit_and_cross_modal_task():
     assert frontmatter["id"] == "dataset:cptac-gbm-2021-proteogenomics"
     assert frontmatter["dataset_class"] == "deposit"
     assert frontmatter["source_class"] == "derived"
+    assert frontmatter["derived_kind"] == "transform"
     assert frontmatter["license"] == "ODbL-1.0"
     assert frontmatter["datapackage"] == "datapackage.yaml"
     assert frontmatter["access"] == {
@@ -50,8 +51,9 @@ def test_entity_declares_concrete_child_deposit_and_cross_modal_task():
     assert task["metric"] == "held-out Pearson correlation"
     assert task["baseline"] == "per-protein training-set mean"
     assert task["ground_truth"]["type"] == "measured-proteomics"
-    assert task["support"]["state"] == "candidate"
-    assert task["support"]["reason"] == "recipe-staged-validation-needed"
+    assert task["support"]["state"] == "supported"
+    assert "reason" not in task["support"]
+    assert "datapackage.yaml#resources" in task["support"]["evidence"]
 
 
 def test_parse_lfs_pointer_extracts_oid_and_size():
@@ -209,6 +211,28 @@ def test_read_matrix_ignores_known_non_sample_id_columns(tmp_path):
     assert matrix.skipped_blank_feature_rows == 0
 
 
+def test_collapse_duplicate_features_uses_per_sample_mean():
+    from build import MatrixTable, collapse_duplicate_features
+
+    matrix = MatrixTable(
+        feature_column="Hugo_Symbol",
+        sample_ids=["S1", "S2"],
+        rows=[
+            {"feature_id": "ENO1", "S1": 1.0, "S2": 3.0},
+            {"feature_id": "ENO1", "S1": 3.0, "S2": None},
+            {"feature_id": "TP53", "S1": 5.0, "S2": 7.0},
+        ],
+        skipped_blank_feature_rows=0,
+    )
+
+    collapsed = collapse_duplicate_features(matrix)
+    assert collapsed.collapsed_duplicate_feature_rows == 1
+    assert collapsed.rows == [
+        {"feature_id": "ENO1", "S1": 2.0, "S2": 3.0},
+        {"feature_id": "TP53", "S1": 5.0, "S2": 7.0},
+    ]
+
+
 def test_validate_aligned_samples_requires_identical_order():
     from build import MatrixTable, validate_aligned_samples
 
@@ -244,6 +268,8 @@ def test_build_package_writes_normalized_resources(tmp_path):
     assert summary["protein_feature_rows"] == 2
     assert summary["matched_feature_rows"] == 2
     assert summary["sample_alignment"] == "identical-order"
+    assert summary["collapsed_duplicate_mrna_feature_rows"] == 0
+    assert summary["collapsed_duplicate_protein_feature_rows"] == 0
     assert (tmp_path / "expression" / "mrna_fpkm_uq.parquet").is_file()
     assert (tmp_path / "proteomics" / "protein_abundance_log2.parquet").is_file()
     assert (tmp_path / "metadata" / "samples.parquet").is_file()

@@ -10,6 +10,7 @@ updated: "2026-07-03"
 scope: "shared"
 origin: "external"
 source_class: "derived"
+derived_kind: "transform"
 dataset_class: "deposit"
 tier: "evaluate-next"
 license: "ODbL-1.0"
@@ -51,14 +52,15 @@ benchmark:
         - "Feature and target matrices are cBioPortal-transformed derivatives of CPTAC GBM source data."
       contexts: ["glioblastoma", "matched tumor sample", "mRNA expression", "protein abundance"]
       support:
-        state: candidate
-        reason: recipe-staged-validation-needed
+        state: supported
         checked_at: "2026-07-03"
         evidence:
+          - datapackage.yaml
+          - datapackage.yaml#resources
           - "~/d/science/docs/audits/benchmark-cptac-gbm-fetchability-spike-2026-07-03.md"
           - "https://github.com/cBioPortal/datahub/blob/master/LICENSE"
         notes:
           - "Direct GitHub LFS batch downloads verified mRNA SHA-256 235cef753fc34d0168e97c145616bcfb3fe1c2f726038bef891639dfbec05722 and protein SHA-256 b5512312c26b68b1f137fa493448ecce0e9a8b44a5bd35b8cc9dfb67f68a6a0e."
-          - "After live dry-run/download/build validation, update this support reason to recipe-staged if benchmark reports classify the task as stage-needed or runnable."
+          - "Runnable deposit benchmark for cross-modal mRNA-to-protein prediction in matched CPTAC GBM samples."
 ---
 # CPTAC GBM proteogenomics

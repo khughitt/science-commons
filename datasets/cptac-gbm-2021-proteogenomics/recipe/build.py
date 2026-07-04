@@ -23,6 +23,7 @@ class MatrixTable:
     sample_ids: list[str]
     rows: list[dict[str, Any]]
     skipped_blank_feature_rows: int
+    collapsed_duplicate_feature_rows: int = 0
 
 
 def resolve_output_dir(output_dir: str | Path | None, env: Mapping[str, str] | None = None) -> Path:
@@ -80,6 +81,32 @@ def _protein_symbol(feature_id: str) -> str:
     return feature_id.split("|", 1)[0]
 
 
+def collapse_duplicate_features(table: MatrixTable) -> MatrixTable:
+    grouped: dict[str, list[dict[str, Any]]] = {}
+    for row in table.rows:
+        grouped.setdefault(str(row["feature_id"]), []).append(row)
+
+    rows: list[dict[str, Any]] = []
+    collapsed_count = 0
+    for feature_id in sorted(grouped):
+        feature_rows = grouped[feature_id]
+        if len(feature_rows) > 1:
+            collapsed_count += len(feature_rows) - 1
+        row: dict[str, Any] = {"feature_id": feature_id}
+        for sample_id in table.sample_ids:
+            values = [feature_row[sample_id] for feature_row in feature_rows if feature_row[sample_id] is not None]
+            row[sample_id] = (sum(values) / len(values)) if values else None
+        rows.append(row)
+
+    return MatrixTable(
+        feature_column=table.feature_column,
+        sample_ids=table.sample_ids,
+        rows=rows,
+        skipped_blank_feature_rows=table.skipped_blank_feature_rows,
+        collapsed_duplicate_feature_rows=collapsed_count,
+    )
+
+
 def validate_aligned_samples(mrna: MatrixTable, protein: MatrixTable) -> None:
     if mrna.sample_ids != protein.sample_ids:
         raise ValueError("mRNA/protein sample order mismatch")
@@ -108,8 +135,10 @@ def build_package(output_dir: str | Path) -> dict[str, Any]:
     if not download_summary_path.is_file():
         raise ValueError(f"Missing download summary: {download_summary_path}")
 
-    mrna = read_matrix(out / "_src" / "datahub" / MRNA_FILE, feature_column="Hugo_Symbol")
-    protein = read_matrix(out / "_src" / "datahub" / PROTEIN_FILE, feature_column="Composite.Element.REF")
+    mrna = collapse_duplicate_features(read_matrix(out / "_src" / "datahub" / MRNA_FILE, feature_column="Hugo_Symbol"))
+    protein = collapse_duplicate_features(
+        read_matrix(out / "_src" / "datahub" / PROTEIN_FILE, feature_column="Composite.Element.REF")
+    )
     validate_aligned_samples(mrna, protein)
 
     expression = _matrix_to_long(mrna, value_name="mrna_fpkm_uq")
@@ -132,6 +161,8 @@ def build_package(output_dir: str | Path) -> dict[str, Any]:
         "sample_alignment": "identical-order",
         "skipped_blank_mrna_feature_rows": int(mrna.skipped_blank_feature_rows),
         "skipped_blank_protein_feature_rows": int(protein.skipped_blank_feature_rows),
+        "collapsed_duplicate_mrna_feature_rows": int(mrna.collapsed_duplicate_feature_rows),
+        "collapsed_duplicate_protein_feature_rows": int(protein.collapsed_duplicate_feature_rows),
         "resources": [
             "expression/mrna_fpkm_uq.parquet",
             "proteomics/protein_abundance_log2.parquet",

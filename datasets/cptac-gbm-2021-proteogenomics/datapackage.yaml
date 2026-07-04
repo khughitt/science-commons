@@ -2,38 +2,65 @@ name: cptac-gbm-2021-proteogenomics
 title: CPTAC GBM proteogenomics aligned mRNA/protein package
 profile: data-package
 licenses:
-  - name: ODbL-1.0
+- name: ODbL-1.0
 cBioPortal:
   study_id: gbm_cptac_2021
-  import_date: "2026-01-07 13:14:46"
+  import_date: '2026-01-07 13:14:46'
 provenance:
-  - tool: recipe/fetch_manifest.py
-  - tool: recipe/build.py
+- tool: recipe/fetch_manifest.py
+- tool: recipe/build.py
 resources:
-  - name: mrna_fpkm_uq
-    path: expression/mrna_fpkm_uq.parquet
-    hash: sha256:0000000000000000000000000000000000000000000000000000000000000000
-    bytes: 0
-    format: parquet
-    mediatype: application/vnd.apache.parquet
-    source:
-      type: local
-      ref: ${OUTPUT_ROOT}/cptac-gbm-2021-proteogenomics/expression/mrna_fpkm_uq.parquet
-  - name: protein_abundance_log2
-    path: proteomics/protein_abundance_log2.parquet
-    hash: sha256:0000000000000000000000000000000000000000000000000000000000000000
-    bytes: 0
-    format: parquet
-    mediatype: application/vnd.apache.parquet
-    source:
-      type: local
-      ref: ${OUTPUT_ROOT}/cptac-gbm-2021-proteogenomics/proteomics/protein_abundance_log2.parquet
-  - name: samples
-    path: metadata/samples.parquet
-    hash: sha256:0000000000000000000000000000000000000000000000000000000000000000
-    bytes: 0
-    format: parquet
-    mediatype: application/vnd.apache.parquet
-    source:
-      type: local
-      ref: ${OUTPUT_ROOT}/cptac-gbm-2021-proteogenomics/metadata/samples.parquet
+- name: mrna_fpkm_uq
+  path: expression/mrna_fpkm_uq.parquet
+  hash: sha256:84022bc68d4f5e43605230f0982aead0e1bcb39fa3e57fa45b39e91a1528292c
+  bytes: 20488520
+  format: parquet
+  mediatype: application/vnd.apache.parquet
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/cptac-gbm-2021-proteogenomics/expression/mrna_fpkm_uq.parquet
+- name: protein_abundance_log2
+  path: proteomics/protein_abundance_log2.parquet
+  hash: sha256:c6a4f287078b1c89b85447d0cc1fea26777cf4eeee9bcfd3417368fcbc04016e
+  bytes: 1908254
+  format: parquet
+  mediatype: application/vnd.apache.parquet
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/cptac-gbm-2021-proteogenomics/proteomics/protein_abundance_log2.parquet
+- name: samples
+  path: metadata/samples.parquet
+  hash: sha256:8c97f0b67b3951c3dcb5ea91f2597f817a85fbc727e48424d2138338f3032d37
+  bytes: 1878
+  format: parquet
+  mediatype: application/vnd.apache.parquet
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/cptac-gbm-2021-proteogenomics/metadata/samples.parquet
+- name: validation
+  path: reports/validation.json
+  hash: sha256:1042c06b27f2a4f2512b37a60c05f377dd6dea72f73033a869d3adbd6ce818ff
+  bytes: 691
+  format: json
+  mediatype: application/json
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/cptac-gbm-2021-proteogenomics/reports/validation.json
+- name: download_summary
+  path: reports/download-summary.json
+  hash: sha256:7239da56cfeaa01b131b6e0d48cfbe3d0fed0119d335a9eb3ae2ea3e0c45ad96
+  bytes: 546
+  format: json
+  mediatype: application/json
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/cptac-gbm-2021-proteogenomics/reports/download-summary.json
+- name: build_summary
+  path: reports/build-summary.json
+  hash: sha256:206b21021b17352e29a41588ba72336d29337c9dcc2d91ec27e1d21680c511e1
+  bytes: 481
+  format: json
+  mediatype: application/json
+  source:
+    type: local
+    ref: ${OUTPUT_ROOT}/cptac-gbm-2021-proteogenomics/reports/build-summary.json
