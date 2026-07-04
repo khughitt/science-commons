@@ -1,0 +1,41 @@
+dataset:
+  id: dataset:cptac-gbm-2021-proteogenomics
+  study_id: gbm_cptac_2021
+  task: protein-rna-cross-modal
+  source_datasets:
+    - dataset:cptac-proteogenomics
+validation_report:
+  required_fields:
+    - study_id
+    - import_date
+    - sample_counts
+    - profiles
+    - sample_lists
+    - lfs_objects
+    - promotable
+  fields:
+    lfs_objects:
+      required_labels:
+        - mrna
+        - protein
+      required_object_fields:
+        - oid
+        - size
+    profiles:
+      mrna: gbm_cptac_2021_mrna
+      protein: gbm_cptac_2021_protein_quantification
+    sample_lists:
+      mrna: gbm_cptac_2021_rna_seq_mrna
+      protein: gbm_cptac_2021_protein_quantification
+build_summary:
+  required_fields:
+    - sample_rows
+    - mrna_feature_rows
+    - protein_feature_rows
+    - matched_feature_rows
+    - sample_alignment
+    - resources
+  invariants:
+    - sample_alignment must be identical-order
+    - matched_feature_rows must be nonzero
+    - output resources must remain outside git-tracked commons metadata

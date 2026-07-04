@@ -1,0 +1,39 @@
+name: cptac-gbm-2021-proteogenomics
+title: CPTAC GBM proteogenomics aligned mRNA/protein package
+profile: data-package
+licenses:
+  - name: ODbL-1.0
+cBioPortal:
+  study_id: gbm_cptac_2021
+  import_date: "2026-01-07 13:14:46"
+provenance:
+  - tool: recipe/fetch_manifest.py
+  - tool: recipe/build.py
+resources:
+  - name: mrna_fpkm_uq
+    path: expression/mrna_fpkm_uq.parquet
+    hash: sha256:0000000000000000000000000000000000000000000000000000000000000000
+    bytes: 0
+    format: parquet
+    mediatype: application/vnd.apache.parquet
+    source:
+      type: local
+      ref: ${OUTPUT_ROOT}/cptac-gbm-2021-proteogenomics/expression/mrna_fpkm_uq.parquet
+  - name: protein_abundance_log2
+    path: proteomics/protein_abundance_log2.parquet
+    hash: sha256:0000000000000000000000000000000000000000000000000000000000000000
+    bytes: 0
+    format: parquet
+    mediatype: application/vnd.apache.parquet
+    source:
+      type: local
+      ref: ${OUTPUT_ROOT}/cptac-gbm-2021-proteogenomics/proteomics/protein_abundance_log2.parquet
+  - name: samples
+    path: metadata/samples.parquet
+    hash: sha256:0000000000000000000000000000000000000000000000000000000000000000
+    bytes: 0
+    format: parquet
+    mediatype: application/vnd.apache.parquet
+    source:
+      type: local
+      ref: ${OUTPUT_ROOT}/cptac-gbm-2021-proteogenomics/metadata/samples.parquet

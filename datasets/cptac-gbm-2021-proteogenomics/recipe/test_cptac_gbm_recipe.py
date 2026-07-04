@@ -248,3 +248,64 @@ def test_build_package_writes_normalized_resources(tmp_path):
     assert (tmp_path / "proteomics" / "protein_abundance_log2.parquet").is_file()
     assert (tmp_path / "metadata" / "samples.parquet").is_file()
     assert (tmp_path / "reports" / "build-summary.json").is_file()
+
+
+def test_manifest_schema_documents_validation_and_build_reports():
+    schema = yaml.safe_load((RECIPE_DIR / "manifest.schema.yaml").read_text(encoding="utf-8"))
+    assert schema["dataset"]["id"] == "dataset:cptac-gbm-2021-proteogenomics"
+    assert schema["dataset"]["task"] == "protein-rna-cross-modal"
+    assert schema["validation_report"]["required_fields"] == [
+        "study_id",
+        "import_date",
+        "sample_counts",
+        "profiles",
+        "sample_lists",
+        "lfs_objects",
+        "promotable",
+    ]
+    assert schema["build_summary"]["required_fields"] == [
+        "sample_rows",
+        "mrna_feature_rows",
+        "protein_feature_rows",
+        "matched_feature_rows",
+        "sample_alignment",
+        "resources",
+    ]
+
+
+def test_build_datapackage_doc_records_local_resource_hashes(tmp_path):
+    from build_datapackage import build_datapackage_doc
+
+    for rel_path, content in {
+        "expression/mrna_fpkm_uq.parquet": b"mrna",
+        "proteomics/protein_abundance_log2.parquet": b"protein",
+        "metadata/samples.parquet": b"samples",
+        "reports/validation.json": b"{}",
+        "reports/download-summary.json": b"{}",
+        "reports/build-summary.json": b"{}",
+    }.items():
+        target = tmp_path / rel_path
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(content)
+
+    doc = build_datapackage_doc(tmp_path, import_date="2026-01-07 13:14:46")
+    assert doc["name"] == "cptac-gbm-2021-proteogenomics"
+    assert doc["profile"] == "data-package"
+    assert doc["cBioPortal"]["study_id"] == "gbm_cptac_2021"
+    assert doc["cBioPortal"]["import_date"] == "2026-01-07 13:14:46"
+    resources = {resource["name"]: resource for resource in doc["resources"]}
+    assert resources["mrna_fpkm_uq"]["source"]["ref"] == "${OUTPUT_ROOT}/cptac-gbm-2021-proteogenomics/expression/mrna_fpkm_uq.parquet"
+    assert resources["mrna_fpkm_uq"]["hash"].startswith("sha256:")
+    assert resources["mrna_fpkm_uq"]["format"] == "parquet"
+    assert resources["protein_abundance_log2"]["path"] == "proteomics/protein_abundance_log2.parquet"
+    assert resources["build_summary"]["path"] == "reports/build-summary.json"
+
+
+def test_recipe_readme_documents_required_commands_and_no_committed_data():
+    text = (RECIPE_DIR / "README.md").read_text(encoding="utf-8")
+    assert "--output-dir ~/d/science-commons-data/cptac-gbm-2021-proteogenomics" in text
+    assert "fetch_manifest.py --dry-run" in text
+    assert "fetch_manifest.py --download" in text
+    assert "build.py" in text
+    assert "build_datapackage.py" in text
+    assert "Do not commit generated data" in text
