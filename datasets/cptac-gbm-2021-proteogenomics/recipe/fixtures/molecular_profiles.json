@@ -1,0 +1,18 @@
+[
+  {
+    "molecularAlterationType": "MRNA_EXPRESSION",
+    "datatype": "CONTINUOUS",
+    "name": "mRNA expression (FPKM UQ)",
+    "description": "Gene expression by mRNA abundance in upper-quartile (UQ)-normalized FPKM values, median-centered by gene.",
+    "molecularProfileId": "gbm_cptac_2021_mrna",
+    "studyId": "gbm_cptac_2021"
+  },
+  {
+    "molecularAlterationType": "PROTEIN_LEVEL",
+    "datatype": "LOG2-VALUE",
+    "name": "Protein abundance ratio",
+    "description": "Protein abundance ratio measured by mass spectrometry",
+    "molecularProfileId": "gbm_cptac_2021_protein_quantification",
+    "studyId": "gbm_cptac_2021"
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "studyId": "gbm_cptac_2021",
+  "name": "Glioblastoma (CPTAC, Cell 2021)",
+  "publicStudy": true,
+  "pmid": "33577785",
+  "citation": "Wang et al. Cell 2021",
+  "importDate": "2026-01-07 13:14:46",
+  "allSampleCount": 99,
+  "mrnaRnaSeqSampleCount": 99,
+  "massSpectrometrySampleCount": 99
+}

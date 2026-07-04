@@ -1,0 +1,16 @@
+[
+  {
+    "category": "all_cases_with_mrna_rnaseq_data",
+    "name": "Samples with gene expression data",
+    "description": "Samples with gene expression data by RNA-Seq",
+    "sampleListId": "gbm_cptac_2021_rna_seq_mrna",
+    "studyId": "gbm_cptac_2021"
+  },
+  {
+    "category": "other",
+    "name": "Samples with protein quantification data",
+    "description": "Samples with protein quantification data by mass spectrometry (99 samples)",
+    "sampleListId": "gbm_cptac_2021_protein_quantification",
+    "studyId": "gbm_cptac_2021"
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "objects": [
+    {
+      "oid": "235cef753fc34d0168e97c145616bcfb3fe1c2f726038bef891639dfbec05722",
+      "size": 29693169,
+      "actions": {
+        "download": {
+          "href": "https://example.invalid/mrna"
+        }
+      }
+    },
+    {
+      "oid": "b5512312c26b68b1f137fa493448ecce0e9a8b44a5bd35b8cc9dfb67f68a6a0e",
+      "size": 6852651,
+      "actions": {
+        "download": {
+          "href": "https://example.invalid/protein"
+        }
+      }
+    }
+  ]
+}
