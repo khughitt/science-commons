@@ -68,7 +68,9 @@ The workflow requires the standard `dataset_output_dir` config passed by
 rather than reconstructing `output_root/variant-labels-dbsnp-human`.
 
 The full build also requires a pinned `assembly-registry/assemblies.csv` resource
-for GRCh38 `GCF_000001405.40` and GRCh37 `GCF_000001405.25`. If that resource is
-not available under `$SCIENCE_COMMONS_DATA_ROOT/assembly-registry/`, pass an
-equivalent pinned file with Snakemake config `assembly_registry=...` for fixture
-or operator smoke runs.
+with current GRCh38 `GCA_000001405.15` and GRCh37 `GCA_000001405.14` rows. The
+dbSNP source archives remain the pinned `GCF_000001405.40.gz` and
+`GCF_000001405.25.gz` files above. If the registry resource is not available
+under `$SCIENCE_COMMONS_DATA_ROOT/assembly-registry/`, pass an equivalent pinned
+file with Snakemake config `assembly_registry=...` for fixture or operator smoke
+runs.
