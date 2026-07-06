@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+theme/2.0
 id: theme:0006-bayesian-evidence-synthesis
-type: theme
+kind: theme
 title: Bayesian Evidence Synthesis
 version: "1.0.0"
 created: "2026-06-26"

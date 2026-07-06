@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+topic/2.0
 id: topic:centrosomes-cancer-multiple-myeloma
-type: topic
+kind: topic
 title: 'Centrosomes in Cancer and Multiple Myeloma: Amplification, Prognostic Signatures, and Therapeutic Targets'
 version: "1.0.0"
 created: "2026-05-18"

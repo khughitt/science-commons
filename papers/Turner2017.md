@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Turner2017
-type: paper
+kind: paper
 title: Extrachromosomal oncogene amplification drives tumour evolution and genetic heterogeneity
 version: "1.0.0"
 created: "2026-05-22"

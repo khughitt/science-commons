@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+theme/2.0
 id: theme:0009-data-integration-and-multi-omics
-type: theme
+kind: theme
 title: Data Integration And Multi-Omics
 version: "1.0.0"
 created: "2026-06-26"

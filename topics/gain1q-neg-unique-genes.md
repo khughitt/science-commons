@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+topic/2.0
 id: topic:gain1q-neg-unique-genes
-type: topic
+kind: topic
 title: Literature Validation of gain(1q)- Stratum-Specific Prognostic Genes
 version: "1.0.0"
 created: "2026-05-18"

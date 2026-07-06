@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Hughitt2025MIPE
-type: paper
+kind: paper
 title: Large-scale human myeloma cell line small molecule compound screen dataset
 version: "1.0.0"
 created: "2026-05-29"

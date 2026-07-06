@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+dataset/1.0
 id: dataset:h07-clean-base-dart-event-window
-type: dataset
+kind: dataset
 title: H07 DART event-window clean base
 version: "1.0.0"
 created: "2026-05-30"

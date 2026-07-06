@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+topic/2.0
 id: topic:hormone-driven-cancer-and-cycle-timing
-type: topic
+kind: topic
 title: Hormone-driven cancer and menstrual-cycle timing of therapy
 version: "1.0.0"
 created: "2026-05-28"

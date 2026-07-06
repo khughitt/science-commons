@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+dataset/1.0
 id: dataset:owid-reported-measles
-type: dataset
+kind: dataset
 title: OWID Reported Measles Cases
 version: "1.0.0"
 created: "2026-05-31"

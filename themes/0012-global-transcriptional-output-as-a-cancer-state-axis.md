@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+theme/2.0
 id: theme:0012-global-transcriptional-output-as-a-cancer-state-axis
-type: theme
+kind: theme
 title: Global transcriptional output as a cancer-state axis
 version: "1.0.0"
 created: "2026-06-26"

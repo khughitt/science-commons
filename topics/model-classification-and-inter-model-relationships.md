@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+topic/2.0
 id: topic:model-classification-and-inter-model-relationships
-type: topic
+kind: topic
 title: Classification of Mathematical Models and Their Inter-Relationships
 version: "1.0.0"
 created: "2026-05-18"

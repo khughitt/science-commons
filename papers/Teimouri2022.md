@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Teimouri2022
-type: paper
+kind: paper
 title: Can we understand the mechanisms of tumor formation by analyzing dynamics of cancer initiation?
 version: "1.0.0"
 created: "2026-05-22"

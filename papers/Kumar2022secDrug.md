@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Kumar2022secDrug
-type: paper
+kind: paper
 title: 'secDrug: a pipeline to discover novel drug combinations to kill drug-resistant multiple myeloma cells using a greedy set cover algorithm and single-cell multi-omics'
 version: "1.0.0"
 created: "2026-05-29"

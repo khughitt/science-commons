@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+dataset/1.0
 id: dataset:arxiv-source-equations
-type: dataset
+kind: dataset
 title: arXiv source equation records
 version: "1.0.0"
 created: "2026-05-30"

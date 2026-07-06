@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+dataset/1.0+bio.table/1.0
 id: dataset:ccle-proteomics-nusinow-2020
-type: dataset
+kind: dataset
 title: CCLE Proteomics (Nusinow 2020) — quantitative proteome across 375 cancer cell lines
 version: "1.0.0"
 created: "2026-05-19"

@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Levine2018
-type: paper
+kind: paper
 title: 'The Roles of Initiating Truncal Mutations in Human Cancers: The Order of Mutations and Tumor Cell Type Matters'
 version: "1.0.0"
 created: "2026-05-22"

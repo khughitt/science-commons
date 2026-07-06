@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+dataset/1.0+bio.matrix/1.0+bio.rnaseq/1.0
 id: dataset:brca-tcga-pancanatlas
-type: dataset
+kind: dataset
 title: TCGA-BRCA (PanCancer Atlas) — mRNA expression + clinical
 version: "1.0.0"
 created: "2026-05-30"

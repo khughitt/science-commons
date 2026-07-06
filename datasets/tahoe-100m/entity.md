@@ -1,7 +1,7 @@
 ---
 schema_profile: "science-entity-base/1.0+dataset/1.0"
 id: "dataset:tahoe-100m"
-type: "dataset"
+kind: "dataset"
 title: "Tahoe-100M perturbation atlas"
 version: "1.0.0"
 status: "candidate"

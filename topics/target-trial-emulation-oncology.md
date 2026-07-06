@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+topic/2.0
 id: topic:target-trial-emulation-oncology
-type: topic
+kind: topic
 title: 'Target-Trial Emulation: Methodology for Causal Inference on Observational Treatment Data in Oncology'
 version: "1.0.0"
 created: "2026-05-18"

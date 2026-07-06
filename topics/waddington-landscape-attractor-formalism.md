@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+topic/2.0
 id: topic:waddington-landscape-attractor-formalism
-type: topic
+kind: topic
 title: Waddington Landscape and Attractor Formalism — Mathematical Foundations for Cell-State Dynamics
 version: "1.0.0"
 created: "2026-05-18"

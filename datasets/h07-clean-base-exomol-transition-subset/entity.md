@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+dataset/1.0
 id: dataset:h07-clean-base-exomol-transition-subset
-type: dataset
+kind: dataset
 title: H07 ExoMol transition-subset clean base
 version: "1.0.0"
 created: "2026-05-30"

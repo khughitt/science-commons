@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Sprouffske2011
-type: paper
+kind: paper
 title: Accurate Reconstruction of the Temporal Order of Mutations in Neoplastic Progression
 version: "1.0.0"
 created: "2026-05-22"

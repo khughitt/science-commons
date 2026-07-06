@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+dataset/1.0
 id: dataset:oetjen-2018-bone-marrow-atlas
-type: dataset
+kind: dataset
 title: Oetjen 2018 — Human bone marrow single-cell reference atlas
 version: "1.0.0"
 created: "2026-06-01"

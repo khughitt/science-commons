@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+topic/2.0
 id: topic:mm-combination-therapy
-type: topic
+kind: topic
 title: Combination Therapy in Multiple Myeloma
 version: "1.0.0"
 created: "2026-05-29"

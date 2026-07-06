@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+dataset/1.0+bio.geneset/1.0
 id: dataset:reactome
-type: dataset
+kind: dataset
 title: Reactome human pathway gene-set collection
 version: "1.0.0"
 created: "2026-05-30"

@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+topic/2.0
 id: topic:enrichment
-type: topic
+kind: topic
 title: Enriched Categorical Structure
 version: "1.0.0"
 created: "2026-05-18"

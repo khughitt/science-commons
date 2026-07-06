@@ -1,7 +1,7 @@
 ---
 schema_profile: "science-entity-base/1.0+dataset/1.0"
 id: "dataset:dream4-in-silico-network"
-type: "dataset"
+kind: "dataset"
 title: "DREAM4 in silico network challenge"
 version: "1.0.0"
 status: "active"

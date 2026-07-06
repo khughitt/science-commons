@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+dataset/1.0
 id: dataset:power-grid-frequency-germany-2020-01
-type: dataset
+kind: dataset
 title: Power-Grid Frequency Germany January 2020
 version: "1.0.0"
 created: "2026-05-31"

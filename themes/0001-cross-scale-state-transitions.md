@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+theme/2.0
 id: theme:0001-cross-scale-state-transitions
-type: theme
+kind: theme
 title: Cross-Scale State Transitions
 version: "1.0.0"
 created: "2026-06-26"

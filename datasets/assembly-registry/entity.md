@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+dataset/1.0+bio.assembly_registry/1.0
 id: dataset:assembly-registry
-type: dataset
+kind: dataset
 title: "Assembly registry — seqcol-keyed reference collection of genome assemblies"
 version: "1.0.1"
 created: "2026-05-26"

@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+dataset/1.0
 id: dataset:variant-labels-dbsnp-human
-type: dataset
+kind: dataset
 title: Human dbSNP rsID to small-allele variant-label map
 version: "1.0.0"
 created: "2026-05-31"

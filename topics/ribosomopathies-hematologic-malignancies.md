@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+topic/2.0
 id: topic:ribosomopathies-hematologic-malignancies
-type: topic
+kind: topic
 title: Ribosomopathies and ribosome biogenesis in hematologic malignancies — interpretive context for the MM30 ribosome axis
 version: "1.0.0"
 created: "2026-05-18"

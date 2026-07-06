@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+theme/2.0
 id: theme:0010-scientific-knowledge-systems-and-agents
-type: theme
+kind: theme
 title: Scientific Knowledge Systems And Agents
 version: "1.0.0"
 created: "2026-06-26"

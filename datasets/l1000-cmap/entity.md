@@ -1,7 +1,7 @@
 ---
 schema_profile: "science-entity-base/1.0+dataset/1.0"
 id: "dataset:l1000-cmap"
-type: "dataset"
+kind: "dataset"
 title: "LINCS L1000 Connectivity Map"
 version: "1.0.0"
 status: "active"

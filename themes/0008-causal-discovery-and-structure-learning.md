@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+theme/2.0
 id: theme:0008-causal-discovery-and-structure-learning
-type: theme
+kind: theme
 title: Causal Discovery And Structure Learning
 version: "1.0.0"
 created: "2026-06-26"

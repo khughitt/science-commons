@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+topic/2.0
 id: topic:hyperdiploidy
-type: topic
+kind: topic
 title: Hyperdiploidy
 version: "1.0.0"
 created: "2026-05-18"

@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+dataset/1.0+bio.protein_crosswalk/1.0
 id: dataset:protein-crosswalk-uniprot
-type: dataset
+kind: dataset
 title: "UniProt protein crosswalk — protein_key-keyed reference collection (human, reviewed)"
 version: "1.0.0"
 created: "2026-05-27"

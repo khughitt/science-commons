@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+topic/2.0
 id: topic:phf19-regulation-chromatin
-type: topic
+kind: topic
 title: PHF19 chromatin regulation and candidate transcriptional regulators in B-cell/plasma-cell lineage
 version: "1.0.0"
 created: "2026-05-18"

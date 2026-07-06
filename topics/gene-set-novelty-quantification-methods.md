@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+topic/2.0
 id: topic:gene-set-novelty-quantification-methods
-type: topic
+kind: topic
 title: Gene-Set-Level Novelty Quantification for Systematic Hit Prioritization
 version: "1.0.0"
 created: "2026-05-18"

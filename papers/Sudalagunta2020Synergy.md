@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Sudalagunta2020Synergy
-type: paper
+kind: paper
 title: A pharmacodynamic model of clinical synergy in multiple myeloma
 version: "1.0.0"
 created: "2026-05-29"

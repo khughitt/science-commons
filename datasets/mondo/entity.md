@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+dataset/1.0+bio.reference_graph/1.0
 id: dataset:mondo
-type: dataset
+kind: dataset
 title: MONDO disease ontology reference graph
 version: "1.0.0"
 created: "2026-05-31"

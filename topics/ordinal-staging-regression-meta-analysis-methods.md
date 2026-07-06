@@ -1,7 +1,7 @@
 ---
 schema_profile: science-entity-base/1.0+topic/2.0
 id: topic:ordinal-staging-regression-meta-analysis-methods
-type: topic
+kind: topic
 title: 'Statistical Modeling of Multi-Stage Disease Progression in Genomics: Ordinal Regression, Piecewise Contrasts, and Cross-Cohort Meta-Analysis'
 version: "1.0.0"
 created: "2026-05-18"
