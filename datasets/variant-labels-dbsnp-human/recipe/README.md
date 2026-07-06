@@ -25,8 +25,8 @@ rtk uv run --frozen --project ~/d/science/meta snakemake \
 The workflow defaults to `$SCIENCE_COMMONS_DATA_ROOT` when set and `/data/science-commons` otherwise. It
 expects the assembly registry at `$SCIENCE_COMMONS_DATA_ROOT/assembly-registry/assemblies.csv`; override it
 with `--config assembly_registry=/path/to/assemblies.csv` only when using an equivalent pinned registry.
-No full-source lockfile is committed yet; the first successful workflow run should be reviewed before
-committing `recipe/lockfile.yaml` and the refreshed `datapackage.yaml`.
+The full-source `recipe/lockfile.yaml` pins the completed archive downloads. The refreshed
+`datapackage.yaml` should be committed only after a successful final SQLite merge.
 
 Each dbSNP archive is a separate Snakemake target. Interrupted downloads keep
 their partial `<archive>.tmp` file under
@@ -34,6 +34,24 @@ their partial `<archive>.tmp` file under
 workflow resumes those partial files with HTTP Range requests when the server
 supports them. The `recipe/lockfile.yaml` target is written only after both
 archives and `.md5` sidecars exist and validate.
+
+The expensive build is intentionally split into durable stages under
+`$SCIENCE_COMMONS_DATA_ROOT/variant-labels-dbsnp-human/_work/`:
+
+- `_work/splits/<archive-stem>/shard-<id>.tsv.gz` stores normalized rsID allele
+  rows after one streaming pass over an archive.
+- `_work/shards/<archive-stem>/shard-<id>.sqlite` stores one independently
+  rebuildable SQLite shard.
+- `rsid_mappings.sqlite` and `build-summary.yaml` are written only by the final
+  merge step after all shard databases exist.
+
+`datapackage.yaml` is a tracked package descriptor, not a Snakemake-owned
+output. The final merge refreshes its hashes after writing the final SQLite and
+summary, but a failed workflow run must not delete the descriptor. If a split
+directory already has all shard files and `split-summary.yaml`, rerunning the
+workflow reuses it instead of deleting and recreating it. If a split directory is
+present but incomplete, the recipe fails early so an operator can inspect or
+move it aside explicitly.
 
 ## Lifecycle commands
 

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import shlex
 import sys
 from pathlib import Path
 
@@ -14,6 +15,9 @@ ARCHIVE_URLS = {
     "GCF_000001405.40.gz": "https://ftp.ncbi.nih.gov/snp/archive/b157/VCF/GCF_000001405.40.gz",
     "GCF_000001405.25.gz": "https://ftp.ncbi.nih.gov/snp/archive/b157/VCF/GCF_000001405.25.gz",
 }
+ARCHIVE_STEMS = {archive.removesuffix(".gz"): archive for archive in ARCHIVES}
+SHARD_COUNT = int(config.get("shard_count", 64))
+SHARD_IDS = tuple(f"{index:02x}" for index in range(SHARD_COUNT))
 
 
 def _path_config(name: str, default: Path | str) -> Path:
@@ -51,6 +55,26 @@ LOCKFILE = str(RECIPE_DIR / "lockfile.yaml")
 DATAPACKAGE = str(DATASET_DIR / "datapackage.yaml")
 SQLITE = str(DATASET_OUTPUT_DIR / "rsid_mappings.sqlite")
 SUMMARY = str(DATASET_OUTPUT_DIR / "build-summary.yaml")
+WORK_ROOT = DATASET_OUTPUT_DIR / "_work"
+SPLIT_ROOT = WORK_ROOT / "splits"
+SHARD_ROOT = WORK_ROOT / "shards"
+MARKER_ROOT = WORK_ROOT / "markers"
+SPLIT_MARKERS = tuple(str(MARKER_ROOT / "splits" / f"{stem}.done") for stem in ARCHIVE_STEMS)
+SPLIT_SUMMARIES = tuple(str(SPLIT_ROOT / stem / "split-summary.yaml") for stem in ARCHIVE_STEMS)
+SHARD_SQLITES = tuple(
+    str(SHARD_ROOT / stem / f"shard-{shard_id}.sqlite")
+    for stem in ARCHIVE_STEMS
+    for shard_id in SHARD_IDS
+)
+SHARD_SUMMARIES = tuple(
+    str(SHARD_ROOT / stem / f"shard-{shard_id}.summary.yaml")
+    for stem in ARCHIVE_STEMS
+    for shard_id in SHARD_IDS
+)
+
+
+def _repeat_arg(flag, paths):
+    return " ".join(f"{flag} {shlex.quote(str(path))}" for path in paths)
 
 
 rule all:
@@ -76,48 +100,74 @@ rule fetch_archive:
         "--lockfile {LOCKFILE:q}"
 
 
-rule write_lockfile:
-    input:
-        archives=SOURCE_ARCHIVES,
-        md5s=SOURCE_MD5S,
-    output:
-        lockfile=LOCKFILE,
-    params:
-        fetch_py=str(RECIPE_DIR / "fetch.py"),
-        source_root=str(SOURCE_ROOT),
-    shell:
-        "{PYTHON:q} {params.fetch_py:q} "
-        "--refresh-lockfile "
-        "--require-existing "
-        "--output-dir {params.source_root:q} "
-        "--lockfile {output.lockfile:q}"
-
-
 wildcard_constraints:
     archive="GCF_000001405\\.(40|25)\\.gz"
 
 
-rule build_dataset:
+rule split_archive:
+    input:
+        archive=lambda wildcards: str(SOURCE_ROOT / ARCHIVE_STEMS[wildcards.stem]),
+        md5=lambda wildcards: str(SOURCE_ROOT / f"{ARCHIVE_STEMS[wildcards.stem]}.md5"),
+        lockfile=LOCKFILE,
+    output:
+        marker=str(MARKER_ROOT / "splits" / "{stem}.done"),
+    params:
+        build_py=str(RECIPE_DIR / "build.py"),
+        source_vcf=lambda wildcards: ARCHIVE_STEMS[wildcards.stem],
+        split_dir=lambda wildcards: str(SPLIT_ROOT / wildcards.stem),
+    shell:
+        "{PYTHON:q} {params.build_py:q} split-archive "
+        "--archive {input.archive:q} "
+        "--source-vcf {params.source_vcf:q} "
+        "--output-dir {params.split_dir:q} "
+        "--lockfile {input.lockfile:q} "
+        "--marker {output.marker:q} "
+        "--shard-count {SHARD_COUNT}"
+
+
+rule build_shard:
+    input:
+        marker=lambda wildcards: str(MARKER_ROOT / "splits" / f"{wildcards.stem}.done"),
+        assembly_registry=str(ASSEMBLY_REGISTRY),
+    output:
+        sqlite=str(SHARD_ROOT / "{stem}" / "shard-{shard_id}.sqlite"),
+        summary=str(SHARD_ROOT / "{stem}" / "shard-{shard_id}.summary.yaml"),
+    params:
+        build_py=str(RECIPE_DIR / "build.py"),
+        source_vcf=lambda wildcards: ARCHIVE_STEMS[wildcards.stem],
+        rows=lambda wildcards: str(SPLIT_ROOT / wildcards.stem / f"shard-{wildcards.shard_id}.tsv.gz"),
+    shell:
+        "{PYTHON:q} {params.build_py:q} build-shard "
+        "--rows {params.rows:q} "
+        "--sqlite {output.sqlite:q} "
+        "--summary {output.summary:q} "
+        "--source-vcf {params.source_vcf:q} "
+        "--shard-id {wildcards.shard_id:q} "
+        "--assembly-registry {input.assembly_registry:q}"
+
+
+rule merge_dataset:
     input:
         lockfile=LOCKFILE,
-        archives=SOURCE_ARCHIVES,
-        md5s=SOURCE_MD5S,
-        assembly_registry=str(ASSEMBLY_REGISTRY),
+        split_markers=SPLIT_MARKERS,
+        shard_sqlites=SHARD_SQLITES,
+        shard_summaries=SHARD_SUMMARIES,
     output:
         sqlite=SQLITE,
         summary=SUMMARY,
-        datapackage=DATAPACKAGE,
     params:
         build_py=str(RECIPE_DIR / "build.py"),
-        source_root=str(SOURCE_ROOT),
-        output_root=str(OUTPUT_ROOT),
         dataset_output_dir=str(DATASET_OUTPUT_DIR),
+        datapackage_path=DATAPACKAGE,
+        split_summary_args=_repeat_arg("--split-summary", SPLIT_SUMMARIES),
+        shard_sqlite_args=lambda wildcards, input: _repeat_arg("--shard-sqlite", input.shard_sqlites),
+        shard_summary_args=lambda wildcards, input: _repeat_arg("--shard-summary", input.shard_summaries),
     shell:
-        "{PYTHON:q} {params.build_py:q} "
-        "--input-root {params.source_root:q} "
-        "--output-root {params.output_root:q} "
-        "--dataset-output-dir {params.dataset_output_dir:q} "
+        "{PYTHON:q} {params.build_py:q} merge-shards "
+        "--output-dir {params.dataset_output_dir:q} "
         "--lockfile {input.lockfile:q} "
-        "--assembly-registry {input.assembly_registry:q} "
-        "--datapackage {output.datapackage:q} "
-        "--update-datapackage"
+        "--datapackage {params.datapackage_path:q} "
+        "--update-datapackage "
+        "{params.split_summary_args} "
+        "{params.shard_sqlite_args} "
+        "{params.shard_summary_args}"

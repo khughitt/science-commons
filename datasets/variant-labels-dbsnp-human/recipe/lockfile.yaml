@@ -1,0 +1,17 @@
+resources:
+  GCF_000001405.40.gz:
+    url: https://ftp.ncbi.nih.gov/snp/archive/b157/VCF/GCF_000001405.40.gz
+    path: GCF_000001405.40.gz
+    md5_url: https://ftp.ncbi.nih.gov/snp/archive/b157/VCF/GCF_000001405.40.gz.md5
+    md5_path: GCF_000001405.40.gz.md5
+    md5: 6a6f313e92a39c337571174dad12cfe1
+    sha256: sha256:43bb897b69177555a8e9edeb7d8c8ea3e581dddaefadfafe29f36bed0d870574
+    bytes: 29552227779
+  GCF_000001405.25.gz:
+    url: https://ftp.ncbi.nih.gov/snp/archive/b157/VCF/GCF_000001405.25.gz
+    path: GCF_000001405.25.gz
+    md5_url: https://ftp.ncbi.nih.gov/snp/archive/b157/VCF/GCF_000001405.25.gz.md5
+    md5_path: GCF_000001405.25.gz.md5
+    md5: 35db22bcd166f904e4775dbbc29f5965
+    sha256: sha256:13c9973947067c9ffbade53c0c53975614ce4f187e9dc4214ee3852b33dc4d3a
+    bytes: 28194800139
