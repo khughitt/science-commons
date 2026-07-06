@@ -1,19 +1,15 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Grani2021
-type: paper
+kind: paper
 title: A network-based analysis of disease modules from a taxonomic perspective
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Grani2021
 tags: []
 authors:
 - Grani et al.
-datasets:
-- dataset:disease-ontology
-- dataset:disgenet
-- dataset:human-interactome-barabasi
 doi: 10.48550/arXiv.2104.00386
 ontology_terms:
 - Lin-semantic-similarity
@@ -22,6 +18,16 @@ ontology_terms:
 - taxonomy-alignment
 venue: arXiv (q-bio.MN) — preprint
 year: 2021
+dataset_usage:
+- ref: dataset:disease-ontology
+  role: analyzed
+  overlap: unknown
+- ref: dataset:disgenet
+  role: analyzed
+  overlap: unknown
+- ref: dataset:human-interactome-barabasi
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

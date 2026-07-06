@@ -1,15 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Reeves2024
-type: paper
-title: 'Mutations, Bottlenecks, and Clonal Sweeps: How Environmental Carcinogens and Genomic Changes Shape Clonal Evolution during Tumor Progression'
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: 'Mutations, Bottlenecks, and Clonal Sweeps: How Environmental Carcinogens and
+  Genomic Changes Shape Clonal Evolution during Tumor Progression'
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Reeves2024
 tags: []
-datasets:
-- dataset:reeves2024-gemm
 ontology_terms:
 - DMBA/TPA
 - benign-to-malignant transition
@@ -22,6 +21,10 @@ ontology_terms:
 - immunoediting
 - mouse model
 - polyclonal metastasis
+dataset_usage:
+- ref: dataset:reeves2024-gemm
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

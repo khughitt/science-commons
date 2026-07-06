@@ -1,15 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:AlBakir2023
-type: paper
+kind: paper
 title: The evolution of non-small cell lung cancer metastases in TRACERx
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: AlBakir2023
 tags: []
-datasets:
-- dataset:tracerx
 ontology_terms:
 - NSCLC
 - TRACERx
@@ -18,6 +16,10 @@ ontology_terms:
 - metastatic evolution
 - polyclonal seeding
 - selection in metastasis
+dataset_usage:
+- ref: dataset:tracerx
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

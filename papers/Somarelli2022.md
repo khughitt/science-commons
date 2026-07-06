@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Somarelli2022
-type: paper
-title: Questions to guide cancer evolution as a framework for furthering progress in cancer research and sustainable patient outcomes
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Questions to guide cancer evolution as a framework for furthering progress
+  in cancer research and sustainable patient outcomes
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Somarelli2022
 tags: []
-datasets: []
 ontology_terms:
 - cancer ecology
 - cancer evolution

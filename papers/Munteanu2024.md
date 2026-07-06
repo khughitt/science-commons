@@ -1,14 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Munteanu2024
-type: paper
+kind: paper
 title: The Relationship between Circadian Rhythm and Cancer Disease
-version: "1.0.0"
-created: "2026-05-30"
-updated: "2026-05-30"
+version: 1.0.0
+created: '2026-05-30'
+updated: '2026-05-30'
 bibkey: Munteanu2024
 tags: []
-datasets: []
 ontology_terms:
 - DNA-damage-response
 - cancer

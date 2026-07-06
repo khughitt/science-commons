@@ -1,15 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Lionetti2025
-type: paper
-title: Clonal hematopoiesis is clonally unrelated to multiple myeloma and is associated with specific microenvironmental changes
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Clonal hematopoiesis is clonally unrelated to multiple myeloma and is associated
+  with specific microenvironmental changes
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Lionetti2025
 tags: []
-datasets:
-- dataset:egac00000000232
 ontology_terms:
 - T-cell exhaustion
 - clonal hematopoiesis
@@ -17,6 +16,10 @@ ontology_terms:
 - multiple myeloma
 - scRNA-seq
 - tumor microenvironment
+dataset_usage:
+- ref: dataset:egac00000000232
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

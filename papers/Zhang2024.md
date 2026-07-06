@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Zhang2024
-type: paper
-title: 'Tumor initiation and early tumorigenesis: molecular mechanisms and interventional targets'
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: 'Tumor initiation and early tumorigenesis: molecular mechanisms and interventional
+  targets'
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Zhang2024
 tags: []
-datasets: []
 ontology_terms:
 - cancer prevention
 - cell competition

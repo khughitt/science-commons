@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Bukkuri2024
-type: paper
-title: Cell types or cell states? An investigation of adrenergic and mesenchymal cell phenotypes in neuroblastoma
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Cell types or cell states? An investigation of adrenergic and mesenchymal cell
+  phenotypes in neuroblastoma
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Bukkuri2024
 tags: []
-datasets: []
 ontology_terms:
 - adaptive therapy
 - cell states

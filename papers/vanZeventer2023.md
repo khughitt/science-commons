@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:vanZeventer2023
-type: paper
-title: Evolutionary landscape of clonal hematopoiesis in 3,359 individuals from the general population
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Evolutionary landscape of clonal hematopoiesis in 3,359 individuals from the
+  general population
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: vanZeventer2023
 tags: []
-datasets: []
 ontology_terms:
 - clonal fitness
 - clonal hematopoiesis

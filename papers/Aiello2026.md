@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Aiello2026
-type: paper
-title: Circadian Disruption Drives Extracellular Matrix Remodeling to Facilitate Pulmonary Metastatic Colonization
-version: "1.0.0"
-created: "2026-05-30"
-updated: "2026-05-30"
+kind: paper
+title: Circadian Disruption Drives Extracellular Matrix Remodeling to Facilitate Pulmonary
+  Metastatic Colonization
+version: 1.0.0
+created: '2026-05-30'
+updated: '2026-05-30'
 bibkey: Aiello2026
 tags: []
-datasets: []
 ontology_terms:
 - cancer
 - circadian-rhythm

@@ -1,17 +1,16 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Karczewski2024
-type: paper
-title: Pan-UK Biobank GWAS improves discovery, analysis of genetic architecture, and resolution into ancestry-enriched effects
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Pan-UK Biobank GWAS improves discovery, analysis of genetic architecture, and
+  resolution into ancestry-enriched effects
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Karczewski2024
 tags: []
 authors:
 - Karczewski et al.
-datasets:
-- dataset:uk-biobank
 doi: 10.1101/2024.03.13.24303864
 ontology_terms:
 - SNP-heritability
@@ -20,6 +19,10 @@ ontology_terms:
 - phenome-wide-association
 venue: medRxiv (preprint)
 year: 2024
+dataset_usage:
+- ref: dataset:uk-biobank
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

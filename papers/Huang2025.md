@@ -1,15 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Huang2025
-type: paper
-title: Single-cell multi-omic integration analysis prioritizes druggable genes and reveals cell-type-specific causal effects in glioblastomagenesis
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Single-cell multi-omic integration analysis prioritizes druggable genes and
+  reveals cell-type-specific causal effects in glioblastomagenesis
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Huang2025
 tags: []
-datasets:
-- dataset:huang2025-glioma-gwas
 ontology_terms:
 - GWAS
 - Mendelian randomization
@@ -20,6 +19,10 @@ ontology_terms:
 - sc-eQTL
 - single-cell multi-omics
 - tumor microenvironment
+dataset_usage:
+- ref: dataset:huang2025-glioma-gwas
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

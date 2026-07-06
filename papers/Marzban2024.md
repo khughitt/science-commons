@@ -1,15 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Marzban2024
-type: paper
+kind: paper
 title: Spatial interactions modulate tumor growth and immune infiltration
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Marzban2024
 tags: []
-datasets:
-- dataset:marzban2024-hnscc-shg
 ontology_terms:
 - Allee effect
 - Lenia
@@ -17,6 +15,10 @@ ontology_terms:
 - immune infiltration
 - spatial interactions
 - tumor immune ecology
+dataset_usage:
+- ref: dataset:marzban2024-hnscc-shg
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

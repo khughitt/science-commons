@@ -1,15 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Persi2025
-type: paper
+kind: paper
 title: Genome-level selection in tumors as a universal marker of resistance to therapy
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Persi2025
 tags: []
-datasets:
-- dataset:persi2025-myeloma
 ontology_terms:
 - dN/dS
 - evolutionary monitoring
@@ -17,6 +15,10 @@ ontology_terms:
 - prognosis
 - selection regime
 - therapy resistance
+dataset_usage:
+- ref: dataset:persi2025-myeloma
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

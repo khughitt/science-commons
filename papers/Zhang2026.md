@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Zhang2026
-type: paper
-title: A newly developed circadian imbalance index (CII) and risk of cardiovascular-kidney-metabolic disease in the UK biobank
-version: "1.0.0"
-created: "2026-05-30"
-updated: "2026-05-30"
+kind: paper
+title: A newly developed circadian imbalance index (CII) and risk of cardiovascular-kidney-metabolic
+  disease in the UK biobank
+version: 1.0.0
+created: '2026-05-30'
+updated: '2026-05-30'
 bibkey: Zhang2026
 tags: []
-datasets: []
 ontology_terms: []
 ---
 ## Key Findings

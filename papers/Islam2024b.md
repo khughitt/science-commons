@@ -1,17 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Islam2024b
-type: paper
+kind: paper
 title: Temporal recording of mammalian development and precancer
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Islam2024b
 tags: []
-datasets:
-- dataset:gse235119
-- dataset:htan-vanderbilt-colon
-- dataset:tennessee-colorectal-polyp-study
 ontology_terms:
 - CRISPR molecular clock
 - adenoma
@@ -21,6 +17,16 @@ ontology_terms:
 - polyclonal initiation
 - serrated polyp
 - single-cell multiomics
+dataset_usage:
+- ref: dataset:gse235119
+  role: analyzed
+  overlap: unknown
+- ref: dataset:htan-vanderbilt-colon
+  role: analyzed
+  overlap: unknown
+- ref: dataset:tennessee-colorectal-polyp-study
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

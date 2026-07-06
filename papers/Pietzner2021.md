@@ -1,19 +1,15 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Pietzner2021
-type: paper
+kind: paper
 title: Mapping the proteo-genomic convergence of human diseases
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Pietzner2021
 tags: []
 authors:
 - Pietzner et al.
-datasets:
-- dataset:fenland-study
-- dataset:gtex
-- dataset:nhgri-gwas-catalog
 doi: 10.1126/science.abj1541
 ontology_terms:
 - disease-similarity
@@ -24,6 +20,16 @@ pmcid: ''
 pmid: ''
 venue: Science
 year: 2021
+dataset_usage:
+- ref: dataset:fenland-study
+  role: analyzed
+  overlap: unknown
+- ref: dataset:gtex
+  role: analyzed
+  overlap: unknown
+- ref: dataset:nhgri-gwas-catalog
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

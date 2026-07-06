@@ -1,17 +1,16 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Woerner2024
-type: paper
-title: Uncovering genetic associations in the human diseasome using an endophenotype-augmented disease network
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Uncovering genetic associations in the human diseasome using an endophenotype-augmented
+  disease network
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Woerner2024
 tags: []
 authors:
 - Woerner et al.
-datasets:
-- dataset:uk-biobank
 doi: 10.1093/bioinformatics/btae126
 ontology_terms:
 - disease-disease-network
@@ -21,6 +20,10 @@ ontology_terms:
 - shared-SNP
 venue: Bioinformatics
 year: 2024
+dataset_usage:
+- ref: dataset:uk-biobank
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

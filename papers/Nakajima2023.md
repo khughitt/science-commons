@@ -1,14 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Nakajima2023
-type: paper
+kind: paper
 title: Deregulated E2F Activity as a Cancer-Cell Specific Therapeutic Tool
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Nakajima2023
 tags: []
-datasets: []
 ontology_terms:
 - ARF-p53 pathway
 - CDK-RB-E2F axis

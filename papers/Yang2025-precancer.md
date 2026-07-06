@@ -1,14 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Yang2025-precancer
-type: paper
+kind: paper
 title: Signaling pathways and targeted interventions for precancers
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Yang2025-precancer
 tags: []
-datasets: []
 ontology_terms:
 - EGFR
 - Hedgehog

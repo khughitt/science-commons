@@ -1,14 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Zeng2024a
-type: paper
+kind: paper
 title: Circadian Effects on Vascular Immunopathologies
-version: "1.0.0"
-created: "2026-05-30"
-updated: "2026-05-30"
+version: 1.0.0
+created: '2026-05-30'
+updated: '2026-05-30'
 bibkey: Zeng2024a
 tags: []
-datasets: []
 ontology_terms:
 - atherosclerosis
 - chronomedicine

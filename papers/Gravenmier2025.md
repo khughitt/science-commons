@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Gravenmier2025
-type: paper
-title: Cell State Transitions Drive the Evolution of Disease Progression in B-Lymphoblastic Leukemia
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Cell State Transitions Drive the Evolution of Disease Progression in B-Lymphoblastic
+  Leukemia
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Gravenmier2025
 tags: []
-datasets: []
 ontology_terms:
 - B-ALL
 - BCR::ABL1

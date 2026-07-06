@@ -1,14 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:ElTanani2024
-type: paper
+kind: paper
 title: 'Circadian rhythms and cancer: implications for timing in therapy'
-version: "1.0.0"
-created: "2026-05-30"
-updated: "2026-05-30"
+version: 1.0.0
+created: '2026-05-30'
+updated: '2026-05-30'
 bibkey: ElTanani2024
 tags: []
-datasets: []
 ontology_terms:
 - cancer
 - chronomedicine

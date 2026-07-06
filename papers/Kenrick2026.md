@@ -1,18 +1,15 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Kenrick2026
-type: paper
+kind: paper
 title: Pan-disease blood protein profiles of rheumatic autoimmune diseases
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Kenrick2026
 tags: []
 authors:
 - Kenrick et al.
-datasets:
-- dataset:human-disease-blood-atlas
-- dataset:kenrick2026-olink-sards
 doi: 10.64898/2026.02.05.26345462
 ontology_terms:
 - disease-specific-biomarker
@@ -20,6 +17,13 @@ ontology_terms:
 - systemic-autoimmune-rheumatic-disease
 venue: medRxiv (preprint)
 year: 2026
+dataset_usage:
+- ref: dataset:human-disease-blood-atlas
+  role: analyzed
+  overlap: unknown
+- ref: dataset:kenrick2026-olink-sards
+  role: analyzed
+  overlap: unknown
 ---
 ## One-Sentence Summary
 

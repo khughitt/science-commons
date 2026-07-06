@@ -1,14 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Dubois2022
-type: paper
+kind: paper
 title: Structural Variations in Cancer and the 3D Genome
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Dubois2022
 tags: []
-datasets: []
 ontology_terms:
 - 3D genome
 - chromatin compartments

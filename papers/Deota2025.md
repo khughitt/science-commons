@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Deota2025
-type: paper
-title: 'The Time is Now: Accounting for Time-of-day Effects to Improve Reproducibility and Translation of Metabolism Research'
-version: "1.0.0"
-created: "2026-05-30"
-updated: "2026-05-30"
+kind: paper
+title: 'The Time is Now: Accounting for Time-of-day Effects to Improve Reproducibility
+  and Translation of Metabolism Research'
+version: 1.0.0
+created: '2026-05-30'
+updated: '2026-05-30'
 bibkey: Deota2025
 tags: []
-datasets: []
 ontology_terms:
 - chronobiology
 - circadian-rhythm

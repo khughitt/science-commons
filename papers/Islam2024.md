@@ -1,21 +1,23 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Islam2024
-type: paper
+kind: paper
 title: Fusing global context with multiscale context for enhanced breast cancer classification
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Islam2024
 tags: []
 authors:
 - Islam et al.
-datasets:
-- dataset:breakhis
 doi: 10.1038/s41598-024-78363-w
 ontology_terms: []
 venue: Scientific Reports
 year: 2024
+dataset_usage:
+- ref: dataset:breakhis
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

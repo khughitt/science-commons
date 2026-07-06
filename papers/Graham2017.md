@@ -1,14 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Graham2017
-type: paper
+kind: paper
 title: Measuring cancer evolution from the genome
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Graham2017
 tags: []
-datasets: []
 ontology_terms:
 - 1/f VAF distribution
 - Big Bang model

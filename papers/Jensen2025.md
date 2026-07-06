@@ -1,24 +1,16 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Jensen2025
-type: paper
-title: Genetic modifiers and ascertainment drive variable expressivity of complex disorders
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Genetic modifiers and ascertainment drive variable expressivity of complex
+  disorders
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Jensen2025
 tags: []
 authors:
 - Jensen et al.
-datasets:
-- dataset:all-of-us
-- dataset:estonian-biobank
-- dataset:jensen2025-dd-cohort
-- dataset:mycode
-- dataset:simons-searchlight
-- dataset:simons-simplex-collection
-- dataset:spark
-- dataset:uk-biobank
 doi: 10.1016/j.cell.2025.09.012
 ontology_terms:
 - ascertainment-bias
@@ -30,6 +22,31 @@ pmcid: ''
 pmid: ''
 venue: Cell
 year: 2025
+dataset_usage:
+- ref: dataset:all-of-us
+  role: analyzed
+  overlap: unknown
+- ref: dataset:estonian-biobank
+  role: analyzed
+  overlap: unknown
+- ref: dataset:jensen2025-dd-cohort
+  role: analyzed
+  overlap: unknown
+- ref: dataset:mycode
+  role: analyzed
+  overlap: unknown
+- ref: dataset:simons-searchlight
+  role: analyzed
+  overlap: unknown
+- ref: dataset:simons-simplex-collection
+  role: analyzed
+  overlap: unknown
+- ref: dataset:spark
+  role: analyzed
+  overlap: unknown
+- ref: dataset:uk-biobank
+  role: analyzed
+  overlap: unknown
 ---
 ## One-Sentence Summary
 

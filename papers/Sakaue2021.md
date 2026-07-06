@@ -1,20 +1,15 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Sakaue2021
-type: paper
+kind: paper
 title: A cross-population atlas of genetic associations for 220 human phenotypes
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Sakaue2021
 tags: []
 authors:
 - Sakaue et al.
-datasets:
-- dataset:biobank-japan
-- dataset:finngen
-- dataset:sakaue2021-cross-pop-meta
-- dataset:uk-biobank
 doi: 10.1038/s41588-021-00931-x
 ontology_terms:
 - dimensionality-reduction
@@ -24,6 +19,19 @@ ontology_terms:
 - pleiotropy
 venue: Nature Genetics
 year: 2021
+dataset_usage:
+- ref: dataset:biobank-japan
+  role: analyzed
+  overlap: unknown
+- ref: dataset:finngen
+  role: analyzed
+  overlap: unknown
+- ref: dataset:sakaue2021-cross-pop-meta
+  role: analyzed
+  overlap: unknown
+- ref: dataset:uk-biobank
+  role: analyzed
+  overlap: unknown
 ---
 ## One-Sentence Summary
 

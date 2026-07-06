@@ -1,16 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:MartinezJimenez2023
-type: paper
+kind: paper
 title: Pan-cancer whole-genome comparison of primary and metastatic solid tumours
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: MartinezJimenez2023
 tags: []
-datasets:
-- dataset:hartwig
-- dataset:pcawg
 ontology_terms:
 - driver mutations
 - genomic instability
@@ -21,6 +18,13 @@ ontology_terms:
 - treatment resistance
 - whole-genome doubling
 - whole-genome sequencing
+dataset_usage:
+- ref: dataset:hartwig
+  role: analyzed
+  overlap: unknown
+- ref: dataset:pcawg
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

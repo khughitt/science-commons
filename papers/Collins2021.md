@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Collins2021
-type: paper
-title: Post-transcriptional circadian regulation in macrophages organizes temporally distinct immunometabolic states
-version: "1.0.0"
-created: "2026-05-30"
-updated: "2026-05-30"
+kind: paper
+title: Post-transcriptional circadian regulation in macrophages organizes temporally
+  distinct immunometabolic states
+version: 1.0.0
+created: '2026-05-30'
+updated: '2026-05-30'
 bibkey: Collins2021
 tags: []
-datasets: []
 ontology_terms: []
 ---
 ## Key Findings

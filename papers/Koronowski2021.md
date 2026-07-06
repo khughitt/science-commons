@@ -1,14 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Koronowski2021
-type: paper
+kind: paper
 title: Communicating clocks shape circadian homeostasis
-version: "1.0.0"
-created: "2026-05-30"
-updated: "2026-05-30"
+version: 1.0.0
+created: '2026-05-30'
+updated: '2026-05-30'
 bibkey: Koronowski2021
 tags: []
-datasets: []
 ontology_terms:
 - SCN
 - chronomedicine

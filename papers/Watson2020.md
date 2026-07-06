@@ -1,15 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Watson2020
-type: paper
+kind: paper
 title: The Evolutionary Dynamics and Fitness Landscape of Clonal Hematopoiesis
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Watson2020
 tags: []
-datasets:
-- dataset:watson2020-ch-cohorts
 ontology_terms:
 - Bayesian inference
 - CHIP
@@ -23,6 +21,10 @@ ontology_terms:
 - positive selection
 - selection coefficient
 - variant allele frequency
+dataset_usage:
+- ref: dataset:watson2020-ch-cohorts
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

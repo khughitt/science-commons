@@ -1,15 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Luquette2025
-type: paper
+kind: paper
 title: A comprehensive view of somatic mosaicism by single-cell DNA analysis
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Luquette2025
 tags: []
-datasets:
-- dataset:dbgap-phs004193
 ontology_terms:
 - clonal phylogenetics
 - copy number alterations
@@ -18,6 +16,10 @@ ontology_terms:
 - primary template-directed amplification
 - single-cell whole-genome amplification
 - somatic mosaicism
+dataset_usage:
+- ref: dataset:dbgap-phs004193
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

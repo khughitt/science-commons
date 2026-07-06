@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Bowling2020
-type: paper
-title: An Engineered CRISPR-Cas9 Mouse Line for Simultaneous Readout of Lineage Histories and Gene Expression Profiles in Single Cells
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: An Engineered CRISPR-Cas9 Mouse Line for Simultaneous Readout of Lineage Histories
+  and Gene Expression Profiles in Single Cells
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Bowling2020
 tags: []
-datasets: []
 ontology_terms:
 - CARLIN
 - CRISPR lineage tracing

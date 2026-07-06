@@ -1,14 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:McKenna2016
-type: paper
+kind: paper
 title: Whole-organism lineage tracing by combinatorial and cumulative genome editing
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: McKenna2016
 tags: []
-datasets: []
 ontology_terms:
 - CRISPR lineage tracing
 - GESTALT

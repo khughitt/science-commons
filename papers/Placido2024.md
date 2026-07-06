@@ -1,16 +1,16 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Placido2024
-type: paper
-title: 'Disease Trajectories from Healthcare Data: Methodologies, Key Results, and Future Perspectives'
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: 'Disease Trajectories from Healthcare Data: Methodologies, Key Results, and
+  Future Perspectives'
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Placido2024
 tags: []
 authors:
 - Jørgensen et al. (Placido, Brunak group)
-datasets: []
 doi: 10.1146/annurev-biodatasci-110123-041001
 ontology_terms:
 - ICD-10

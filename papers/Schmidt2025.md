@@ -1,15 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Schmidt2025
-type: paper
+kind: paper
 title: Fast tumor phylogeny regression via tree-structured dual dynamic programming
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Schmidt2025
 tags: []
-datasets:
-- dataset:schmidt2025-simulated
 ontology_terms:
 - binomial loss
 - bulk DNA sequencing
@@ -18,6 +16,10 @@ ontology_terms:
 - dynamic programming
 - perfect phylogeny regression
 - tumor phylogenetics
+dataset_usage:
+- ref: dataset:schmidt2025-simulated
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

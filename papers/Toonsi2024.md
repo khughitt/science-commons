@@ -1,20 +1,16 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Toonsi2024
-type: paper
-title: Causal relationships between diseases mined from the literature improve the use of polygenic risk scores
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Causal relationships between diseases mined from the literature improve the
+  use of polygenic risk scores
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Toonsi2024
 tags: []
 authors:
 - Toonsi et al.
-datasets:
-- dataset:nhgri-gwas-catalog
-- dataset:pgs-catalog
-- dataset:pubmed-medline
-- dataset:uk-biobank
 doi: 10.1093/bioinformatics/btae639
 ontology_terms:
 - causal-disease-relation
@@ -23,6 +19,19 @@ ontology_terms:
 - polygenic-risk-score
 venue: Bioinformatics
 year: 2024
+dataset_usage:
+- ref: dataset:nhgri-gwas-catalog
+  role: analyzed
+  overlap: unknown
+- ref: dataset:pgs-catalog
+  role: analyzed
+  overlap: unknown
+- ref: dataset:pubmed-medline
+  role: analyzed
+  overlap: unknown
+- ref: dataset:uk-biobank
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

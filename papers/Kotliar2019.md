@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Kotliar2019
-type: paper
-title: Identifying gene expression programs of cell-type identity and cellular activity with single-cell RNA-Seq
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Identifying gene expression programs of cell-type identity and cellular activity
+  with single-cell RNA-Seq
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Kotliar2019
 tags: []
-datasets: []
 ontology_terms:
 - cell-type identity
 - cellular activity

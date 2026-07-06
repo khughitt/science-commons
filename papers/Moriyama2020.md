@@ -1,14 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Moriyama2020
-type: paper
+kind: paper
 title: Seasonality of Respiratory Viral Infections
-version: "1.0.0"
-created: "2026-05-30"
-updated: "2026-05-30"
+version: 1.0.0
+created: '2026-05-30'
+updated: '2026-05-30'
 bibkey: Moriyama2020
 tags: []
-datasets: []
 ontology_terms: []
 ---
 ## Key Findings

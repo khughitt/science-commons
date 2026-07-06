@@ -1,15 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Pelissier2023
-type: paper
-title: Convergent evolution and B-cell recirculation in germinal centers in a human lymph node
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Convergent evolution and B-cell recirculation in germinal centers in a human
+  lymph node
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Pelissier2023
 tags: []
-datasets:
-- dataset:pelissier2023-vdj
 ontology_terms:
 - B-cell recirculation
 - BCR repertoire
@@ -18,6 +17,10 @@ ontology_terms:
 - convergent evolution
 - germinal center
 - somatic hypermutation
+dataset_usage:
+- ref: dataset:pelissier2023-vdj
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

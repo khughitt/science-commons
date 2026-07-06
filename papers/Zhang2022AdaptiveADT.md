@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Zhang2022AdaptiveADT
-type: paper
-title: A Phase 1b Adaptive Androgen Deprivation Therapy Trial in Metastatic Castration Sensitive Prostate Cancer
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: A Phase 1b Adaptive Androgen Deprivation Therapy Trial in Metastatic Castration
+  Sensitive Prostate Cancer
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Zhang2022AdaptiveADT
 tags: []
-datasets: []
 ontology_terms:
 - PSA
 - adaptive therapy

@@ -1,15 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Barkley2022
-type: paper
-title: Cancer cell states recur across tumor types and form specific interactions with the tumor microenvironment
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Cancer cell states recur across tumor types and form specific interactions
+  with the tumor microenvironment
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Barkley2022
 tags: []
-datasets:
-- dataset:barkley2022-scrna
 ontology_terms:
 - EMT
 - NMF
@@ -20,6 +19,10 @@ ontology_terms:
 - single-cell RNA-seq
 - spatial transcriptomics
 - tumor microenvironment
+dataset_usage:
+- ref: dataset:barkley2022-scrna
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

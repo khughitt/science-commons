@@ -1,14 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:SkoufouPapoutsaki2026
-type: paper
+kind: paper
 title: Clonal biases dictate availability of colonic cancer driver mutations for transformation
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: SkoufouPapoutsaki2026
 tags: []
-datasets: []
 ontology_terms:
 - clonal dynamics
 - clonal fixation

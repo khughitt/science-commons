@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Sheehan2025
-type: paper
-title: A glial circadian gene expression atlas reveals cell-type and disease-specific reprogramming in response to amyloid pathology or aging
-version: "1.0.0"
-created: "2026-05-30"
-updated: "2026-05-30"
+kind: paper
+title: A glial circadian gene expression atlas reveals cell-type and disease-specific
+  reprogramming in response to amyloid pathology or aging
+version: 1.0.0
+created: '2026-05-30'
+updated: '2026-05-30'
 bibkey: Sheehan2025
 tags: []
-datasets: []
 ontology_terms:
 - alzheimers-disease
 - circadian-rhythm

@@ -1,17 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Kaufler2026
-type: paper
-title: 'POTTR: Identifying Recurrent Trajectories in Evolutionary and Developmental Processes using Posets'
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: 'POTTR: Identifying Recurrent Trajectories in Evolutionary and Developmental
+  Processes using Posets'
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Kaufler2026
 tags: []
-datasets:
-- dataset:kaufler2026-aml-sc
-- dataset:kaufler2026-tls
-- dataset:tracerx
 ontology_terms:
 - clonal evolution
 - combinatorial optimization
@@ -20,6 +17,16 @@ ontology_terms:
 - partially ordered sets
 - recurrent trajectories
 - tumor phylogenetics
+dataset_usage:
+- ref: dataset:kaufler2026-aml-sc
+  role: analyzed
+  overlap: unknown
+- ref: dataset:kaufler2026-tls
+  role: analyzed
+  overlap: unknown
+- ref: dataset:tracerx
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

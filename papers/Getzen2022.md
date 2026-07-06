@@ -1,17 +1,16 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Getzen2022
-type: paper
-title: 'Mining for Health: A Comparison of Word Embedding Methods for Analysis of EHRs Data'
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: 'Mining for Health: A Comparison of Word Embedding Methods for Analysis of
+  EHRs Data'
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Getzen2022
 tags: []
 authors:
 - Getzen et al.
-datasets:
-- dataset:mimic-iii
 doi: 10.1101/2022.03.05.22271961
 ontology_terms:
 - disease-prediction
@@ -20,6 +19,10 @@ ontology_terms:
 - word-embedding
 venue: medRxiv (preprint)
 year: 2022
+dataset_usage:
+- ref: dataset:mimic-iii
+  role: analyzed
+  overlap: unknown
 ---
 ## One-Sentence Summary
 

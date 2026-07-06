@@ -1,19 +1,16 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Demela2023
-type: paper
-title: Cross-disorder genetic analysis of immune diseases reveals distinct gene associations that converge on common pathways
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Cross-disorder genetic analysis of immune diseases reveals distinct gene associations
+  that converge on common pathways
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Demela2023
 tags: []
 authors:
 - Demela et al.
-datasets:
-- dataset:decode-pqtl
-- dataset:immune-mediated-disease-gwas
-- dataset:onekik
 doi: 10.1038/s41467-023-38389-6
 ontology_terms:
 - autoimmune-disease
@@ -23,6 +20,16 @@ ontology_terms:
 - latent-factor
 venue: Nature Communications
 year: 2023
+dataset_usage:
+- ref: dataset:decode-pqtl
+  role: analyzed
+  overlap: unknown
+- ref: dataset:immune-mediated-disease-gwas
+  role: analyzed
+  overlap: unknown
+- ref: dataset:onekik
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

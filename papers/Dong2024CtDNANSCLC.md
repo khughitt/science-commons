@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Dong2024CtDNANSCLC
-type: paper
-title: 'Circulating Tumor DNA-Guided De-Escalation Targeted Therapy for Advanced Non-Small Cell Lung Cancer: A Nonrandomized Controlled Trial'
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: 'Circulating Tumor DNA-Guided De-Escalation Targeted Therapy for Advanced Non-Small
+  Cell Lung Cancer: A Nonrandomized Controlled Trial'
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Dong2024CtDNANSCLC
 tags: []
-datasets: []
 ontology_terms:
 - ctDNA
 - de-escalation

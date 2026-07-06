@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Saputra2018
-type: paper
-title: 'Combination Therapy and the Evolution of Resistance: The Theoretical Merits of Synergism and Antagonism in Cancer'
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: 'Combination Therapy and the Evolution of Resistance: The Theoretical Merits
+  of Synergism and Antagonism in Cancer'
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Saputra2018
 tags: []
-datasets: []
 ontology_terms:
 - antagonism
 - combination therapy

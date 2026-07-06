@@ -1,17 +1,16 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Bernard2026
-type: paper
-title: Unsupervised learning reveals novel disease-associated proteins in high-dimensional human proteomic data
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Unsupervised learning reveals novel disease-associated proteins in high-dimensional
+  human proteomic data
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Bernard2026
 tags: []
 authors:
 - Elvis Bernard, Yiling Wang, Manlin Chen, Shunqing Xu
-datasets:
-- dataset:uk-biobank
 doi: 10.1038/s41598-026-41385-7
 ontology_terms:
 - biomarker-discovery
@@ -20,6 +19,10 @@ ontology_terms:
 - unsupervised-learning
 venue: Scientific Reports
 year: 2026
+dataset_usage:
+- ref: dataset:uk-biobank
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

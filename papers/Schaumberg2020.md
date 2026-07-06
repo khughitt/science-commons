@@ -1,18 +1,16 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Schaumberg2020
-type: paper
-title: Interpretable multimodal deep learning for real-time pan-tissue pan-disease pathology search on social media
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Interpretable multimodal deep learning for real-time pan-tissue pan-disease
+  pathology search on social media
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Schaumberg2020
 tags: []
 authors:
 - Schaumberg et al.
-datasets:
-- dataset:pubmed-oa-histology
-- dataset:twitter-pathology-images
 doi: 10.1038/s41379-020-0540-1
 ontology_terms:
 - disease-state-classification
@@ -22,6 +20,13 @@ ontology_terms:
 pmid: ''
 venue: Modern Pathology
 year: 2020
+dataset_usage:
+- ref: dataset:pubmed-oa-histology
+  role: analyzed
+  overlap: unknown
+- ref: dataset:twitter-pathology-images
+  role: analyzed
+  overlap: unknown
 ---
 ## One-Sentence Summary
 

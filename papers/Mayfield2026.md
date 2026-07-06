@@ -1,16 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Mayfield2026
-type: paper
-title: Gene coordination patterns across 8,314 tumors reveal a spectral point of no return in cancer progression
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Gene coordination patterns across 8,314 tumors reveal a spectral point of no
+  return in cancer progression
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Mayfield2026
 tags: []
-datasets:
-- dataset:mlomics
-- dataset:tcga
 ontology_terms:
 - Hamiltonian eigendecomposition
 - gene-gene coordination
@@ -22,6 +20,13 @@ ontology_terms:
 - spectral analysis
 - survival prediction
 - tissue-identity dissolution
+dataset_usage:
+- ref: dataset:mlomics
+  role: analyzed
+  overlap: unknown
+- ref: dataset:tcga
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

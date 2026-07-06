@@ -1,16 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Mazaya2020
-type: paper
+kind: paper
 title: Effects of ordered mutations on dynamics in signaling networks
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Mazaya2020
 tags: []
-datasets:
-- dataset:kegg-pathway
-- dataset:mazaya2020-signaling
 ontology_terms:
 - Boolean network model
 - drug-target genes
@@ -21,6 +18,13 @@ ontology_terms:
 - order-specificity
 - signaling network dynamics
 - tumor suppressors
+dataset_usage:
+- ref: dataset:kegg-pathway
+  role: analyzed
+  overlap: unknown
+- ref: dataset:mazaya2020-signaling
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

@@ -1,15 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Kinker2020
-type: paper
+kind: paper
 title: Pan-cancer single-cell RNA-seq identifies recurring programs of cellular heterogeneity
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Kinker2020
 tags: []
-datasets:
-- dataset:ccle
 ontology_terms:
 - CCLE
 - EMT
@@ -22,6 +20,10 @@ ontology_terms:
 - pan-cancer
 - senescence
 - single-cell RNA-sequencing
+dataset_usage:
+- ref: dataset:ccle
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

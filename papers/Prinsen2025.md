@@ -1,14 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Prinsen2025
-type: paper
+kind: paper
 title: The monthly rhythm of the brain-heart connection
-version: "1.0.0"
-created: "2026-05-30"
-updated: "2026-05-30"
+version: 1.0.0
+created: '2026-05-30'
+updated: '2026-05-30'
 bibkey: Prinsen2025
 tags: []
-datasets: []
 ontology_terms:
 - autonomic-nervous-system
 - brain-heart-axis

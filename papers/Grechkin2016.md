@@ -1,19 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Grechkin2016
-type: paper
+kind: paper
 title: Identifying Network Perturbation in Cancer
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Grechkin2016
 tags: []
-datasets:
-- dataset:encode
-- dataset:gse12417
-- dataset:gse13159
-- dataset:metabric
-- dataset:tcga
 ontology_terms:
 - cancer driver genes
 - conditional dependence
@@ -24,6 +18,22 @@ ontology_terms:
 - network perturbation
 - sparse linear model
 - transcriptional rewiring
+dataset_usage:
+- ref: dataset:encode
+  role: analyzed
+  overlap: unknown
+- ref: dataset:gse12417
+  role: analyzed
+  overlap: unknown
+- ref: dataset:gse13159
+  role: analyzed
+  overlap: unknown
+- ref: dataset:metabric
+  role: analyzed
+  overlap: unknown
+- ref: dataset:tcga
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

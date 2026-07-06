@@ -1,18 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Kim2024-ecdna-progression
-type: paper
+kind: paper
 title: Mapping extrachromosomal DNA amplifications during cancer progression
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Kim2024-ecdna-progression
 tags: []
-datasets:
-- dataset:glass
-- dataset:hartwig
-- dataset:pcawg
-- dataset:tcga
 ontology_terms:
 - AmpliconArchitect
 - AmpliconClassifier
@@ -25,6 +20,19 @@ ontology_terms:
 - localized hypermutation
 - longitudinal cohort
 - pan-cancer
+dataset_usage:
+- ref: dataset:glass
+  role: analyzed
+  overlap: unknown
+- ref: dataset:hartwig
+  role: analyzed
+  overlap: unknown
+- ref: dataset:pcawg
+  role: analyzed
+  overlap: unknown
+- ref: dataset:tcga
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

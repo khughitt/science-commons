@@ -1,15 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Venkatachalapathy2024
-type: paper
-title: Inertial effect of cell state velocity on the quiescence-proliferation fate decision
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Inertial effect of cell state velocity on the quiescence-proliferation fate
+  decision
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Venkatachalapathy2024
 tags: []
-datasets:
-- dataset:venkatachalapathy2024-mcf7
 ontology_terms:
 - cancer dormancy
 - cell state velocity
@@ -21,6 +20,10 @@ ontology_terms:
 - proliferation
 - quiescence
 - single-cell time-lapse microscopy
+dataset_usage:
+- ref: dataset:venkatachalapathy2024-mcf7
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

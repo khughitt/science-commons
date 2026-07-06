@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:GonzalezCao2021IntermittentMelanoma
-type: paper
-title: Intermittent BRAF inhibition in advanced BRAF mutated melanoma results of a phase II randomized trial
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Intermittent BRAF inhibition in advanced BRAF mutated melanoma results of a
+  phase II randomized trial
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: GonzalezCao2021IntermittentMelanoma
 tags: []
-datasets: []
 ontology_terms:
 - BRAF inhibition
 - BRAF-mutant melanoma

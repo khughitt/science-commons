@@ -1,16 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Williams2016
-type: paper
+kind: paper
 title: Identification of neutral tumor evolution across cancer types
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Williams2016
 tags: []
-datasets:
-- dataset:tcga
-- dataset:williams2016-cohorts
 ontology_terms:
 - 1/f VAF distribution
 - Big Bang model
@@ -24,6 +21,13 @@ ontology_terms:
 - power-law distribution
 - subclonal architecture
 - variant allele frequency
+dataset_usage:
+- ref: dataset:tcga
+  role: analyzed
+  overlap: unknown
+- ref: dataset:williams2016-cohorts
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

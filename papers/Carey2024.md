@@ -1,18 +1,16 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Carey2024
-type: paper
-title: Principled distillation of UK Biobank phenotype data reveals underlying structure in human variation
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Principled distillation of UK Biobank phenotype data reveals underlying structure
+  in human variation
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Carey2024
 tags: []
 authors:
 - Carey et al.
-datasets:
-- dataset:add-health
-- dataset:uk-biobank
 doi: 10.1038/s41562-024-01909-5
 ontology_terms:
 - disease-classification
@@ -23,6 +21,13 @@ pmcid: ''
 pmid: ''
 venue: Nature Human Behaviour
 year: 2024
+dataset_usage:
+- ref: dataset:add-health
+  role: analyzed
+  overlap: unknown
+- ref: dataset:uk-biobank
+  role: analyzed
+  overlap: unknown
 ---
 ## One-Sentence Summary
 

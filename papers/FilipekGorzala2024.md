@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:FilipekGorzala2024
-type: paper
-title: The dark side of stemness – the role of hematopoietic stem cells in development of blood malignancies
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: The dark side of stemness – the role of hematopoietic stem cells in development
+  of blood malignancies
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: FilipekGorzala2024
 tags: []
-datasets: []
 ontology_terms:
 - ALL
 - AML

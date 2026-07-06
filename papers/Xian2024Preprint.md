@@ -1,18 +1,16 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Xian2024Preprint
-type: paper
-title: Language-model-based patient embedding using electronic health records facilitates phenotyping, disease forecasting, and progression analysis
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Language-model-based patient embedding using electronic health records facilitates
+  phenotyping, disease forecasting, and progression analysis
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Xian2024Preprint
 tags: []
 authors:
 - Xian et al.
-datasets:
-- dataset:emerge-network-ehr
-- dataset:uw-ehr
 doi: 10.21203/rs.3.rs-4708839/v1
 ontology_terms:
 - comorbidity-pattern
@@ -21,6 +19,13 @@ ontology_terms:
 - phenotype-cluster
 venue: Research Square (preprint)
 year: 2024
+dataset_usage:
+- ref: dataset:emerge-network-ehr
+  role: analyzed
+  overlap: unknown
+- ref: dataset:uw-ehr
+  role: analyzed
+  overlap: unknown
 ---
 ## One-Sentence Summary
 

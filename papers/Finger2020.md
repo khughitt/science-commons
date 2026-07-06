@@ -1,14 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Finger2020
-type: paper
+kind: paper
 title: 'Coupled network of the circadian clocks: a driving force of rhythmic physiology'
-version: "1.0.0"
-created: "2026-05-30"
-updated: "2026-05-30"
+version: 1.0.0
+created: '2026-05-30'
+updated: '2026-05-30'
 bibkey: Finger2020
 tags: []
-datasets: []
 ontology_terms:
 - biological-clock
 - chronomedicine

@@ -1,14 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Hussain2013IntermittentADT
-type: paper
+kind: paper
 title: Intermittent versus Continuous Androgen Deprivation in Prostate Cancer
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Hussain2013IntermittentADT
 tags: []
-datasets: []
 ontology_terms:
 - continuous androgen deprivation
 - intermittent androgen deprivation

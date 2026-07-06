@@ -1,17 +1,16 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Edelman2025
-type: paper
-title: 'Trajectories matter: Discovery and validation of ordered EHR sequences that inform clinical risk predictions'
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: 'Trajectories matter: Discovery and validation of ordered EHR sequences that
+  inform clinical risk predictions'
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Edelman2025
 tags: []
 authors:
 - Edelman et al.
-datasets:
-- dataset:all-of-us
 doi: 10.1101/2025.09.14.25335720
 ontology_terms:
 - clinical-risk-prediction
@@ -22,6 +21,10 @@ pmcid: ''
 pmid: ''
 venue: medRxiv (preprint)
 year: 2025
+dataset_usage:
+- ref: dataset:all-of-us
+  role: analyzed
+  overlap: unknown
 ---
 ## One-Sentence Summary
 

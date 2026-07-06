@@ -1,22 +1,16 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:BoquetPujadas2025
-type: paper
-title: Multi-organ AI Endophenotypes Chart the Heterogeneity of Pan-disease in the Brain, Eye, and Heart
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Multi-organ AI Endophenotypes Chart the Heterogeneity of Pan-disease in the
+  Brain, Eye, and Heart
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: BoquetPujadas2025
 tags: []
 authors:
 - Boquet-Pujadas et al. (MULTI consortium)
-datasets:
-- dataset:a4-study
-- dataset:adni
-- dataset:blsa
-- dataset:finngen
-- dataset:pgc
-- dataset:uk-biobank
 doi: 10.1101/2025.08.09.25333350
 ontology_terms:
 - Alzheimer-disease
@@ -29,6 +23,25 @@ pmcid: ''
 pmid: ''
 venue: medRxiv (preprint)
 year: 2025
+dataset_usage:
+- ref: dataset:a4-study
+  role: analyzed
+  overlap: unknown
+- ref: dataset:adni
+  role: analyzed
+  overlap: unknown
+- ref: dataset:blsa
+  role: analyzed
+  overlap: unknown
+- ref: dataset:finngen
+  role: analyzed
+  overlap: unknown
+- ref: dataset:pgc
+  role: analyzed
+  overlap: unknown
+- ref: dataset:uk-biobank
+  role: analyzed
+  overlap: unknown
 ---
 ## One-Sentence Summary
 

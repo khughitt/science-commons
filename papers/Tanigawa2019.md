@@ -1,15 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Tanigawa2019
-type: paper
-title: Components of genetic associations across 2,138 phenotypes in the UK Biobank highlight adipocyte biology
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Components of genetic associations across 2,138 phenotypes in the UK Biobank
+  highlight adipocyte biology
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Tanigawa2019
 tags: []
-datasets:
-- dataset:uk-biobank
 ontology_terms:
 - GWAS
 - adipogenesis
@@ -18,6 +17,10 @@ ontology_terms:
 - genetic-architecture
 - phenome-wide-association
 - pleiotropy
+dataset_usage:
+- ref: dataset:uk-biobank
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

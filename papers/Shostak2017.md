@@ -1,14 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Shostak2017
-type: paper
+kind: paper
 title: 'Circadian Clock, Cell Division, and Cancer: From Molecules to Organism'
-version: "1.0.0"
-created: "2026-05-30"
-updated: "2026-05-30"
+version: 1.0.0
+created: '2026-05-30'
+updated: '2026-05-30'
 bibkey: Shostak2017
 tags: []
-datasets: []
 ontology_terms:
 - DNA-damage-response
 - cancer

@@ -1,14 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Galassi2025
-type: paper
+kind: paper
 title: Epigenetic regulation of cancer stemness
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Galassi2025
 tags: []
-datasets: []
 ontology_terms:
 - DNA methylation
 - cancer stem cells

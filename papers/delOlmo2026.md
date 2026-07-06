@@ -1,14 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:delOlmo2026
-type: paper
+kind: paper
 title: Time after time – circadian clocks through the lens of oscillator theory
-version: "1.0.0"
-created: "2026-05-30"
-updated: "2026-05-30"
+version: 1.0.0
+created: '2026-05-30'
+updated: '2026-05-30'
 bibkey: delOlmo2026
 tags: []
-datasets: []
 ontology_terms:
 - Arnold-tongue
 - chronotherapy

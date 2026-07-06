@@ -1,19 +1,15 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Zhang2018
-type: paper
+kind: paper
 title: Systematic identification of latent disease-gene associations from PubMed articles
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Zhang2018
 tags: []
 authors:
 - Zhang et al.
-datasets:
-- dataset:human-disease-network-goh
-- dataset:omim
-- dataset:semmeddb
 doi: 10.1371/journal.pone.0191568
 ontology_terms:
 - disease-gene-association
@@ -23,6 +19,16 @@ ontology_terms:
 pmid: '29373605'
 venue: PLOS ONE
 year: 2018
+dataset_usage:
+- ref: dataset:human-disease-network-goh
+  role: analyzed
+  overlap: unknown
+- ref: dataset:omim
+  role: analyzed
+  overlap: unknown
+- ref: dataset:semmeddb
+  role: analyzed
+  overlap: unknown
 ---
 ## One-Sentence Summary
 

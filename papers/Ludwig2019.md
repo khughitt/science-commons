@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Ludwig2019
-type: paper
-title: Lineage Tracing in Humans Enabled by Mitochondrial Mutations and Single-Cell Genomics
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Lineage Tracing in Humans Enabled by Mitochondrial Mutations and Single-Cell
+  Genomics
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Ludwig2019
 tags: []
-datasets: []
 ontology_terms:
 - clonal dynamics
 - hematopoiesis

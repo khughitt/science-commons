@@ -1,18 +1,16 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Bigge2024
-type: paper
-title: Expression quantitative trait loci influence DNA damage-induced apoptosis in cancer
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Expression quantitative trait loci influence DNA damage-induced apoptosis in
+  cancer
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Bigge2024
 tags: []
 authors:
 - Bigge et al.
-datasets:
-- dataset:bigge2024-cd8-cohort
-- dataset:gtex
 doi: 10.1186/s12864-024-11068-6
 ontology_terms:
 - DNA-damage-response
@@ -21,6 +19,13 @@ ontology_terms:
 - expression-quantitative-trait-locus
 venue: BMC Genomics
 year: 2024
+dataset_usage:
+- ref: dataset:bigge2024-cd8-cohort
+  role: analyzed
+  overlap: unknown
+- ref: dataset:gtex
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

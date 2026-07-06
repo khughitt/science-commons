@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Wang2024MPN
-type: paper
-title: 'Order-of-Mutation Effects on Cancer Progression: Models for Myeloproliferative Neoplasm'
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: 'Order-of-Mutation Effects on Cancer Progression: Models for Myeloproliferative
+  Neoplasm'
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Wang2024MPN
 tags: []
-datasets: []
 ontology_terms:
 - JAK2 V617F
 - Moran process

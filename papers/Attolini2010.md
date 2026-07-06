@@ -1,17 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Attolini2010
-type: paper
-title: A mathematical framework to determine the temporal sequence of somatic genetic events in cancer
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: A mathematical framework to determine the temporal sequence of somatic genetic
+  events in cancer
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Attolini2010
 tags: []
-datasets:
-- dataset:attolini2010-cohorts
-- dataset:cosmic
-- dataset:tcga
 ontology_terms:
 - Moran process
 - RESIC
@@ -21,6 +18,16 @@ ontology_terms:
 - fixation probability
 - mutation order inference
 - population genetics model
+dataset_usage:
+- ref: dataset:attolini2010-cohorts
+  role: analyzed
+  overlap: unknown
+- ref: dataset:cosmic
+  role: analyzed
+  overlap: unknown
+- ref: dataset:tcga
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

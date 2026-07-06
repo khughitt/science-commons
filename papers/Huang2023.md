@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Huang2023
-type: paper
-title: Immunological and inflammatory effects of infectious diseases in circadian rhythm disruption and future therapeutic directions
-version: "1.0.0"
-created: "2026-05-30"
-updated: "2026-05-30"
+kind: paper
+title: Immunological and inflammatory effects of infectious diseases in circadian
+  rhythm disruption and future therapeutic directions
+version: 1.0.0
+created: '2026-05-30'
+updated: '2026-05-30'
 bibkey: Huang2023
 tags: []
-datasets: []
 ontology_terms:
 - chronoimmunology
 - chronomedicine

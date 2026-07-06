@@ -1,18 +1,16 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Jiang2025
-type: paper
-title: 'UKB-MDRMF: a multi-disease risk and multimorbidity framework based on UK Biobank data'
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: 'UKB-MDRMF: a multi-disease risk and multimorbidity framework based on UK Biobank
+  data'
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Jiang2025
 tags: []
 authors:
 - Jiang et al.
-datasets:
-- dataset:all-of-us
-- dataset:uk-biobank
 doi: 10.1038/s41467-025-58724-3
 ontology_terms:
 - disease-risk-assessment
@@ -20,6 +18,13 @@ ontology_terms:
 - multimorbidity
 venue: Nature Communications
 year: 2025
+dataset_usage:
+- ref: dataset:all-of-us
+  role: analyzed
+  overlap: unknown
+- ref: dataset:uk-biobank
+  role: analyzed
+  overlap: unknown
 ---
 ## One-Sentence Summary
 

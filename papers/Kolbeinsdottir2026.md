@@ -1,14 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Kolbeinsdottir2026
-type: paper
+kind: paper
 title: Principles of subclonal gene dosage across human cancer
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Kolbeinsdottir2026
 tags: []
-datasets: []
 ontology_terms:
 - copy number variation
 - gene dosage

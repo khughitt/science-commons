@@ -1,15 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Gavish2023
-type: paper
+kind: paper
 title: Hallmarks of transcriptional intratumour heterogeneity across a thousand tumours
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Gavish2023
 tags: []
-datasets:
-- dataset:3ca
 ontology_terms:
 - 3CA
 - NMF
@@ -21,6 +19,10 @@ ontology_terms:
 - pan-cancer
 - single-cell RNA-sequencing
 - transcriptional heterogeneity
+dataset_usage:
+- ref: dataset:3ca
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

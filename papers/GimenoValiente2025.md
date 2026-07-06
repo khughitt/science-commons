@@ -1,15 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:GimenoValiente2025
-type: paper
-title: DNA methylation cooperates with genomic alterations during non-small cell lung cancer evolution
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: DNA methylation cooperates with genomic alterations during non-small cell lung
+  cancer evolution
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: GimenoValiente2025
 tags: []
-datasets:
-- dataset:tracerx
 ontology_terms:
 - DNA methylation
 - NSCLC
@@ -19,6 +18,10 @@ ontology_terms:
 - epigenomic evolution
 - intratumor heterogeneity
 - somatic copy number alterations
+dataset_usage:
+- ref: dataset:tracerx
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

@@ -1,15 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Schill2023
-type: paper
+kind: paper
 title: Overcoming Observation Bias for Cancer Progression Modeling
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Schill2023
 tags: []
-datasets:
-- dataset:msk-impact
 ontology_terms:
 - Mutual Hazard Networks
 - cancer progression modeling
@@ -19,6 +17,10 @@ ontology_terms:
 - observation bias
 - somatic mutation ordering
 - tumor observation event
+dataset_usage:
+- ref: dataset:msk-impact
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

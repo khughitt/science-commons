@@ -1,15 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Wang2024Pathway
-type: paper
-title: A Probabilistic Approach to Estimate the Temporal Order of Pathway Mutations Accounting for Intra-Tumor Heterogeneity
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: A Probabilistic Approach to Estimate the Temporal Order of Pathway Mutations
+  Accounting for Intra-Tumor Heterogeneity
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Wang2024Pathway
 tags: []
-datasets:
-- dataset:tcga
 ontology_terms:
 - cancer progression
 - intra-tumor heterogeneity
@@ -18,6 +17,10 @@ ontology_terms:
 - pathway-level evolution
 - probabilistic model
 - tumor phylogenetics
+dataset_usage:
+- ref: dataset:tcga
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

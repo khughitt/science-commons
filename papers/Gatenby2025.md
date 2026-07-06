@@ -1,15 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Gatenby2025
-type: paper
-title: Parallel and convergent dynamics in the evolution of primary breast and lung adenocarcinomas
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Parallel and convergent dynamics in the evolution of primary breast and lung
+  adenocarcinomas
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Gatenby2025
 tags: []
-datasets:
-- dataset:tcga
 ontology_terms:
 - TCGA
 - carcinogenesis
@@ -18,6 +17,10 @@ ontology_terms:
 - niche construction
 - parallel evolution
 - phenotypic plasticity
+dataset_usage:
+- ref: dataset:tcga
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

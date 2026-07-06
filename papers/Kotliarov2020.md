@@ -1,20 +1,16 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Kotliarov2020
-type: paper
-title: Broad immune activation underlies shared set point signatures for vaccine responsiveness in healthy individuals and disease activity in patients with lupus
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Broad immune activation underlies shared set point signatures for vaccine responsiveness
+  in healthy individuals and disease activity in patients with lupus
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Kotliarov2020
 tags: []
 authors:
 - Kotliarov et al.
-datasets:
-- dataset:immport-immunespace
-- dataset:nih-influenza-vaccination-cohort
-- dataset:websle-paediatric-sle
-- dataset:yellow-fever-vaccination-cohort
 doi: 10.1038/s41591-020-0769-8
 ontology_terms:
 - baseline-immune-state
@@ -25,6 +21,19 @@ ontology_terms:
 pmid: '32094927'
 venue: Nature Medicine
 year: 2020
+dataset_usage:
+- ref: dataset:immport-immunespace
+  role: analyzed
+  overlap: unknown
+- ref: dataset:nih-influenza-vaccination-cohort
+  role: analyzed
+  overlap: unknown
+- ref: dataset:websle-paediatric-sle
+  role: analyzed
+  overlap: unknown
+- ref: dataset:yellow-fever-vaccination-cohort
+  role: analyzed
+  overlap: unknown
 ---
 ## One-Sentence Summary
 

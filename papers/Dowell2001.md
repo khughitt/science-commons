@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Dowell2001
-type: paper
-title: Seasonal Variation in Host Susceptibility and Cycles of Certain Infectious Diseases
-version: "1.0.0"
-created: "2026-05-30"
-updated: "2026-05-30"
+kind: paper
+title: Seasonal Variation in Host Susceptibility and Cycles of Certain Infectious
+  Diseases
+version: 1.0.0
+created: '2026-05-30'
+updated: '2026-05-30'
 bibkey: Dowell2001
 tags: []
-datasets: []
 ontology_terms:
 - infectious-disease-seasonality
 - infradian-rhythm

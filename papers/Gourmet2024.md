@@ -1,16 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Gourmet2024
-type: paper
+kind: paper
 title: The temporal evolution of cancer hallmarks
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Gourmet2024
 tags: []
-datasets:
-- dataset:gtex
-- dataset:tcga
 ontology_terms:
 - GTEx
 - TCGA
@@ -22,6 +19,13 @@ ontology_terms:
 - patient stratification
 - temporal ordering
 - variant allele frequency
+dataset_usage:
+- ref: dataset:gtex
+  role: analyzed
+  overlap: unknown
+- ref: dataset:tcga
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

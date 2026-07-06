@@ -1,14 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Bafna2022
-type: paper
+kind: paper
 title: Extrachromosomal DNA in Cancer
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Bafna2022
 tags: []
-datasets: []
 ontology_terms:
 - chromothripsis
 - copy-number heterogeneity

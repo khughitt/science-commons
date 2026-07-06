@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:West2023AdaptiveTherapy
-type: paper
-title: 'A survey of open questions in adaptive therapy: Bridging mathematics and clinical translation'
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: 'A survey of open questions in adaptive therapy: Bridging mathematics and clinical
+  translation'
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: West2023AdaptiveTherapy
 tags: []
-datasets: []
 ontology_terms:
 - adaptive therapy
 - clinical translation

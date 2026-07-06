@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Nabizadeh2022
-type: paper
-title: 'Seasonal and monthly variation in multiple sclerosis relapses: a systematic review and meta-analysis'
-version: "1.0.0"
-created: "2026-05-30"
-updated: "2026-05-30"
+kind: paper
+title: 'Seasonal and monthly variation in multiple sclerosis relapses: a systematic
+  review and meta-analysis'
+version: 1.0.0
+created: '2026-05-30'
+updated: '2026-05-30'
 bibkey: Nabizadeh2022
 tags: []
-datasets: []
 ontology_terms:
 - infradian rhythm
 - multiple sclerosis

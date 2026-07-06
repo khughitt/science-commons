@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Burkhardt2022
-type: paper
-title: Mapping Phenotypic Plasticity upon the Cancer Cell State Landscape Using Manifold Learning
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Mapping Phenotypic Plasticity upon the Cancer Cell State Landscape Using Manifold
+  Learning
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Burkhardt2022
 tags: []
-datasets: []
 ontology_terms:
 - EMT
 - RNA velocity

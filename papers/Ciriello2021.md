@@ -1,14 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Ciriello2021
-type: paper
+kind: paper
 title: The many faces of cancer evolution
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Ciriello2021
 tags: []
-datasets: []
 ontology_terms:
 - cancer evolution
 - cell plasticity

@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Zgeib2026
-type: paper
-title: Dedifferentiation-Driven Oncogenic Stemness Promotes Tumor-Sustaining Adaptability in the Intestinal Epithelium
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Dedifferentiation-Driven Oncogenic Stemness Promotes Tumor-Sustaining Adaptability
+  in the Intestinal Epithelium
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Zgeib2026
 tags: []
-datasets: []
 ontology_terms:
 - cancer stem cells
 - colorectal cancer

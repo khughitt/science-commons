@@ -1,17 +1,16 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Beaney2024
-type: paper
-title: Comparing natural language processing representations of coded disease sequences for prediction in electronic health records
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Comparing natural language processing representations of coded disease sequences
+  for prediction in electronic health records
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Beaney2024
 tags: []
 authors:
 - Beaney et al.
-datasets:
-- dataset:cprd-aurum
 doi: 10.1093/jamia/ocae091
 ontology_terms:
 - disease-co-occurrence
@@ -19,6 +18,10 @@ ontology_terms:
 - patient-representation
 venue: Journal of the American Medical Informatics Association
 year: 2024
+dataset_usage:
+- ref: dataset:cprd-aurum
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

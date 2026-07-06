@@ -1,17 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Schmidt2024
-type: paper
+kind: paper
 title: Polyploid cancer cells reveal signatures of chemotherapy resistance
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Schmidt2024
 tags: []
-datasets:
-- dataset:gse270567
-- dataset:gse270568
-- dataset:nct01505868
 ontology_terms:
 - EMT
 - PI3K-AKT-mTOR signaling
@@ -22,6 +18,16 @@ ontology_terms:
 - polyploidy
 - transcriptional convergence
 - whole-genome doubling
+dataset_usage:
+- ref: dataset:gse270567
+  role: analyzed
+  overlap: unknown
+- ref: dataset:gse270568
+  role: analyzed
+  overlap: unknown
+- ref: dataset:nct01505868
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

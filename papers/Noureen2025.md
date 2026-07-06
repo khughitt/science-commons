@@ -1,18 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Noureen2025
-type: paper
-title: Stratification of telomerase activity in cancer reveals associations with senescence and genomic instability
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Stratification of telomerase activity in cancer reveals associations with senescence
+  and genomic instability
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Noureen2025
 tags: []
-datasets:
-- dataset:ccle
-- dataset:gtex
-- dataset:noureen2025-scrna
-- dataset:tcga
 ontology_terms:
 - ALT (alternative lengthening of telomeres)
 - EXTEND score
@@ -24,6 +20,19 @@ ontology_terms:
 - replicative immortality
 - telomerase activity
 - tumor mutation burden
+dataset_usage:
+- ref: dataset:ccle
+  role: analyzed
+  overlap: unknown
+- ref: dataset:gtex
+  role: analyzed
+  overlap: unknown
+- ref: dataset:noureen2025-scrna
+  role: analyzed
+  overlap: unknown
+- ref: dataset:tcga
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

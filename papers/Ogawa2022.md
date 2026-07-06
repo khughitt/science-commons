@@ -1,14 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Ogawa2022
-type: paper
+kind: paper
 title: Somatic Mosaicism in Biology and Disease
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Ogawa2022
 tags: []
-datasets: []
 ontology_terms:
 - clonal hematopoiesis
 - driver mutations

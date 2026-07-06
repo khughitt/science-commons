@@ -1,14 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Scheiermann2018
-type: paper
+kind: paper
 title: Clocking in to immunity
-version: "1.0.0"
-created: "2026-05-30"
-updated: "2026-05-30"
+version: 1.0.0
+created: '2026-05-30'
+updated: '2026-05-30'
 bibkey: Scheiermann2018
 tags: []
-datasets: []
 ontology_terms:
 - adaptive-immunity
 - chrono-immunotherapy

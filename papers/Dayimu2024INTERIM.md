@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Dayimu2024INTERIM
-type: paper
-title: A randomised phase 2 study of intermittent versus continuous dosing of dabrafenib plus trametinib in patients with BRAFV600 mutant advanced melanoma (INTERIM)
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: A randomised phase 2 study of intermittent versus continuous dosing of dabrafenib
+  plus trametinib in patients with BRAFV600 mutant advanced melanoma (INTERIM)
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Dayimu2024INTERIM
 tags: []
-datasets: []
 ontology_terms:
 - BRAF-mutant melanoma
 - ctDNA

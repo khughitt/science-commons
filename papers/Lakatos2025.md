@@ -1,16 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Lakatos2025
-type: paper
+kind: paper
 title: Epigenetically driven and early immune evasion in colorectal cancer evolution
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Lakatos2025
 tags: []
-datasets:
-- dataset:epicc
-- dataset:lakatos2025-ffpe-ps
 ontology_terms:
 - ATAC-seq
 - Big Bang model
@@ -26,6 +23,13 @@ ontology_terms:
 - phylogenetics
 - somatic chromatin accessibility alterations
 - tumor microenvironment
+dataset_usage:
+- ref: dataset:epicc
+  role: analyzed
+  overlap: unknown
+- ref: dataset:lakatos2025-ffpe-ps
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

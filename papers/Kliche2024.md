@@ -1,19 +1,16 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Kliche2024
-type: paper
-title: Proteome-scale characterisation of motif-based interactome rewiring by disease mutations
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Proteome-scale characterisation of motif-based interactome rewiring by disease
+  mutations
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Kliche2024
 tags: []
 authors:
 - Kliche et al.
-datasets:
-- dataset:clinvar-gnomad-cosmic
-- dataset:genvar-hd2
-- dataset:tcga
 doi: 10.1038/s44320-024-00055-4
 ontology_terms:
 - intrinsically-disordered-region
@@ -22,6 +19,16 @@ ontology_terms:
 - short-linear-motif
 venue: Molecular Systems Biology
 year: 2024
+dataset_usage:
+- ref: dataset:clinvar-gnomad-cosmic
+  role: analyzed
+  overlap: unknown
+- ref: dataset:genvar-hd2
+  role: analyzed
+  overlap: unknown
+- ref: dataset:tcga
+  role: analyzed
+  overlap: unknown
 ---
 ## One-Sentence Summary
 

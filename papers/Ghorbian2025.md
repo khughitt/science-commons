@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Ghorbian2025
-type: paper
-title: 'Cancer cell plasticity and therapeutic resistance: mechanisms, crosstalk, and translational perspectives'
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: 'Cancer cell plasticity and therapeutic resistance: mechanisms, crosstalk,
+  and translational perspectives'
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Ghorbian2025
 tags: []
-datasets: []
 ontology_terms:
 - cancer cell plasticity
 - cancer stem cells

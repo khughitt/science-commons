@@ -1,14 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Alvord2024
-type: paper
+kind: paper
 title: The Estrous Cycle Coordinates the Circadian Rhythm of Eating Behavior in Mice
-version: "1.0.0"
-created: "2026-05-30"
-updated: "2026-05-30"
+version: 1.0.0
+created: '2026-05-30'
+updated: '2026-05-30'
 bibkey: Alvord2024
 tags: []
-datasets: []
 ontology_terms:
 - circadian-rhythm
 - eating-behavior

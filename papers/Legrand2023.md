@@ -1,16 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Legrand2023
-type: paper
+kind: paper
 title: Time-resolved, integrated analysis of clonally evolving genomes
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Legrand2023
 tags: []
-datasets:
-- dataset:egas00001003184
-- dataset:prjna356499
 ontology_terms:
 - allele frequency
 - clonal evolution
@@ -22,6 +19,13 @@ ontology_terms:
 - mutation accumulation
 - mutational signatures
 - tumor cell survival
+dataset_usage:
+- ref: dataset:egas00001003184
+  role: analyzed
+  overlap: unknown
+- ref: dataset:prjna356499
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

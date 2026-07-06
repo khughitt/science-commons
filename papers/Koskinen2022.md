@@ -1,21 +1,24 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Koskinen2022
-type: paper
-title: Data-driven comorbidity analysis of 100 common disorders reveals patient subgroups with differing mortality risks and laboratory correlates
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Data-driven comorbidity analysis of 100 common disorders reveals patient subgroups
+  with differing mortality risks and laboratory correlates
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Koskinen2022
 tags: []
 authors:
 - Koskinen et al.
-datasets:
-- dataset:hus-ehr
 doi: 10.1038/s41598-022-23090-3
 ontology_terms: []
 venue: Scientific Reports
 year: 2022
+dataset_usage:
+- ref: dataset:hus-ehr
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

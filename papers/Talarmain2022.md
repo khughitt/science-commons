@@ -1,16 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Talarmain2022
-type: paper
+kind: paper
 title: HOXA9 has the hallmarks of a biological switch with implications in blood cancers
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Talarmain2022
 tags: []
-datasets:
-- dataset:talarmain2022-mpn
-- dataset:tcga
 ontology_terms:
 - HOXA9
 - acute myeloid leukaemia
@@ -22,6 +19,13 @@ ontology_terms:
 - mutation order
 - myeloproliferative neoplasm
 - positive feedback loop
+dataset_usage:
+- ref: dataset:talarmain2022-mpn
+  role: analyzed
+  overlap: unknown
+- ref: dataset:tcga
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

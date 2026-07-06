@@ -1,14 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Allada2021
-type: paper
+kind: paper
 title: Circadian Mechanisms in Medicine
-version: "1.0.0"
-created: "2026-05-30"
-updated: "2026-05-30"
+version: 1.0.0
+created: '2026-05-30'
+updated: '2026-05-30'
 bibkey: Allada2021
 tags: []
-datasets: []
 ontology_terms:
 - chronomedicine
 - chronotherapy

@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Gallaher2025PSATestosteroneAdaptive
-type: paper
-title: PSA/testosterone ratio as a potential biomarker to identify early progressors of adaptive therapy in metastatic castration sensitive prostate cancer
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: PSA/testosterone ratio as a potential biomarker to identify early progressors
+  of adaptive therapy in metastatic castration sensitive prostate cancer
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Gallaher2025PSATestosteroneAdaptive
 tags: []
-datasets: []
 ontology_terms:
 - PSA
 - adaptive therapy

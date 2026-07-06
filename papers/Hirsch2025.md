@@ -1,16 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Hirsch2025
-type: paper
-title: Stochastic modeling of single-cell gene expression adaptation reveals non-genomic contribution to evolution of tumor subclones
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Stochastic modeling of single-cell gene expression adaptation reveals non-genomic
+  contribution to evolution of tumor subclones
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Hirsch2025
 tags: []
-datasets:
-- dataset:gse215963
-- dataset:gse255484
 ontology_terms:
 - Ornstein-Uhlenbeck process
 - Wnt signaling
@@ -21,6 +19,13 @@ ontology_terms:
 - plasticity
 - stochastic modeling
 - subclonal evolution
+dataset_usage:
+- ref: dataset:gse215963
+  role: analyzed
+  overlap: unknown
+- ref: dataset:gse255484
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

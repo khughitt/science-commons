@@ -1,14 +1,15 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Zhang2022AdaptiveAbiraterone
-type: paper
-title: Evolution-based mathematical models significantly prolong response to abiraterone in metastatic castrate-resistant prostate cancer and identify strategies to further improve outcomes
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Evolution-based mathematical models significantly prolong response to abiraterone
+  in metastatic castrate-resistant prostate cancer and identify strategies to further
+  improve outcomes
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Zhang2022AdaptiveAbiraterone
 tags: []
-datasets: []
 ontology_terms:
 - Lotka-Volterra
 - PSA

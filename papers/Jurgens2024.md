@@ -1,19 +1,15 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Jurgens2024
-type: paper
+kind: paper
 title: Rare coding variant analysis for human diseases across biobanks and ancestries
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Jurgens2024
 tags: []
 authors:
 - Jurgens et al.
-datasets:
-- dataset:all-of-us
-- dataset:mgb-biobank
-- dataset:uk-biobank
 doi: 10.1038/s41588-024-01894-5
 ontology_terms:
 - gene-based-burden-test
@@ -25,6 +21,16 @@ pmcid: PMC11576993
 pmid: ''
 venue: Nature Genetics
 year: 2024
+dataset_usage:
+- ref: dataset:all-of-us
+  role: analyzed
+  overlap: unknown
+- ref: dataset:mgb-biobank
+  role: analyzed
+  overlap: unknown
+- ref: dataset:uk-biobank
+  role: analyzed
+  overlap: unknown
 ---
 ## One-Sentence Summary
 

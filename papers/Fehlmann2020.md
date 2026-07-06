@@ -1,18 +1,15 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Fehlmann2020
-type: paper
+kind: paper
 title: Common diseases alter the physiological age-related blood microRNA profile
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Fehlmann2020
 tags: []
 authors:
 - Fehlmann et al.
-datasets:
-- dataset:fehlmann2020-mirna-cohort
-- dataset:interval-longevity-proteomics
 doi: 10.1038/s41467-020-19665-1
 ontology_terms:
 - blood-transcriptome
@@ -22,6 +19,13 @@ ontology_terms:
 pmid: '33247091'
 venue: Nature Communications
 year: 2020
+dataset_usage:
+- ref: dataset:fehlmann2020-mirna-cohort
+  role: analyzed
+  overlap: unknown
+- ref: dataset:interval-longevity-proteomics
+  role: analyzed
+  overlap: unknown
 ---
 ## One-Sentence Summary
 

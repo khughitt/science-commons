@@ -1,15 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Angaroni2022
-type: paper
-title: 'PMCE: efficient inference of expressive models of cancer evolution with high prognostic power'
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: 'PMCE: efficient inference of expressive models of cancer evolution with high
+  prognostic power'
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Angaroni2022
 tags: []
-datasets:
-- dataset:tcga
 ontology_terms:
 - cancer evolution inference
 - conjunctive Bayesian networks
@@ -17,6 +16,10 @@ ontology_terms:
 - logical formulas
 - probabilistic graphical models
 - survival stratification
+dataset_usage:
+- ref: dataset:tcga
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

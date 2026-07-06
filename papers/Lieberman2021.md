@@ -1,14 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Lieberman2021
-type: paper
+kind: paper
 title: Oncogenic Viruses as Entropic Drivers of Cancer Evolution
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Lieberman2021
 tags: []
-datasets: []
 ontology_terms:
 - entropy
 - epigenetic reprogramming

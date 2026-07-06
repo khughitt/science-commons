@@ -1,16 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Pellegrina2022
-type: paper
+kind: paper
 title: Discovering significant evolutionary trajectories in cancer phylogenies
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Pellegrina2022
 tags: []
-datasets:
-- dataset:luo2023-aml-sc
-- dataset:tracerx
 ontology_terms:
 - cancer evolution
 - clonal exclusivity
@@ -19,6 +16,13 @@ ontology_terms:
 - phylogenetic tree analysis
 - statistical significance testing
 - tumor heterogeneity
+dataset_usage:
+- ref: dataset:luo2023-aml-sc
+  role: analyzed
+  overlap: unknown
+- ref: dataset:tracerx
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

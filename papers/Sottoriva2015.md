@@ -1,17 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Sottoriva2015
-type: paper
+kind: paper
 title: A Big Bang model of human colorectal tumor growth
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Sottoriva2015
 tags: []
-datasets:
-- dataset:emtab-2140
-- dataset:emtab-2247
-- dataset:prjna230833
 ontology_terms:
 - Big Bang model
 - VAF spectrum
@@ -20,6 +16,16 @@ ontology_terms:
 - intratumor heterogeneity
 - neutral evolution
 - tumor growth model
+dataset_usage:
+- ref: dataset:emtab-2140
+  role: analyzed
+  overlap: unknown
+- ref: dataset:emtab-2247
+  role: analyzed
+  overlap: unknown
+- ref: dataset:prjna230833
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

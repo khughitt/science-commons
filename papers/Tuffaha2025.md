@@ -1,16 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Tuffaha2025
-type: paper
-title: Nonhypermutator Cancers Access Driver Mutations Through Reversals in Germline Mutational Bias
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Nonhypermutator Cancers Access Driver Mutations Through Reversals in Germline
+  Mutational Bias
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Tuffaha2025
 tags: []
-datasets:
-- dataset:pcawg
-- dataset:tuffaha2025-normal-tissue
 ontology_terms:
 - APOBEC
 - driver availability
@@ -23,6 +21,13 @@ ontology_terms:
 - mutational signatures
 - nonhypermutator cancers
 - positive selection
+dataset_usage:
+- ref: dataset:pcawg
+  role: analyzed
+  overlap: unknown
+- ref: dataset:tuffaha2025-normal-tissue
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

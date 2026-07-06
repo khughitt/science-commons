@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Brown2017Aggregation
-type: paper
-title: Aggregation Effects and Population-Based Dynamics as a Source of Therapy Resistance in Cancer
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Aggregation Effects and Population-Based Dynamics as a Source of Therapy Resistance
+  in Cancer
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Brown2017Aggregation
 tags: []
-datasets: []
 ontology_terms:
 - aggregation effects
 - evolutionarily informed therapy

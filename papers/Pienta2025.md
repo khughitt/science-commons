@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Pienta2025
-type: paper
-title: 'Defeating lethal cancer: Interrupting the ecologic and evolutionary basis of death from malignancy'
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: 'Defeating lethal cancer: Interrupting the ecologic and evolutionary basis
+  of death from malignancy'
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Pienta2025
 tags: []
-datasets: []
 ontology_terms:
 - adaptive therapy
 - cancer ecology

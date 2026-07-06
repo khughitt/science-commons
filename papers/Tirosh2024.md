@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Tirosh2024
-type: paper
-title: 'Cancer cell states: Lessons from ten years of single-cell RNA-sequencing of human tumors'
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: 'Cancer cell states: Lessons from ten years of single-cell RNA-sequencing of
+  human tumors'
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Tirosh2024
 tags: []
-datasets: []
 ontology_terms:
 - EMT
 - cancer cell states

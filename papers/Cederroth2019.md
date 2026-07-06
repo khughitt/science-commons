@@ -1,14 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Cederroth2019
-type: paper
+kind: paper
 title: Medicine in the Fourth Dimension
-version: "1.0.0"
-created: "2026-05-30"
-updated: "2026-05-30"
+version: 1.0.0
+created: '2026-05-30'
+updated: '2026-05-30'
 bibkey: Cederroth2019
 tags: []
-datasets: []
 ontology_terms:
 - chronomedicine
 - chronopharmacology

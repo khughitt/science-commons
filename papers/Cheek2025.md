@@ -1,19 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Cheek2025
-type: paper
+kind: paper
 title: Age distinguishes selection from causation in cancer genomes
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Cheek2025
 tags: []
-datasets:
-- dataset:cheek2025-normal-blood-cohorts
-- dataset:cosmic
-- dataset:target-aml
-- dataset:tcga
-- dataset:uk-biobank
 ontology_terms:
 - AML
 - cancer driver genes
@@ -24,6 +18,22 @@ ontology_terms:
 - patient age distribution
 - selection vs causation
 - somatic copy number alteration
+dataset_usage:
+- ref: dataset:cheek2025-normal-blood-cohorts
+  role: analyzed
+  overlap: unknown
+- ref: dataset:cosmic
+  role: analyzed
+  overlap: unknown
+- ref: dataset:target-aml
+  role: analyzed
+  overlap: unknown
+- ref: dataset:tcga
+  role: analyzed
+  overlap: unknown
+- ref: dataset:uk-biobank
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

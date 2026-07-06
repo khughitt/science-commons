@@ -1,18 +1,17 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Nagar2026
-type: paper
-title: Patterns in Individual Blood Count Trajectories in the UK Biobank Characterise Disease-Specific Signatures and Anticipate Pan-Cancer Risk
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Patterns in Individual Blood Count Trajectories in the UK Biobank Characterise
+  Disease-Specific Signatures and Anticipate Pan-Cancer Risk
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Nagar2026
 tags: []
 arxiv: '2604.11824'
 authors:
 - Nagar et al.
-datasets:
-- dataset:uk-biobank
 doi: 10.48550/arXiv.2604.11824
 ontology_terms:
 - complete-blood-count
@@ -21,6 +20,10 @@ ontology_terms:
 - longitudinal-trajectory
 venue: arXiv preprint (q-bio.QM)
 year: 2026
+dataset_usage:
+- ref: dataset:uk-biobank
+  role: analyzed
+  overlap: unknown
 ---
 ## One-Sentence Summary
 

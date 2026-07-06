@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Kulman2024
-type: paper
-title: 'Orchard: Building large cancer phylogenies using stochastic combinatorial search'
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: 'Orchard: Building large cancer phylogenies using stochastic combinatorial
+  search'
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Kulman2024
 tags: []
-datasets: []
 ontology_terms:
 - Gumbel-Max trick
 - cancer phylogenetics

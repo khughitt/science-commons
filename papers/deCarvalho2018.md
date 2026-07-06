@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:deCarvalho2018
-type: paper
-title: Discordant inheritance of chromosomal and extrachromosomal DNA elements contributes to dynamic disease evolution in glioblastoma
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Discordant inheritance of chromosomal and extrachromosomal DNA elements contributes
+  to dynamic disease evolution in glioblastoma
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: deCarvalho2018
 tags: []
-datasets: []
 ontology_terms:
 - clonal evolution
 - discordant inheritance

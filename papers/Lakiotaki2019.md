@@ -1,17 +1,15 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Lakiotaki2019
-type: paper
+kind: paper
 title: A data driven approach reveals disease similarity on a molecular level
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Lakiotaki2019
 tags: []
 authors:
 - Lakiotaki et al.
-datasets:
-- dataset:omics-compendia-geo
 doi: 10.1038/s41540-019-0117-0
 ontology_terms:
 - co-expression-structure
@@ -19,6 +17,10 @@ ontology_terms:
 - distributional-distance
 venue: npj Systems Biology and Applications
 year: 2019
+dataset_usage:
+- ref: dataset:omics-compendia-geo
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

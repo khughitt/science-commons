@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Dopico2015
-type: paper
-title: Widespread seasonal gene expression reveals annual differences in human immunity and physiology
-version: "1.0.0"
-created: "2026-05-30"
-updated: "2026-05-30"
+kind: paper
+title: Widespread seasonal gene expression reveals annual differences in human immunity
+  and physiology
+version: 1.0.0
+created: '2026-05-30'
+updated: '2026-05-30'
 bibkey: Dopico2015
 tags: []
-datasets: []
 ontology_terms: []
 ---
 ## Key Findings

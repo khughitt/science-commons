@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Simeonov2021
-type: paper
-title: Single-cell lineage tracing of metastatic cancer reveals selection of hybrid EMT states
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Single-cell lineage tracing of metastatic cancer reveals selection of hybrid
+  EMT states
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Simeonov2021
 tags: []
-datasets: []
 ontology_terms:
 - CRISPR barcoding
 - EMT

@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Pressley2021
-type: paper
-title: Evolutionary Dynamics of Treatment-Induced Resistance in Cancer Informs Understanding of Rapid Evolution in Natural Systems
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Evolutionary Dynamics of Treatment-Induced Resistance in Cancer Informs Understanding
+  of Rapid Evolution in Natural Systems
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Pressley2021
 tags: []
-datasets: []
 ontology_terms:
 - adaptive therapy
 - evolutionary speed

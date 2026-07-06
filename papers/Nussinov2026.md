@@ -1,14 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Nussinov2026
-type: paper
+kind: paper
 title: 'Condensates and cell states: A new paradigm for understanding tumor biology'
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Nussinov2026
 tags: []
-datasets: []
 ontology_terms:
 - biomolecular condensates
 - cell states

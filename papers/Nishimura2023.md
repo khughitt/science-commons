@@ -1,15 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Nishimura2023
-type: paper
+kind: paper
 title: Evolutionary histories of breast cancer and related clones
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Nishimura2023
 tags: []
-datasets:
-- dataset:tcga
 ontology_terms:
 - breast cancer
 - clonal evolution
@@ -18,6 +16,10 @@ ontology_terms:
 - phylogenetics
 - precancer
 - somatic mosaicism
+dataset_usage:
+- ref: dataset:tcga
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

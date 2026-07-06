@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Quinn2021
-type: paper
-title: Single-cell lineages reveal the rates, routes, and drivers of metastasis in cancer xenografts
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: Single-cell lineages reveal the rates, routes, and drivers of metastasis in
+  cancer xenografts
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Quinn2021
 tags: []
-datasets: []
 ontology_terms:
 - CRISPR barcoding
 - cancer evolution

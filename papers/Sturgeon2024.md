@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Sturgeon2024
-type: paper
-title: The Crossroads of Clonal Evolution, Differentiation Hierarchy, and Ontogeny in Leukemia Development
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: The Crossroads of Clonal Evolution, Differentiation Hierarchy, and Ontogeny
+  in Leukemia Development
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Sturgeon2024
 tags: []
-datasets: []
 ontology_terms:
 - AML
 - MDS

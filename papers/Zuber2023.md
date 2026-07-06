@@ -1,20 +1,16 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Zuber2023
-type: paper
-title: 'Multi-response Mendelian randomization: Identification of shared and distinct exposures for multimorbidity and multiple related disease outcomes'
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: 'Multi-response Mendelian randomization: Identification of shared and distinct
+  exposures for multimorbidity and multiple related disease outcomes'
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Zuber2023
 tags: []
 authors:
 - Zuber et al.
-datasets:
-- dataset:gigastroke
-- dataset:million-veteran-program
-- dataset:uk-biobank
-- dataset:zuber2023-nmr-metabolomics
 doi: 10.1016/j.ajhg.2023.06.005
 ontology_terms:
 - Bayesian-model-selection
@@ -26,6 +22,19 @@ pmcid: PMC10357504
 pmid: ''
 venue: The American Journal of Human Genetics
 year: 2023
+dataset_usage:
+- ref: dataset:gigastroke
+  role: analyzed
+  overlap: unknown
+- ref: dataset:million-veteran-program
+  role: analyzed
+  overlap: unknown
+- ref: dataset:uk-biobank
+  role: analyzed
+  overlap: unknown
+- ref: dataset:zuber2023-nmr-metabolomics
+  role: analyzed
+  overlap: unknown
 ---
 ## One-Sentence Summary
 

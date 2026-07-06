@@ -1,18 +1,16 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Jadhav2018
-type: paper
+kind: paper
 title: Pan-disease clustering analysis of the trend of period prevalence
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Jadhav2018
 tags: []
 arxiv: '1809.06852'
 authors:
 - Jadhav et al.
-datasets:
-- dataset:taiwan-nhird
 doi: 10.48550/arXiv.1809.06852
 ontology_terms:
 - disease-co-occurrence
@@ -21,6 +19,10 @@ ontology_terms:
 - period-prevalence
 venue: arXiv preprint (stat.AP)
 year: 2018
+dataset_usage:
+- ref: dataset:taiwan-nhird
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

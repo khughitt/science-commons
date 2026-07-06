@@ -1,14 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Mukherjee2024ACTOv
-type: paper
+kind: paper
 title: Study protocol for Adaptive ChemoTherapy for Ovarian cancer (ACTOv)
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Mukherjee2024ACTOv
 tags: []
-datasets: []
 ontology_terms:
 - CA125
 - adaptive therapy

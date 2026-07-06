@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Fortin2024
-type: paper
-title: Circadian Control of Tumor Immunosuppression Affects Efficacy of Immune Checkpoint Blockade
-version: "1.0.0"
-created: "2026-05-30"
-updated: "2026-05-30"
+kind: paper
+title: Circadian Control of Tumor Immunosuppression Affects Efficacy of Immune Checkpoint
+  Blockade
+version: 1.0.0
+created: '2026-05-30'
+updated: '2026-05-30'
 bibkey: Fortin2024
 tags: []
-datasets: []
 ontology_terms:
 - chronomedicine
 - circadian-clock

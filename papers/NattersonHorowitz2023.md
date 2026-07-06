@@ -1,14 +1,14 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:NattersonHorowitz2023
-type: paper
-title: 'The future of evolutionary medicine: sparking innovation in biomedicine and public health'
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: 'The future of evolutionary medicine: sparking innovation in biomedicine and
+  public health'
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: NattersonHorowitz2023
 tags: []
-datasets: []
 ontology_terms:
 - adaptive therapy
 - comparative oncology

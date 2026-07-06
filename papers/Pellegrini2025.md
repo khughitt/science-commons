@@ -1,18 +1,17 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Pellegrini2025
-type: paper
-title: 'From EHRs to Patient Pathways: Scalable Modeling of Longitudinal Health Trajectories with LLMs'
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+kind: paper
+title: 'From EHRs to Patient Pathways: Scalable Modeling of Longitudinal Health Trajectories
+  with LLMs'
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Pellegrini2025
 tags: []
 arxiv: '2506.04831'
 authors:
 - Pellegrini et al.
-datasets:
-- dataset:mimic-iv
 doi: 10.48550/arXiv.2506.04831
 ontology_terms:
 - electronic-health-record
@@ -21,6 +20,10 @@ ontology_terms:
 - trajectory-prediction
 venue: arXiv preprint (cs.LG)
 year: 2025
+dataset_usage:
+- ref: dataset:mimic-iv
+  role: analyzed
+  overlap: unknown
 ---
 ## One-Sentence Summary
 

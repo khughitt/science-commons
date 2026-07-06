@@ -1,14 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Patil2025
-type: paper
+kind: paper
 title: Preventing evolutionary rescue in cancer using two-strike therapy
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Patil2025
 tags: []
-datasets: []
 ontology_terms:
 - evolutionary rescue
 - extinction therapy

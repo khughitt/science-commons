@@ -1,16 +1,13 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:JimenezSanchez2026
-type: paper
+kind: paper
 title: Transcriptomic Plasticity Is a Hallmark of Metastatic Pancreatic Cancer
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: JimenezSanchez2026
 tags: []
-datasets:
-- dataset:egad00001011109
-- dataset:htan
 ontology_terms:
 - archetype analysis
 - clonal phylogenetics
@@ -20,6 +17,13 @@ ontology_terms:
 - pancreatic ductal adenocarcinoma
 - single-cell RNA-seq
 - transcriptomic plasticity
+dataset_usage:
+- ref: dataset:egad00001011109
+  role: analyzed
+  overlap: unknown
+- ref: dataset:htan
+  role: analyzed
+  overlap: unknown
 ---
 ## Key Findings
 

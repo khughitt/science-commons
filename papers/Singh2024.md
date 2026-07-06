@@ -1,22 +1,15 @@
 ---
 schema_profile: science-entity-base/1.0+paper/2.0
 id: paper:Singh2024
-type: paper
+kind: paper
 title: A pan-tissue, pan-disease compendium of human orphan genes
-version: "1.0.0"
-created: "2026-05-22"
-updated: "2026-05-22"
+version: 1.0.0
+created: '2026-05-22'
+updated: '2026-05-22'
 bibkey: Singh2024
 tags: []
 authors:
 - Singh et al.
-datasets:
-- dataset:geo
-- dataset:gtex
-- dataset:scrna-tissue-atlases
-- dataset:sra-covid19-rnaseq
-- dataset:sra-ribo-seq
-- dataset:tcga
 doi: 10.1101/2024.02.21.581488
 ontology_terms:
 - dark-transcriptome
@@ -28,6 +21,25 @@ pmcid: ''
 pmid: ''
 venue: bioRxiv (preprint)
 year: 2024
+dataset_usage:
+- ref: dataset:geo
+  role: analyzed
+  overlap: unknown
+- ref: dataset:gtex
+  role: analyzed
+  overlap: unknown
+- ref: dataset:scrna-tissue-atlases
+  role: analyzed
+  overlap: unknown
+- ref: dataset:sra-covid19-rnaseq
+  role: analyzed
+  overlap: unknown
+- ref: dataset:sra-ribo-seq
+  role: analyzed
+  overlap: unknown
+- ref: dataset:tcga
+  role: analyzed
+  overlap: unknown
 ---
 ## One-Sentence Summary
 
