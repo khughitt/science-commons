@@ -136,6 +136,26 @@ def test_build_shards_and_merge_final_sqlite(tmp_path: Path) -> None:
     assert refreshed["resources"][1]["bytes"] > 0
 
 
+def test_load_assembly_digests_uses_current_registry_accessions(tmp_path: Path) -> None:
+    registry = tmp_path / "assemblies.csv"
+    registry.write_text(
+        "\n".join(
+            [
+                "seqcol_digest,label,accession",
+                "digest-grch37,GRCh37,GCA_000001405.14",
+                "digest-grch38,GRCh38,GCA_000001405.15",
+            ]
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    assert build.load_assembly_digests(registry) == {
+        "GRCh37": "digest-grch37",
+        "GRCh38": "digest-grch38",
+    }
+
+
 def test_snakefile_does_not_manage_tracked_datapackage_as_output() -> None:
     text = Path(__file__).with_name("Snakefile").read_text(encoding="utf-8")
 

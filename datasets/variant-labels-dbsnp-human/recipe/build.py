@@ -36,8 +36,16 @@ SHARD_COUNT = 64
 SHARD_IDS = tuple(f"{index:02x}" for index in range(SHARD_COUNT))
 ROW_FIELDS = ("rsid", "contig", "pos0", "ref", "alt", "source_vcf", "allele_index")
 SOURCE_ASSEMBLIES = {
-    "GCF_000001405.40.gz": {"label": "GRCh38", "accession": "GCF_000001405.40"},
-    "GCF_000001405.25.gz": {"label": "GRCh37", "accession": "GCF_000001405.25"},
+    "GCF_000001405.40.gz": {
+        "label": "GRCh38",
+        "source_accession": "GCF_000001405.40",
+        "registry_accession": "GCA_000001405.15",
+    },
+    "GCF_000001405.25.gz": {
+        "label": "GRCh37",
+        "source_accession": "GCF_000001405.25",
+        "registry_accession": "GCA_000001405.14",
+    },
 }
 PINNED_SOURCE_URLS = {
     "GCF_000001405.40.gz": "https://ftp.ncbi.nih.gov/snp/archive/b157/VCF/GCF_000001405.40.gz",
@@ -596,13 +604,13 @@ def load_assembly_digests(path: Path) -> dict[str, str]:
         for row in reader:
             for spec in SOURCE_ASSEMBLIES.values():
                 label = spec["label"]
-                accession = spec["accession"]
-                if row["label"] == label and row["accession"] == accession:
+                registry_accession = spec["registry_accession"]
+                if row["label"] == label and row["accession"] == registry_accession:
                     digest = row["seqcol_digest"].strip()
                     if not digest:
                         raise ValueError(f"{path}: blank seqcol_digest for {label}")
                     if label in by_label:
-                        raise ValueError(f"{path}: duplicate registry row for {label} {accession}")
+                        raise ValueError(f"{path}: duplicate registry row for {label} {registry_accession}")
                     by_label[label] = digest
     missing = sorted({spec["label"] for spec in SOURCE_ASSEMBLIES.values()} - set(by_label))
     if missing:
