@@ -393,16 +393,20 @@ def merge_shard_sqlites(
                     }.items()
                 ),
             )
-            for index, shard_path in enumerate(shard_paths):
-                alias = f"shard_{index}"
-                conn.execute(f"ATTACH DATABASE ? AS {alias}", (str(shard_path),))
-                conn.execute(
-                    f"""
+            for shard_path in shard_paths:
+                conn.execute("ATTACH DATABASE ? AS shard", (str(shard_path),))
+                try:
+                    cursor = conn.execute(
+                        """
                     INSERT OR IGNORE INTO rsid_alleles
                     SELECT rsid, seqcol_digest, contig, pos0, ref, alt, source_vcf, allele_index
-                    FROM {alias}.rsid_alleles
+                    FROM shard.rsid_alleles
                     """
-                )
+                    )
+                    cursor.close()
+                    conn.commit()
+                finally:
+                    conn.execute("DETACH DATABASE shard")
             create_lookup_index(conn)
             conn.execute("PRAGMA optimize")
             conn.commit()
