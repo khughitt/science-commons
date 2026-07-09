@@ -1,0 +1,43 @@
+name: hmcl-drug-screen
+title: HMCL NCATS MIPE 4.0 drug screen (Zenodo 13910207, release 2025)
+version: '2025'
+created: '2026-07-09T21:32:00.786187+00:00'
+profile: data-package
+licenses:
+- name: CC-BY-4.0
+  path: https://creativecommons.org/licenses/by/4.0/
+  title: Creative Commons Attribution 4.0
+contributors:
+- title: V. Keith Hughitt
+  role: author
+provenance:
+- action: package
+  timestamp: '2026-07-09T21:32:00.786187+00:00'
+  tool: scripts/external/hmcl_drug_screen/build_tables.py
+resources:
+- name: hmcl-drug-curves
+  path: hmcl-drug-curves.parquet
+  format: parquet
+  mediatype: application/vnd.apache.parquet
+  description: 'Long-format drug response: one row per (cell line x compound x plate)
+    with curve-fit parameters (slope, ac50, lac50, ac50_pval) and the 11-point dose_0..dose_10
+    percent-viability and conc_0..conc_10 concentration grid.'
+  hash: sha256:5c7db2374a05b29934726d6e522482c5de734163220cdd72e70e144eb619c430
+  bytes: 11262875
+- name: hmcl-cell-lines
+  path: hmcl-cell-lines.parquet
+  format: parquet
+  mediatype: application/vnd.apache.parquet
+  description: 'Per-cell-line dimension table (join key `cell_line`): curated cytogenetics
+    (transloc_11_14, transloc_4_14, canonical_translocations), driver-gene status
+    (KRAS/NRAS/TP53/TRAF3), and screen-level summaries.'
+  hash: sha256:05aeb23eebf9f83da671a741e6c2260838796c677037f2733993d047d13c9c3b
+  bytes: 10107
+- name: hmcl-drugs
+  path: hmcl-drugs.parquet
+  format: parquet
+  mediatype: application/vnd.apache.parquet
+  description: 'Per-compound dimension table (join key `drug_id`): mechanistic class,
+    cellular mechanisms, target genes, development phase, and indication.'
+  hash: sha256:2bc28712eb9413b5a17d7afa3f1db58836d22e08f996af707c2b73067e4a3468
+  bytes: 103244
