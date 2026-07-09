@@ -1,0 +1,48 @@
+op_id: 8a7fdb8a
+kind: dataset
+invocation: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/.venv/bin/science
+  commons promote dataset --slug hmcl-drug-screen --from multiple-myeloma --verify-digests
+  --apply
+status: ok
+started_at: '2026-07-09T21:49:16.234996+00:00'
+finished_at: '2026-07-09T21:49:16.307387+00:00'
+commons_commit: 315f80c
+commons_tags:
+- dataset/hmcl-drug-screen/1.0.0
+projects_touched:
+  multiple-myeloma:
+    overlay_rewrites:
+    - slug: hmcl-drug-screen
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/overlays/datasets/hmcl-drug-screen.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/entities/datasets/hmcl-drug-screen.md
+decisions:
+- slug: hmcl-drug-screen
+  canonical_version: 1.0.0
+  canonical_paths:
+  - datasets/hmcl-drug-screen/entity.md
+  - datasets/hmcl-drug-screen/datapackage.yaml
+  - datasets/hmcl-drug-screen/recipe/README.md
+  per_resource_hashes:
+    hmcl-drug-curves:
+      hash: sha256:5c7db2374a05b29934726d6e522482c5de734163220cdd72e70e144eb619c430
+      bytes: 11262875
+    hmcl-cell-lines:
+      hash: sha256:05aeb23eebf9f83da671a741e6c2260838796c677037f2733993d047d13c9c3b
+      bytes: 10107
+    hmcl-drugs:
+      hash: sha256:2bc28712eb9413b5a17d7afa3f1db58836d22e08f996af707c2b73067e4a3468
+      bytes: 103244
+  recipe_stubbed: true
+  dropped_fields:
+  - identity_context
+  - provided_capabilities
+  override_file: /home/keith/.config/science/data.yaml
+  override_backup: /home/keith/.config/science/data.yaml.bak.8a7fdb8a
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 315f80c
+  projects:
+    multiple-myeloma: git -C /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma
+      checkout HEAD -- entities/datasets/hmcl-drug-screen.md overlays/datasets/hmcl-drug-screen.md
