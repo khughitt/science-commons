@@ -27,6 +27,9 @@ origin: external
 source_class: observational
 status: active
 tier: use-now
+provided_capabilities:
+- {assay: drug-sensitivity, modality: cell-line-viability}
+identity_context: {taxon: 9606}
 ---
 # HMCL NCATS MIPE 4.0 drug screen
 
