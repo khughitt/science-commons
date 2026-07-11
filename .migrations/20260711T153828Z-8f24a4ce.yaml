@@ -1,0 +1,29 @@
+op_id: 8f24a4ce
+kind: paper
+invocation: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/.venv/bin/science
+  commons promote paper paper:Lutz2025 --from multiple-myeloma --apply
+status: ok
+started_at: '2026-07-11T15:38:28.080107+00:00'
+finished_at: '2026-07-11T15:38:28.138036+00:00'
+commons_commit: fdd0604
+commons_tags:
+- paper/Lutz2025/1.0.0
+projects_touched:
+  multiple-myeloma:
+    overlay_rewrites:
+    - slug: Lutz2025
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/overlays/papers/Lutz2025.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/entities/papers/Lutz2025.md
+decisions:
+- slug: Lutz2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Lutz2025.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert fdd0604
+  projects:
+    multiple-myeloma: git -C /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma
+      checkout HEAD -- entities/papers/Lutz2025.md overlays/papers/Lutz2025.md
