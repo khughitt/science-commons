@@ -29,6 +29,8 @@ LOCKFILE_PATH = Path(__file__).with_name("lockfile.yaml")
 DATAPACKAGE_PATH = Path(__file__).parents[1] / "datapackage.yaml"
 SQLITE_RESOURCE = Path("rsid_mappings.sqlite")
 SUMMARY_RESOURCE = Path("build-summary.yaml")
+MERGE_TEMP_SQLITE = Path(f".{SQLITE_RESOURCE.name}.merge.tmp")
+MERGE_PROGRESS = Path(f".{SQLITE_RESOURCE.name}.merge-progress.yaml")
 RSID_PATTERN = re.compile(r"^rs[1-9][0-9]*$")
 LITERAL_ALLELE_PATTERN = re.compile(r"^[ACGTN]+$")
 BATCH_SIZE = 50_000
@@ -199,7 +201,7 @@ def configure_bulk_sqlite(conn: sqlite3.Connection) -> None:
 
 
 def create_lookup_index(conn: sqlite3.Connection) -> None:
-    conn.execute("CREATE INDEX rsid_alleles_lookup ON rsid_alleles (rsid, seqcol_digest)")
+    conn.execute("CREATE INDEX IF NOT EXISTS rsid_alleles_lookup ON rsid_alleles (rsid, seqcol_digest)")
 
 
 def shard_ids(*, shard_count: int = SHARD_COUNT) -> tuple[str, ...]:
@@ -371,20 +373,29 @@ def merge_shard_sqlites(
     output_dir.mkdir(parents=True, exist_ok=True)
     sqlite_path = output_dir / SQLITE_RESOURCE
     summary_path = output_dir / SUMMARY_RESOURCE
-    tmp_sqlite_path = output_dir / f".{SQLITE_RESOURCE.name}.{os.getpid()}.tmp"
+    tmp_sqlite_path = output_dir / MERGE_TEMP_SQLITE
     tmp_summary_path = output_dir / f".{SUMMARY_RESOURCE.name}.{os.getpid()}.tmp"
+    progress_path = output_dir / MERGE_PROGRESS
     split_summaries = [_read_yaml(path) for path in split_summary_paths]
     shard_summaries = [_read_yaml(path) for path in shard_summary_paths]
     source_metadata = source_metadata or {}
     built_at_utc = datetime.now(UTC).isoformat()
+    completed_shards = _read_merge_progress(progress_path, tmp_sqlite_path)
+    if completed_shards is None:
+        completed_shards = set()
 
     try:
-        tmp_sqlite_path.unlink(missing_ok=True)
+        if completed_shards:
+            print(f"resuming merge with {len(completed_shards)} completed shards from {tmp_sqlite_path}")
+        else:
+            tmp_sqlite_path.unlink(missing_ok=True)
+            progress_path.unlink(missing_ok=True)
         with closing(sqlite3.connect(tmp_sqlite_path)) as conn:
             configure_bulk_sqlite(conn)
-            create_schema(conn)
+            if not completed_shards:
+                create_schema(conn)
             conn.executemany(
-                "INSERT INTO metadata (key, value) VALUES (?, ?)",
+                "INSERT OR REPLACE INTO metadata (key, value) VALUES (?, ?)",
                 sorted(
                     {
                         "dataset": DATASET_NAME,
@@ -394,6 +405,9 @@ def merge_shard_sqlites(
                 ),
             )
             for shard_path in shard_paths:
+                shard_key = shard_path.as_posix()
+                if shard_key in completed_shards:
+                    continue
                 conn.execute("ATTACH DATABASE ? AS shard", (str(shard_path),))
                 try:
                     cursor = conn.execute(
@@ -407,6 +421,8 @@ def merge_shard_sqlites(
                     conn.commit()
                 finally:
                     conn.execute("DETACH DATABASE shard")
+                completed_shards.add(shard_key)
+                _write_merge_progress(progress_path, completed_shards)
             create_lookup_index(conn)
             conn.execute("PRAGMA optimize")
             conn.commit()
@@ -415,6 +431,7 @@ def merge_shard_sqlites(
         distinct_rsids = count_distinct_rsids(tmp_sqlite_path)
         retained_alleles = count_rows(tmp_sqlite_path)
         tmp_sqlite_path.replace(sqlite_path)
+        progress_path.unlink(missing_ok=True)
 
         per_assembly = _per_assembly_summary(split_summaries, shard_summaries)
         skipped: Counter[str] = Counter()
@@ -443,7 +460,6 @@ def merge_shard_sqlites(
             write_datapackage(datapackage_path, output_dir=output_dir)
         return summary
     except Exception:
-        tmp_sqlite_path.unlink(missing_ok=True)
         tmp_summary_path.unlink(missing_ok=True)
         raise
 
@@ -639,6 +655,29 @@ def _read_yaml(path: Path) -> dict[str, Any]:
     if not isinstance(raw, dict):
         raise ValueError(f"{path}: expected YAML mapping")
     return raw
+
+
+def _read_merge_progress(progress_path: Path, sqlite_path: Path) -> set[str] | None:
+    if not progress_path.exists() or not sqlite_path.exists():
+        return None
+    raw = _read_yaml(progress_path)
+    if raw.get("version") != 1:
+        return None
+    completed = raw.get("completed_shards")
+    if not isinstance(completed, list):
+        return None
+    return {str(path) for path in completed}
+
+
+def _write_merge_progress(progress_path: Path, completed_shards: set[str]) -> None:
+    write_yaml_atomic(
+        progress_path,
+        progress_path.with_name(f".{progress_path.name}.{os.getpid()}.tmp"),
+        {
+            "version": 1,
+            "completed_shards": sorted(completed_shards),
+        },
+    )
 
 
 def _source_label(source_vcf: str) -> str:

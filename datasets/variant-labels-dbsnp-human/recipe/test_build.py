@@ -206,6 +206,74 @@ def test_merge_shard_sqlites_handles_more_than_sqlite_attach_limit(tmp_path: Pat
     assert merged["distinct_rsids"] == 12
 
 
+def test_merge_shard_sqlites_resumes_recorded_temp_progress(tmp_path: Path) -> None:
+    split_summary = tmp_path / "splits" / "GCF_000001405.40" / "split-summary.yaml"
+    _write_yaml(
+        split_summary,
+        {
+            "source_vcf": "GCF_000001405.40.gz",
+            "input_rows": 2,
+            "skipped": {},
+        },
+    )
+
+    shard_paths: list[Path] = []
+    shard_summary_paths: list[Path] = []
+    for index in range(2):
+        shard_id = f"{index:02x}"
+        shard_sqlite = tmp_path / "shards" / "GCF_000001405.40" / f"shard-{shard_id}.sqlite"
+        shard_summary = shard_sqlite.with_suffix(".summary.yaml")
+        _write_shard_sqlite(shard_sqlite, index + 1)
+        _write_yaml(
+            shard_summary,
+            {
+                "source_vcf": "GCF_000001405.40.gz",
+                "shard_id": shard_id,
+                "retained_alleles": 1,
+                "duplicate_alleles": 0,
+            },
+        )
+        shard_paths.append(shard_sqlite)
+        shard_summary_paths.append(shard_summary)
+
+    output_dir = tmp_path / "final"
+    output_dir.mkdir()
+    temp_sqlite = output_dir / ".rsid_mappings.sqlite.merge.tmp"
+    with sqlite3.connect(temp_sqlite) as conn:
+        build.create_schema(conn)
+        conn.execute(
+            "INSERT INTO metadata (key, value) VALUES (?, ?)",
+            ("dataset", "variant-labels-dbsnp-human"),
+        )
+        conn.execute(
+            """
+            INSERT INTO rsid_alleles
+            (rsid, seqcol_digest, contig, pos0, ref, alt, source_vcf, allele_index)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            ("rs1", "digest-grch38", "1", 1, "A", "G", "GCF_000001405.40.gz", 1),
+        )
+    _write_yaml(
+        output_dir / ".rsid_mappings.sqlite.merge-progress.yaml",
+        {
+            "version": 1,
+            "completed_shards": [shard_paths[0].as_posix()],
+        },
+    )
+
+    merged = build.merge_shard_sqlites(
+        shard_paths=shard_paths,
+        split_summary_paths=[split_summary],
+        shard_summary_paths=shard_summary_paths,
+        output_dir=output_dir,
+    )
+
+    assert merged["retained_alleles"] == 2
+    assert merged["distinct_rsids"] == 2
+    assert not temp_sqlite.exists()
+    assert not (output_dir / ".rsid_mappings.sqlite.merge-progress.yaml").exists()
+
+
 def test_load_assembly_digests_uses_current_registry_accessions(tmp_path: Path) -> None:
     registry = tmp_path / "assemblies.csv"
     registry.write_text(
