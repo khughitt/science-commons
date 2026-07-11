@@ -1,0 +1,29 @@
+op_id: 1549ffd9
+kind: paper
+invocation: /mnt/ssd/Dropbox/health/meta/.venv/bin/science commons promote paper paper:Tenchov2024
+  --from health-meta --apply
+status: ok
+started_at: '2026-07-11T15:38:00.549071+00:00'
+finished_at: '2026-07-11T15:38:00.594212+00:00'
+commons_commit: 0f3db14
+commons_tags:
+- paper/Tenchov2024/1.0.0
+projects_touched:
+  health-meta:
+    overlay_rewrites:
+    - slug: Tenchov2024
+      path: /mnt/ssd/Dropbox/health/meta/overlays/papers/Tenchov2024.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/health/meta/entities/papers/Tenchov2024.md
+decisions:
+- slug: Tenchov2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Tenchov2024.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 0f3db14
+  projects:
+    health-meta: git -C /mnt/ssd/Dropbox/health/meta checkout HEAD -- entities/papers/Tenchov2024.md
+      overlays/papers/Tenchov2024.md
