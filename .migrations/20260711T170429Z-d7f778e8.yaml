@@ -1,0 +1,29 @@
+op_id: d7f778e8
+kind: paper
+invocation: /mnt/ssd/Dropbox/health/comparisons/pan-disease/.venv/bin/science commons
+  promote paper paper:Jia2023 --from pan-disease --apply
+status: ok
+started_at: '2026-07-11T17:04:29.338540+00:00'
+finished_at: '2026-07-11T17:04:29.379795+00:00'
+commons_commit: 6d6d7bd
+commons_tags:
+- paper/Jia2023/1.0.0
+projects_touched:
+  pan-disease:
+    overlay_rewrites:
+    - slug: Jia2023
+      path: /mnt/ssd/Dropbox/health/comparisons/pan-disease/overlays/papers/Jia2023.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/health/comparisons/pan-disease/entities/papers/Jia2023.md
+decisions:
+- slug: Jia2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Jia2023.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 6d6d7bd
+  projects:
+    pan-disease: git -C /mnt/ssd/Dropbox/health/comparisons/pan-disease checkout HEAD
+      -- entities/papers/Jia2023.md overlays/papers/Jia2023.md
