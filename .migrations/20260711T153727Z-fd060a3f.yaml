@@ -1,0 +1,29 @@
+op_id: fd060a3f
+kind: paper
+invocation: /mnt/ssd/Dropbox/science/meta/.venv/bin/science commons promote paper
+  paper:Liu2025 --from science-meta --apply
+status: ok
+started_at: '2026-07-11T15:37:27.990514+00:00'
+finished_at: '2026-07-11T15:37:28.037153+00:00'
+commons_commit: 80512d5
+commons_tags:
+- paper/Liu2025/1.0.0
+projects_touched:
+  science-meta:
+    overlay_rewrites:
+    - slug: Liu2025
+      path: /mnt/ssd/Dropbox/science/meta/overlays/papers/Liu2025.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/science/meta/entities/papers/Liu2025.md
+decisions:
+- slug: Liu2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Liu2025.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 80512d5
+  projects:
+    science-meta: git -C /mnt/ssd/Dropbox/science/meta checkout HEAD -- entities/papers/Liu2025.md
+      overlays/papers/Liu2025.md
