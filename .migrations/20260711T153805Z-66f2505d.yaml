@@ -1,0 +1,29 @@
+op_id: 66f2505d
+kind: paper
+invocation: /mnt/ssd/Dropbox/health/meta/.venv/bin/science commons promote paper paper:Oh2023
+  --from health-meta --apply
+status: ok
+started_at: '2026-07-11T15:38:05.309228+00:00'
+finished_at: '2026-07-11T15:38:05.354550+00:00'
+commons_commit: 04fd1f6
+commons_tags:
+- paper/Oh2023/1.0.0
+projects_touched:
+  health-meta:
+    overlay_rewrites:
+    - slug: Oh2023
+      path: /mnt/ssd/Dropbox/health/meta/overlays/papers/Oh2023.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/health/meta/entities/papers/Oh2023.md
+decisions:
+- slug: Oh2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Oh2023.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 04fd1f6
+  projects:
+    health-meta: git -C /mnt/ssd/Dropbox/health/meta checkout HEAD -- entities/papers/Oh2023.md
+      overlays/papers/Oh2023.md
