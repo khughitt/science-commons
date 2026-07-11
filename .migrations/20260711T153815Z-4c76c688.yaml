@@ -1,0 +1,29 @@
+op_id: 4c76c688
+kind: paper
+invocation: /mnt/ssd/Dropbox/health/comparisons/pan-disease/.venv/bin/science commons
+  promote paper paper:Collins2022 --from pan-disease --apply
+status: ok
+started_at: '2026-07-11T15:38:15.480889+00:00'
+finished_at: '2026-07-11T15:38:15.527449+00:00'
+commons_commit: b375a9e
+commons_tags:
+- paper/Collins2022/1.0.0
+projects_touched:
+  pan-disease:
+    overlay_rewrites:
+    - slug: Collins2022
+      path: /mnt/ssd/Dropbox/health/comparisons/pan-disease/overlays/papers/Collins2022.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/health/comparisons/pan-disease/entities/papers/Collins2022.md
+decisions:
+- slug: Collins2022
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Collins2022.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert b375a9e
+  projects:
+    pan-disease: git -C /mnt/ssd/Dropbox/health/comparisons/pan-disease checkout HEAD
+      -- entities/papers/Collins2022.md overlays/papers/Collins2022.md
