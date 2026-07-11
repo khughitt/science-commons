@@ -1,0 +1,29 @@
+op_id: dfb4ce8a
+kind: paper
+invocation: /mnt/ssd/Dropbox/health/comparisons/pan-disease/.venv/bin/science commons
+  promote paper paper:Zou2026 --from pan-disease --apply
+status: ok
+started_at: '2026-07-11T15:38:17.790377+00:00'
+finished_at: '2026-07-11T15:38:17.833500+00:00'
+commons_commit: c0054b2
+commons_tags:
+- paper/Zou2026/1.0.0
+projects_touched:
+  pan-disease:
+    overlay_rewrites:
+    - slug: Zou2026
+      path: /mnt/ssd/Dropbox/health/comparisons/pan-disease/overlays/papers/Zou2026.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/health/comparisons/pan-disease/entities/papers/Zou2026.md
+decisions:
+- slug: Zou2026
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Zou2026.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert c0054b2
+  projects:
+    pan-disease: git -C /mnt/ssd/Dropbox/health/comparisons/pan-disease checkout HEAD
+      -- entities/papers/Zou2026.md overlays/papers/Zou2026.md
