@@ -1,0 +1,29 @@
+op_id: 3fe363c9
+kind: paper
+invocation: /mnt/ssd/Dropbox/natural-systems/.venv/bin/science commons promote paper
+  paper:Winther2011 --from natural-systems --apply
+status: ok
+started_at: '2026-07-11T15:37:42.789199+00:00'
+finished_at: '2026-07-11T15:37:42.852690+00:00'
+commons_commit: 27c410c
+commons_tags:
+- paper/Winther2011/1.0.0
+projects_touched:
+  natural-systems:
+    overlay_rewrites:
+    - slug: Winther2011
+      path: /mnt/ssd/Dropbox/natural-systems/overlays/papers/Winther2011.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/natural-systems/entities/papers/Winther2011.md
+decisions:
+- slug: Winther2011
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Winther2011.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 27c410c
+  projects:
+    natural-systems: git -C /mnt/ssd/Dropbox/natural-systems checkout HEAD -- entities/papers/Winther2011.md
+      overlays/papers/Winther2011.md
