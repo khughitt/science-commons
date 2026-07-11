@@ -1,0 +1,29 @@
+op_id: cf6e8056
+kind: paper
+invocation: /mnt/ssd/Dropbox/science/meta/.venv/bin/science commons promote paper
+  paper:Gaspar2024 --from science-meta --apply
+status: ok
+started_at: '2026-07-11T15:37:08.155906+00:00'
+finished_at: '2026-07-11T15:37:08.205350+00:00'
+commons_commit: fefad59
+commons_tags:
+- paper/Gaspar2024/1.0.0
+projects_touched:
+  science-meta:
+    overlay_rewrites:
+    - slug: Gaspar2024
+      path: /mnt/ssd/Dropbox/science/meta/overlays/papers/Gaspar2024.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/science/meta/entities/papers/Gaspar2024.md
+decisions:
+- slug: Gaspar2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Gaspar2024.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert fefad59
+  projects:
+    science-meta: git -C /mnt/ssd/Dropbox/science/meta checkout HEAD -- entities/papers/Gaspar2024.md
+      overlays/papers/Gaspar2024.md
