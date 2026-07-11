@@ -1,0 +1,29 @@
+op_id: cf46f8ed
+kind: paper
+invocation: /mnt/ssd/Dropbox/science/meta/.venv/bin/science commons promote paper
+  paper:Liu2025Synergy --from science-meta --apply
+status: ok
+started_at: '2026-07-11T15:59:09.055761+00:00'
+finished_at: '2026-07-11T15:59:09.103947+00:00'
+commons_commit: 126c582
+commons_tags:
+- paper/Liu2025Synergy/1.0.0
+projects_touched:
+  science-meta:
+    overlay_rewrites:
+    - slug: Liu2025Synergy
+      path: /mnt/ssd/Dropbox/science/meta/overlays/papers/Liu2025Synergy.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/science/meta/entities/papers/Liu2025Synergy.md
+decisions:
+- slug: Liu2025Synergy
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Liu2025Synergy.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 126c582
+  projects:
+    science-meta: git -C /mnt/ssd/Dropbox/science/meta checkout HEAD -- entities/papers/Liu2025Synergy.md
+      overlays/papers/Liu2025Synergy.md
