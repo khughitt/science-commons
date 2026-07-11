@@ -1,0 +1,29 @@
+op_id: 9cab6a37
+kind: paper
+invocation: /mnt/ssd/Dropbox/health/comparisons/pan-disease/.venv/bin/science commons
+  promote paper paper:Qiao2025 --from pan-disease --apply
+status: ok
+started_at: '2026-07-11T15:38:21.683197+00:00'
+finished_at: '2026-07-11T15:38:21.726595+00:00'
+commons_commit: 9429b55
+commons_tags:
+- paper/Qiao2025/1.0.0
+projects_touched:
+  pan-disease:
+    overlay_rewrites:
+    - slug: Qiao2025
+      path: /mnt/ssd/Dropbox/health/comparisons/pan-disease/overlays/papers/Qiao2025.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/health/comparisons/pan-disease/entities/papers/Qiao2025.md
+decisions:
+- slug: Qiao2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Qiao2025.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 9429b55
+  projects:
+    pan-disease: git -C /mnt/ssd/Dropbox/health/comparisons/pan-disease checkout HEAD
+      -- entities/papers/Qiao2025.md overlays/papers/Qiao2025.md
