@@ -1,0 +1,29 @@
+op_id: c19c7863
+kind: paper
+invocation: /mnt/ssd/Dropbox/science/meta/.venv/bin/science commons promote paper
+  paper:Giere2004 --from science-meta --apply
+status: ok
+started_at: '2026-07-11T15:37:10.934893+00:00'
+finished_at: '2026-07-11T15:37:10.981972+00:00'
+commons_commit: e207d45
+commons_tags:
+- paper/Giere2004/1.0.0
+projects_touched:
+  science-meta:
+    overlay_rewrites:
+    - slug: Giere2004
+      path: /mnt/ssd/Dropbox/science/meta/overlays/papers/Giere2004.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/science/meta/entities/papers/Giere2004.md
+decisions:
+- slug: Giere2004
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Giere2004.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert e207d45
+  projects:
+    science-meta: git -C /mnt/ssd/Dropbox/science/meta checkout HEAD -- entities/papers/Giere2004.md
+      overlays/papers/Giere2004.md
