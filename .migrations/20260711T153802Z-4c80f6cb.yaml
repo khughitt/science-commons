@@ -1,0 +1,29 @@
+op_id: 4c80f6cb
+kind: paper
+invocation: /mnt/ssd/Dropbox/health/meta/.venv/bin/science commons promote paper paper:Guo2022
+  --from health-meta --apply
+status: ok
+started_at: '2026-07-11T15:38:02.959754+00:00'
+finished_at: '2026-07-11T15:38:03.006723+00:00'
+commons_commit: 749a583
+commons_tags:
+- paper/Guo2022/1.0.0
+projects_touched:
+  health-meta:
+    overlay_rewrites:
+    - slug: Guo2022
+      path: /mnt/ssd/Dropbox/health/meta/overlays/papers/Guo2022.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/health/meta/entities/papers/Guo2022.md
+decisions:
+- slug: Guo2022
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Guo2022.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 749a583
+  projects:
+    health-meta: git -C /mnt/ssd/Dropbox/health/meta checkout HEAD -- entities/papers/Guo2022.md
+      overlays/papers/Guo2022.md
