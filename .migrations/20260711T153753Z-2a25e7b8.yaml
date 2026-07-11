@@ -1,0 +1,29 @@
+op_id: 2a25e7b8
+kind: paper
+invocation: /mnt/ssd/Dropbox/cancer/meta/.venv/bin/science commons promote paper paper:Haigis2019
+  --from cancer-meta --apply
+status: ok
+started_at: '2026-07-11T15:37:53.048854+00:00'
+finished_at: '2026-07-11T15:37:53.096822+00:00'
+commons_commit: f2aaff6
+commons_tags:
+- paper/Haigis2019/1.0.0
+projects_touched:
+  cancer-meta:
+    overlay_rewrites:
+    - slug: Haigis2019
+      path: /mnt/ssd/Dropbox/cancer/meta/overlays/papers/Haigis2019.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/cancer/meta/entities/papers/Haigis2019.md
+decisions:
+- slug: Haigis2019
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Haigis2019.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert f2aaff6
+  projects:
+    cancer-meta: git -C /mnt/ssd/Dropbox/cancer/meta checkout HEAD -- entities/papers/Haigis2019.md
+      overlays/papers/Haigis2019.md
