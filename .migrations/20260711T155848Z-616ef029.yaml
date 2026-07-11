@@ -1,0 +1,23 @@
+op_id: 616ef029
+kind: paper
+invocation: /mnt/ssd/Dropbox/health/comparisons/pan-disease/.venv/bin/science commons
+  promote paper paper:Qiao2025Cardio --from pan-disease --apply
+status: failed
+started_at: '2026-07-11T15:58:48.241527+00:00'
+finished_at: '2026-07-11T15:58:48.260570+00:00'
+commons_commit: null
+commons_tags: []
+projects_touched: {}
+decisions:
+- slug: Qiao2025Cardio
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Qiao2025Cardio.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: null
+  projects: {}
+failure_stage: preflight
+failure_detail: 'project /mnt/ssd/Dropbox/health/comparisons/pan-disease has dirty
+  target files: entities/papers/Qiao2025Cardio.md'
