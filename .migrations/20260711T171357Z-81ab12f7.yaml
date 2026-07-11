@@ -1,0 +1,29 @@
+op_id: 81ab12f7
+kind: paper
+invocation: /mnt/ssd/Dropbox/health/comparisons/pan-disease/.venv/bin/science commons
+  promote paper paper:Auwerx2024 --from pan-disease --apply
+status: ok
+started_at: '2026-07-11T17:13:57.382956+00:00'
+finished_at: '2026-07-11T17:13:57.435123+00:00'
+commons_commit: 811c228
+commons_tags:
+- paper/Auwerx2024/1.0.0
+projects_touched:
+  pan-disease:
+    overlay_rewrites:
+    - slug: Auwerx2024
+      path: /mnt/ssd/Dropbox/health/comparisons/pan-disease/overlays/papers/Auwerx2024.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/health/comparisons/pan-disease/entities/papers/Auwerx2024.md
+decisions:
+- slug: Auwerx2024
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Auwerx2024.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 811c228
+  projects:
+    pan-disease: git -C /mnt/ssd/Dropbox/health/comparisons/pan-disease checkout HEAD
+      -- entities/papers/Auwerx2024.md overlays/papers/Auwerx2024.md
