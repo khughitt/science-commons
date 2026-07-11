@@ -1,0 +1,29 @@
+op_id: f85145ac
+kind: paper
+invocation: /mnt/ssd/Dropbox/health/comparisons/pan-disease/.venv/bin/science commons
+  promote paper paper:Qiao2025Cardio --from pan-disease --apply
+status: ok
+started_at: '2026-07-11T15:59:11.601495+00:00'
+finished_at: '2026-07-11T15:59:11.644236+00:00'
+commons_commit: 91a4337
+commons_tags:
+- paper/Qiao2025Cardio/1.0.0
+projects_touched:
+  pan-disease:
+    overlay_rewrites:
+    - slug: Qiao2025Cardio
+      path: /mnt/ssd/Dropbox/health/comparisons/pan-disease/overlays/papers/Qiao2025Cardio.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/health/comparisons/pan-disease/entities/papers/Qiao2025Cardio.md
+decisions:
+- slug: Qiao2025Cardio
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Qiao2025Cardio.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 91a4337
+  projects:
+    pan-disease: git -C /mnt/ssd/Dropbox/health/comparisons/pan-disease checkout HEAD
+      -- entities/papers/Qiao2025Cardio.md overlays/papers/Qiao2025Cardio.md
