@@ -1,0 +1,29 @@
+op_id: 4d386e75
+kind: paper
+invocation: /mnt/ssd/Dropbox/natural-systems/.venv/bin/science commons promote paper
+  paper:Chen2012 --from natural-systems --apply
+status: ok
+started_at: '2026-07-11T15:37:45.487114+00:00'
+finished_at: '2026-07-11T15:37:45.537971+00:00'
+commons_commit: e865b50
+commons_tags:
+- paper/Chen2012/1.0.0
+projects_touched:
+  natural-systems:
+    overlay_rewrites:
+    - slug: Chen2012
+      path: /mnt/ssd/Dropbox/natural-systems/overlays/papers/Chen2012.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/natural-systems/entities/papers/Chen2012.md
+decisions:
+- slug: Chen2012
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Chen2012.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert e865b50
+  projects:
+    natural-systems: git -C /mnt/ssd/Dropbox/natural-systems checkout HEAD -- entities/papers/Chen2012.md
+      overlays/papers/Chen2012.md
