@@ -1,0 +1,29 @@
+op_id: 017de387
+kind: paper
+invocation: /mnt/ssd/Dropbox/science/meta/.venv/bin/science commons promote paper
+  paper:Hoefer2023 --from science-meta --apply
+status: ok
+started_at: '2026-07-11T15:37:19.482824+00:00'
+finished_at: '2026-07-11T15:37:19.528464+00:00'
+commons_commit: 4a7f7fc
+commons_tags:
+- paper/Hoefer2023/1.0.0
+projects_touched:
+  science-meta:
+    overlay_rewrites:
+    - slug: Hoefer2023
+      path: /mnt/ssd/Dropbox/science/meta/overlays/papers/Hoefer2023.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/science/meta/entities/papers/Hoefer2023.md
+decisions:
+- slug: Hoefer2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Hoefer2023.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 4a7f7fc
+  projects:
+    science-meta: git -C /mnt/ssd/Dropbox/science/meta checkout HEAD -- entities/papers/Hoefer2023.md
+      overlays/papers/Hoefer2023.md
