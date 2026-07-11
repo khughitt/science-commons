@@ -1,0 +1,29 @@
+op_id: cb58639e
+kind: paper
+invocation: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/.venv/bin/science
+  commons promote paper paper:Boyle2023 --from multiple-myeloma --apply
+status: ok
+started_at: '2026-07-11T15:38:25.047518+00:00'
+finished_at: '2026-07-11T15:38:25.105914+00:00'
+commons_commit: 4b3f3b9
+commons_tags:
+- paper/Boyle2023/1.0.0
+projects_touched:
+  multiple-myeloma:
+    overlay_rewrites:
+    - slug: Boyle2023
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/overlays/papers/Boyle2023.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/entities/papers/Boyle2023.md
+decisions:
+- slug: Boyle2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Boyle2023.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 4b3f3b9
+  projects:
+    multiple-myeloma: git -C /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma
+      checkout HEAD -- entities/papers/Boyle2023.md overlays/papers/Boyle2023.md
