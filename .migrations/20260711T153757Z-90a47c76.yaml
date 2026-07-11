@@ -1,0 +1,29 @@
+op_id: 90a47c76
+kind: paper
+invocation: /mnt/ssd/Dropbox/cancer/meta/.venv/bin/science commons promote paper paper:Raghav2025
+  --from cancer-meta --apply
+status: ok
+started_at: '2026-07-11T15:37:57.861114+00:00'
+finished_at: '2026-07-11T15:37:57.898498+00:00'
+commons_commit: 1588d51
+commons_tags:
+- paper/Raghav2025/1.0.0
+projects_touched:
+  cancer-meta:
+    overlay_rewrites:
+    - slug: Raghav2025
+      path: /mnt/ssd/Dropbox/cancer/meta/overlays/papers/Raghav2025.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/cancer/meta/entities/papers/Raghav2025.md
+decisions:
+- slug: Raghav2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Raghav2025.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 1588d51
+  projects:
+    cancer-meta: git -C /mnt/ssd/Dropbox/cancer/meta checkout HEAD -- entities/papers/Raghav2025.md
+      overlays/papers/Raghav2025.md
