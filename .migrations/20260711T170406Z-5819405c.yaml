@@ -1,0 +1,23 @@
+op_id: 5819405c
+kind: paper
+invocation: /mnt/ssd/Dropbox/health/comparisons/pan-disease/.venv/bin/science commons
+  promote paper paper:Jia2023 --from pan-disease --apply
+status: failed
+started_at: '2026-07-11T17:04:06.825868+00:00'
+finished_at: '2026-07-11T17:04:06.837761+00:00'
+commons_commit: null
+commons_tags: []
+projects_touched: {}
+decisions:
+- slug: Jia2023
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Jia2023.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: null
+  projects: {}
+failure_stage: preflight
+failure_detail: 'commons repo is not clean. Commit/stash before re-running. Dirty:
+  papers/Boyle2023.md, papers/Lutz2025.md'
