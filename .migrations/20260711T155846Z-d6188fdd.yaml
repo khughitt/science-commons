@@ -1,0 +1,22 @@
+op_id: d6188fdd
+kind: paper
+invocation: /mnt/ssd/Dropbox/science/meta/.venv/bin/science commons promote paper
+  paper:Liu2025Synergy --from science-meta --apply
+status: failed
+started_at: '2026-07-11T15:58:46.565223+00:00'
+finished_at: '2026-07-11T15:58:46.585227+00:00'
+commons_commit: null
+commons_tags: []
+projects_touched: {}
+decisions:
+- slug: Liu2025Synergy
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Liu2025Synergy.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: null
+  projects: {}
+failure_stage: preflight
+failure_detail: 'project /mnt/ssd/Dropbox/science/meta has dirty target files: entities/papers/Liu2025Synergy.md'
