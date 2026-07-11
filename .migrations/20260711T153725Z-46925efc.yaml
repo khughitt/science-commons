@@ -1,0 +1,29 @@
+op_id: 46925efc
+kind: paper
+invocation: /mnt/ssd/Dropbox/science/meta/.venv/bin/science commons promote paper
+  paper:Baumeler2025 --from science-meta --apply
+status: ok
+started_at: '2026-07-11T15:37:25.206069+00:00'
+finished_at: '2026-07-11T15:37:25.253355+00:00'
+commons_commit: 832bdac
+commons_tags:
+- paper/Baumeler2025/1.0.0
+projects_touched:
+  science-meta:
+    overlay_rewrites:
+    - slug: Baumeler2025
+      path: /mnt/ssd/Dropbox/science/meta/overlays/papers/Baumeler2025.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/science/meta/entities/papers/Baumeler2025.md
+decisions:
+- slug: Baumeler2025
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Baumeler2025.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 832bdac
+  projects:
+    science-meta: git -C /mnt/ssd/Dropbox/science/meta checkout HEAD -- entities/papers/Baumeler2025.md
+      overlays/papers/Baumeler2025.md
