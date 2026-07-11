@@ -1,0 +1,29 @@
+op_id: b89011cc
+kind: paper
+invocation: /mnt/ssd/Dropbox/science/meta/.venv/bin/science commons promote paper
+  paper:Mumford2004 --from science-meta --apply
+status: ok
+started_at: '2026-07-11T15:37:05.345941+00:00'
+finished_at: '2026-07-11T15:37:05.398972+00:00'
+commons_commit: 6560c67
+commons_tags:
+- paper/Mumford2004/1.0.0
+projects_touched:
+  science-meta:
+    overlay_rewrites:
+    - slug: Mumford2004
+      path: /mnt/ssd/Dropbox/science/meta/overlays/papers/Mumford2004.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/science/meta/entities/papers/Mumford2004.md
+decisions:
+- slug: Mumford2004
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Mumford2004.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 6560c67
+  projects:
+    science-meta: git -C /mnt/ssd/Dropbox/science/meta checkout HEAD -- entities/papers/Mumford2004.md
+      overlays/papers/Mumford2004.md
