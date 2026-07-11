@@ -1,0 +1,29 @@
+op_id: '27082144'
+kind: paper
+invocation: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/.venv/bin/science
+  commons promote paper paper:Wu2017MM3D --from multiple-myeloma --apply
+status: ok
+started_at: '2026-07-11T15:38:31.169396+00:00'
+finished_at: '2026-07-11T15:38:31.223601+00:00'
+commons_commit: 8b08712
+commons_tags:
+- paper/Wu2017MM3D/1.0.0
+projects_touched:
+  multiple-myeloma:
+    overlay_rewrites:
+    - slug: Wu2017MM3D
+      path: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/overlays/papers/Wu2017MM3D.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma/entities/papers/Wu2017MM3D.md
+decisions:
+- slug: Wu2017MM3D
+  canonical_version: 1.0.0
+  canonical_paths:
+  - papers/Wu2017MM3D.md
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 8b08712
+  projects:
+    multiple-myeloma: git -C /mnt/ssd/Dropbox/cancer/cancer-types/multiple-myeloma
+      checkout HEAD -- entities/papers/Wu2017MM3D.md overlays/papers/Wu2017MM3D.md
