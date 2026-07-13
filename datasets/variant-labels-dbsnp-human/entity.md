@@ -20,9 +20,8 @@ datapackage: datapackage.yaml
 
 Pinned dbSNP build 157 human rsID label map for C4c variant input translation.
 
-This dataset record is a recipe placeholder until an operator fetches the pinned dbSNP archives, builds
-`rsid_mappings.sqlite`, and commits non-zero datapackage hashes. Do not treat it as a usable registry
-until that full artifact pin is complete.
+This dataset record is usable after an operator fetches the pinned dbSNP archives, builds the shard
+SQLite files, publishes `rsid-shards.yaml`, and commits non-zero datapackage hashes.
 
 This dataset is not a canonical variant identity system. It resolves external rsID labels to exact
 assembly-anchored alleles so the Science C4a resolver can mint canonical GA4GH VRS identifiers from the

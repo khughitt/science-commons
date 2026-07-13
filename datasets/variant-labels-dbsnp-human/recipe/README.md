@@ -9,12 +9,12 @@ Use archived NCBI dbSNP URLs only:
 
 Do not use `https://ftp.ncbi.nih.gov/snp/latest_release/VCF/`; that path is mutable.
 
-The built SQLite file is large and belongs under `$SCIENCE_COMMONS_DATA_ROOT/variant-labels-dbsnp-human/`.
-The commons repository stores the recipe, entity, and datapackage hash placeholders, not the bulk SQLite
-or VCF bytes.
+The built SQLite shards are large and belong under
+`$SCIENCE_COMMONS_DATA_ROOT/variant-labels-dbsnp-human/_work/shards/`. The commons repository stores the
+recipe, entity, and datapackage hash placeholders, not the bulk SQLite or VCF bytes.
 
-Run the fetch/build through Snakemake so the source downloads, lockfile, SQLite build, and datapackage
-hash refresh are reproducible workflow targets:
+Run the fetch/build through Snakemake so the source downloads, lockfile, shard builds, manifest publish,
+and datapackage hash refresh are reproducible workflow targets:
 
 ```bash
 rtk uv run --frozen --project ~/d/science/meta snakemake \
@@ -26,7 +26,7 @@ The workflow defaults to `$SCIENCE_COMMONS_DATA_ROOT` when set and `/data/scienc
 expects the assembly registry at `$SCIENCE_COMMONS_DATA_ROOT/assembly-registry/assemblies.csv`; override it
 with `--config assembly_registry=/path/to/assemblies.csv` only when using an equivalent pinned registry.
 The full-source `recipe/lockfile.yaml` pins the completed archive downloads. The refreshed
-`datapackage.yaml` should be committed only after a successful final SQLite merge.
+`datapackage.yaml` should be committed only after a successful manifest publish.
 
 Each dbSNP archive is a separate Snakemake target. Interrupted downloads keep
 their partial `<archive>.tmp` file under
@@ -42,12 +42,13 @@ The expensive build is intentionally split into durable stages under
   rows after one streaming pass over an archive.
 - `_work/shards/<archive-stem>/shard-<id>.sqlite` stores one independently
   rebuildable SQLite shard.
-- `rsid_mappings.sqlite` and `build-summary.yaml` are written only by the final
-  merge step after all shard databases exist.
+- `rsid-shards.yaml` and `build-summary.yaml` are written by the final publish
+  step after all shard databases exist. The resolver uses the manifest to open
+  only the shard SQLite files relevant to a queried rsID.
 
 `datapackage.yaml` is a tracked package descriptor, not a Snakemake-owned
-output. The final merge refreshes its hashes after writing the final SQLite and
-summary, but a failed workflow run must not delete the descriptor. If a split
+output. The final publish step refreshes its hashes after writing the manifest
+and summary, but a failed workflow run must not delete the descriptor. If a split
 directory already has all shard files and `split-summary.yaml`, rerunning the
 workflow reuses it instead of deleting and recreating it. If a split directory is
 present but incomplete, the recipe fails early so an operator can inspect or

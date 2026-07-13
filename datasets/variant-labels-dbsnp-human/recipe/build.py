@@ -28,6 +28,7 @@ OUTPUT_ROOT_TOKEN = "${OUTPUT_ROOT}"
 LOCKFILE_PATH = Path(__file__).with_name("lockfile.yaml")
 DATAPACKAGE_PATH = Path(__file__).parents[1] / "datapackage.yaml"
 SQLITE_RESOURCE = Path("rsid_mappings.sqlite")
+MANIFEST_RESOURCE = Path("rsid-shards.yaml")
 SUMMARY_RESOURCE = Path("build-summary.yaml")
 MERGE_TEMP_SQLITE = Path(f".{SQLITE_RESOURCE.name}.merge.tmp")
 MERGE_PROGRESS = Path(f".{SQLITE_RESOURCE.name}.merge-progress.yaml")
@@ -464,6 +465,87 @@ def merge_shard_sqlites(
         raise
 
 
+def publish_sharded_dataset(
+    *,
+    shard_paths: list[Path],
+    split_summary_paths: list[Path],
+    shard_summary_paths: list[Path],
+    output_dir: Path,
+    datapackage_path: Path | None = None,
+    source_metadata: dict[str, dict[str, str]] | None = None,
+) -> dict[str, Any]:
+    started = time.monotonic()
+    output_dir.mkdir(parents=True, exist_ok=True)
+    manifest_path = output_dir / MANIFEST_RESOURCE
+    summary_path = output_dir / SUMMARY_RESOURCE
+    tmp_manifest_path = output_dir / f".{MANIFEST_RESOURCE.name}.{os.getpid()}.tmp"
+    tmp_summary_path = output_dir / f".{SUMMARY_RESOURCE.name}.{os.getpid()}.tmp"
+    split_summaries = [_read_yaml(path) for path in split_summary_paths]
+    shard_summaries = [_read_yaml(path) for path in shard_summary_paths]
+    source_metadata = source_metadata or {}
+    built_at_utc = datetime.now(UTC).isoformat()
+
+    try:
+        by_path = {path: summary for path, summary in zip(shard_paths, shard_summaries, strict=True)}
+        shards = []
+        for shard_path in shard_paths:
+            summary = by_path[shard_path]
+            relative_path = shard_path.relative_to(output_dir)
+            shards.append(
+                {
+                    "source_vcf": str(summary["source_vcf"]),
+                    "shard_id": str(summary["shard_id"]),
+                    "path": relative_path.as_posix(),
+                    "bytes": int(summary.get("sqlite_bytes", shard_path.stat().st_size)),
+                    "retained_alleles": int(summary.get("retained_alleles", 0)),
+                    "duplicate_alleles": int(summary.get("duplicate_alleles", 0)),
+                }
+            )
+
+        manifest = {
+            "dataset": DATASET_NAME,
+            "dbsnp_build": 157,
+            "built_at_utc": built_at_utc,
+            "shard_count": len({str(summary["shard_id"]) for summary in shard_summaries}),
+            "shards": shards,
+        }
+        write_yaml_atomic(manifest_path, tmp_manifest_path, manifest)
+
+        per_assembly = _per_assembly_summary(split_summaries, shard_summaries)
+        skipped: Counter[str] = Counter()
+        input_rows = 0
+        for summary in split_summaries:
+            input_rows += int(summary.get("input_rows", 0))
+            skipped.update({str(key): int(value) for key, value in dict(summary.get("skipped", {})).items()})
+        retained_alleles = sum(int(summary.get("retained_alleles", 0)) for summary in shard_summaries)
+        duplicate_alleles = sum(int(summary.get("duplicate_alleles", 0)) for summary in shard_summaries)
+        summary = {
+            "dataset": DATASET_NAME,
+            "artifact": "sharded-sqlite",
+            "dbsnp_build": 157,
+            "built_at_utc": built_at_utc,
+            "input_rows": input_rows,
+            "retained_alleles": retained_alleles,
+            "duplicate_alleles": duplicate_alleles,
+            "skipped": dict(sorted(skipped.items())),
+            "shard_count": manifest["shard_count"],
+            "shard_sqlite_count": len(shards),
+            "shard_sqlite_bytes": sum(int(shard["bytes"]) for shard in shards),
+            "per_assembly": per_assembly,
+            "source_urls": {name: str(values.get("url", "")) for name, values in sorted(source_metadata.items())},
+            "source_sha256": {name: str(values.get("sha256", "")) for name, values in sorted(source_metadata.items())},
+            "build_seconds": round(time.monotonic() - started, 3),
+        }
+        write_yaml_atomic(summary_path, tmp_summary_path, summary)
+        if datapackage_path is not None:
+            write_sharded_datapackage(datapackage_path, output_dir=output_dir)
+        return summary
+    except Exception:
+        tmp_manifest_path.unlink(missing_ok=True)
+        tmp_summary_path.unlink(missing_ok=True)
+        raise
+
+
 def iter_vcf_allele_rows(
     *,
     path: Path,
@@ -761,6 +843,42 @@ def write_datapackage(path: Path, *, output_dir: Path) -> None:
     path.write_text(yaml.safe_dump(doc, sort_keys=False), encoding="utf-8")
 
 
+def write_sharded_datapackage(path: Path, *, output_dir: Path) -> None:
+    manifest_hash, manifest_bytes = stream_hash_and_bytes(output_dir / MANIFEST_RESOURCE)
+    summary_hash, summary_bytes = stream_hash_and_bytes(output_dir / SUMMARY_RESOURCE)
+    doc = {
+        "name": DATASET_NAME,
+        "profile": "data-package",
+        "resources": [
+            {
+                "name": "rsid_shards",
+                "path": MANIFEST_RESOURCE.as_posix(),
+                "format": "yaml",
+                "mediatype": "application/x-yaml",
+                "source": {
+                    "type": "local",
+                    "ref": f"{OUTPUT_ROOT_TOKEN}/{DATASET_NAME}/{MANIFEST_RESOURCE.as_posix()}",
+                },
+                "hash": manifest_hash,
+                "bytes": manifest_bytes,
+            },
+            {
+                "name": "build_summary",
+                "path": SUMMARY_RESOURCE.as_posix(),
+                "format": "yaml",
+                "mediatype": "application/x-yaml",
+                "source": {
+                    "type": "local",
+                    "ref": f"{OUTPUT_ROOT_TOKEN}/{DATASET_NAME}/{SUMMARY_RESOURCE.as_posix()}",
+                },
+                "hash": summary_hash,
+                "bytes": summary_bytes,
+            },
+        ],
+    }
+    path.write_text(yaml.safe_dump(doc, sort_keys=False), encoding="utf-8")
+
+
 def write_yaml_atomic(path: Path, tmp_path: Path, value: dict[str, Any]) -> None:
     try:
         tmp_path.write_text(yaml.safe_dump(value, sort_keys=False), encoding="utf-8")
@@ -826,7 +944,16 @@ def _run_shard_command(argv: list[str]) -> bool:
     merge_parser.add_argument("--datapackage", type=Path)
     merge_parser.add_argument("--update-datapackage", action="store_true")
 
-    if not argv or argv[0] not in {"split-archive", "build-shard", "merge-shards"}:
+    publish_parser = subparsers.add_parser("publish-shards", help="Publish shard SQLite files as the dataset artifact.")
+    publish_parser.add_argument("--shard-sqlite", type=Path, action="append", required=True)
+    publish_parser.add_argument("--split-summary", type=Path, action="append", required=True)
+    publish_parser.add_argument("--shard-summary", type=Path, action="append", required=True)
+    publish_parser.add_argument("--output-dir", type=Path, required=True)
+    publish_parser.add_argument("--lockfile", type=Path, required=True)
+    publish_parser.add_argument("--datapackage", type=Path)
+    publish_parser.add_argument("--update-datapackage", action="store_true")
+
+    if not argv or argv[0] not in {"split-archive", "build-shard", "merge-shards", "publish-shards"}:
         return False
     args = parser.parse_args(argv)
     if args.command == "split-archive":
@@ -866,6 +993,17 @@ def _run_shard_command(argv: list[str]) -> bool:
             source_metadata=source_metadata_from_lockfile(args.lockfile),
         )
         print(f"merged {summary['retained_alleles']} retained dbSNP alleles into {args.output_dir}")
+        return True
+    if args.command == "publish-shards":
+        summary = publish_sharded_dataset(
+            shard_paths=args.shard_sqlite,
+            split_summary_paths=args.split_summary,
+            shard_summary_paths=args.shard_summary,
+            output_dir=args.output_dir,
+            datapackage_path=args.datapackage if args.update_datapackage else None,
+            source_metadata=source_metadata_from_lockfile(args.lockfile),
+        )
+        print(f"published {summary['shard_sqlite_count']} dbSNP shard SQLite files into {args.output_dir}")
         return True
     raise AssertionError(f"unhandled command: {args.command}")
 

@@ -164,6 +164,60 @@ def test_build_shards_and_merge_final_sqlite(tmp_path: Path) -> None:
     assert refreshed["resources"][1]["bytes"] > 0
 
 
+def test_publish_sharded_dataset_writes_manifest_without_final_sqlite(tmp_path: Path) -> None:
+    archive = tmp_path / "GCF_000001405.40.gz"
+    _write_vcf_gz(archive)
+    split_dir = tmp_path / "splits" / "GCF_000001405.40"
+    build.split_archive_to_shards(
+        archive_path=archive,
+        source_vcf=archive.name,
+        output_dir=split_dir,
+        shard_count=4,
+    )
+
+    shard_paths: list[Path] = []
+    shard_summary_paths: list[Path] = []
+    for shard_id in ("00", "01", "02", "03"):
+        shard_sqlite = tmp_path / "_work" / "shards" / "GCF_000001405.40" / f"shard-{shard_id}.sqlite"
+        shard_summary = shard_sqlite.with_suffix(".summary.yaml")
+        build.build_shard_sqlite(
+            rows_path=split_dir / f"shard-{shard_id}.tsv.gz",
+            sqlite_path=shard_sqlite,
+            summary_path=shard_summary,
+            seqcol_digest="digest-grch38",
+            shard_id=shard_id,
+            source_vcf=archive.name,
+        )
+        shard_paths.append(shard_sqlite)
+        shard_summary_paths.append(shard_summary)
+
+    datapackage = tmp_path / "datapackage.yaml"
+    _write_datapackage(datapackage)
+    output_dir = tmp_path
+    summary = build.publish_sharded_dataset(
+        shard_paths=shard_paths,
+        split_summary_paths=[split_dir / "split-summary.yaml"],
+        shard_summary_paths=shard_summary_paths,
+        output_dir=output_dir,
+        datapackage_path=datapackage,
+        source_metadata={archive.name: {"url": "https://example.test/archive.gz", "sha256": "sha256:" + "a" * 64}},
+    )
+
+    manifest = yaml.safe_load((output_dir / "rsid-shards.yaml").read_text(encoding="utf-8"))
+    refreshed = yaml.safe_load(datapackage.read_text(encoding="utf-8"))
+
+    assert summary["retained_alleles"] == 2
+    assert summary["shard_count"] == 4
+    assert not (output_dir / "rsid_mappings.sqlite").exists()
+    assert manifest["dataset"] == "variant-labels-dbsnp-human"
+    assert manifest["shard_count"] == 4
+    assert manifest["shards"][0]["path"].startswith("_work/shards/GCF_000001405.40/")
+    assert refreshed["resources"][0]["name"] == "rsid_shards"
+    assert refreshed["resources"][0]["path"] == "rsid-shards.yaml"
+    assert refreshed["resources"][0]["bytes"] > 0
+    assert refreshed["resources"][1]["bytes"] > 0
+
+
 def test_merge_shard_sqlites_handles_more_than_sqlite_attach_limit(tmp_path: Path) -> None:
     split_summary = tmp_path / "splits" / "GCF_000001405.40" / "split-summary.yaml"
     _write_yaml(

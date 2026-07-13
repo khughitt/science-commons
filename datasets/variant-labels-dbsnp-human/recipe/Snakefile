@@ -54,6 +54,7 @@ SOURCE_MD5S = tuple(str(SOURCE_ROOT / f"{name}.md5") for name in ARCHIVES)
 LOCKFILE = str(RECIPE_DIR / "lockfile.yaml")
 DATAPACKAGE = str(DATASET_DIR / "datapackage.yaml")
 SQLITE = str(DATASET_OUTPUT_DIR / "rsid_mappings.sqlite")
+MANIFEST = str(DATASET_OUTPUT_DIR / "rsid-shards.yaml")
 SUMMARY = str(DATASET_OUTPUT_DIR / "build-summary.yaml")
 WORK_ROOT = DATASET_OUTPUT_DIR / "_work"
 SPLIT_ROOT = WORK_ROOT / "splits"
@@ -79,7 +80,7 @@ def _repeat_arg(flag, paths):
 
 rule all:
     input:
-        SQLITE,
+        MANIFEST,
         SUMMARY,
         DATAPACKAGE,
 
@@ -146,14 +147,14 @@ rule build_shard:
         "--assembly-registry {input.assembly_registry:q}"
 
 
-rule merge_dataset:
+rule publish_dataset:
     input:
         lockfile=LOCKFILE,
         split_markers=SPLIT_MARKERS,
         shard_sqlites=SHARD_SQLITES,
         shard_summaries=SHARD_SUMMARIES,
     output:
-        sqlite=SQLITE,
+        manifest=MANIFEST,
         summary=SUMMARY,
     params:
         build_py=str(RECIPE_DIR / "build.py"),
@@ -163,7 +164,7 @@ rule merge_dataset:
         shard_sqlite_args=lambda wildcards, input: _repeat_arg("--shard-sqlite", input.shard_sqlites),
         shard_summary_args=lambda wildcards, input: _repeat_arg("--shard-summary", input.shard_summaries),
     shell:
-        "{PYTHON:q} {params.build_py:q} merge-shards "
+        "{PYTHON:q} {params.build_py:q} publish-shards "
         "--output-dir {params.dataset_output_dir:q} "
         "--lockfile {input.lockfile:q} "
         "--datapackage {params.datapackage_path:q} "
