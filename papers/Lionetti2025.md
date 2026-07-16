@@ -17,7 +17,7 @@ ontology_terms:
 - scRNA-seq
 - tumor microenvironment
 dataset_usage:
-- ref: dataset:egac00000000232
+- ref: dataset:egac50000000232
   role: analyzed
   overlap: unknown
 ---
