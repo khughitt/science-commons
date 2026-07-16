@@ -25,21 +25,21 @@ ontology_terms:
 
 - SV frequency across the genome decreases as the reciprocal of span length — the same distribution as contact frequency in Hi-C data — indicating that the 3D proximity of loci in normal tissue largely determines which pairs fuse when DSBs occur.
 - The BCR-ABL1 fusion (Philadelphia chromosome) arises in myeloid cells because BCR (chr9) and ABL1 (chr22) are in close 3D proximity specifically in hematopoietic cells; they are distant in other cell types. IGH-MYC is present in 9/10 Burkitt lymphomas for the same spatial reason.
-- TMPRSS2-ERG fusions in prostate cancer: TMPRSS2 and ERG are 2 Mb apart on chr21 but brought into close nuclear contact by androgen receptor-driven chromatin looping; TOP2B is recruited to relieve transcriptional tension, creating DSBs at both loci.
+- TMPRSS2-ERG fusions in prostate cancer: TMPRSS2 and ERG are 2 Mb apart on chr21 but brought into close nuclear contact by chromatin looping in the prostate; TOP2B is recruited to relieve DNA/transcriptional tension, creating DSBs at both loci. (The paper separately notes that androgen receptor facilitates long-range interactions and speculates this may explain why such SVs are enriched in younger patients — it does not state AR drives the TMPRSS2-ERG looping itself.)
 - Actively transcribed open-chromatin ("A compartment") sites are prone to TOP2B-associated DSBs and preferential repair by HR during S-phase; error-prone NHEJ during G1 preferentially affects heterochromatic loop anchors. These compartment-specific repair pathways mechanistically link 3D state to SV type.
 - Chromothripsis: Hi-C analysis showed SVs arising from chromothripsis are significantly enriched between loci sharing similar replication timing and A-compartment status — consistent with 3D proximity preceding the catastrophic shattering event.
 
 ### SVs alter 3D genome architecture
 
 - Deletion of a CTCF anchor fuses two adjacent TADs. Duplications of CTCF anchors create "neo-TADs." Inversions swap DNA territory between TADs. Translocations can fuse or swap TAD territories across chromosomes.
-- In multiple myeloma, translocation of NSD2 (histone methyltransferase) causes H3K36 pervasive methylation and remodels A/B compartments and TAD structure genome-wide — a trans mechanism rather than a local CRE effect.
+- In multiple myeloma, translocation of NSD2 (histone methyltransferase) causes H3K36 pervasive methylation and remodels A/B compartments and TAD structure — a trans mechanism rather than a local CRE effect.
 
 ### Five mechanisms of SV-driven oncogene activation (Figure 4)
 
 1. **Enhancer juxtaposition (hijacking):** SVs place a tissue-specific lineage enhancer proximal to an oncogene promoter. Canonical example: pediatric medulloblastoma group 3/4 SVs on chr1/9 juxtapose distal active enhancers with GFI1/GFI1B, causing high-level upregulation. TERT promoter-associated SVs activate telomerase across multiple cancer types by co-opting open active-chromatin partner loci.
 2. **CRE-gene fusion:** Entire regulatory machinery of one gene is fused to a second. TMPRSS2:ERG hijacks the TMPRSS2 promoter and enhancers to drive ERG expression and simultaneously removes a degron in the ERG N-terminus, conferring proteasome resistance.
 3. **Enhancer de novo looping:** SVs generate new long-range E:P loops. Lung squamous carcinoma SVs at a CTCF loop-anchor disrupt the TAD boundary adjacent to IRS4 (100 kb away), spreading active H3K27ac chromatin and enabling ectopic looping to normally silent enhancer. Medulloblastoma: complex SVs flip a super-enhancer across a TAD boundary to activate PRDM6 >600 kb away.
-4. **Enhancer amplification:** Strong lineage-specific enhancers controlling MYC are amplified in AML, T-ALL, lung, and endometrial carcinoma. In CRPC, androgen-deprivation selects for amplification of AR lineage-specific enhancers, re-activating AR expression through increased E:P interaction.
+4. **Enhancer amplification:** Strong lineage-specific enhancers controlling MYC are amplified in AML, T-ALL, lung, and endometrial carcinoma. In prostate cancer, androgen-deprivation selects for amplification of AR lineage-specific enhancers, re-activating AR expression through increased E:P interaction. (The review itself does not use the term CRPC, though this is consistent with a cited reference on castration-resistant prostate cancer.)
 5. **Extrachromosomal amplification:** ecDNA circular topology circumvents insulators, allowing all enhancers on the amplicon to interact with all contained oncogenes — a uniquely permissive regulatory environment. ecDNA incorporates EGFR or MYC along with enhancers from adjacent TADs (glioblastoma, neuroblastoma). ecDNA can also act in trans as enhancers for promoters on the linear genome, and ecDNA hubs co-localize multiple amplicons for cooperative oncogene expression.
 
 ### Tissue-type specificity of SVs
@@ -54,10 +54,18 @@ ontology_terms:
 - Complex SV mechanisms include chromothripsis, BFB cycles, ecDNA formation, chromoanasynthesis (MMBIR-based replication template switching), templated insertions, and chromoplexy (chains involving multiple chromosomes).
 - TAD disruption per se is insufficient — in PCAWG across 2,700 tumor genomes, only a minority of TAD-disrupting SVs show marked gene expression changes. Effective oncogenic SVs require both TAD disruption and the right CRE constituents (active promoter, active enhancer) to be brought into contact.
 
+## Methods
+
+This is a narrative review, not a primary-data study; "methods" here refers to its scope and synthesis approach. The authors restrict scope to **somatic** structural variants (SVs) in cancer, explicitly excluding germline SVs. SVs are defined as rearrangements only (deletions, duplications, inversions, interchromosomal translocations, insertions, and combinations thereof), with aneuploidies excluded from the "SV" label. Complex SVs arising from a single catastrophic event (chromothripsis, breakage-fusion-bridge cycles, extrachromosomal amplification, chromoanasynthesis, templated insertions, chromoplexy) are treated separately from isolated simple SVs.
+
+The review synthesizes published findings from: pan-cancer WGS cohorts, citing a PCAWG-based survey of ~2,700 tumor genomes for TAD-disruption analysis; Hi-C chromatin-conformation data (including Rao et al.'s A/B compartment calls); microscopy-based distance metrics for nuclear proximity; CRISPR excision/engineering experiments testing cis-element removal; engineered-mouse-embryo SV experiments testing enhancer-promoter "flipping"; a polymer-physics model predicting chromatin interactions without prior Hi-C input; and a deep-learning model using Hi-C data to predict tissue/species-specific folding and SVs. It also references single-cell DNA sequencing, long-read and linked-read sequencing, and optical mapping as detection technologies. The authors report a companion website visualizing SVs and TADs across tumor types [UNVERIFIED — tool/URL not identifiable from the extracted text].
+
+The organizing framework is two-part: (1) mechanistic bias — how pre-cancerous 3D genome folding (compartments, TADs, CTCF/cohesin loop anchors) determines which loci break and fuse; (2) selection bias — how SV-driven remodeling of cis-regulatory-element (CRE)–gene contacts (five catalogued mechanisms: enhancer juxtaposition, CRE–gene fusion, enhancer de novo looping, enhancer amplification, extrachromosomal amplification) affects cellular fitness.
+
 ## Limitations
 
 - Synthesis review; does not provide new primary data or systematic quantification of the relative frequency of the five oncogenic SV mechanisms across cancer types.
 - The claim that "only a minority of TAD-disrupting SVs show marked gene expression changes" is a pan-cancer aggregate; the fraction likely varies substantially by cancer type, SV type, and specific locus context — this heterogeneity is acknowledged but not resolved.
-- ecDNA's role is discussed primarily through chromatin accessibility and enhancer-oncogene looping (Wu2019, Morton 2019, Koche 2020, Zhu 2021); the non-Mendelian segregation axis (Turner2017, deCarvalho2018) is not the focus of this review.
+- ecDNA's role is discussed primarily through chromatin accessibility and enhancer-oncogene looping (Wu2019, Morton 2019, Koche 2020, Zhu 2021); the non-Mendelian segregation axis (Turner2017) is not the focus of this review.
 - SV detection from WGS remains technically limited by short-read ambiguity at complex SVs and common fragile sites; the review notes that the true rate of recurrent oncogenic SVs is likely underestimated.
 - The five CRE-activation mechanisms are presented as conceptually distinct but in practice overlap (e.g., ecDNA formation combines enhancer hijacking + looping + amplification simultaneously).

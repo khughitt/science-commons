@@ -14,7 +14,7 @@ paper_kind: review
 ---
 ## Key Findings
 
-**GNN architecture taxonomy.** The 25 models split into three major architecture families:
+**GNN architecture taxonomy.** The 25 models are grouped predominantly into three architecture families (24 of 25), plus one study (Lv et al. 2022) built on graph regularization rather than these three:
 - GCN (graph convolutional network): most common; used for molecular graph feature extraction and biological network embedding.
 - GAT (graph attention network): second most common; assigns learned attention weights to neighbor nodes, enabling selective aggregation; used in both drug-structure graphs and knowledge graphs.
 - GAE (graph autoencoder): encodes drug-drug synergy networks into latent space and reconstructs the adjacency matrix to infer novel synergistic relationships.
@@ -31,9 +31,17 @@ AUPR (area under the precision-recall curve) is the recommended metric for drug 
 
 **GNN limitations.** Four recurring failure modes: (1) high computational cost + data hunger given a sparse experimental landscape; (2) overfitting risk under limited labeled pairs; (3) interpretability gaps — predictions cannot be mechanistically explained; (4) expressivity limits of standard GCNs on heterophilic graphs (nodes of different types connected by diverse edge semantics).
 
+## Methods
+
+This is a narrative literature review, not an original experimental study. The authors searched PubMed, Google Scholar, and Web of Science through July 2023 using the keywords "graph," "drug combination," and "synergy," screening retrieved articles for relevance to GNN-based drug-synergy prediction in cancer. This identified 25 GNN-based models published between February 2020 and July 2023. For comparison, the authors separately compiled non-GNN machine-learning studies on drug-synergy prediction from 2010–2023 (Supplementary Table 1) to contextualize adoption trends.
+
+Table 1 catalogs the benchmark datasets used across the 25 studies: in vitro screening sets (Merck/O'Neil, Oncology Screen, NCI-ALMANAC, AstraZeneca, CLOUD, FLOBAK, YOHE, FORCINA, DrugComb) and four clinical-trial-derived datasets (US FDA-approved combinations, two literature-curated clinical sets, EHR data, DrugBank). Table 2 tabulates, per study: prediction task (classification vs. regression), dataset(s), GNN architecture, input features, strengths, limitations, and code availability. Of the 25 studies, 16 use classification (5 of which also report a regression variant); the remaining 11 classification-only studies are grouped by architecture family — GCN, GAT, and GAE — with one additional study (Lv et al. 2022) using graph regularization. Five studies use clinical data.
+
+Table 3 compiles reported performance (AUC, ACC, AUPR, F1, RMSE/MSE) stratified by validation scheme (3-, 5-, or 10-fold CV; hold-out; leave-one-drug-out; leave-one-cell-line-out), synergy metric (Loewe, Bliss, ZIP, HSA), and thresholding approach. No new models, code, or experiments were produced; this is a secondary literature synthesis and performance-comparison exercise.
+
 ## Limitations
 
 The review does not compare GNNs against the strongest non-GNN baselines (e.g., MatchMaker, DeepSynergy, DTF) in a controlled head-to-head study; this gap is acknowledged but deferred to future work.
 Performance comparisons across the reviewed models are confounded by dataset selection, synergy metric, and threshold choices — the authors acknowledge this but do not resolve it.
-The review ends at July 2023; methods published after (including transformer-heavy and large language model-augmented approaches) are not covered.
+The review ends at July 2023; GNN-based drug-synergy methods published after that date are not covered. (Transformer-based methods are not a gap here — several of the 25 included studies already use transformers, e.g. DTSyn and TranSynergy; the paper does not discuss large language models at all.)
 For science/meta purposes, the drug biology claims (which cell-line features matter, which synergy metric is most predictive) are domain-specific and should not be imported into toolkit design reasoning without a domain-transfer justification.

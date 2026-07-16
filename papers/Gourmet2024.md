@@ -52,7 +52,7 @@ All 10 hallmarks show dN/dS > 1 in TCGA tumors. The strongest positive selection
 
 ### TP53 drives early genomic instability
 
-Removing TP53 from all hallmark gene sets shifts genomic instability to the last position while leaving most other hallmarks largely unaffected. This indicates that early acquisition of genomic instability is predominantly driven by TP53 mutations. TP53 is represented in 8 of 10 hallmark gene sets (it is the most broadly shared gene). The genomic instability hallmark has the fewest shared genes with other hallmarks (41%; 87/211 genes).
+Removing TP53 from all hallmark gene sets shifts genomic instability to the last position while leaving most other hallmarks largely unaffected. This indicates that early acquisition of genomic instability is predominantly driven by TP53 mutations. TP53 is represented in 8 of 10 hallmark gene sets (the most broadly shared gene specifically implicated in genomic instability; the AKT/Ras/PIK3/MAPK gene families are more broadly shared overall, at 9/10). The genomic instability hallmark has the fewest shared genes with other hallmarks (41%; 87/211 genes).
 
 ### Cross-cancer robustness and environmental exceptions
 
@@ -60,23 +60,27 @@ Hallmark ordering is conserved across 27/32 cancer types by Spearman rank correl
 
 ### Environmental modulation: smoking and lung cancer
 
-LUAD current smokers show significantly higher overall VAF across all hallmarks except genomic instability — consistent with a clonal sweep driven by modification of metabolism, growth, and angiogenesis (top 3 in smokers). Inflammation and immune evasion remain last in all LUAD and LUSC groups except LUAD non-smokers, suggesting smoking is less strongly associated with immune evasion than previously proposed.
+LUAD patients with a smoking history (reformed/former smokers) show significantly higher overall VAF than both non-smokers and current smokers across all hallmarks except genomic instability — consistent with a clonal sweep after smoke exposure driven by modification of metabolism, growth, and angiogenesis (top 3 in this group). Inflammation and immune evasion remain last in all LUAD and LUSC groups except LUAD non-smokers, suggesting smoking is less strongly associated with immune evasion than previously proposed.
 
 ### Patient-level clustering and prognosis
 
 At the individual patient level, hallmark ranks show a bimodal distribution for genomic instability (GI tends to be ranked either 1st or 10th, driven by TP53 mutation status). PCA on all 10 hallmark ranks separates two clusters distinguished primarily by GI, immune evasion, and inflammation rank positions:
 
-- **Cluster 1 (early GI):** Genomic instability acquired early — associated with **poorer OS, PFS, and DFS** (OS p = 0.00096; PFS and DFS p < 0.0001).
-- **Cluster 2 (late GI):** Genomic instability acquired late — better prognosis.
+- **Cluster 2 (early GI):** Genomic instability acquired early — associated with **poorer OS, PFS, and DFS** (OS p = 0.00096; PFS and DFS p < 0.0001).
+- **Cluster 1 (late GI):** Genomic instability acquired late — better prognosis.
 
 Cluster membership is distributed across most cancer types, though breast (BRCA), head-and-neck squamous (HNSC), lung squamous (LUSC), and ovarian (OV) cancers show unequal distribution. ASCETIC-based clustering with k=6 also reveals prognostic differences.
 
 ### Gene-level details
 
 - Genes under significant positive selection for genomic instability: ATM, CASP8, TP53, PTEN.
-- Genes under significant positive selection for immune evasion: PIK3R1, HLA genes.
-- Most known cancer driver genes (42%; 152/365) are not associated with any single specific hallmark by the gene list used.
+- Genes under significant positive selection for inflammation and immune evasion (the paper attributes these jointly, not to evasion alone): PIK3R1, HLA genes.
+- Only 42% of known cancer driver genes (152/365) are associated with a single specific hallmark by the gene list used; the remaining 58% are not associated with any specific hallmark.
 - AKT, Ras, PIK3, MAPK gene families appear in 9 of 10 hallmarks; BRAF in 7/10; TP53 in 8/10.
+
+## Methods
+
+Hallmark gene sets came from Zhang et al.'s CHG database, filtered against HGNC, with two comparator lists: immune-escape genes (Zapata et al. 2023) and 365 cancer driver genes (Martincorena et al. 2017). Mutation data were drawn from TCGA (2,626,225 nonsynonymous somatic point mutations; 9,484 patients; 32 cancer types; metastatic and duplicate samples excluded, retaining only primary untreated tumors) and GTEx as a healthy-tissue comparator (999,203 mutations; 7,584 patients; 16 tissue types). Variant allele frequency (VAF), restricted to nonsynonymous mutations (missense, nonsense, essential splice, stop-loss), served as the timing proxy: mean VAF (± SE) per hallmark per sample, with higher VAF interpreted as earlier clonal acquisition. Selection pressure was estimated with the dNdScv R package (v0.0.1.0), reporting global dN/dS with 95% confidence intervals. Cross-cancer-type ordering conservation used Spearman correlation of per-tumor hallmark VAF ranks, visualized via hierarchical clustering (pheatmap); the ASCETIC algorithm (100 resampling iterations) provided an independent, gene-group-based trajectory estimate. Robustness checks included ploidy-corrected VAF, cancer-cell-fraction (CCF) correction for purity/copy number, diploid-only restriction, TP53 removal, and randomization controls (neutral genes, pseudo-hallmarks). Patient-level analysis ranked hallmarks 1–10 per patient, then applied k-means clustering (PCA via `prcomp`; k chosen by elbow method with `factoextra::fviz_nbclust`; validated by silhouette scores via the `cluster` package) to define patient subgroups, followed by Kaplan-Meier survival analysis (overall survival, progression-free survival, disease-free interval). Software: R with ggplot2, pheatmap, UpSetR, MAFtools, dNdScv, factoextra, and cluster.
 
 ## Limitations
 
