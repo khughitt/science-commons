@@ -1,0 +1,32 @@
+op_id: 078660eb
+kind: dataset
+invocation: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/.venv/bin/science commons
+  promote dataset --from evolution --slug persi2025-myeloma --apply
+status: ok
+started_at: '2026-07-17T18:22:44.314800+00:00'
+finished_at: '2026-07-17T18:22:44.358608+00:00'
+commons_commit: 54ae976
+commons_tags:
+- dataset/persi2025-myeloma/1.0.0
+projects_touched:
+  evolution:
+    overlay_rewrites:
+    - slug: persi2025-myeloma
+      path: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/overlays/datasets/persi2025-myeloma.md
+      pin_version: 1.0.0
+      unlinked_source: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/entities/datasets/persi2025-myeloma.md
+decisions:
+- slug: persi2025-myeloma
+  canonical_version: 1.0.0
+  canonical_paths:
+  - datasets/persi2025-myeloma/entity.md
+  per_resource_hashes: {}
+  recipe_stubbed: false
+  dropped_fields: []
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: git -C /home/keith/d/science-commons revert 54ae976
+  projects:
+    evolution: git -C /mnt/ssd/Dropbox/cancer/mechanisms/evolution checkout HEAD --
+      entities/datasets/persi2025-myeloma.md overlays/datasets/persi2025-myeloma.md
