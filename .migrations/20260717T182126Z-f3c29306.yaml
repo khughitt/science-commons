@@ -1,0 +1,26 @@
+op_id: f3c29306
+kind: dataset
+invocation: /mnt/ssd/Dropbox/cancer/mechanisms/evolution/.venv/bin/science commons
+  promote dataset --from evolution --slug persi2025-myeloma --apply
+status: failed
+started_at: '2026-07-17T18:21:26.534752+00:00'
+finished_at: '2026-07-17T18:21:26.546843+00:00'
+commons_commit: null
+commons_tags: []
+projects_touched: {}
+decisions:
+- slug: persi2025-myeloma
+  canonical_version: 1.0.0
+  canonical_paths:
+  - datasets/persi2025-myeloma/entity.md
+  per_resource_hashes: {}
+  recipe_stubbed: false
+  dropped_fields: []
+conflict_resolutions: []
+failed_candidates: []
+rollback:
+  commons: null
+  projects: {}
+failure_stage: preflight
+failure_detail: 'commons repo is not clean. Commit/stash before re-running. Dirty:
+  papers/Garraway2006.md, papers/Haigis2019.md, papers/MartinezJimenez2020.md'
