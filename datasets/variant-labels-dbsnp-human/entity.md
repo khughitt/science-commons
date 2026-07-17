@@ -1,5 +1,5 @@
 ---
-schema_profile: science-entity-base/1.0+dataset/1.0
+schema_profile: science-entity-base/1.0+dataset/2.0
 id: dataset:variant-labels-dbsnp-human
 kind: dataset
 title: Human dbSNP rsID to small-allele variant-label map

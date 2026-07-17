@@ -1,5 +1,5 @@
 ---
-schema_profile: science-entity-base/1.0+dataset/1.0+bio.geneset/1.0
+schema_profile: science-entity-base/1.0+dataset/2.0+bio.geneset/1.0
 id: dataset:reactome
 kind: dataset
 title: Reactome human pathway gene-set collection

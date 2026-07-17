@@ -1,5 +1,5 @@
 ---
-schema_profile: science-entity-base/1.0+dataset/1.0+bio.gene_crosswalk/1.0
+schema_profile: science-entity-base/1.0+dataset/2.0+bio.gene_crosswalk/1.0
 id: dataset:gene-crosswalk-hgnc
 kind: dataset
 title: "HGNC gene crosswalk — gene_key-keyed reference collection (human)"

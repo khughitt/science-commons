@@ -1,5 +1,5 @@
 ---
-schema_profile: "science-entity-base/1.0+dataset/1.0"
+schema_profile: "science-entity-base/1.0+dataset/2.0"
 id: "dataset:human-cell-atlas"
 kind: "dataset"
 title: "Human Cell Atlas"

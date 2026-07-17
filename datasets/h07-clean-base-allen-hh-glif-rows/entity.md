@@ -1,5 +1,5 @@
 ---
-schema_profile: science-entity-base/1.0+dataset/1.0
+schema_profile: science-entity-base/1.0+dataset/2.0
 id: dataset:h07-clean-base-allen-hh-glif-rows
 kind: dataset
 title: H07 Allen HH/GLIF row clean base

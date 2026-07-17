@@ -1,5 +1,5 @@
 ---
-schema_profile: science-entity-base/1.0+dataset/1.0
+schema_profile: science-entity-base/1.0+dataset/2.0
 id: dataset:hmcl-drug-screen
 kind: dataset
 title: HMCL NCATS MIPE 4.0 drug screen — 1,912 compounds x 11 doses x 47 human myeloma cell lines (Hughitt et al., Zenodo 13910207)

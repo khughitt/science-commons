@@ -1,5 +1,5 @@
 ---
-schema_profile: science-entity-base/1.0+dataset/1.0
+schema_profile: science-entity-base/1.0+dataset/2.0
 id: dataset:hh1952-digitized-conductance
 kind: dataset
 title: Hodgkin-Huxley 1952 digitized conductance traces

@@ -1,5 +1,5 @@
 ---
-schema_profile: science-entity-base/1.0+dataset/1.0+bio.assembly_registry/1.0
+schema_profile: science-entity-base/1.0+dataset/2.0+bio.assembly_registry/1.0
 id: dataset:assembly-registry
 kind: dataset
 title: "Assembly registry — seqcol-keyed reference collection of genome assemblies"

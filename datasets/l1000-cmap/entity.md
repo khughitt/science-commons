@@ -1,5 +1,5 @@
 ---
-schema_profile: "science-entity-base/1.0+dataset/1.0"
+schema_profile: "science-entity-base/1.0+dataset/2.0"
 id: "dataset:l1000-cmap"
 kind: "dataset"
 title: "LINCS L1000 Connectivity Map"

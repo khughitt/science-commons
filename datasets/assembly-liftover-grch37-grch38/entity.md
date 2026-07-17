@@ -1,5 +1,5 @@
 ---
-schema_profile: science-entity-base/1.0+dataset/1.0
+schema_profile: science-entity-base/1.0+dataset/2.0
 id: dataset:assembly-liftover-grch37-grch38
 kind: dataset
 title: GRCh37 to GRCh38 assembly liftover chains

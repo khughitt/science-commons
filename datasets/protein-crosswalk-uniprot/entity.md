@@ -1,5 +1,5 @@
 ---
-schema_profile: science-entity-base/1.0+dataset/1.0+bio.protein_crosswalk/1.0
+schema_profile: science-entity-base/1.0+dataset/2.0+bio.protein_crosswalk/1.0
 id: dataset:protein-crosswalk-uniprot
 kind: dataset
 title: "UniProt protein crosswalk — protein_key-keyed reference collection (human, reviewed)"

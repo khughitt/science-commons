@@ -1,5 +1,5 @@
 ---
-schema_profile: science-entity-base/1.0+dataset/1.0+bio.reference_graph/1.0
+schema_profile: science-entity-base/1.0+dataset/2.0+bio.reference_graph/1.0
 id: dataset:opentargets-associations
 kind: dataset
 title: Open Targets target–disease association reference graph

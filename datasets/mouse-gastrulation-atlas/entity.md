@@ -1,5 +1,5 @@
 ---
-schema_profile: "science-entity-base/1.0+dataset/1.0"
+schema_profile: "science-entity-base/1.0+dataset/2.0"
 id: "dataset:mouse-gastrulation-atlas"
 kind: "dataset"
 title: "Mouse gastrulation single-cell atlas"
