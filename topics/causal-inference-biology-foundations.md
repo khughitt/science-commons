@@ -16,7 +16,7 @@ related:
 source_refs:
 - paper:Feuerriegel2024
 - paper:Laubach2021
-- paper:Mooij2024
+- paper:Brouillard2024
 - paper:Ross2021
 - paper:Touré2021
 ---
