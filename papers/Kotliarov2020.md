@@ -21,19 +21,12 @@ ontology_terms:
 pmid: '32094927'
 venue: Nature Medicine
 year: 2020
-dataset_usage:
-- ref: dataset:immport-immunespace
-  role: analyzed
-  overlap: unknown
-- ref: dataset:nih-influenza-vaccination-cohort
-  role: analyzed
-  overlap: unknown
-- ref: dataset:websle-paediatric-sle
-  role: analyzed
-  overlap: unknown
-- ref: dataset:yellow-fever-vaccination-cohort
-  role: analyzed
-  overlap: unknown
+# dataset_usage intentionally omitted: this paper analyzes registration-gated,
+# reference-only cohorts (ImmPort/ImmuneSpace influenza, NIH/CHI, yellow-fever
+# YF-17D, paediatric SLE) that have no promotable commons dataset entity (no
+# datapackage). Their provenance is retained in the Methods section prose.
+# See fb-2026-07-19-005. Re-add structured refs once reference-only datasets
+# are representable in the commons.
 ---
 ## One-Sentence Summary
 
