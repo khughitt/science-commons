@@ -17,10 +17,6 @@ ontology_terms:
 - convergent evolution
 - germinal center
 - somatic hypermutation
-dataset_usage:
-- ref: dataset:pelissier2023-vdj
-  role: analyzed
-  overlap: unknown
 ---
 ## Key Findings
 

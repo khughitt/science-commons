@@ -8,8 +8,7 @@ created: "2026-06-26"
 updated: "2026-06-26"
 tags: []
 evidence_refs: []
-related:
-- question:0012-ribosome-biogenesis-e2f1-anticoupling-cross-cancer
+related: []
 source_refs: []
 theme_kind: methodological
 theme_scope: cross-project
