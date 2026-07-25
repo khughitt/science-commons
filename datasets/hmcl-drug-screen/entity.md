@@ -1,5 +1,5 @@
 ---
-schema_profile: science-entity-base/1.0+dataset/2.0
+schema_profile: science-entity-base/1.0+dataset/3.0
 id: dataset:hmcl-drug-screen
 kind: dataset
 title: HMCL NCATS MIPE 4.0 drug screen — 1,912 compounds x 11 doses x 47 human myeloma cell lines (Hughitt et al., Zenodo 13910207)
@@ -28,7 +28,8 @@ source_class: observational
 status: active
 tier: use-now
 provided_capabilities:
-- {assay: drug-sensitivity, modality: cell-line-viability}
+- data_product: data-product:drug-sensitivity-cell-line-viability
+  qualifiers: {}
 identity_context: {taxon: 9606}
 ---
 # HMCL NCATS MIPE 4.0 drug screen
